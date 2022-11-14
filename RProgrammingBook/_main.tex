@@ -1,0 +1,2344 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+%
+\documentclass[
+]{book}
+\usepackage{amsmath,amssymb}
+\usepackage{lmodern}
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math}
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{xcolor}
+\usepackage{color}
+\usepackage{fancyvrb}
+\newcommand{\VerbBar}{|}
+\newcommand{\VERB}{\Verb[commandchars=\\\{\}]}
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+% Add ',fontsize=\small' for more characters per line
+\usepackage{framed}
+\definecolor{shadecolor}{RGB}{248,248,248}
+\newenvironment{Shaded}{\begin{snugshade}}{\end{snugshade}}
+\newcommand{\AlertTok}[1]{\textcolor[rgb]{0.94,0.16,0.16}{#1}}
+\newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.77,0.63,0.00}{#1}}
+\newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\BuiltInTok}[1]{#1}
+\newcommand{\CharTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\CommentTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{#1}}
+\newcommand{\DecValTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ErrorTok}[1]{\textcolor[rgb]{0.64,0.00,0.00}{\textbf{#1}}}
+\newcommand{\ExtensionTok}[1]{#1}
+\newcommand{\FloatTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\ImportTok}[1]{#1}
+\newcommand{\InformationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\NormalTok}[1]{#1}
+\newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.81,0.36,0.00}{\textbf{#1}}}
+\newcommand{\OtherTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
+\newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\RegionMarkerTok}[1]{#1}
+\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\StringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\VariableTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\WarningTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\usepackage{longtable,booktabs,array}
+\usepackage{calc} % for calculating minipage widths
+% Correct order of tables after \paragraph or \subparagraph
+\usepackage{etoolbox}
+\makeatletter
+\patchcmd\longtable{\par}{\if@noskipsec\mbox{}\fi\par}{}{}
+\makeatother
+% Allow footnotes in longtable head/foot
+\IfFileExists{footnotehyper.sty}{\usepackage{footnotehyper}}{\usepackage{footnote}}
+\makesavenoteenv{longtable}
+\usepackage{graphicx}
+\makeatletter
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
+\makeatother
+% Scale images if necessary, so that they will not overflow the page
+% margins by default, and it is still possible to overwrite the defaults
+% using explicit options in \includegraphics[width, height, ...]{}
+\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+% Set default figure placement to htbp
+\makeatletter
+\def\fps@figure{htbp}
+\makeatother
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{5}
+\usepackage{booktabs}
+\ifLuaTeX
+  \usepackage{selnolig}  % disable illegal ligatures
+\fi
+\usepackage[]{natbib}
+\bibliographystyle{plainnat}
+\IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\urlstyle{same} % disable monospaced font for URLs
+\hypersetup{
+  pdftitle={Introduction to R Programming - University of York},
+  pdfauthor={Dr.~Lewis Ramsden},
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
+
+\title{Introduction to R Programming - University of York}
+\author{Dr.~Lewis Ramsden}
+\date{Autumn Term (2022/23)}
+
+\usepackage{amsthm}
+\newtheorem{theorem}{Theorem}[chapter]
+\newtheorem{lemma}{Lemma}[chapter]
+\newtheorem{corollary}{Corollary}[chapter]
+\newtheorem{proposition}{Proposition}[chapter]
+\newtheorem{conjecture}{Conjecture}[chapter]
+\theoremstyle{definition}
+\newtheorem{definition}{Definition}[chapter]
+\theoremstyle{definition}
+\newtheorem{example}{Example}[chapter]
+\theoremstyle{definition}
+\newtheorem{exercise}{Exercise}[chapter]
+\theoremstyle{definition}
+\newtheorem{hypothesis}{Hypothesis}[chapter]
+\theoremstyle{remark}
+\newtheorem*{remark}{Remark}
+\newtheorem*{solution}{Solution}
+\begin{document}
+\maketitle
+
+{
+\setcounter{tocdepth}{1}
+\tableofcontents
+}
+\hypertarget{preface}{%
+\chapter*{Preface}\label{preface}}
+\addcontentsline{toc}{chapter}{Preface}
+
+These lecture notes have been created as supplementary material for this course and are mostly built up from the R scripts seen in the workshops, as well as a few additional comments. At the end of each chapter, you will also find the exercise problems discussed in the workshop sessions; the solutions will be added as we progress through the course.
+
+These notes are a work in progress and as such, will be updated throughout the duration of the course, so please make sure to revisit them on a regular basis. If there is anything missing from these notes that you believe would be beneficial or if you notice any mistakes, please let me know so I can improve them as best I can. Remember, they are here for your benefit so it would be great to have your input too.
+
+\hypertarget{about-this-course}{%
+\section*{About This Course}\label{about-this-course}}
+\addcontentsline{toc}{section}{About This Course}
+
+This course is by no means exhaustive and is designed to introduce you to the basics of programming in R, improving your confidence with coding and signposting you to additional resources for you to further enhance your skills.
+
+The course is non-credit bearing and thus, there are no formal assessments for you to submit. However, at the end of each week/chapter there are a number of exercises for you to complete, which I strongly recommend you attempt. The best way to learn and improve you coding skills is by doing it yourself and learning how to overcome the obstacles/errors that you will inevitably encounter. Remember, do not be afraid to search the web for hints and ideas when programming, it is usually the most effective way to solve your problems, I have to do it on a daily basis!
+
+\hypertarget{schedule}{%
+\section*{Schedule}\label{schedule}}
+\addcontentsline{toc}{section}{Schedule}
+
+As this is a non-credit bearing course, the syllabus and schedule are flexible and can be delivered as we see fit. However, a rough schedule over the 6-week course is as follows:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  RStudio and R basics (Revision)
+\item
+  Conditional statements and IF statements
+\item
+  FOR/WHILE loops
+\item
+  Functions
+\item
+  Creating, importing and analysing data
+\item
+  Creating documents in RMarkdown
+\end{enumerate}
+
+\hypertarget{datacamp}{%
+\section*{DataCamp}\label{datacamp}}
+\addcontentsline{toc}{section}{DataCamp}
+
+In order to assist you in your journey to learning all about R and RStudio, this course is supplemented via an online interactive tutorial website known as DataCamp.
+
+In DataCamp, you will have access to hundreds of interactive courses for R (and other languages such as Pyton and SQL), each tailored to a different aspect of the fundamentals of R programming or an area of application. In general, only a few of these courses are free to use, with the remaining requiring a paid subscription for access. However, for those of you sitting the short course on `R programming' you will have free access to the full library of courses for 6 months from the start of the course. Registration for this free access will be discussed in the lecture itself and is only available to those invited by the lecturer via an email link. To learn more about DataCamp and what it has to offer visit \url{https://www.datacamp.com}.
+
+As mentioned above, DataCamp will be used as a supplementary resource for this course and we strongly encourage you to use it. At the end of each chapter of these lecture notes, we will include links directing you to appropriate courses within DataCamp that we believe complement the material given.
+
+\hypertarget{rstudio-and-r-basics-revision}{%
+\chapter{RStudio and R Basics (Revision)}\label{rstudio-and-r-basics-revision}}
+
+R is a language and programming environment for statistical computing and graphics (graphs and plots), which offers an `Open Source' (freely available) alternative for implementation of the S language, which is the usual language of choice when it comes to statistical computing. In other words, R is a freely available software environment which runs on Windows, MacOS and LINUX, that allows the user to conduct mathematical calculations, data manipulation, statistical computations and create graphical output.
+
+RStudio is known as an \emph{integrated development environment} (IDE) for R, which essentially provides much more user friendly access to R and its features. The figures below show the two environments separately. The first is the original R environment and the second is RStudio. Even from these simple graphics, you can see that RStudio provides a much more detailed user face, with a number of different `panels' (discussed in more details later) for a range of different commands.
+
+\begin{figure}
+
+{\centering \includegraphics[width=0.7\linewidth]{Figures/R} 
+
+}
+
+\caption{R Environment.}\label{fig:R}
+\end{figure}
+\begin{figure}
+
+{\centering \includegraphics[width=0.7\linewidth]{Figures/RStudio} 
+
+}
+
+\caption{RStudio IDE.}\label{fig:RStudio}
+\end{figure}
+
+\hypertarget{how-to-install-r-and-rstudio}{%
+\section{How to install R and RStudio}\label{how-to-install-r-and-rstudio}}
+
+Installing R and RStudio has to be done in two separate steps:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  Firstly, we need to install the original R software for your specific operating system (Windows, Mac or LINUX) from \url{https://cran.ma.imperial.ac.uk/}. Once this is installed, you are able to open R and you should be met with a screen similar to the left hand side in Figure:\ref{fig:R}, above. At this point, you are now able to use R and all its features completely. However, as mentioned in the previous section, it is usually preferable to work with RStudio due to its user friendly interface.
+\item
+  To download the free version of RStudio, visit {[}\url{https://rstudio.com/products/rstudio/download/}{]} and download `RStudio Desktop (Free)'. Once downloaded, you will be able to open RStudio and should see a similar screen to that of Figure:\ref{fig:RStudio}. Keep in mind that the image(s) above may be running older versions than the one you are using. Once you have downloaded RStudio, I recommend you only ever use R through this platform, so there is no need to open the original R software.
+\end{enumerate}
+
+\textbf{Note that in order to use R through the RStudio environment, you must first download the original R software. However, you can use R without downloading RStudio but I do not recommend this!}
+
+If you are using a university computer, you do not have to worry about the steps above as R and RStudio are already installed and can be found within the list of installed in programmes.
+
+\hypertarget{rstudio-interface-explained}{%
+\section{RStudio interface explained}\label{rstudio-interface-explained}}
+
+When you open RStudio, you will notice that the environment has a number of different `panels'. You may find that your environment looks slightly different to the one in the figure above and may only have one larger panel on the left hand side rather than two separate ones. This difference will be explained later. To avoid confusion, your screen should look like the figure given below.
+
+\begin{figure}
+
+{\centering \includegraphics[width=0.7\linewidth]{Figures/RStudioBasic} 
+
+}
+
+\caption{Orginal RStudio View.}\label{fig:RStudioBasic}
+\end{figure}
+
+Let us discuss each of the panels and some of their associated tabs, in a little more detail:
+
+\begin{itemize}
+\item
+  \textbf{Console (Left panel)} - The console is the panel you will interact with the most, as this is where you can type commands which can be `Run' to produce some output.
+\item
+  \textbf{Environment (Top panel, Tab 1)} - The environment tab lists all active objects that have been `assigned' (see below) and stored for later use. This is especially helpful when writing a long programme for which many variables need to be stored, as it allows you to refer back to previously defined objects.
+\item
+  \textbf{History (Top right panel, Tab 2)} - The history tab shows a list of all commands that have been run within the console so far. Again, this can prove useful when writing long programmes which may require re-use of certain commands or to double check what has already been run.
+\item
+  \textbf{Files (Bottom right panel, Tab 1)} - The file tab shows the folder of your `Working Directory'. That is, the folder in which R is directed to look for data sets etc. This tab looks similar to the equivalent folder in your PC/Mac folder window.
+\item
+  \textbf{Plots (Bottom right panel, Tab 2)} - The plots tabs allows you to view all of the graphs/plots you have created within that session. This proves helpful when you want to compare a number of plots.
+\item
+  \textbf{Packages (Bottom right panel, Tab 3)} - The packages tab provides access to a list of `Packages' or `Add-ons' needed to run certain functions. When RStudio is first started up, it will only have access to its basic packages which contain fundamental functions and tools. In order to conduct more sophisticated analysis or calculations it is usually required for you to install an extra package which contains these tools.
+\item
+  \textbf{Help (Bottom right panel, Tab 4)} - The help tab can be used to find additional information about certain functions, tools or commands within RStudio. You will find this to be a very important part of your programming experience and will be used constantly. We will discuss later on how to access help via a shortcut through the console.
+\end{itemize}
+
+\hypertarget{mathematical-calculations}{%
+\section{Mathematical calculations}\label{mathematical-calculations}}
+
+Now that we understand a little more about the setup of R and RStudio, we want to discuss what we can actually do in R. As previously mentioned, R is most notably used to conduct mathematical calculations, data manipulation, statistical computations and create graphical output but let us discuss each of these in a little more detail and give some practical examples you can try for yourself.
+
+In its most basic form, R can be used as a large scale calculator. In contrast to an actual calculator, it can perform a variety of calculations quickly and easily, which would otherwise take a great deal of time, e.g.~series summations and matrix multiplcation. In fact, there are many calculations that can be performed in R which would not be possible even with a scientific calculator.
+
+\hypertarget{basic-numerical-calculations}{%
+\subsection{Basic numerical calculations}\label{basic-numerical-calculations}}
+
+If you simply type \texttt{5*3} into the `console' (see above) and press enter you should receive the solution as an output which again appears in the console below your input:
+
+\begin{figure}
+
+{\centering \includegraphics[width=0.7\linewidth]{Figures/Ex1} 
+
+}
+
+\caption{Basic Multiplication.}\label{fig:Multiplication}
+\end{figure}
+
+In a similar way, you can perform a variety of other basic mathematical calculations:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\DecValTok{7}\SpecialCharTok{+}\DecValTok{3}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 10
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\DecValTok{9}\SpecialCharTok{/}\DecValTok{3}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 3
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\DecValTok{15{-}2}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 13
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\DecValTok{6}\SpecialCharTok{\^{}}\DecValTok{3}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 216
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{sqrt}\NormalTok{(}\DecValTok{100}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 10
+\end{verbatim}
+
+Notice that some calculations, like the square root above, require knowledge of certain `functions' e.g.~\texttt{sqrt()} of which there exists hundreds in R's base packages for you to use. Knowing what each of them are and how they work is part of the programming experience and will take time. We will talk more about `functions', and how you can create your own in a later chapter.
+
+Some other useful examples of pre-defined variables and functions are \texttt{pi}, \texttt{exp()} and \texttt{log()} which allow use of \(\pi\), \(e^x\), \(\ln(x)\) in calculations, respectively. For example, if we wanted to calculate \(e^{\ln(\pi)}\):
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{exp}\NormalTok{(}\FunctionTok{log}\NormalTok{(pi))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 3.141593
+\end{verbatim}
+
+\hypertarget{more-complicated-calculations}{%
+\subsection{More complicated calculations}\label{more-complicated-calculations}}
+
+Imagine that you want to find the sum of all the integers from \(1\) to \(1000\). To do this on a basic calculator would require you to physically type each integer in turn, adding them as you go along (assuming you do not know the series summation formula). However, in R, you can compute this with one simple function, i.e.~\texttt{sum()} with argument \texttt{1:1000}, which creates the sequence of numbers from \(1\) to \(1000\). To see this in action before performing this particular calculation, type \texttt{1:10} in the console and press enter:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\DecValTok{1}\SpecialCharTok{:}\DecValTok{10}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##  [1]  1  2  3  4  5  6  7  8  9 10
+\end{verbatim}
+
+As you can see, the output is the required sequence of integers from \(1\) to \(10\). Returning to our original summation calculation, by inputting \texttt{sum(1:1000)} and pressing enter, R will first create the sequence from \(1\) to \(1000\) in a similar to above, then sum all of these values:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{sum}\NormalTok{(}\DecValTok{1}\SpecialCharTok{:}\DecValTok{1000}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 500500
+\end{verbatim}
+
+Before we move on to discuss more advanced calculations that can be handled with R, let us take a moment to highlight the disadvantages of writing code directly in the console itself and introduce something known as an `R script'. In addition, we will also discuss how we can `assign' values to variables which we can then recall at any point for use in calculation.
+
+\hypertarget{r-script}{%
+\section{R script}\label{r-script}}
+
+So far, we have executed each line of code directly into the console itself, one line at a time, pressing enter and producing output each time. Although this works and produces the necessary output, it has numerous disadvantages. Firstly, if you make a mistake in the line of code, you cannot simply amend it and re-run it. Instead, you have to `re-type' the code again on a new line without the mistake. Secondly, it requires you to execute every line of code once you have completed it. If you are writing a programme with hundreds of lines, this will become very frustrating especially if something goes wrong half way through and you have to re-write the entire code again. Finally, you cannot easily save your written code within the console to be re-opened and continued at a later date. In order to avoid all of these problems, from now on we type all of our code into an `R script', from which we can execute the code into the console.
+
+To open an R script, click the icon which looks like a blank piece of paper with the small green plus sign in the top right hand corner of your screen, then click R Script:
+
+\begin{figure}
+
+{\centering \includegraphics[width=0.7\linewidth]{Figures/Script} 
+
+}
+
+\caption{Opening an R script.}\label{fig:Script}
+\end{figure}
+
+At this point, a new (blank) panel should open in the top left of your screen. This panel will now become the panel which you type all of your code (you no longer type into the console panel). Once you have typed your line of code, you can \texttt{execute} it (run it into the console) by simply highlighting the relevant code then clicking on the \texttt{Run} button as seen in Figure:@ref\{fig:Script2\} below.
+
+\begin{figure}
+
+{\centering \includegraphics[width=0.7\linewidth]{Figures/Script2} 
+
+}
+
+\caption{Executing code from a script in R.}\label{fig:Script2}
+\end{figure}
+
+\textbf{Note you can also simply go to the start or end of the line and press \texttt{Run}, you do not actually need to highlight it. This is only necessary if you want to \texttt{Run} more than one line at a time.}
+
+By executing code from the script, you avoid all the previously discussed problems. That is, if you have a made a mistake in your code, which you will notice once executed, you now simply amend this in the script and re-run it which is much simpler than re-writing the entire code. Moreover, you do not actually have to execute any code until you desire. Think of the script as a notebook which you can keep typing in and can run code from whenever you wish. Finally, and most importantly, you can save the script file and re-open this at a later date to continue working on and/or send to a colleague. You do this in the normal way as if saving a standard document in Word or other software.
+
+\hypertarget{assigning-variables}{%
+\section{Assigning variables}\label{assigning-variables}}
+
+Recall the earlier example where we calculated the sum of values from \(1\) to \(1000\). Although relatively straight forward, typing this code out each time we would like to use the result becomes tedious and is, in fact, unnecessary in R. Instead, R allows us to `assign' a value, vector, matrix, function etc., to a variable so we can recall that particular quantity at any point by simply typing the variable itself. For example, instead of repeatedly typing \texttt{sum(1:1000)} or the result itself \texttt{\{r\}\ sum(1:1000)}, we could `assigned' this to the variable \(x\) using the `assignment operator' \texttt{\textless{}-}, which allowed us to reuse the value later on by simply typing \(x\):
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{x }\OtherTok{\textless{}{-}} \FunctionTok{sum}\NormalTok{(}\DecValTok{1}\SpecialCharTok{:}\DecValTok{1000}\NormalTok{)}
+\NormalTok{x}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 500500
+\end{verbatim}
+
+Note, however, that when we used the assignment operator it did not print the output itself, which would have happened if we had simply ran the code without assignment. This is the reason we then typed the variable \(x\) in the next line of the console, as this will now \texttt{print} as output whatever quantity is saved to the variable \(x\), in this case the sum of values from \(1\) to \(1000\). If you would actualy like to do both things at the same time, i.e, assign and print the output, you should put the assignment code in brackets:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{(x }\OtherTok{\textless{}{-}} \FunctionTok{sum}\NormalTok{(}\DecValTok{1}\SpecialCharTok{:}\DecValTok{1000}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 500500
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{x}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 500500
+\end{verbatim}
+
+Finally, when a variable is assigned, the variable name and the type of quantity that has been assigned to it, will be stored in the `environment' tab/panel. In this case, the variable \(x\) was assigned and the quantity assigned to them takes the form of a `numeric' (num) value.
+
+\hypertarget{vectors-and-matrices}{%
+\section{Vectors and Matrices}\label{vectors-and-matrices}}
+
+As we have already briefly seen within the summation calculations above, R can also easily create collections of values in a single object, known as a vector, which can then be used in a variety of calculations, including vector and/or matrix type calculations themselves.
+
+\hypertarget{vectors}{%
+\subsection{Vectors}\label{vectors}}
+
+There are in fact a number of different ways to create `vectors' of values in R, so let us discuss some of the most common.
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  The most general way is to use the `combine' or `concatenate' function \texttt{c()}. This function combines a series of individual values and then glues them together to form a vector
+\end{enumerate}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{, }\DecValTok{2}\NormalTok{, }\DecValTok{5}\NormalTok{, }\DecValTok{9}\NormalTok{, }\DecValTok{15}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1]  1  2  5  9 15
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{c}\NormalTok{(}\SpecialCharTok{{-}}\DecValTok{3}\NormalTok{, }\DecValTok{3}\NormalTok{, }\SpecialCharTok{{-}}\DecValTok{1}\NormalTok{, }\DecValTok{0}\NormalTok{, }\DecValTok{10}\NormalTok{, }\DecValTok{5}\NormalTok{, }\DecValTok{2}\NormalTok{, }\SpecialCharTok{{-}}\DecValTok{100}\NormalTok{, }\DecValTok{25}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1]   -3    3   -1    0   10    5    2 -100   25
+\end{verbatim}
+
+Although this is the most general method, it does require you to type out each value individually, not ideal if you want a vector containing \(1000+\) values.
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{1}
+\tightlist
+\item
+  We have already seen another example of how to create a vector using the semi-colon syntax \texttt{1:1000}. However, this is quite specific and only works for creating vectors which form a series of increasing/decreasing values:
+\end{enumerate}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\DecValTok{1}\SpecialCharTok{:}\DecValTok{10}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##  [1]  1  2  3  4  5  6  7  8  9 10
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\DecValTok{20}\SpecialCharTok{:}\DecValTok{5}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##  [1] 20 19 18 17 16 15 14 13 12 11 10  9  8  7  6  5
+\end{verbatim}
+
+The more general version of this method is to create a `sequence' of values with an initial starting point, an end value and specifying the increments between the values:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{seq}\NormalTok{(}\AttributeTok{from=}\DecValTok{5}\NormalTok{, }\AttributeTok{to=}\DecValTok{50}\NormalTok{, }\AttributeTok{by =} \DecValTok{5}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##  [1]  5 10 15 20 25 30 35 40 45 50
+\end{verbatim}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{2}
+\tightlist
+\item
+  The third way requires a little more thought and experience but will become second nature once you get going. It relies on you understanding how R deals with vectors in calculations, which you can then take advantage of (see below).
+\end{enumerate}
+
+\hypertarget{vector-calculations}{%
+\subsection{Vector calculations}\label{vector-calculations}}
+
+Using vectors in calculations is just as simple as with scalar values, but will not necessarily produce the output you might first expect in some cases. Let us start by looking at some simply addition and subtraction of vectors which we assign as different variables:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{a }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{, }\DecValTok{2}\NormalTok{, }\DecValTok{3}\NormalTok{, }\DecValTok{4}\NormalTok{, }\DecValTok{5}\NormalTok{, }\DecValTok{6}\NormalTok{, }\DecValTok{7}\NormalTok{, }\DecValTok{8}\NormalTok{, }\DecValTok{9}\NormalTok{, }\DecValTok{10}\NormalTok{)}
+\NormalTok{b }\OtherTok{\textless{}{-}} \DecValTok{11}\SpecialCharTok{:}\DecValTok{20}
+\NormalTok{a}\SpecialCharTok{+}\NormalTok{b}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##  [1] 12 14 16 18 20 22 24 26 28 30
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{b}\SpecialCharTok{{-}}\NormalTok{a}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##  [1] 10 10 10 10 10 10 10 10 10 10
+\end{verbatim}
+
+Notice that the calculations in the above have been done `element-wise'. This is a very important observation as it is a characteristic of R vector calculations that will come in handy throughout your coding life and should be utilised as much as possible. Let us look at a few more examples:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{a}\SpecialCharTok{*}\NormalTok{b}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##  [1]  11  24  39  56  75  96 119 144 171 200
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{b}\SpecialCharTok{/}\NormalTok{a}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##  [1] 11.000000  6.000000  4.333333  3.500000  3.000000  2.666667  2.428571
+##  [8]  2.250000  2.111111  2.000000
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{a}\SpecialCharTok{\^{}}\DecValTok{2}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##  [1]   1   4   9  16  25  36  49  64  81 100
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{a}\SpecialCharTok{\^{}}\NormalTok{b}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##  [1] 1.000000e+00 4.096000e+03 1.594323e+06 2.684355e+08 3.051758e+10
+##  [6] 2.821110e+12 2.326305e+14 1.801440e+16 1.350852e+18 1.000000e+20
+\end{verbatim}
+
+Once again, these have all been calculated element-wise! What happens if the vectors are not of the same length? In this case, R will automatically loop around the shorter vector and start using the values again from the start until it has used enough to match the length of the second vector. Let us take a look at a quick example to see how this works in practice:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{vec1 }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{,}\DecValTok{2}\NormalTok{,}\DecValTok{3}\NormalTok{,}\DecValTok{4}\NormalTok{)}
+\NormalTok{vec2 }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{,}\DecValTok{2}\NormalTok{,}\DecValTok{3}\NormalTok{,}\DecValTok{4}\NormalTok{,}\DecValTok{5}\NormalTok{,}\DecValTok{6}\NormalTok{,}\DecValTok{7}\NormalTok{)}
+\FunctionTok{length}\NormalTok{(vec1)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 4
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{length}\NormalTok{(vec2)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 7
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{vec1 }\SpecialCharTok{+}\NormalTok{ vec2}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Warning in vec1 + vec2: longer object length is not a multiple of shorter object
+## length
+\end{verbatim}
+
+\begin{verbatim}
+## [1]  2  4  6  8  6  8 10
+\end{verbatim}
+
+\textbf{This is a perfect example of why you need to be very careful when writing code. Just because you have (possibly) made a mistake, R will not always realise you have and execute a calculation anyway.}
+
+\hypertarget{vector-strings}{%
+\subsection{Vector strings}\label{vector-strings}}
+
+R is not all about numerical values. As it is a tool for statistical analysis, data can come in many shapes and sizes including words (known in R as character strings) or logical values, i.e, \texttt{TRUE} or \texttt{FALSE}. We will talk more about the latter values in the next few weeks but it is worth discussing `string' here.
+
+A `character string' is simply a word or combination of letters that you would like R to understand as such. To create or include a string, you need to use quotation marks:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\StringTok{"Hello World"}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "Hello World"
+\end{verbatim}
+
+Once you put quotation marks around something, R automatically recognises this as a string and will not try to perform and type of operation to this. This is even possible with numerical values:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\StringTok{"10 is a numerical value"}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "10 is a numerical value"
+\end{verbatim}
+
+As a small example, try adding together the strings ``10'' and ``11'' in R. Notice that because we have defined the values as strings, R cannot perform addition with them:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{str}\NormalTok{(}\StringTok{"10"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##  chr "10"
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{str}\NormalTok{(}\DecValTok{10}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##  num 10
+\end{verbatim}
+
+In exactly the same way as we have seen above, it is possible to create vectors of strings. This is very helpful when you want to name a bunch of objects, rows/columns in data tables or when they represent data points themselves, e.g., geographical regions etc.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{c}\NormalTok{(}\StringTok{"York"}\NormalTok{, }\StringTok{"London"}\NormalTok{, }\StringTok{"Liverpool"}\NormalTok{, }\StringTok{"Birmingham"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "York"       "London"     "Liverpool"  "Birmingham"
+\end{verbatim}
+
+\hypertarget{vector-extraction}{%
+\subsection{Vector extraction}\label{vector-extraction}}
+
+One final tool of note for vectors is the method of extracting certain values. For example, let us again consider the vector of values from \(1\) to \(1000\). Now assume that you want to `extract' the first 10 values from this vector, i.e.~the values \(1\) to \(10\). To extract values from a vector, you can use square brackets \texttt{{[}{]}} immediately after the brackets to inform R of which elements you want to extract:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{x }\OtherTok{\textless{}{-}} \DecValTok{1}\SpecialCharTok{:}\DecValTok{1000}
+\NormalTok{x[}\DecValTok{1}\SpecialCharTok{:}\DecValTok{10}\NormalTok{] }\CommentTok{\# Note that this extracts the first 10 elements, not the elements with value 1:10}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##  [1]  1  2  3  4  5  6  7  8  9 10
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{y }\OtherTok{\textless{}{-}} \FunctionTok{seq}\NormalTok{(}\AttributeTok{from =} \DecValTok{10}\NormalTok{, }\AttributeTok{to =} \DecValTok{20}\NormalTok{, }\AttributeTok{by =} \FloatTok{0.5}\NormalTok{)}
+\NormalTok{y[}\DecValTok{1}\SpecialCharTok{:}\DecValTok{10}\NormalTok{]}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##  [1] 10.0 10.5 11.0 11.5 12.0 12.5 13.0 13.5 14.0 14.5
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{z }\OtherTok{\textless{}{-}}\NormalTok{ y[}\FunctionTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{,}\DecValTok{3}\NormalTok{,}\DecValTok{5}\NormalTok{,}\DecValTok{7}\NormalTok{,}\DecValTok{9}\NormalTok{)] }\CommentTok{\# This extracts the 1st, 3rd, 5th, 7th and 9th elements}
+\NormalTok{z}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 10 11 12 13 14
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{y[}\SpecialCharTok{{-}}\NormalTok{(}\DecValTok{1}\SpecialCharTok{:}\DecValTok{10}\NormalTok{)] }\CommentTok{\# The negative sign means extract everything except the specified elements}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##  [1] 15.0 15.5 16.0 16.5 17.0 17.5 18.0 18.5 19.0 19.5 20.0
+\end{verbatim}
+
+\textbf{Notice the comments in the above code? This can be done using the hashtag symbol and is a habit I would strongly recommend you start to implement from the off. I have given more information about this in the supplementary chapter (Additional Tips) at the end of these notes.}
+
+To give you a little more context to how/where this might be helpful, take a look at the following simple example about with respect to heights of individuals in a given classroom:
+
+\begin{example}
+
+Assume that the height (in cm) of a 80 individuals in a given classroom were measured and recorded in the variable \texttt{height\_data} given below:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{height\_data}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##  [1] 185.7748 139.3426 182.8327 159.2686 149.3482 144.2646 165.7826 176.3628
+##  [9] 188.7507 151.0514 175.9106 164.6402 158.4089 190.1155 188.9800 202.0955
+## [17] 191.6675 173.8463 195.9815 156.1540 147.9353 167.6686 170.5460 185.0572
+## [25] 194.8839 158.9996 155.0128 158.2818 190.5126 160.0627 160.1784 177.8928
+## [33] 160.7978 174.8934 178.9217 193.6810 188.0550 188.0602 152.6200 177.1748
+## [41] 205.0150 173.3168 167.3371 166.2996 150.8321 170.3743 154.5297 154.2873
+## [49] 164.5349 156.9123 151.1262 184.0431 184.5032 154.5440 158.0011 188.7343
+## [57] 179.9832 177.4292 190.9387 171.3173 156.1477 157.7458 160.9606 144.7696
+## [65] 175.3504 178.4200 168.4312 177.3423 195.3461 190.7671 147.1710 183.0248
+## [73] 176.4284 177.7678 179.1707 174.3337 157.7504 166.8421 190.1196 183.7322
+\end{verbatim}
+
+Now assume that we wanted to find out the average height of the 20 smallest individuals in the classroom:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{(height\_sorted }\OtherTok{\textless{}{-}} \FunctionTok{sort}\NormalTok{(height\_data))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##  [1] 139.3426 144.2646 144.7696 147.1710 147.9353 149.3482 150.8321 151.0514
+##  [9] 151.1262 152.6200 154.2873 154.5297 154.5440 155.0128 156.1477 156.1540
+## [17] 156.9123 157.7458 157.7504 158.0011 158.2818 158.4089 158.9996 159.2686
+## [25] 160.0627 160.1784 160.7978 160.9606 164.5349 164.6402 165.7826 166.2996
+## [33] 166.8421 167.3371 167.6686 168.4312 170.3743 170.5460 171.3173 173.3168
+## [41] 173.8463 174.3337 174.8934 175.3504 175.9106 176.3628 176.4284 177.1748
+## [49] 177.3423 177.4292 177.7678 177.8928 178.4200 178.9217 179.1707 179.9832
+## [57] 182.8327 183.0248 183.7322 184.0431 184.5032 185.0572 185.7748 188.0550
+## [65] 188.0602 188.7343 188.7507 188.9800 190.1155 190.1196 190.5126 190.7671
+## [73] 190.9387 191.6675 193.6810 194.8839 195.3461 195.9815 202.0955 205.0150
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{smallest}\FloatTok{.20} \OtherTok{\textless{}{-}}\NormalTok{ height\_sorted[}\DecValTok{1}\SpecialCharTok{:}\DecValTok{20}\NormalTok{]}
+\FunctionTok{mean}\NormalTok{(smallest}\FloatTok{.20}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 151.9773
+\end{verbatim}
+
+\end{example}
+
+\hypertarget{exercises}{%
+\subsection{Exercises}\label{exercises}}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  In R, create two vectors containing the numbers (5, 6, 7, 8) and (2, 3, 4). Assign these vectors to the variables u and v respectively.
+\end{enumerate}
+
+\begin{enumerate}
+\def\labelenumi{\roman{enumi}.}
+\tightlist
+\item
+  Without using R, write down or think about what you expect the following results to produce:
+\end{enumerate}
+
+\begin{enumerate}
+\def\labelenumi{\alph{enumi}.}
+\tightlist
+\item
+  add u and v
+\item
+  subtract v from u
+\item
+  multiply u by v
+\item
+  divide u by v
+\item
+  raise u to the power of v
+\end{enumerate}
+
+\begin{enumerate}
+\def\labelenumi{\roman{enumi}.}
+\setcounter{enumi}{1}
+\tightlist
+\item
+  Using R, check if your initial thoughts were correct.
+\end{enumerate}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{1}
+\tightlist
+\item
+  Create the vector of values \((1, 1.5, 2, 2.5, 3, 3.5, 4, 4.5, 5)\) using the following two methods:
+\end{enumerate}
+
+\begin{enumerate}
+\def\labelenumi{\roman{enumi}.}
+\tightlist
+\item
+  Using the \texttt{seq()} function
+\item
+  Using only the semi-colon syntax and element-wise calculations.
+\end{enumerate}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{2}
+\item
+  Use R to create a vector containing all the square numbers from 1 up to and including 10,000 (\(100^2\)).
+\item
+  The vectors \texttt{LETTERS} and \texttt{letters} are already pre-built into R's base-package and contain the capital and lower-case versions of the letters from the English alphabet (Try it by simply running either \texttt{LETTERS} or \texttt{letters} into R).
+\end{enumerate}
+
+\begin{enumerate}
+\def\labelenumi{\roman{enumi}.}
+\tightlist
+\item
+  Create a vector containing the first 10 letters of the English alphabet in Capitals.
+\item
+  Now, using your solution from the previous part, create a new vector of the form:
+  \begin{equation*}
+  (A, A, A, B, B, B, C, C, C, \ldots, J, J, J).
+  \end{equation*}
+  \textbf{{[}Hint: Try looking into the \texttt{rep()} function and how it works{]}}
+\end{enumerate}
+
+\hypertarget{matrices}{%
+\subsection{Matrices}\label{matrices}}
+
+In the previous section, we discussed how to create vectors of values. However, R can just as easily deal with matrices and matrix calculations; a life-saver compared to doing them by hand as you may have had to do so far in other modules. As with vectors, there are actually a number of different ways to create matrices in R, but let us begin by looking at the \texttt{matrix()} function and using the `Help' command, via the question mark symbol, i.e., \texttt{?matrix()} (alternatively via the help tab) for more information. Doing so shows that the general form of the \texttt{matrix()} function is given by
+
+\texttt{matrix(data\ =\ ,\ nrow\ =\ ,\ ncol\ =\ ,\ byrow\ =\ ,\ dimnames\ =\ )}
+
+where each of the arguments are defined as follows:
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{data} - This is a vector of data that is used to create the elements of the matrix itself
+\item
+  \textbf{nrow} - This specifies the number of rows desired for the matrix
+\item
+  \textbf{ncol} - This specifies the number of columns desired for the matrix.
+\item
+  \textbf{byrow} - This argument instructs R on how to fill the matrix using the data vector. If it takes the value of \texttt{TRUE}, then the elements will be filled row-wise, i.e.~will first fill all the first row, then move down to second row etc, and if \texttt{FALSE}, the vice-versa.
+\item
+  \textbf{dimnames} - This argument allows you to assign names to the rows and columns of the matrix.
+\end{itemize}
+
+\textbf{Note that if either \texttt{nrow} or \texttt{ncol} is not given, then R will try to guess the required value(s) and will fill any unspecified elements by repeating the original data vector until filled.}
+
+\begin{example}
+
+Consider the following two matrices
+
+\begin{equation*}
+A = \left( \begin{array}{cc}
+3 & 4 \\
+6 & 2 \end{array} \right) \quad \text{and} \quad 
+B = \left( \begin{array}{cc}
+1 & 5 \\
+4 & 6 \end{array} \right).
+\end{equation*}
+
+These can created in R using the \texttt{matrix()} function as follows:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{(A }\OtherTok{\textless{}{-}} \FunctionTok{matrix}\NormalTok{(}\FunctionTok{c}\NormalTok{(}\DecValTok{3}\NormalTok{,}\DecValTok{6}\NormalTok{,}\DecValTok{4}\NormalTok{,}\DecValTok{2}\NormalTok{), }\AttributeTok{nrow =} \DecValTok{2}\NormalTok{, }\AttributeTok{ncol =} \DecValTok{2}\NormalTok{, }\AttributeTok{byrow =} \ConstantTok{TRUE}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##      [,1] [,2]
+## [1,]    3    6
+## [2,]    4    2
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{(B }\OtherTok{\textless{}{-}} \FunctionTok{matrix}\NormalTok{(}\FunctionTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{,}\DecValTok{4}\NormalTok{,}\DecValTok{5}\NormalTok{,}\DecValTok{6}\NormalTok{), }\AttributeTok{nrow =} \DecValTok{2}\NormalTok{, }\AttributeTok{ncol =} \DecValTok{2}\NormalTok{, }\AttributeTok{byrow =} \ConstantTok{TRUE}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##      [,1] [,2]
+## [1,]    1    4
+## [2,]    5    6
+\end{verbatim}
+
+\end{example}
+
+\hypertarget{matrix-calculations}{%
+\subsection{Matrix Calculations}\label{matrix-calculations}}
+
+Now that you have your matrices created and assigned as variables \(A\) and \(B\), you can use them in calculations:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{A}\SpecialCharTok{+}\NormalTok{B}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##      [,1] [,2]
+## [1,]    4   10
+## [2,]    9    8
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{B}\SpecialCharTok{{-}}\NormalTok{A}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##      [,1] [,2]
+## [1,]   -2   -2
+## [2,]    1    4
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{A}\SpecialCharTok{*}\NormalTok{B}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##      [,1] [,2]
+## [1,]    3   24
+## [2,]   20   12
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{A}\SpecialCharTok{/}\NormalTok{B}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##      [,1]      [,2]
+## [1,]  3.0 1.5000000
+## [2,]  0.8 0.3333333
+\end{verbatim}
+
+** BE CAREFUL!** Notice that all the calculations have been done element-wise again. As with the vectors, this turns out to be a very helpful tool within R although it might not appear so just now.
+
+If you want to apply `matrix-multiplication' you have to use a slightly different command:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{A}\SpecialCharTok{\%*\%}\NormalTok{B}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##      [,1] [,2]
+## [1,]   33   48
+## [2,]   14   28
+\end{verbatim}
+
+\hypertarget{matrix-operations}{%
+\subsection{Matrix operations}\label{matrix-operations}}
+
+There are, of course, an array of other calculations you may apply when working with matrices e.g, determinant, inverse, transpose etc. Rather than showing each of these in turn, in this section we simply provide a table of the different matrix/vector operations that can be used in R, with a brief description of what each of them are used for. We suggest that you try these out for yourself in order to familiarise yourself and understand how they work and don't forget to use the `Help' function if you're unsure. Once you have mastered these operations, have a go at the exercises in the next section.
+
+In the following table, \texttt{A} and \texttt{B} denote matrices, whilst \texttt{x} and \texttt{b} denote vectors:
+
+\begin{longtable}[]{@{}
+  >{\centering\arraybackslash}p{(\columnwidth - 2\tabcolsep) * \real{0.4500}}
+  >{\centering\arraybackslash}p{(\columnwidth - 2\tabcolsep) * \real{0.5500}}@{}}
+\toprule()
+\begin{minipage}[b]{\linewidth}\centering
+Operation
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+Description
+\end{minipage} \\
+\midrule()
+\endhead
+\texttt{A\ +\ B} & Element-wise sum \\
+\texttt{A\ -\ B} & Element-wise subtraction \\
+\texttt{A\ *\ B} & Element-wise multiplication \\
+\texttt{A\ \%*\%\ B} & Matrix multiplication \\
+\texttt{t(A)} & Transpose \\
+\texttt{diag(x)} & Creates diagonal matrix with elements of \texttt{x} on the main diagonal \\
+\texttt{diag(A)} & Returns a vector containing the elements of the main diagonal of \texttt{A} \\
+\texttt{diag(k)} & If k is a scalar, this creates a \((k x k)\) identity matrix \\
+\texttt{solve(A)} & Inverse of \texttt{A} where \texttt{A} is a square matrix \\
+\texttt{solve(A,\ b)} & Solves for vector \texttt{x} in the equation \(A\vec{x}\vec{b}\) (i.e.~\(\vec{x} = A^{-1}\vec{b}\)) \\
+\texttt{cbind(A,B,...)} & Combines matrices(vectors) horizontally and returns a matrix \\
+\texttt{rbind(A,B,...)} & Combines matrices(vectors) vertically and returns a matrix \\
+\texttt{rowMeans(A)} & Returns vector of individual row means \\
+\texttt{rowSums(A)} & Returns vector of individual row sums \\
+\texttt{colMeans(A)} & Returns vector of individual column means \\
+\texttt{colSums(A)} & Returns vector of individual column sums \\
+\bottomrule()
+\end{longtable}
+
+** Recall that vectors are just particular cases of matrices with either one row or one column. Therefore, it is no surprise that you can create a vector using the matrix function. To do this, simply set the \texttt{nrow} or \texttt{ncol} argument equal to 1, depending on format of vector you want (row or column vector).**
+
+The only slight restriction to simply using the \texttt{c()} function, is that R will always saves the vector as a column vector. We point out here that this might not be so clear when you first define the vector in R, as the output given in the console looks like the form of a row vector. To overcome this, you can simply turn the column vector (default when using combine function in R) into a row vector by performing the transpose (see table above) of the original vector.
+
+\hypertarget{matrix-extraction}{%
+\subsection{Matrix extraction}\label{matrix-extraction}}
+
+In a similar way to how you we can extract values from vectors, we can extract values from matrices, this is also done with the square brackets \texttt{{[}{]}}, however it now takes two different arguments, one for the specified row(s) and the other for the column(s) which you would like to extract.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{A}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##      [,1] [,2]
+## [1,]    3    6
+## [2,]    4    2
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{A[}\DecValTok{1}\NormalTok{,}\DecValTok{1}\NormalTok{]}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 3
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{A[}\DecValTok{2}\NormalTok{,}\DecValTok{1}\NormalTok{]}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 4
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{A[}\FunctionTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{,}\DecValTok{2}\NormalTok{), }\DecValTok{1}\NormalTok{]}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 3 4
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{A[,}\DecValTok{1}\NormalTok{] }\CommentTok{\# The blank space mean every row}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 3 4
+\end{verbatim}
+
+\hypertarget{exercises-1}{%
+\subsection{Exercises}\label{exercises-1}}
+
+Using R, create the following matrices and vectors
+\[ A=\left[ \begin{array}{ccc}
+1 & 4 & 7 \\
+2 & 5 & 8 \\
+3 & 6 & 8 \end{array}\right] \qquad
+B=\left[ \begin{array}{ccc}
+1 & 2 & 3 \\
+4 & 5 & 6 \\
+7 & 8 & 8 \end{array}\right]
+ \qquad
+D=\left[ \begin{array}{cc}
+1 & 3 \\
+4 & 6 \\
+7 & 9 \end{array}\right]
+ \qquad
+\vec{b}=\left[ \begin{array}{c}
+ 3 \\
+ 6 \\
+ 9 \end{array}\right]
+\]
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Using the objects defined above, perform the following operations and check if the result is what you would expect:
+\end{enumerate}
+
+\begin{enumerate}
+\def\labelenumi{\roman{enumi}.}
+\tightlist
+\item
+  \(A + B\) element-wise sum
+\item
+  \(A \times B\) element-wise multiplication
+\item
+  \(A \times B\) matrix multiplication
+\item
+  \(B \times D\) matrix multiplication
+\item
+  \(B \times \vec{b}\) matrix multiplication
+\end{enumerate}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{1}
+\tightlist
+\item
+  Compute the transpose of matrix A and of matrix D.
+\item
+  Create a matrix with the elements 1, 2, 3, 4 in the main diagonal and zeros in the off diagonal elements.
+\item
+  Define a vector which consists of elements from the main diagonal of matrix B.
+\item
+  Build an identity matrix with dimension 10.
+\item
+  Compute the inverse of matrix A. Check if \(A \times A^{-1}=I_3\).
+\item
+  Find the solution \(\vec{x} = (x_1, x_2, x_3)^\top\), where
+  \[
+  \left\{ \begin{array}{ccl}
+  6.5 &=& x_1 + x_2 + x_3 \\
+  9   &=& 0.5 x_1 + 2 x_2 + x_3\\
+  11  &=& 3 x_1 + x_2 + 2 x_3 \end{array}\right.
+  \]
+\item
+  Combine the matrices A and D, horizontally.
+\item
+  Combine the matrix A and the transpose of vector b vertically.
+\item
+  Compute the mean for each row of matrix A. Do the same for each column of matrix A.
+\item
+  Compute the sum for each row of matrix B. Do the same for each column of matrix B.
+\end{enumerate}
+
+\hypertarget{plotting-graphs}{%
+\section{Plotting graphs}\label{plotting-graphs}}
+
+One of R's major strengths is the ease with which well-designed, publication-quality plots can be produced and can include mathematical symbols and formulae where needed. The basic plotting function in R, located in its basic packages, is the so-called \texttt{plot()} function. In its simplest form, the \texttt{plot()} function allows you to plot two variables, say \(X\) and \(Y\), against each other as a scatter plot. For example, imagine we wanted to plot the following points \((x,y)\):
+\begin{equation*}
+(0,0), \,(1,2),\, (2,2),\, (3, 5),\, (4, 4),\, (6, 8),
+\end{equation*}
+as a scatter plot. Then, we could do this as follows:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{X }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\DecValTok{0}\NormalTok{,}\DecValTok{1}\NormalTok{,}\DecValTok{2}\NormalTok{,}\DecValTok{3}\NormalTok{,}\DecValTok{4}\NormalTok{,}\DecValTok{6}\NormalTok{)}
+\NormalTok{Y }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\DecValTok{0}\NormalTok{,}\DecValTok{2}\NormalTok{,}\DecValTok{2}\NormalTok{,}\DecValTok{5}\NormalTok{,}\DecValTok{4}\NormalTok{,}\DecValTok{8}\NormalTok{)}
+\FunctionTok{plot}\NormalTok{(X, Y)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{_main_files/figure-latex/unnamed-chunk-25-1.pdf}
+
+From the R plot above, you can see that R has simply taken the two vectors (\texttt{X} and \texttt{Y}) and plotted the values pairwise (as required) to create a basic scatter plot. That being said, the plot itself looks very basic and is not particularly aesthetic. This is because we have used the very basic structure for the \texttt{plot()} function. However, with a little alteration, this can be adapted to create something a little more exciting:
+
+\begin{figure}
+
+{\centering \includegraphics[width=0.9\linewidth]{Figures/Salary2} 
+
+}
+
+\caption{Example of Plot using plot().}\label{fig:Plot}
+\end{figure}
+
+The example above provides a small insight into the very basics of the plotting tools available in R. Let us know look at this function a little more closely. Using \texttt{?plot()} we find that the \texttt{plot()} function has the general form:
+
+\texttt{plot(x,\ y,\ main\ =\ ,\ xlab\ =\ ,\ ylab=\ ,\ type=\ ,\ pch=\ ,\ col=\ ,\ cex=\ ,\ bty\ =\ \ )}
+
+where each of the arguments are defined as follows:
+
+\begin{itemize}
+\tightlist
+\item
+  \texttt{x} - Points to be plotted along the x-axis
+\item
+  \texttt{y} - Corresponding points to plotted against the y-axis. Note that these values match-up element-wise the x values to create co-ordinate pairs \((x,y)\)
+\item
+  \texttt{main} - Takes a character string and gives the plot a main title
+\item
+  \texttt{xlab} - Takes a character string and labels the x-axis
+\item
+  \texttt{ylab} - Takes a character string and labels the y-axis
+\item
+  \texttt{type} - Takes a number of different character strings to define the type of plot desired, i.e.~line, point etc. (see table below)
+\item
+  pch` - Takes a values and defines the shape each point should take, i.e.~circle, square etc. (see table below)
+\item
+  \texttt{col} - Sets the colours of the points/lines in the plot
+\item
+  \texttt{cex} - Takes a value and defines the size of the points
+\item
+  \texttt{bty} - Takes a character string and sets the type of axes for the plot
+\end{itemize}
+
+A number of other arguments can be used to change the layout and format of the plot but will not be discussed here. If you are interested, search for the \texttt{par()} function in the `Help' tab.
+
+\begin{example}
+Consider the followings prices on the equity index S\&P500 for the last weeks:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{day }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\DecValTok{1}\SpecialCharTok{:}\DecValTok{10}\NormalTok{)}
+\NormalTok{price }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\DecValTok{1979}\NormalTok{,}\DecValTok{1987}\NormalTok{,}\DecValTok{1951}\NormalTok{,}\DecValTok{1923}\NormalTok{,}\DecValTok{1920}\NormalTok{,}\DecValTok{1884}\NormalTok{,}\DecValTok{1881}\NormalTok{,}\DecValTok{1931}\NormalTok{,}\DecValTok{1932}\NormalTok{,}\DecValTok{1938}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+Using a combination of all the arguments in the above list, we can produce the following plots:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{plot}\NormalTok{(day, price)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{_main_files/figure-latex/unnamed-chunk-27-1.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{plot}\NormalTok{(day, price,}
+     \AttributeTok{main=}\StringTok{"S\&P 500"}\NormalTok{,}
+     \AttributeTok{xlab=}\StringTok{"Day"}\NormalTok{,}
+     \AttributeTok{ylab=}\StringTok{"Closing Price"}\NormalTok{,}
+     \AttributeTok{pch=}\DecValTok{19}\NormalTok{,}
+     \AttributeTok{col=}\DecValTok{3}\NormalTok{,}
+     \AttributeTok{type=}\StringTok{"p"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{_main_files/figure-latex/unnamed-chunk-27-2.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{plot}\NormalTok{(day, price,}
+     \AttributeTok{main=}\StringTok{"S\&P 500"}\NormalTok{,}
+     \AttributeTok{xlab=}\StringTok{"Day"}\NormalTok{,}
+     \AttributeTok{ylab=}\StringTok{"Closing Price (£)"}\NormalTok{,}
+     \AttributeTok{pch=}\StringTok{"+"}\NormalTok{,}
+     \AttributeTok{col=}\DecValTok{2}\NormalTok{,}
+     \AttributeTok{type=}\StringTok{"b"}\NormalTok{,}
+     \AttributeTok{bty=}\StringTok{"L"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{_main_files/figure-latex/unnamed-chunk-27-3.pdf}
+\end{example}
+
+The table below gives a non-exhaustive list of some of the different options you can make when choosing arguments for your plots. To find more, search online:
+
+\begin{longtable}[]{@{}cc@{}}
+\toprule()
+\texttt{type} & Description \\
+\midrule()
+\endhead
+``p'' & points \\
+``l'' & lines \\
+``b'' & both \\
+``c'' & lines part alone of ``b'' \\
+``h'' & histogram like vertical lines \\
+``s'' & stair steps \\
+\bottomrule()
+\end{longtable}
+
+\begin{longtable}[]{@{}cc@{}}
+\toprule()
+\texttt{pch} & Description \\
+\midrule()
+\endhead
+0 & square \\
+1 & circle \\
+2 & triangle \\
+4 & plus \\
+5 & cross \\
+6 & diamond \\
+\bottomrule()
+\end{longtable}
+
+\begin{longtable}[]{@{}cc@{}}
+\toprule()
+\texttt{bty} & Description \\
+\midrule()
+\endhead
+``o'' & full box \\
+``n'' & no axes \\
+``7'' & top and right axes \\
+``L'' & bottom and left axes \\
+``C'' & top, bottom and right axes \\
+``U'' & bottom, left and right axes \\
+\bottomrule()
+\end{longtable}
+
+\hypertarget{adding-to-plots-lines-points-etc.}{%
+\subsection{Adding to plots (lines, points etc.)}\label{adding-to-plots-lines-points-etc.}}
+
+There will be many occasions where you wish to add another set of points, or some other plot to your original. This is usually the case when comparing two different sets of data or, for example, when wanting to draw a regression line through your data points. Again, R has a variety of pre-defined functions that allow you to do this with ease. However, those who are new to R will make the common mistake of trying to add a second plot to the original by using the \texttt{plot()} function for a second time. The \texttt{plot()} function (seen above) does not simply plot points or lines. The source code underpinning the \texttt{plot()} function first instructs R to create a separate window/panel, create a set of axes (designed based on the choice of \texttt{bty} as argument) create some axis labels then, finally, add the points or lines. Therefore, by executing the function again, you will find you produce a completely new plot rather than adding to the previous.
+
+In order to add more graphics to the original plot, we instead have to use the functions \texttt{points()}, \texttt{lines()} and \texttt{abline()}. The \texttt{points()} and \texttt{lines()} functions work in a very similar to that of the \texttt{plot()} function in the sense that they take similar arguments. The only difference now, is that the function does not first create axes etc., but will simply plot the points/lines onto the most recent plot that was created. Note here that since the \texttt{points()} function can take \texttt{type} as an argument, it is actually possible to create line plots with this function (\texttt{type\ =\ "l"}) instead of using the lines function. Remember, there are many ways to create the same output in R, it is down to you to decide which you prefer to use. Let's add to the S\&P example above, by also adding the FTSE prices during the same time period:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{plot}\NormalTok{(day, price,}
+     \AttributeTok{main=}\StringTok{"S\&P 500"}\NormalTok{,}
+     \AttributeTok{xlab=}\StringTok{"Day"}\NormalTok{,}
+     \AttributeTok{ylab=}\StringTok{"Closing Price (£)"}\NormalTok{,}
+     \AttributeTok{pch=}\StringTok{"+"}\NormalTok{,}
+     \AttributeTok{col=}\DecValTok{2}\NormalTok{,}
+     \AttributeTok{type=}\StringTok{"b"}\NormalTok{,}
+     \AttributeTok{bty=}\StringTok{"L"}\NormalTok{)}
+\NormalTok{ftse }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\DecValTok{1960}\NormalTok{, }\DecValTok{1960}\NormalTok{, }\DecValTok{1950}\NormalTok{, }\DecValTok{1931}\NormalTok{, }\DecValTok{1918}\NormalTok{, }\DecValTok{1890}\NormalTok{, }\DecValTok{1900}\NormalTok{, }\DecValTok{1910}\NormalTok{, }\DecValTok{1905}\NormalTok{, }\DecValTok{1935}\NormalTok{)}
+\FunctionTok{points}\NormalTok{(day, ftse,}
+       \AttributeTok{col =} \StringTok{"blue"}\NormalTok{,}
+       \AttributeTok{type=}\StringTok{"b"}\NormalTok{,}
+       \AttributeTok{pch=}\StringTok{"+"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{_main_files/figure-latex/unnamed-chunk-28-1.pdf}
+
+The \texttt{abline()} function, on the other hand, is slightly different. This function is used simply to create straight lines on your current plot. Using \texttt{?abline()} we see it takes the form
+
+\texttt{abline(a,\ b,\ h=\ ,\ v\ =\ ,\ ...\ )}
+
+The arguments in this case are no longer data points like in the previous plotting functions but correspond to co-ordinates:
+
+\begin{itemize}
+\tightlist
+\item
+  \texttt{a} - The value of the intercept for the straight line
+\item
+  \texttt{b} - The value for the gradient of the straight line
+\item
+  \texttt{h} - The y co-ordinate (intercept) for a horizontal line
+\item
+  \texttt{v} - The x co-ordinate for the vertical line.
+\end{itemize}
+
+In addition to these arguments, you can also format the line type, width etc., but we will not discuss these again as they are simply aesthetic parameters which you can easily search for online.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{plot}\NormalTok{(}\DecValTok{1}\SpecialCharTok{:}\DecValTok{10}\NormalTok{, (}\DecValTok{1}\SpecialCharTok{:}\DecValTok{10}\NormalTok{)}\SpecialCharTok{\^{}}\DecValTok{2}\NormalTok{,}
+     \AttributeTok{main=}\StringTok{"Abline example"}\NormalTok{,}
+     \AttributeTok{ylab=}\StringTok{"y"}\NormalTok{,}
+     \AttributeTok{xlab=}\StringTok{"x"}\NormalTok{,}
+     \AttributeTok{type=}\StringTok{"b"}\NormalTok{,}
+     \AttributeTok{pch=}\DecValTok{19}\NormalTok{,)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{_main_files/figure-latex/unnamed-chunk-29-1.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{plot}\NormalTok{(}\DecValTok{1}\SpecialCharTok{:}\DecValTok{10}\NormalTok{, (}\DecValTok{1}\SpecialCharTok{:}\DecValTok{10}\NormalTok{)}\SpecialCharTok{\^{}}\DecValTok{2}\NormalTok{,}
+     \AttributeTok{main=}\StringTok{"Abline example"}\NormalTok{,}
+     \AttributeTok{ylab=}\StringTok{"y"}\NormalTok{,}
+     \AttributeTok{xlab=}\StringTok{"x"}\NormalTok{,}
+     \AttributeTok{type=}\StringTok{"b"}\NormalTok{,}
+     \AttributeTok{pch=}\DecValTok{19}\NormalTok{,)}
+\FunctionTok{abline}\NormalTok{(}\AttributeTok{a=}\DecValTok{0}\NormalTok{,}\AttributeTok{b=}\DecValTok{3}\NormalTok{, }\AttributeTok{col =} \StringTok{"red"}\NormalTok{)}
+\FunctionTok{abline}\NormalTok{(}\AttributeTok{a=}\DecValTok{0}\NormalTok{, }\AttributeTok{b=}\DecValTok{6}\NormalTok{, }\AttributeTok{col =} \StringTok{"blue"}\NormalTok{)}
+\FunctionTok{abline}\NormalTok{(}\AttributeTok{h=}\DecValTok{60}\NormalTok{, }\AttributeTok{lty =} \DecValTok{2}\NormalTok{)}
+\FunctionTok{abline}\NormalTok{(}\AttributeTok{v=}\DecValTok{6}\NormalTok{, }\AttributeTok{lty =} \DecValTok{3}\NormalTok{, }\AttributeTok{lwd =} \DecValTok{2}\NormalTok{, }\AttributeTok{col =} \StringTok{"orange"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{_main_files/figure-latex/unnamed-chunk-30-1.pdf}
+
+In addition to the plot function and its variety of options, we can implement other plotting functions such as \texttt{hist()} and \texttt{boxplot()}, which will be discussed in a later chapter in more details, to produce the best graphical representation of your data possible. Finally, although we discuss graphics using the basic plotting commands here, it is worth pointing out the popularity of a completely different package and set of functions, known as \texttt{ggplot2}, which makes the plotting experience even more exciting. We will not actually discuss this in these lecture notes, however, it is strongly advised that you familiarise yourself with this package and its associated functions using \href{www.datacamp.com}{DataCamp}. In fact, there are three excellent courses devoted to the subject which will be linked at the end of these notes.
+
+\hypertarget{exercises-2}{%
+\subsection{Exercises}\label{exercises-2}}
+
+Consider the following formula to calculate the number of mortgage payment terms required to pay off a mortgage as a function of the principle amount (\(P\)), the monthly repayments (\(M\)) and the monthly interest (\(i\)):
+\begin{equation*}
+    n = \frac{\ln\left(\frac{i}{\frac{M}{P}-i}+1 \right)}{\ln(1+i)}
+\end{equation*}
+
+Using R, solve the following problems:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Calculate the number of payments \(n\) for a mortgage with principle balance of £200,000, monthly interest rate of \(0.5\%\) and monthly payments of £2000.
+\item
+  Now construct a vector, named \(n\), of length 6 with the results of this calculation (in years) for a series of monthly payment amounts: \((2000, 1800, 1600, 1200, 1000)\).
+\item
+  Does the last value of \(n\) surprise you? Can you explain it?
+\item
+  Create a line plot for the values of \(n\) (excluding the last) against the different payment amounts. Give the plot a title, appropriate label names and make the points appear in blue.
+\end{enumerate}
+
+\hypertarget{datacamp-courses}{%
+\section{DataCamp Courses}\label{datacamp-courses}}
+
+\begin{itemize}
+\tightlist
+\item
+  \url{https://www.datacamp.com/courses/free-introduction-to-r} (R Basics - Recommended)
+\item
+  \url{https://www.datacamp.com/courses/data-visualization-in-r} (Plotting Data)
+\item
+  \url{https://www.datacamp.com/courses/data-visualization-with-ggplot2-1} (Plotting Data using ggplot - Recommended)
+\item
+  \url{https://www.datacamp.com/courses/data-visualization-with-ggplot2-2}
+\item
+  \url{https://www.datacamp.com/courses/data-visualization-with-ggplot2-part-3}
+\end{itemize}
+
+\hypertarget{conditionals-and-if-statements}{%
+\chapter{Conditionals and IF Statements}\label{conditionals-and-if-statements}}
+
+In R, conditional statements or arguments are used to compare or analyse values/data based on certain conditions. In general, this is done with the use of `relational operators' (\texttt{=}, \texttt{\textgreater{}}, \texttt{\textless{}}, \texttt{\textgreater{}=}, \texttt{\textless{}=}, \texttt{!=}) and `logical operators' (OR, AND, AND/OR).
+
+\hypertarget{relational-operators}{%
+\section{Relational Operators}\label{relational-operators}}
+
+The most basic of the `relational operators' is the equality operator (\texttt{==}), which can be used to check if two objects (values, vectors, matrices etc.) are equal:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\DecValTok{4} \SpecialCharTok{==} \DecValTok{3}\SpecialCharTok{+}\DecValTok{1}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] TRUE
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\DecValTok{5}\SpecialCharTok{\^{}}\DecValTok{2} \SpecialCharTok{==} \DecValTok{25}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] TRUE
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\DecValTok{8} \SpecialCharTok{\%\%} \DecValTok{5} \SpecialCharTok{==} \DecValTok{3}  \CommentTok{\# The double percentage sign here resembles modulo arithmetic, i.e. 8 mod 5}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] TRUE
+\end{verbatim}
+
+This can also be performed on vectors on an element by element basis (as usual):
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\DecValTok{1}\SpecialCharTok{:}\DecValTok{10} \SpecialCharTok{==} \FunctionTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{,}\DecValTok{2}\NormalTok{,}\DecValTok{3}\NormalTok{,}\DecValTok{4}\NormalTok{,}\DecValTok{5}\NormalTok{,}\DecValTok{6}\NormalTok{,}\DecValTok{7}\NormalTok{,}\DecValTok{8}\NormalTok{,}\DecValTok{9}\NormalTok{,}\DecValTok{10}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##  [1] TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\DecValTok{1}\SpecialCharTok{:}\DecValTok{10} \SpecialCharTok{==} \FunctionTok{c}\NormalTok{(}\DecValTok{0}\NormalTok{,}\DecValTok{2}\NormalTok{,}\DecValTok{3}\NormalTok{,}\DecValTok{4}\NormalTok{,}\DecValTok{5}\NormalTok{,}\DecValTok{6}\NormalTok{,}\DecValTok{7}\NormalTok{,}\DecValTok{8}\NormalTok{,}\DecValTok{9}\NormalTok{,}\DecValTok{10}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##  [1] FALSE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE
+\end{verbatim}
+
+Unsurprisingly, it also works on matrices on an element by element basis as well:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{matrix}\NormalTok{(}\DecValTok{5}\NormalTok{, }\AttributeTok{nrow =} \DecValTok{3}\NormalTok{, }\AttributeTok{ncol =} \DecValTok{3}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##      [,1] [,2] [,3]
+## [1,]    5    5    5
+## [2,]    5    5    5
+## [3,]    5    5    5
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{matrix}\NormalTok{(}\DecValTok{1}\SpecialCharTok{:}\DecValTok{9}\NormalTok{, }\AttributeTok{nrow =} \DecValTok{3}\NormalTok{) }\SpecialCharTok{==} \FunctionTok{matrix}\NormalTok{(}\DecValTok{5}\NormalTok{, }\AttributeTok{nrow =} \DecValTok{3}\NormalTok{, }\AttributeTok{ncol =} \DecValTok{3}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##       [,1]  [,2]  [,3]
+## [1,] FALSE FALSE FALSE
+## [2,] FALSE  TRUE FALSE
+## [3,] FALSE FALSE FALSE
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{diag}\NormalTok{(}\DecValTok{5}\NormalTok{, }\AttributeTok{nrow =} \DecValTok{3}\NormalTok{, }\AttributeTok{ncol =} \DecValTok{3}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##      [,1] [,2] [,3]
+## [1,]    5    0    0
+## [2,]    0    5    0
+## [3,]    0    0    5
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{diag}\NormalTok{(}\DecValTok{5}\NormalTok{, }\AttributeTok{nrow =} \DecValTok{3}\NormalTok{, }\AttributeTok{ncol =} \DecValTok{3}\NormalTok{) }\SpecialCharTok{==} \DecValTok{5} \SpecialCharTok{*} \FunctionTok{diag}\NormalTok{(}\DecValTok{1}\NormalTok{, }\AttributeTok{nrow =}\DecValTok{3}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##      [,1] [,2] [,3]
+## [1,] TRUE TRUE TRUE
+## [2,] TRUE TRUE TRUE
+## [3,] TRUE TRUE TRUE
+\end{verbatim}
+
+Notice that this equality operator uses a double equal sign (\texttt{==}) rather than a single \texttt{=}. This is due to the fact the single equality sign is already used for assignments (similar to \texttt{\textless{}-}). This can be confusing, can easily cause errors and is the main reason I always suggest using \texttt{\textless{}-} for variable assignment.
+
+Conversely, you can use the not equal operator (\texttt{!=}) in a similar way
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\DecValTok{3} \SpecialCharTok{!=} \DecValTok{5}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] TRUE
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{seq}\NormalTok{(}\DecValTok{1}\NormalTok{, }\DecValTok{10}\NormalTok{, }\AttributeTok{by =} \DecValTok{1}\NormalTok{) }\SpecialCharTok{!=} \DecValTok{1}\SpecialCharTok{:}\DecValTok{10}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##  [1] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
+\end{verbatim}
+
+\textbf{Note - In general, the (\texttt{!}) symbol negates any type of relational operator or Boolean value in R, e.g.}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\SpecialCharTok{!}\ConstantTok{TRUE}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] FALSE
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\SpecialCharTok{!}\ConstantTok{FALSE}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] TRUE
+\end{verbatim}
+
+In a similar way, you should easily be able to understand how the rest of the relational operators work, i.e.~(\texttt{\textless{}}, \texttt{\textgreater{}}, \texttt{\textless{}=}, \texttt{\textgreater{}=}). In the following example(s), I will introduce you to one of the many pre-programmed data sets that form part of the base package data sets, i.e, mtcars; we will discuss data sets in more details in the next few weeks.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{mtcars}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{tabular}{l|r|r|r|r|r|r|r|r|r|r|r}
+\hline
+  & mpg & cyl & disp & hp & drat & wt & qsec & vs & am & gear & carb\\
+\hline
+Mazda RX4 & 21.0 & 6 & 160.0 & 110 & 3.90 & 2.620 & 16.46 & 0 & 1 & 4 & 4\\
+\hline
+Mazda RX4 Wag & 21.0 & 6 & 160.0 & 110 & 3.90 & 2.875 & 17.02 & 0 & 1 & 4 & 4\\
+\hline
+Datsun 710 & 22.8 & 4 & 108.0 & 93 & 3.85 & 2.320 & 18.61 & 1 & 1 & 4 & 1\\
+\hline
+Hornet 4 Drive & 21.4 & 6 & 258.0 & 110 & 3.08 & 3.215 & 19.44 & 1 & 0 & 3 & 1\\
+\hline
+Hornet Sportabout & 18.7 & 8 & 360.0 & 175 & 3.15 & 3.440 & 17.02 & 0 & 0 & 3 & 2\\
+\hline
+Valiant & 18.1 & 6 & 225.0 & 105 & 2.76 & 3.460 & 20.22 & 1 & 0 & 3 & 1\\
+\hline
+Duster 360 & 14.3 & 8 & 360.0 & 245 & 3.21 & 3.570 & 15.84 & 0 & 0 & 3 & 4\\
+\hline
+Merc 240D & 24.4 & 4 & 146.7 & 62 & 3.69 & 3.190 & 20.00 & 1 & 0 & 4 & 2\\
+\hline
+Merc 230 & 22.8 & 4 & 140.8 & 95 & 3.92 & 3.150 & 22.90 & 1 & 0 & 4 & 2\\
+\hline
+Merc 280 & 19.2 & 6 & 167.6 & 123 & 3.92 & 3.440 & 18.30 & 1 & 0 & 4 & 4\\
+\hline
+Merc 280C & 17.8 & 6 & 167.6 & 123 & 3.92 & 3.440 & 18.90 & 1 & 0 & 4 & 4\\
+\hline
+Merc 450SE & 16.4 & 8 & 275.8 & 180 & 3.07 & 4.070 & 17.40 & 0 & 0 & 3 & 3\\
+\hline
+Merc 450SL & 17.3 & 8 & 275.8 & 180 & 3.07 & 3.730 & 17.60 & 0 & 0 & 3 & 3\\
+\hline
+Merc 450SLC & 15.2 & 8 & 275.8 & 180 & 3.07 & 3.780 & 18.00 & 0 & 0 & 3 & 3\\
+\hline
+Cadillac Fleetwood & 10.4 & 8 & 472.0 & 205 & 2.93 & 5.250 & 17.98 & 0 & 0 & 3 & 4\\
+\hline
+Lincoln Continental & 10.4 & 8 & 460.0 & 215 & 3.00 & 5.424 & 17.82 & 0 & 0 & 3 & 4\\
+\hline
+Chrysler Imperial & 14.7 & 8 & 440.0 & 230 & 3.23 & 5.345 & 17.42 & 0 & 0 & 3 & 4\\
+\hline
+Fiat 128 & 32.4 & 4 & 78.7 & 66 & 4.08 & 2.200 & 19.47 & 1 & 1 & 4 & 1\\
+\hline
+Honda Civic & 30.4 & 4 & 75.7 & 52 & 4.93 & 1.615 & 18.52 & 1 & 1 & 4 & 2\\
+\hline
+Toyota Corolla & 33.9 & 4 & 71.1 & 65 & 4.22 & 1.835 & 19.90 & 1 & 1 & 4 & 1\\
+\hline
+Toyota Corona & 21.5 & 4 & 120.1 & 97 & 3.70 & 2.465 & 20.01 & 1 & 0 & 3 & 1\\
+\hline
+Dodge Challenger & 15.5 & 8 & 318.0 & 150 & 2.76 & 3.520 & 16.87 & 0 & 0 & 3 & 2\\
+\hline
+AMC Javelin & 15.2 & 8 & 304.0 & 150 & 3.15 & 3.435 & 17.30 & 0 & 0 & 3 & 2\\
+\hline
+Camaro Z28 & 13.3 & 8 & 350.0 & 245 & 3.73 & 3.840 & 15.41 & 0 & 0 & 3 & 4\\
+\hline
+Pontiac Firebird & 19.2 & 8 & 400.0 & 175 & 3.08 & 3.845 & 17.05 & 0 & 0 & 3 & 2\\
+\hline
+Fiat X1-9 & 27.3 & 4 & 79.0 & 66 & 4.08 & 1.935 & 18.90 & 1 & 1 & 4 & 1\\
+\hline
+Porsche 914-2 & 26.0 & 4 & 120.3 & 91 & 4.43 & 2.140 & 16.70 & 0 & 1 & 5 & 2\\
+\hline
+Lotus Europa & 30.4 & 4 & 95.1 & 113 & 3.77 & 1.513 & 16.90 & 1 & 1 & 5 & 2\\
+\hline
+Ford Pantera L & 15.8 & 8 & 351.0 & 264 & 4.22 & 3.170 & 14.50 & 0 & 1 & 5 & 4\\
+\hline
+Ferrari Dino & 19.7 & 6 & 145.0 & 175 & 3.62 & 2.770 & 15.50 & 0 & 1 & 5 & 6\\
+\hline
+Maserati Bora & 15.0 & 8 & 301.0 & 335 & 3.54 & 3.570 & 14.60 & 0 & 1 & 5 & 8\\
+\hline
+Volvo 142E & 21.4 & 4 & 121.0 & 109 & 4.11 & 2.780 & 18.60 & 1 & 1 & 4 & 2\\
+\hline
+\end{tabular}
+
+\begin{exercise}
+Assume we want to analyse the \texttt{hp} (horsepower) variable (column) only. Based on what we discussed last week regarding vector/matrix extraction, how can we extract \texttt{hp} data only?
+\end{exercise}
+
+\textbf{Solution}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{mtcars[,}\DecValTok{4}\NormalTok{]}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##  [1] 110 110  93 110 175 105 245  62  95 123 123 180 180 180 205 215 230  66  52
+## [20]  65  97 150 150 245 175  66  91 113 264 175 335 109
+\end{verbatim}
+
+An alternative method of extraction for data sets (data frames) is to use the \texttt{\$} extraction command based on the column/variable name. Note that this only works on data frames and not general matrices, whereas the square bracet extraction works for both:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{(HP }\OtherTok{\textless{}{-}}\NormalTok{ mtcars}\SpecialCharTok{$}\NormalTok{hp)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##  [1] 110 110  93 110 175 105 245  62  95 123 123 180 180 180 205 215 230  66  52
+## [20]  65  97 150 150 245 175  66  91 113 264 175 335 109
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{HP }\SpecialCharTok{\textgreater{}} \DecValTok{200}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##  [1] FALSE FALSE FALSE FALSE FALSE FALSE  TRUE FALSE FALSE FALSE FALSE FALSE
+## [13] FALSE FALSE  TRUE  TRUE  TRUE FALSE FALSE FALSE FALSE FALSE FALSE  TRUE
+## [25] FALSE FALSE FALSE FALSE  TRUE FALSE  TRUE FALSE
+\end{verbatim}
+
+What do you think will happen if we execute the code \texttt{sum(HP\textgreater{}200)} and \texttt{mean(HP\textgreater{}200)}? Have a think about this then check out the solution when you're ready.
+
+\textbf{Solution}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{sum}\NormalTok{(HP }\SpecialCharTok{\textgreater{}} \DecValTok{200}\NormalTok{)  }
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 7
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{mean}\NormalTok{(HP }\SpecialCharTok{\textgreater{}} \DecValTok{200}\NormalTok{) }
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 0.21875
+\end{verbatim}
+
+\textbf{In both of these case, the conditional statement(s) have produced a vector of \texttt{TRUE} and \texttt{FALSE} Boolean values. In R, these are understood as being values of 1 and 0 resepectively. Hence, it is then possible to take the \texttt{sum()} or the \texttt{mean()} over the Boolean values themselves.}
+
+The above gives an examples of how R understands the Boolean values (\texttt{TRUE}/\texttt{FALSE}) as 1 and 0, respectivley and also give you an idea of how powerful such simple lines of conditional code can be when used in the right way.
+
+\begin{exercise}
+Can you create a vector of all square numbers from 1 to 100 and count how many of these values are divisible by 3? Moreover, can you determine what percentage of them are NOT divisible by 5?
+\end{exercise}
+
+In the next few weeks, we will look in more details at how we can use these relational operators (along with the logical operators discussed below) to conditionally extract data/values from a data.frame. This is a very helpful skill to learn for data handling and manipulation.
+
+\hypertarget{logical-operators}{%
+\section{Logical Operators}\label{logical-operators}}
+
+`Logical operators' are used to check whether multiple conditions have been satisfied at the same time (AND) or at least one of them (OR). The key to understanding how these work in R, is understanding how logical operators work in theory.
+
+Let us begin with the logical operator `AND' which, in R, is denoted via \texttt{\&} or \texttt{\&\&} (I will explain the difference later). For an AND statement/condition to evaluate to \texttt{TRUE}, both conditions in the statement must be \texttt{TRUE}. That is, the condition on the left is \texttt{TRUE} `AND' the condition on the right is \texttt{TRUE}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\ConstantTok{TRUE} \SpecialCharTok{\&} \ConstantTok{TRUE}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] TRUE
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\ConstantTok{TRUE} \SpecialCharTok{\&} \ConstantTok{FALSE}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] FALSE
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\ConstantTok{FALSE} \SpecialCharTok{\&} \ConstantTok{FALSE}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] FALSE
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{pi}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 3.141593
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{pi }\SpecialCharTok{\textgreater{}} \DecValTok{3}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] TRUE
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{pi }\SpecialCharTok{\textless{}} \DecValTok{4}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] TRUE
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{pi }\SpecialCharTok{\textgreater{}} \DecValTok{3} \SpecialCharTok{\&}\NormalTok{ pi }\SpecialCharTok{\textless{}} \DecValTok{4}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] TRUE
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\DecValTok{5} \SpecialCharTok{\textless{}} \DecValTok{10} \SpecialCharTok{\&} \DecValTok{5} \SpecialCharTok{\textless{}} \DecValTok{3}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] FALSE
+\end{verbatim}
+
+It is actually possible to have more than two arguments and include different relational operators as well.What do we think the following expression will evaluate to, \texttt{TRUE} or \texttt{FALSE}?
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{pi }\SpecialCharTok{\textgreater{}} \DecValTok{0} \SpecialCharTok{\&}\NormalTok{ pi }\SpecialCharTok{\textless{}} \DecValTok{5} \SpecialCharTok{\&} \SpecialCharTok{!}\NormalTok{(pi }\SpecialCharTok{\%\%} \DecValTok{2} \SpecialCharTok{==} \DecValTok{0}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] TRUE
+\end{verbatim}
+
+As with relational operators, logical operators can also be used in vector form, where the \& operator evaluates on a term by term basis, e.g.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{,}\DecValTok{2}\NormalTok{,}\DecValTok{3}\NormalTok{) }\SpecialCharTok{\textless{}} \FunctionTok{c}\NormalTok{(}\DecValTok{2}\NormalTok{,}\DecValTok{3}\NormalTok{,}\DecValTok{4}\NormalTok{) }\SpecialCharTok{\&} \FunctionTok{c}\NormalTok{(}\DecValTok{2}\NormalTok{,}\DecValTok{3}\NormalTok{,}\DecValTok{4}\NormalTok{) }\SpecialCharTok{\textless{}} \FunctionTok{c}\NormalTok{(}\DecValTok{3}\NormalTok{,}\DecValTok{4}\NormalTok{,}\DecValTok{5}\NormalTok{) }\CommentTok{\# Think about this one a little!}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] TRUE TRUE TRUE
+\end{verbatim}
+
+In fact, this sort of logical/relational operation can also be computed on other objects than just numerical values, i.e.~`character strings':
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\StringTok{"Red"} \SpecialCharTok{==} \StringTok{"Red"}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] TRUE
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\StringTok{"Red"} \SpecialCharTok{==} \StringTok{"Blue"}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] FALSE
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\StringTok{"Red"} \SpecialCharTok{==} \StringTok{"red"}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] FALSE
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{, }\DecValTok{2}\NormalTok{, }\DecValTok{3}\NormalTok{) }\SpecialCharTok{\textless{}} \FunctionTok{c}\NormalTok{(}\DecValTok{2}\NormalTok{, }\DecValTok{3}\NormalTok{, }\DecValTok{4}\NormalTok{) }\SpecialCharTok{\&} \StringTok{"Red"} \SpecialCharTok{==} \StringTok{"Blue"} \CommentTok{\# How has this worked? The left hand side is a 3 element vector but the right is a single logical element?}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] FALSE FALSE FALSE
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{, }\DecValTok{2}\NormalTok{, }\DecValTok{3}\NormalTok{) }\SpecialCharTok{\textless{}} \FunctionTok{c}\NormalTok{(}\DecValTok{2}\NormalTok{, }\DecValTok{1}\NormalTok{, }\DecValTok{4}\NormalTok{) }\SpecialCharTok{\&} \StringTok{"Red"} \SpecialCharTok{==} \StringTok{"Red"}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1]  TRUE FALSE  TRUE
+\end{verbatim}
+
+In contrast to \texttt{\&} which evaluates on a term by term basis, the double \texttt{\&\&} reads from left to right and only evaluates the first values of each vector
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{, }\DecValTok{2}\NormalTok{, }\DecValTok{3}\NormalTok{) }\SpecialCharTok{\textless{}} \FunctionTok{c}\NormalTok{(}\DecValTok{2}\NormalTok{, }\DecValTok{1}\NormalTok{, }\DecValTok{4}\NormalTok{) }\SpecialCharTok{\&\&} \StringTok{"Red"} \SpecialCharTok{==} \StringTok{"Red"}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Warning in c(1, 2, 3) < c(2, 1, 4) && "Red" == "Red": 'length(x) = 3 > 1' in
+## coercion to 'logical(1)'
+\end{verbatim}
+
+\begin{verbatim}
+## [1] TRUE
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{c}\NormalTok{(}\DecValTok{5}\NormalTok{, }\DecValTok{2}\NormalTok{, }\DecValTok{3}\NormalTok{) }\SpecialCharTok{\textless{}} \FunctionTok{c}\NormalTok{(}\DecValTok{2}\NormalTok{, }\DecValTok{1}\NormalTok{, }\DecValTok{4}\NormalTok{) }\SpecialCharTok{\&\&} \StringTok{"Red"} \SpecialCharTok{==} \StringTok{"Red"}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Warning in c(5, 2, 3) < c(2, 1, 4) && "Red" == "Red": 'length(x) = 3 > 1' in
+## coercion to 'logical(1)'
+\end{verbatim}
+
+\begin{verbatim}
+## [1] FALSE
+\end{verbatim}
+
+The second logical operator is the so called OR operator, denoted by \texttt{\textbar{}} and \texttt{\textbar{}\textbar{}}, which evaluates to \texttt{TRUE} as long as `at least one statement is \texttt{TRUE}', e.g.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\ConstantTok{TRUE} \SpecialCharTok{|} \ConstantTok{TRUE}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] TRUE
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\ConstantTok{TRUE} \SpecialCharTok{|} \ConstantTok{FALSE}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] TRUE
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\ConstantTok{FALSE} \SpecialCharTok{|} \ConstantTok{TRUE}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] TRUE
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\ConstantTok{FALSE} \SpecialCharTok{|} \ConstantTok{FALSE}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] FALSE
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{F }\SpecialCharTok{|}\NormalTok{ F }\SpecialCharTok{|}\NormalTok{ T }\SpecialCharTok{|}\NormalTok{ F }\CommentTok{\#etc.}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] TRUE
+\end{verbatim}
+
+The same ideas as were discussed above for \texttt{\&} work also for \texttt{\textbar{}}, i.e.~\texttt{\textbar{}} evaluates element-wise, whilst \texttt{\textbar{}\textbar{}} only evaluates the first element of a vector.
+
+\begin{exercise}
+With all this in mind, how can we calculate the number of cars in the mtcars data set that have horsepower greater than 200, mpg at most 30, are automatic but do not have 6 cylinders?
+\end{exercise}
+
+\begin{exercise}
+
+The set of data VADeaths contains the death rates (measured per 1000 population per year), in Virginia, USA, in 1940. The structure of this data set is a matrix (not a data frame) with the rows denoting age ranges and the columns sex/area.
+
+\begin{enumerate}
+\def\labelenumi{\roman{enumi}.}
+\tightlist
+\item
+  How can we find out this information (and possibly more) about the data set? ii. Extract the two columns containing the female data, either together or separately.
+\item
+  Using conditional arguments, determine how many age groups have a death rate larger than 20 for rural females and a death rate less than 30 from Urban females.
+\end{enumerate}
+
+\end{exercise}
+
+\hypertarget{if-statements}{%
+\section{IF Statements}\label{if-statements}}
+
+`IF' Statements are extremely popular and powerful tools in programming that are used to execute certain commands, based on given conditions. In most cases, the conditions used within IF statements are built up from combinations of the relational and logical operators seen above.
+
+In general, an IF statement has the following form:
+
+\texttt{if\ (\ condition\ )\{}
+\texttt{command}
+\texttt{\}\ else\ \{}
+\texttt{command}
+\texttt{\}}
+
+To see how an IF statement works in practice, let us look at a simple example to check if a number is odd or even
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{x }\OtherTok{\textless{}{-}} \DecValTok{8}
+
+\ControlFlowTok{if}\NormalTok{ (x }\SpecialCharTok{\%\%} \DecValTok{2} \SpecialCharTok{==} \DecValTok{0}\NormalTok{)\{}
+  \FunctionTok{print}\NormalTok{(}\StringTok{"This number is even"}\NormalTok{)}
+\NormalTok{\} }\ControlFlowTok{else}\NormalTok{ \{ }
+  \FunctionTok{print}\NormalTok{(}\StringTok{"This number is odd"}\NormalTok{)}
+\NormalTok{\}}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "This number is even"
+\end{verbatim}
+
+You can actually make the output even better in this example by asking it to print out the value of \(x\) that has been given by using the paste function \texttt{paste()}. Notice the variable \(x\) is not in quotation marks but the `words' are.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{x }\OtherTok{\textless{}{-}} \DecValTok{14}
+  
+\ControlFlowTok{if}\NormalTok{ (x }\SpecialCharTok{\%\%} \DecValTok{2} \SpecialCharTok{==} \DecValTok{0}\NormalTok{)\{}
+  \FunctionTok{print}\NormalTok{(}\FunctionTok{paste}\NormalTok{(x, }\StringTok{"is an even number"}\NormalTok{))}
+\NormalTok{\} }\ControlFlowTok{else}\NormalTok{ \{ }
+  \FunctionTok{print}\NormalTok{(}\FunctionTok{paste}\NormalTok{(x,}\StringTok{"is an odd number"}\NormalTok{))  }
+\NormalTok{\}}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "14 is an even number"
+\end{verbatim}
+
+This is quite a simple example but it is very possible to have more complicated and longer IF statements that contain more conditional possibilities. If this is the case, you can simply extend the IF statement by adding \texttt{elseif} instead of just else. Finally, once you have finished with all conditions, you finish with else. For example
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{x }\OtherTok{\textless{}{-}} \DecValTok{7}
+
+\ControlFlowTok{if}\NormalTok{ (x }\SpecialCharTok{\textless{}} \DecValTok{0}\NormalTok{) \{}
+  \FunctionTok{print}\NormalTok{(}\FunctionTok{paste}\NormalTok{(x, }\StringTok{"is a negative number"}\NormalTok{))}
+\NormalTok{\} }\ControlFlowTok{else} \ControlFlowTok{if}\NormalTok{ (x }\SpecialCharTok{\textgreater{}} \DecValTok{0}\NormalTok{) \{}
+  \FunctionTok{print}\NormalTok{(}\FunctionTok{paste}\NormalTok{(x, }\StringTok{"is a positive number"}\NormalTok{))}
+\NormalTok{\} }\ControlFlowTok{else}\NormalTok{ \{}
+  \FunctionTok{print}\NormalTok{(}\FunctionTok{paste}\NormalTok{(x, }\StringTok{"is Zero"}\NormalTok{))}
+\NormalTok{\}}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "7 is a positive number"
+\end{verbatim}
+
+\begin{exercise}
+Can you create an IF statement which tells you whether a number (x) is divisible by another number (y), where both x and y can be changed (not fixed)? Hint: Use the modulus operator \texttt{\%\%}.
+\end{exercise}
+
+Looking back at the previous two examples regarding even/odd and positive/negative numbers, we can actually combine these two statements by using logical operators within the IF conditions:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{x }\OtherTok{\textless{}{-}} \DecValTok{4}
+
+\ControlFlowTok{if}\NormalTok{ (x }\SpecialCharTok{\textless{}} \DecValTok{0} \SpecialCharTok{\&}\NormalTok{ x }\SpecialCharTok{\%\%} \DecValTok{2}\SpecialCharTok{==} \DecValTok{0}\NormalTok{) \{}
+    \FunctionTok{print}\NormalTok{(}\FunctionTok{paste}\NormalTok{(x, }\StringTok{"is a negative even number"}\NormalTok{))}
+\NormalTok{  \} }\ControlFlowTok{else} \ControlFlowTok{if}\NormalTok{ (x }\SpecialCharTok{\textless{}} \DecValTok{0}\NormalTok{) \{ }
+    \FunctionTok{print}\NormalTok{(}\FunctionTok{paste}\NormalTok{(x,}\StringTok{"is a negative odd number"}\NormalTok{))}
+\NormalTok{\} }\ControlFlowTok{else} \ControlFlowTok{if}\NormalTok{ (x }\SpecialCharTok{\textgreater{}} \DecValTok{0} \SpecialCharTok{\&}\NormalTok{ x }\SpecialCharTok{\%\%} \DecValTok{2} \SpecialCharTok{==} \DecValTok{0}\NormalTok{) \{}
+    \FunctionTok{print}\NormalTok{(}\FunctionTok{paste}\NormalTok{(x, }\StringTok{"is a positive even number"}\NormalTok{))}
+\NormalTok{  \} }\ControlFlowTok{else} \ControlFlowTok{if}\NormalTok{ (x }\SpecialCharTok{\textgreater{}} \DecValTok{0}\NormalTok{)\{}
+    \FunctionTok{print}\NormalTok{(}\FunctionTok{paste}\NormalTok{(x, }\StringTok{"is a positive odd number"}\NormalTok{))}
+\NormalTok{\} }\ControlFlowTok{else}\NormalTok{ \{}
+  \FunctionTok{print}\NormalTok{(}\FunctionTok{paste}\NormalTok{(x, }\StringTok{"is Zero"}\NormalTok{))}
+\NormalTok{\}}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "4 is a positive even number"
+\end{verbatim}
+
+In fact, you could do this an alternative way by `nesting' IF statements inside one another to make several `layers'. There is no right or wrong way to do these but through experience you will see either can be used depending on the situation.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{x }\OtherTok{\textless{}{-}} \DecValTok{3}
+
+\ControlFlowTok{if}\NormalTok{ (x }\SpecialCharTok{\textless{}} \DecValTok{0}\NormalTok{) \{}
+  \ControlFlowTok{if}\NormalTok{ (x }\SpecialCharTok{\%\%} \DecValTok{2} \SpecialCharTok{==} \DecValTok{0}\NormalTok{)\{}
+  \FunctionTok{print}\NormalTok{(}\FunctionTok{paste}\NormalTok{(x, }\StringTok{"is a negative even number"}\NormalTok{))}
+\NormalTok{  \} }\ControlFlowTok{else}\NormalTok{ \{ }
+    \FunctionTok{print}\NormalTok{(}\FunctionTok{paste}\NormalTok{(x,}\StringTok{"is a negative odd number"}\NormalTok{))\}}
+\NormalTok{\} }\ControlFlowTok{else} \ControlFlowTok{if}\NormalTok{ (x }\SpecialCharTok{\textgreater{}} \DecValTok{0}\NormalTok{) \{}
+  \ControlFlowTok{if}\NormalTok{ (x }\SpecialCharTok{\%\%} \DecValTok{2} \SpecialCharTok{==} \DecValTok{0}\NormalTok{)\{}
+  \FunctionTok{print}\NormalTok{(}\FunctionTok{paste}\NormalTok{(x, }\StringTok{"is a positive even number"}\NormalTok{))}
+\NormalTok{  \} }\ControlFlowTok{else}\NormalTok{ \{}
+    \FunctionTok{print}\NormalTok{(}\FunctionTok{paste}\NormalTok{(x, }\StringTok{"is a positive odd number"}\NormalTok{))}
+\NormalTok{  \}}
+\NormalTok{\} }\ControlFlowTok{else}\NormalTok{ \{}
+  \FunctionTok{print}\NormalTok{(}\FunctionTok{paste}\NormalTok{(x, }\StringTok{"is Zero"}\NormalTok{))}
+\NormalTok{\}}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "3 is a positive odd number"
+\end{verbatim}
+
+What happens if we let \(x\) be a vector?
+
+\textbf{Note - The IF statement will technically work in the sense it will print something out, but it will not do quite what we expect. This is because in an IF statement, the conditions or `test statements' can only be single elements and thus, R will only consider the first element of the vector. With this in mind, it is important to note that if you use a logical operator in an IF statement, it is always best to use the double version, i.e.~\texttt{\&\&} or \texttt{\textbar{}\textbar{}}.}
+
+That being said, it is possible to bypass such a problem using the \texttt{ifelse()} function. The \texttt{ifelse()} function allows us to create an IF statement which only has one condition but can be applied to a vector element-wise.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{x }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{, }\DecValTok{2}\NormalTok{, }\DecValTok{3}\NormalTok{)}
+\FunctionTok{ifelse}\NormalTok{(x }\SpecialCharTok{\%\%} \DecValTok{2} \SpecialCharTok{==} \DecValTok{0}\NormalTok{, }\StringTok{"Even"}\NormalTok{, }\StringTok{"Odd"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "Odd"  "Even" "Odd"
+\end{verbatim}
+
+\textbf{Note - This only works for quite simple statements.}
+
+It is possible to use a more complicated IF statement on a vector as we tried above but to do so we have to introduce the idea of FOR loops, which we will discuss next week!
+
+\hypertarget{exercises-3}{%
+\section{Exercises}\label{exercises-3}}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  Create an R script that calculates the square root of a value, x. If the value contained in x is negative it should return \texttt{NA} as output.
+\item
+  Create an R script that returns the maximum value out of the elements of a numeric vector of length 2 (two elements), without using the min, max or sort functions.
+\item
+  Use the command \texttt{x\ \textless{}-\ rexp(20,\ rate\ =\ 0.5)} to create a vector containing 20 simulations of an Exponential random variable with mean 2. Return the number of values that are larger than the mean of the vector x. You are allowed to use the \texttt{mean()} function.
+\end{enumerate}
+
+\hypertarget{appendix-appendix}{%
+\appendix}
+
+
+\hypertarget{additional-tips}{%
+\chapter{Additional Tips}\label{additional-tips}}
+
+\hypertarget{commenting}{%
+\section*{Commenting}\label{commenting}}
+\addcontentsline{toc}{section}{Commenting}
+
+Imagine writing a 500 line R code which analyses financial and claim severity data for your company. Within this code, you have assigned a variety of variables, produced countless plots and created numerous different data frames containing the necessary information. Now imagine either of the following scenarios:
+
+\begin{itemize}
+\tightlist
+\item
+  You need to go back through the code to find a particular plot and/or function that computed a certain value of interest that lies somewhere in the middle of your code;
+\item
+  You have been re-assigned to a different task and have to send your source code to another colleague to take over.
+\end{itemize}
+
+In either case, you will encounter a major problem when it comes to going through lines upon lines of code to find what your looking for, or even remember what you have done. Therefore, to avoid this problem, we insist on the use of commenting when writing R script. To add comments into your script you can simply use the hash tag symbol \texttt{\#}. R understands that anything on a line following the hash tag is only a comment and will not be executed when run into the console. For example, look at the following code:
+
+\begin{figure}
+
+{\centering \includegraphics[width=0.7\linewidth]{Figures/commenting2} 
+
+}
+
+\caption{Error when adding text to code line.}\label{fig:comment1}
+\end{figure}
+
+As you can see from Figure:@ref\{fig:comment1\}, when we ran the line of code from the script into the console, R throws up an error. This is due to the fact that R is trying to understand the text following the \texttt{curve()} function as a command to be executed but cannot match it to any known functions and/or variables. On the other hand, if we add the commenting symbol \texttt{\#}, look what happens:
+
+\begin{figure}
+
+{\centering \includegraphics[width=0.7\linewidth]{Figures/comment} 
+
+}
+
+\caption{Comment using hashtag symbol.}\label{fig:comment2}
+\end{figure}
+
+In this case, R executed the initial command/function \texttt{curve()} but then did not consider anything after the hash tag as it knows it is simply a comment. This is a very helpful feature that we strongly recommend you use at all times and get into the habit of using early. It will save you a lot of time and hard work further down the line.
+
+\hypertarget{help}{%
+\section*{Help}\label{help}}
+\addcontentsline{toc}{section}{Help}
+
+The final feature we want to mention in this introductory chapter is the help functionality. Towards the start of this chapter, we discussed the `Help' tab on the bottom right of the screen and briefly explained how it works. In summary, you can click the `Help' tab and search for a particular function, e.g.~\texttt{plot()}. Doing so will bring up an information page detailing the \texttt{plot()} function, its possible arguments and some worked examples:
+
+\begin{figure}
+
+{\centering \includegraphics[width=0.7\linewidth]{Figures/Help} 
+
+}
+
+\caption{Using the 'Help' tab for the `plot()` function.}\label{fig:help}
+\end{figure}
+
+An alternative way to access this help page is to use the \texttt{?} symbol within the script/console. For example, if you know the name of the function you want some more information about, e.g.~\texttt{plot()}, instead of going into the `Help' tab, you can simply \texttt{?plot()} in your script then run it into the console or, equivalently, type it directly into the console itself. In either case you will produce the same screen as seen in Figure:\ref{fig:help} above. Finally, if you do not know the function names itself you can conduct a broader search of a specific word using the double question mark symbol, i.e.~\texttt{??}. For example, assume you wanted to compute the variance but did not already know the associated function was \texttt{var()}. Then, you could type \texttt{??variance}, which would bring up a list of information pages containing any relevance to variance and you can browse through these as you wish until you find an appropriate function:
+
+\begin{figure}
+
+{\centering \includegraphics[width=0.7\linewidth]{Figures/Help2} 
+
+}
+
+\caption{Using the double question mark symbol for 'Help'.}\label{fig:help2}
+\end{figure}
+
+Although these `Help' tools will indeed prove very helpful throughout your programming journey, you cannot emphasise enough the power and ease of simply using a search engine to find answers. There are so many different packages, containing different functions, each of which has several arguments with a list of possible value, it is impossible to learn them. Therefore, browsing the internet to search for these functions and how bets to use them is another vital tool at your disposal.
+
+\hypertarget{cheat-sheets}{%
+\chapter{Cheat Sheets}\label{cheat-sheets}}
+
+\hypertarget{r-cheat-sheets}{%
+\section*{R Cheat Sheets}\label{r-cheat-sheets}}
+\addcontentsline{toc}{section}{R Cheat Sheets}
+
+\begin{center}\includegraphics{Figures/R-cheat-sheet} \end{center}
+
+\begin{center}\includegraphics{Figures/R-cheat-sheet2} \end{center}
+
+\begin{center}\includegraphics{Figures/R-cheat-sheet3} \end{center}
+
+\hypertarget{rmarkdown-cheat-sheets}{%
+\section*{RMarkdown Cheat Sheets}\label{rmarkdown-cheat-sheets}}
+\addcontentsline{toc}{section}{RMarkdown Cheat Sheets}
+
+\begin{center}\includegraphics{Figures/RmarkdownCheatSheet1} \end{center}
+
+\begin{center}\includegraphics{Figures/RmarkdownCheatSheet2} \end{center}
+
+\hypertarget{rmarkdown-guides}{%
+\section*{RMarkdown Guides}\label{rmarkdown-guides}}
+\addcontentsline{toc}{section}{RMarkdown Guides}
+
+Learning how to create documents in RMarkdown for the first time can be quite daunting, especially in this module which requires extensive mathematical formulae, plots and code to be included. To help you with this, I have listed a number of very useful online guides that I use myself when creating RMarkdown documents (including these notes). Be aware that some of them contain alot of information so be careful to only read through the relevant sections:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  \href{https://bookdown.org/yihui/rmarkdown/}{R Markdown: The Definitive Guide}
+\item
+  \href{https://bookdown.org/yihui/rmarkdown-cookbook/}{R Markdown Cookbook}
+\item
+  \href{https://bookdown.org/yihui/bookdown/}{Authoring Books with R Markdown}
+\end{enumerate}
+
+\end{document}
