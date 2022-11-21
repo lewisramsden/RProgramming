@@ -179,6 +179,15 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="2.3" data-path="conditionals-and-if-statements.html"><a href="conditionals-and-if-statements.html#if-statements"><i class="fa fa-check"></i><b>2.3</b> IF Statements</a></li>
 <li class="chapter" data-level="2.4" data-path="conditionals-and-if-statements.html"><a href="conditionals-and-if-statements.html#exercises-3"><i class="fa fa-check"></i><b>2.4</b> Exercises</a></li>
 </ul></li>
+<li class="chapter" data-level="3" data-path="loops.html"><a href="loops.html"><i class="fa fa-check"></i><b>3</b> Loops</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="loops.html"><a href="loops.html#for-loops"><i class="fa fa-check"></i><b>3.1</b> For Loops</a>
+<ul>
+<li class="chapter" data-level="3.1.1" data-path="loops.html"><a href="loops.html#matrices-1"><i class="fa fa-check"></i><b>3.1.1</b> Matrices</a></li>
+</ul></li>
+<li class="chapter" data-level="3.2" data-path="loops.html"><a href="loops.html#while-loops"><i class="fa fa-check"></i><b>3.2</b> While Loops</a></li>
+<li class="chapter" data-level="3.3" data-path="loops.html"><a href="loops.html#exercises-4"><i class="fa fa-check"></i><b>3.3</b> Exercises</a></li>
+</ul></li>
 <li class="appendix"><span><b>Appendix</b></span></li>
 <li class="chapter" data-level="A" data-path="additional-tips.html"><a href="additional-tips.html"><i class="fa fa-check"></i><b>A</b> Additional Tips</a>
 <ul>
@@ -428,31 +437,31 @@ Figure 1.6: Executing code from a script in R.
 <div class="example">
 <p><span id="exm:unlabeled-div-1" class="example"><strong>Example 1.1  </strong></span>Assume that the height (in cm) of a 80 individuals in a given classroom were measured and recorded in the variable <code>height_data</code> given below:</p>
 <div class="sourceCode" id="cb70"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb70-1"><a href="rstudio-and-r-basics-revision.html#cb70-1" aria-hidden="true" tabindex="-1"></a>height_data</span></code></pre></div>
-<pre><code>##  [1] 152.1827 173.5075 194.9404 171.1608 159.7870 175.1145 184.8450 189.0928
-##  [9] 163.4861 195.0474 173.8707 177.8055 179.6013 119.4621 189.8541 179.8273
-## [17] 134.9761 179.7656 190.8554 156.6397 174.8319 159.5026 152.0133 165.2896
-## [25] 182.6421 197.7247 171.6904 163.5890 161.5600 165.6047 187.4742 180.9670
-## [33] 176.5923 155.1342 187.9515 167.1493 177.3711 147.0276 170.2263 157.7253
-## [41] 186.8688 183.4823 169.3215 179.3579 170.0649 166.1745 165.1587 163.0867
-## [49] 182.3949 179.4634 181.5799 177.6766 151.8770 158.3695 167.2752 164.9826
-## [57] 146.9665 177.0145 161.1040 185.3195 190.4660 169.7135 170.5965 168.5848
-## [65] 163.7571 175.4193 180.7915 183.2241 168.6543 176.5709 158.5718 175.4497
-## [73] 169.4785 174.9124 168.3354 141.6401 173.0320 147.7596 177.1718 173.6509</code></pre>
+<pre><code>##  [1] 187.5471 165.7601 173.2903 176.7172 187.5588 183.8195 157.5090 166.8384
+##  [9] 167.7049 154.7568 205.2971 165.2946 169.0175 186.7926 164.1437 162.6124
+## [17] 156.2791 160.4484 170.9060 161.0221 169.0214 181.2672 159.4158 177.5304
+## [25] 177.0449 174.1883 163.5455 180.3191 171.3178 145.6912 176.2142 196.3913
+## [33] 153.9372 163.8796 181.0508 186.9606 173.2526 169.1736 173.2633 197.1015
+## [41] 181.7864 163.1608 194.3555 170.8133 191.9701 185.7391 169.7266 183.2103
+## [49] 205.5570 171.6328 159.3929 171.3699 181.8105 166.5948 195.8132 164.8400
+## [57] 161.3814 161.1613 182.4594 162.4607 156.0172 198.7463 160.0913 166.1344
+## [65] 133.1908 159.5579 171.2839 174.2338 194.2122 200.8360 181.6512 148.4403
+## [73] 171.3317 179.9532 173.0472 175.1119 155.4850 195.6441 170.9152 151.4012</code></pre>
 <p>Now assume that we wanted to find out the average height of the 20 smallest individuals in the classroom:</p>
 <div class="sourceCode" id="cb72"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb72-1"><a href="rstudio-and-r-basics-revision.html#cb72-1" aria-hidden="true" tabindex="-1"></a>(height_sorted <span class="ot">&lt;-</span> <span class="fu">sort</span>(height_data))</span></code></pre></div>
-<pre><code>##  [1] 119.4621 134.9761 141.6401 146.9665 147.0276 147.7596 151.8770 152.0133
-##  [9] 152.1827 155.1342 156.6397 157.7253 158.3695 158.5718 159.5026 159.7870
-## [17] 161.1040 161.5600 163.0867 163.4861 163.5890 163.7571 164.9826 165.1587
-## [25] 165.2896 165.6047 166.1745 167.1493 167.2752 168.3354 168.5848 168.6543
-## [33] 169.3215 169.4785 169.7135 170.0649 170.2263 170.5965 171.1608 171.6904
-## [41] 173.0320 173.5075 173.6509 173.8707 174.8319 174.9124 175.1145 175.4193
-## [49] 175.4497 176.5709 176.5923 177.0145 177.1718 177.3711 177.6766 177.8055
-## [57] 179.3579 179.4634 179.6013 179.7656 179.8273 180.7915 180.9670 181.5799
-## [65] 182.3949 182.6421 183.2241 183.4823 184.8450 185.3195 186.8688 187.4742
-## [73] 187.9515 189.0928 189.8541 190.4660 190.8554 194.9404 195.0474 197.7247</code></pre>
+<pre><code>##  [1] 133.1908 145.6912 148.4403 151.4012 153.9372 154.7568 155.4850 156.0172
+##  [9] 156.2791 157.5090 159.3929 159.4158 159.5579 160.0913 160.4484 161.0221
+## [17] 161.1613 161.3814 162.4607 162.6124 163.1608 163.5455 163.8796 164.1437
+## [25] 164.8400 165.2946 165.7601 166.1344 166.5948 166.8384 167.7049 169.0175
+## [33] 169.0214 169.1736 169.7266 170.8133 170.9060 170.9152 171.2839 171.3178
+## [41] 171.3317 171.3699 171.6328 173.0472 173.2526 173.2633 173.2903 174.1883
+## [49] 174.2338 175.1119 176.2142 176.7172 177.0449 177.5304 179.9532 180.3191
+## [57] 181.0508 181.2672 181.6512 181.7864 181.8105 182.4594 183.2103 183.8195
+## [65] 185.7391 186.7926 186.9606 187.5471 187.5588 191.9701 194.2122 194.3555
+## [73] 195.6441 195.8132 196.3913 197.1015 198.7463 200.8360 205.2971 205.5570</code></pre>
 <div class="sourceCode" id="cb74"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb74-1"><a href="rstudio-and-r-basics-revision.html#cb74-1" aria-hidden="true" tabindex="-1"></a>smallest<span class="fl">.20</span> <span class="ot">&lt;-</span> height_sorted[<span class="dv">1</span><span class="sc">:</span><span class="dv">20</span>]</span>
 <span id="cb74-2"><a href="rstudio-and-r-basics-revision.html#cb74-2" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(smallest<span class="fl">.20</span>)</span></code></pre></div>
-<pre><code>## [1] 152.4436</code></pre>
+<pre><code>## [1] 156.0126</code></pre>
 </div>
 </div>
 <div id="exercises" class="section level3 hasAnchor" number="1.6.5">

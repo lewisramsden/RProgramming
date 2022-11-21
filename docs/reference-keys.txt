@@ -37,5 +37,10 @@ relational-operators
 logical-operators
 if-statements
 exercises-3
+loops
+for-loops
+matrices-1
+while-loops
+exercises-4
 additional-tips
 cheat-sheets
