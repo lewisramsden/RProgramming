@@ -51,6 +51,14 @@
 <link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
 <link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
 <script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+<script src="libs/htmlwidgets-1.5.4/htmlwidgets.js"></script>
+<link href="libs/datatables-css-0.0.0/datatables-crosstalk.css" rel="stylesheet" />
+<script src="libs/datatables-binding-0.26/datatables.js"></script>
+<link href="libs/dt-core-1.12.1/css/jquery.dataTables.min.css" rel="stylesheet" />
+<link href="libs/dt-core-1.12.1/css/jquery.dataTables.extra.css" rel="stylesheet" />
+<script src="libs/dt-core-1.12.1/js/jquery.dataTables.min.js"></script>
+<link href="libs/crosstalk-1.2.0/css/crosstalk.min.css" rel="stylesheet" />
+<script src="libs/crosstalk-1.2.0/js/crosstalk.min.js"></script>
 
 
 <style type="text/css">
@@ -198,18 +206,18 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li class="chapter" data-level="4.3.1" data-path="functions.html"><a href="functions.html#default-options"><i class="fa fa-check"></i><b>4.3.1</b> Default options</a></li>
 </ul></li>
-<li class="chapter" data-level="4.4" data-path="functions.html"><a href="functions.html#exercies"><i class="fa fa-check"></i><b>4.4</b> Exercies</a></li>
+<li class="chapter" data-level="4.4" data-path="functions.html"><a href="functions.html#exercises-5"><i class="fa fa-check"></i><b>4.4</b> Exercises</a></li>
 <li class="chapter" data-level="4.5" data-path="functions.html"><a href="functions.html#datacamp-courses-3"><i class="fa fa-check"></i><b>4.5</b> DataCamp course(s)</a></li>
 </ul></li>
 <li class="chapter" data-level="5" data-path="data-analysis.html"><a href="data-analysis.html"><i class="fa fa-check"></i><b>5</b> Data Analysis</a>
 <ul>
-<li class="chapter" data-level="5.1" data-path="data-analysis.html"><a href="data-analysis.html#creating-a-data-frame"><i class="fa fa-check"></i><b>5.1</b> Creating a Data Frame</a></li>
+<li class="chapter" data-level="5.1" data-path="data-analysis.html"><a href="data-analysis.html#creating-a-data-frame"><i class="fa fa-check"></i><b>5.1</b> Creating a data frame</a></li>
 <li class="chapter" data-level="5.2" data-path="data-analysis.html"><a href="data-analysis.html#importing-data---excel"><i class="fa fa-check"></i><b>5.2</b> Importing data - Excel</a></li>
 <li class="chapter" data-level="5.3" data-path="data-analysis.html"><a href="data-analysis.html#manipulating-and-analysing-data"><i class="fa fa-check"></i><b>5.3</b> Manipulating and analysing data</a></li>
 <li class="chapter" data-level="5.4" data-path="data-analysis.html"><a href="data-analysis.html#conditional-extraction"><i class="fa fa-check"></i><b>5.4</b> Conditional extraction</a></li>
 <li class="chapter" data-level="5.5" data-path="data-analysis.html"><a href="data-analysis.html#adding-data"><i class="fa fa-check"></i><b>5.5</b> Adding data</a></li>
 <li class="chapter" data-level="5.6" data-path="data-analysis.html"><a href="data-analysis.html#the-apply-family"><i class="fa fa-check"></i><b>5.6</b> The <code>apply</code> family</a></li>
-<li class="chapter" data-level="5.7" data-path="data-analysis.html"><a href="data-analysis.html#exercises-5"><i class="fa fa-check"></i><b>5.7</b> Exercises</a></li>
+<li class="chapter" data-level="5.7" data-path="data-analysis.html"><a href="data-analysis.html#exercises-6"><i class="fa fa-check"></i><b>5.7</b> Exercises</a></li>
 <li class="chapter" data-level="5.8" data-path="data-analysis.html"><a href="data-analysis.html#datacamp-courses-4"><i class="fa fa-check"></i><b>5.8</b> DataCamp course(s)</a></li>
 </ul></li>
 <li class="appendix"><span><b>Appendix</b></span></li>
@@ -294,26 +302,26 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>Again, was this necessary or could we have used vectorised calculations again? If possible, you should always use the vectorised calculation version of a command as this saves times and processing power. That being said,there are many situations where ‘for loops’ are necessary, not just useful.</p>
 <p>Let us return to our mtcars data set seenin the previous chapter and consider a problem regarding plotting histograms of the data:</p>
 <div class="sourceCode" id="cb211"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb211-1"><a href="loops.html#cb211-1" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(mtcars<span class="sc">$</span>hp)</span></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-58-1.png" width="672" /></p>
+<p><img src="_main_files/figure-html/unnamed-chunk-57-1.png" width="672" /></p>
 <div class="sourceCode" id="cb212"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb212-1"><a href="loops.html#cb212-1" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(mtcars[,<span class="dv">4</span>])</span></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-58-2.png" width="672" /></p>
+<p><img src="_main_files/figure-html/unnamed-chunk-57-2.png" width="672" /></p>
 <p>Now, imagine you wanted a histogram for every variable. Executing the code <code>hist(mtcars)</code> wouldn’t work as the input necessary for this function should be in the form of a single vector of values. However, to overcome this hurdle, we could make use of ‘for loops’:</p>
 <div class="sourceCode" id="cb213"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb213-1"><a href="loops.html#cb213-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">ncol</span>(mtcars)){</span>
 <span id="cb213-2"><a href="loops.html#cb213-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">hist</span>(mtcars[,i], <span class="at">main =</span> <span class="fu">paste</span>(<span class="st">&quot;Histogram of&quot;</span>, <span class="fu">colnames</span>(mtcars)[i]))</span>
 <span id="cb213-3"><a href="loops.html#cb213-3" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-59-1.png" width="672" /><img src="_main_files/figure-html/unnamed-chunk-59-2.png" width="672" /><img src="_main_files/figure-html/unnamed-chunk-59-3.png" width="672" /><img src="_main_files/figure-html/unnamed-chunk-59-4.png" width="672" /><img src="_main_files/figure-html/unnamed-chunk-59-5.png" width="672" /><img src="_main_files/figure-html/unnamed-chunk-59-6.png" width="672" /><img src="_main_files/figure-html/unnamed-chunk-59-7.png" width="672" /><img src="_main_files/figure-html/unnamed-chunk-59-8.png" width="672" /><img src="_main_files/figure-html/unnamed-chunk-59-9.png" width="672" /><img src="_main_files/figure-html/unnamed-chunk-59-10.png" width="672" /><img src="_main_files/figure-html/unnamed-chunk-59-11.png" width="672" /></p>
+<p><img src="_main_files/figure-html/unnamed-chunk-58-1.png" width="672" /><img src="_main_files/figure-html/unnamed-chunk-58-2.png" width="672" /><img src="_main_files/figure-html/unnamed-chunk-58-3.png" width="672" /><img src="_main_files/figure-html/unnamed-chunk-58-4.png" width="672" /><img src="_main_files/figure-html/unnamed-chunk-58-5.png" width="672" /><img src="_main_files/figure-html/unnamed-chunk-58-6.png" width="672" /><img src="_main_files/figure-html/unnamed-chunk-58-7.png" width="672" /><img src="_main_files/figure-html/unnamed-chunk-58-8.png" width="672" /><img src="_main_files/figure-html/unnamed-chunk-58-9.png" width="672" /><img src="_main_files/figure-html/unnamed-chunk-58-10.png" width="672" /><img src="_main_files/figure-html/unnamed-chunk-58-11.png" width="672" /></p>
 <p>The above is great, but it would be nice to have them all on one screen together. <strong>Note that the code below is not really linked to for loops but is still worth mentioning here.</strong></p>
 <div class="sourceCode" id="cb214"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb214-1"><a href="loops.html#cb214-1" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow =</span> <span class="fu">c</span>(<span class="dv">3</span>,<span class="dv">4</span>)) <span class="co"># Changes the plot frame to fit 3 rows and 4 columns of separate plots.</span></span>
 <span id="cb214-2"><a href="loops.html#cb214-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">ncol</span>(mtcars)){</span>
 <span id="cb214-3"><a href="loops.html#cb214-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">hist</span>(mtcars[,i])</span>
 <span id="cb214-4"><a href="loops.html#cb214-4" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-60-1.png" width="672" /></p>
+<p><img src="_main_files/figure-html/unnamed-chunk-59-1.png" width="672" /></p>
 <p>This is much better but I would like the individual titles and axis labels to reflect the variable name:</p>
 <div class="sourceCode" id="cb215"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb215-1"><a href="loops.html#cb215-1" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow =</span> <span class="fu">c</span>(<span class="dv">3</span>,<span class="dv">4</span>))</span>
 <span id="cb215-2"><a href="loops.html#cb215-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">ncol</span>(mtcars)){</span>
 <span id="cb215-3"><a href="loops.html#cb215-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">hist</span>(mtcars[,i], <span class="at">main =</span> <span class="fu">paste</span>(<span class="st">&quot;Histogram of&quot;</span>, <span class="fu">colnames</span>(mtcars)[i]), <span class="at">xlab =</span> <span class="fu">paste</span>(<span class="fu">colnames</span>(mtcars)[i]))</span>
 <span id="cb215-4"><a href="loops.html#cb215-4" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-61-1.png" width="672" /></p>
+<p><img src="_main_files/figure-html/unnamed-chunk-60-1.png" width="672" /></p>
 <p>Even this very simply example starts to show you the value and versatility of for loops.</p>
 <p>Now, as mentioned above, it is also possible to combine ‘for loops’ with IF statements. For example, the code below counts the number of even numbers in a vector of values:</p>
 <div class="sourceCode" id="cb216"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb216-1"><a href="loops.html#cb216-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">5</span>,<span class="dv">3</span>,<span class="dv">9</span>,<span class="dv">8</span>,<span class="dv">11</span>,<span class="dv">6</span>)</span>
@@ -415,23 +423,23 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>So far, we have seen how we can Loop through a vector of values to perform certain tasks, but it is also possible to do this over a matrix of values. The only difference is that this requires two loops (one for each index - row and column). For example:</p>
 <div class="sourceCode" id="cb225"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb225-1"><a href="loops.html#cb225-1" aria-hidden="true" tabindex="-1"></a>(M <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="fu">round</span>(<span class="fu">runif</span>(<span class="dv">9</span>,<span class="at">min =</span> <span class="dv">0</span>, <span class="at">max =</span> <span class="dv">100</span>)), <span class="at">nrow =</span> <span class="dv">3</span>, <span class="at">ncol =</span> <span class="dv">3</span>)) <span class="co"># This creates a 3x3 matrix of rounded uniform random values. </span></span></code></pre></div>
 <pre><code>##      [,1] [,2] [,3]
-## [1,]   83   50   62
-## [2,]   38   71   12
-## [3,]   40   72   94</code></pre>
+## [1,]   24   52   41
+## [2,]   17   74   40
+## [3,]   54   39   10</code></pre>
 <div class="sourceCode" id="cb227"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb227-1"><a href="loops.html#cb227-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">nrow</span>(M)){</span>
 <span id="cb227-2"><a href="loops.html#cb227-2" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span>(j <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">ncol</span>(M)){</span>
 <span id="cb227-3"><a href="loops.html#cb227-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">print</span>(<span class="fu">paste</span>(<span class="st">&quot;Element [&quot;</span>, i,<span class="st">&quot;,&quot;</span>,j,<span class="st">&quot;] of M is equal to&quot;</span>,M[i,j]))</span>
 <span id="cb227-4"><a href="loops.html#cb227-4" aria-hidden="true" tabindex="-1"></a>    }</span>
 <span id="cb227-5"><a href="loops.html#cb227-5" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
-<pre><code>## [1] &quot;Element [ 1 , 1 ] of M is equal to 83&quot;
-## [1] &quot;Element [ 1 , 2 ] of M is equal to 50&quot;
-## [1] &quot;Element [ 1 , 3 ] of M is equal to 62&quot;
-## [1] &quot;Element [ 2 , 1 ] of M is equal to 38&quot;
-## [1] &quot;Element [ 2 , 2 ] of M is equal to 71&quot;
-## [1] &quot;Element [ 2 , 3 ] of M is equal to 12&quot;
-## [1] &quot;Element [ 3 , 1 ] of M is equal to 40&quot;
-## [1] &quot;Element [ 3 , 2 ] of M is equal to 72&quot;
-## [1] &quot;Element [ 3 , 3 ] of M is equal to 94&quot;</code></pre>
+<pre><code>## [1] &quot;Element [ 1 , 1 ] of M is equal to 24&quot;
+## [1] &quot;Element [ 1 , 2 ] of M is equal to 52&quot;
+## [1] &quot;Element [ 1 , 3 ] of M is equal to 41&quot;
+## [1] &quot;Element [ 2 , 1 ] of M is equal to 17&quot;
+## [1] &quot;Element [ 2 , 2 ] of M is equal to 74&quot;
+## [1] &quot;Element [ 2 , 3 ] of M is equal to 40&quot;
+## [1] &quot;Element [ 3 , 1 ] of M is equal to 54&quot;
+## [1] &quot;Element [ 3 , 2 ] of M is equal to 39&quot;
+## [1] &quot;Element [ 3 , 3 ] of M is equal to 10&quot;</code></pre>
 <p>Another very important technique that you will need when working with ‘for loops’ is how to store values in a new vector (matrix) as you finish each loop. This is something that you will use a lot when working through your R based assessments in your Actuarial modules, since you will be working with larger data sets and need to make calculations which then need to be saved for use later on.</p>
 <p>As a simple example let us see how we could use a ‘for loop’ to generate some random values and save them in a vector if they satisfy some condition.</p>
 <p>Before we start, let us note how you can add a value to an already existing vector</p>
@@ -448,8 +456,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb233-6"><a href="loops.html#cb233-6" aria-hidden="true" tabindex="-1"></a>  }</span>
 <span id="cb233-7"><a href="loops.html#cb233-7" aria-hidden="true" tabindex="-1"></a>}</span>
 <span id="cb233-8"><a href="loops.html#cb233-8" aria-hidden="true" tabindex="-1"></a>vec</span></code></pre></div>
-<pre><code>##  [1] 1.22265916 0.45170315 0.74885865 0.79010943 0.19469277 0.02354980
-##  [7] 1.37430828 0.06628633 0.46721541 1.79241783</code></pre>
+<pre><code>##  [1] 0.93505182 1.53612766 0.80788000 1.40852752 0.36597906 2.26844863
+##  [7] 0.42939332 0.05044444 1.25408853 1.06836777 1.90643230 0.22374169
+## [13] 1.51204795</code></pre>
 <p>Alternatively, you could actually save each value in the vector as a particular element, e.g.</p>
 <div class="sourceCode" id="cb235"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb235-1"><a href="loops.html#cb235-1" aria-hidden="true" tabindex="-1"></a>vec <span class="ot">&lt;-</span> <span class="fu">c</span>()</span>
 <span id="cb235-2"><a href="loops.html#cb235-2" aria-hidden="true" tabindex="-1"></a>vec</span></code></pre></div>
@@ -461,10 +470,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb237-5"><a href="loops.html#cb237-5" aria-hidden="true" tabindex="-1"></a>  }</span>
 <span id="cb237-6"><a href="loops.html#cb237-6" aria-hidden="true" tabindex="-1"></a>}</span>
 <span id="cb237-7"><a href="loops.html#cb237-7" aria-hidden="true" tabindex="-1"></a>vec</span></code></pre></div>
-<pre><code>##  [1] 0.59915254 0.85428995         NA         NA         NA 0.04733652
-##  [7] 1.14355436         NA 0.39125449 0.87577933 0.09433600         NA
-## [13] 0.39547041         NA 0.33348523 0.83841463 0.46778434 1.19087326
-## [19] 1.02242928</code></pre>
+<pre><code>##  [1]         NA 1.92417286 0.07901618         NA         NA 0.14102705
+##  [7]         NA         NA         NA 0.35852669         NA         NA
+## [13] 1.14752542         NA 0.46000705 0.52306129         NA 0.41671921
+## [19]         NA 1.78722306</code></pre>
 <p>In fact, you could have easily set this up to store all the values in a Matrix rather than a vector</p>
 <div class="sourceCode" id="cb239"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb239-1"><a href="loops.html#cb239-1" aria-hidden="true" tabindex="-1"></a>(mat <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="fu">c</span>(<span class="fu">rep</span>(<span class="cn">NA</span>, <span class="dv">16</span>)), <span class="at">nrow =</span> <span class="dv">4</span>))</span></code></pre></div>
 <pre><code>##      [,1] [,2] [,3] [,4]
@@ -481,11 +490,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb241-7"><a href="loops.html#cb241-7" aria-hidden="true" tabindex="-1"></a>  }</span>
 <span id="cb241-8"><a href="loops.html#cb241-8" aria-hidden="true" tabindex="-1"></a>}</span>
 <span id="cb241-9"><a href="loops.html#cb241-9" aria-hidden="true" tabindex="-1"></a>mat</span></code></pre></div>
-<pre><code>##           [,1]      [,2]      [,3]      [,4]
-## [1,]        NA        NA        NA 0.9195149
-## [2,] 0.7324046        NA 0.3851645        NA
-## [3,] 0.2180832 0.9383180 1.4950679        NA
-## [4,]        NA 0.5763116        NA        NA</code></pre>
+<pre><code>##          [,1]      [,2]       [,3]      [,4]
+## [1,]       NA 1.8170268         NA        NA
+## [2,] 0.239130        NA 0.09351214 0.7762393
+## [3,] 1.981084 0.0998883         NA        NA
+## [4,]       NA 1.2804327         NA        NA</code></pre>
 </div>
 </div>
 <div id="while-loops" class="section level2 hasAnchor" number="3.2">
@@ -535,12 +544,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb252-3"><a href="loops.html#cb252-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(<span class="fu">paste</span>(<span class="st">&quot;Your speed is&quot;</span>, speed, <span class="st">&quot;- Slow Down!&quot;</span>))</span>
 <span id="cb252-4"><a href="loops.html#cb252-4" aria-hidden="true" tabindex="-1"></a>  speed <span class="ot">&lt;-</span> speed <span class="sc">-</span> <span class="dv">7</span></span>
 <span id="cb252-5"><a href="loops.html#cb252-5" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
-<pre><code>## [1] &quot;Your speed is 52 - Slow Down!&quot;
-## [1] &quot;Your speed is 45 - Slow Down!&quot;
-## [1] &quot;Your speed is 38 - Slow Down!&quot;
-## [1] &quot;Your speed is 31 - Slow Down!&quot;</code></pre>
+<pre><code>## [1] &quot;Your speed is 50 - Slow Down!&quot;
+## [1] &quot;Your speed is 43 - Slow Down!&quot;
+## [1] &quot;Your speed is 36 - Slow Down!&quot;</code></pre>
 <div class="sourceCode" id="cb254"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb254-1"><a href="loops.html#cb254-1" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(<span class="fu">paste</span>(<span class="st">&quot;Your speed is&quot;</span>, speed, <span class="st">&quot;- Thank you for not speeding.&quot;</span>))</span></code></pre></div>
-<pre><code>## [1] &quot;Your speed is 24 - Thank you for not speeding.&quot;</code></pre>
+<pre><code>## [1] &quot;Your speed is 29 - Thank you for not speeding.&quot;</code></pre>
 </details>
 <p>I appreciate this is a lot to take in for those who are not familiar with programming but I assure these ideas become second nature with a little practice. We will use them in a larger exercise in the last session so you can see how and when these things would all be used in a practical example. However, for now, I highly recommend that you complete the exercises in DataCamp on conditional statements and loops (Intermediate R) for extra practice.</p>
 <p>There are other versions and common commands used in loops, namely <code>break</code>, <code>next</code> and <code>repeats</code>, but I will leave these for you to explore in your own time (ideally via DataCamp). You will need these for the exercises below.</p>

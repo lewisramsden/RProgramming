@@ -51,6 +51,14 @@
 <link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
 <link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
 <script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+<script src="libs/htmlwidgets-1.5.4/htmlwidgets.js"></script>
+<link href="libs/datatables-css-0.0.0/datatables-crosstalk.css" rel="stylesheet" />
+<script src="libs/datatables-binding-0.26/datatables.js"></script>
+<link href="libs/dt-core-1.12.1/css/jquery.dataTables.min.css" rel="stylesheet" />
+<link href="libs/dt-core-1.12.1/css/jquery.dataTables.extra.css" rel="stylesheet" />
+<script src="libs/dt-core-1.12.1/js/jquery.dataTables.min.js"></script>
+<link href="libs/crosstalk-1.2.0/css/crosstalk.min.css" rel="stylesheet" />
+<script src="libs/crosstalk-1.2.0/js/crosstalk.min.js"></script>
 
 
 <style type="text/css">
@@ -198,18 +206,18 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li class="chapter" data-level="4.3.1" data-path="functions.html"><a href="functions.html#default-options"><i class="fa fa-check"></i><b>4.3.1</b> Default options</a></li>
 </ul></li>
-<li class="chapter" data-level="4.4" data-path="functions.html"><a href="functions.html#exercies"><i class="fa fa-check"></i><b>4.4</b> Exercies</a></li>
+<li class="chapter" data-level="4.4" data-path="functions.html"><a href="functions.html#exercises-5"><i class="fa fa-check"></i><b>4.4</b> Exercises</a></li>
 <li class="chapter" data-level="4.5" data-path="functions.html"><a href="functions.html#datacamp-courses-3"><i class="fa fa-check"></i><b>4.5</b> DataCamp course(s)</a></li>
 </ul></li>
 <li class="chapter" data-level="5" data-path="data-analysis.html"><a href="data-analysis.html"><i class="fa fa-check"></i><b>5</b> Data Analysis</a>
 <ul>
-<li class="chapter" data-level="5.1" data-path="data-analysis.html"><a href="data-analysis.html#creating-a-data-frame"><i class="fa fa-check"></i><b>5.1</b> Creating a Data Frame</a></li>
+<li class="chapter" data-level="5.1" data-path="data-analysis.html"><a href="data-analysis.html#creating-a-data-frame"><i class="fa fa-check"></i><b>5.1</b> Creating a data frame</a></li>
 <li class="chapter" data-level="5.2" data-path="data-analysis.html"><a href="data-analysis.html#importing-data---excel"><i class="fa fa-check"></i><b>5.2</b> Importing data - Excel</a></li>
 <li class="chapter" data-level="5.3" data-path="data-analysis.html"><a href="data-analysis.html#manipulating-and-analysing-data"><i class="fa fa-check"></i><b>5.3</b> Manipulating and analysing data</a></li>
 <li class="chapter" data-level="5.4" data-path="data-analysis.html"><a href="data-analysis.html#conditional-extraction"><i class="fa fa-check"></i><b>5.4</b> Conditional extraction</a></li>
 <li class="chapter" data-level="5.5" data-path="data-analysis.html"><a href="data-analysis.html#adding-data"><i class="fa fa-check"></i><b>5.5</b> Adding data</a></li>
 <li class="chapter" data-level="5.6" data-path="data-analysis.html"><a href="data-analysis.html#the-apply-family"><i class="fa fa-check"></i><b>5.6</b> The <code>apply</code> family</a></li>
-<li class="chapter" data-level="5.7" data-path="data-analysis.html"><a href="data-analysis.html#exercises-5"><i class="fa fa-check"></i><b>5.7</b> Exercises</a></li>
+<li class="chapter" data-level="5.7" data-path="data-analysis.html"><a href="data-analysis.html#exercises-6"><i class="fa fa-check"></i><b>5.7</b> Exercises</a></li>
 <li class="chapter" data-level="5.8" data-path="data-analysis.html"><a href="data-analysis.html#datacamp-courses-4"><i class="fa fa-check"></i><b>5.8</b> DataCamp course(s)</a></li>
 </ul></li>
 <li class="appendix"><span><b>Appendix</b></span></li>
@@ -276,27 +284,27 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <pre><code>## [1] 2502.5</code></pre>
 <p>As you can see in the above, once the function has been created and given a name, in this case <code>mean_function()</code> it can now be called and used like any other pre-defined function.</p>
 <div class="sourceCode" id="cb262"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb262-1"><a href="functions.html#cb262-1" aria-hidden="true" tabindex="-1"></a>(vec <span class="ot">&lt;-</span> <span class="fu">rexp</span>(<span class="dv">100</span>, <span class="at">rate =</span> <span class="dv">1</span>))</span></code></pre></div>
-<pre><code>##   [1] 0.096640972 0.829660334 1.408175552 0.313415938 0.279457652 0.426508102
-##   [7] 0.538524765 0.249263008 0.216841996 0.545926053 0.460613382 2.556941589
-##  [13] 0.210726743 0.298376179 0.359477274 1.796820436 2.331022033 1.598724453
-##  [19] 4.923014687 1.011400064 1.183574310 0.040974329 0.279583085 2.251831347
-##  [25] 0.466342899 0.732527413 0.063852838 1.289213391 0.760949370 0.257755994
-##  [31] 5.194237457 0.714238996 3.213600613 1.584464442 0.967644998 1.620325401
-##  [37] 0.047498409 1.545039678 3.022576004 2.409790149 0.205785170 1.768275987
-##  [43] 0.584549994 0.422282051 0.217702521 0.611086800 0.273040286 1.559650544
-##  [49] 0.541932188 0.168470267 1.006401632 1.352659563 0.014390410 3.787052875
-##  [55] 0.455540347 0.648091310 1.039261215 0.758666094 0.682286989 0.356108108
-##  [61] 1.343534315 1.182898395 1.131022902 0.317487083 0.119867390 0.068464130
-##  [67] 0.252026001 0.408857007 2.902432434 1.393220743 0.269261575 0.843146784
-##  [73] 0.697063353 0.957246735 2.054235557 0.389072766 0.516325327 0.527732468
-##  [79] 1.699314478 6.829284651 1.656379539 0.280179854 1.149262799 0.635292403
-##  [85] 2.085677417 0.395445838 0.400709653 0.394910296 0.137975692 0.009975154
-##  [91] 2.239651570 0.072497230 0.243507113 0.269856662 0.027878448 0.010873931
-##  [97] 0.743335640 0.754809034 1.452629419 0.558333069</code></pre>
+<pre><code>##   [1] 2.77249303 1.61400250 0.10169718 1.41179951 1.58573710 1.17556830
+##   [7] 0.01223288 2.62927705 0.07280729 1.70735669 0.47866904 2.38728492
+##  [13] 0.45248129 0.63789990 0.82224394 3.20563272 2.26290188 1.53825112
+##  [19] 1.02527458 0.61374509 1.06215508 0.75032126 1.04870928 0.20937710
+##  [25] 0.56527757 3.88601642 2.08426880 1.73542886 0.16333091 0.24811681
+##  [31] 1.00434759 1.47576880 2.63673556 2.59367068 0.63617419 0.18334705
+##  [37] 1.87499177 0.35442131 0.59622895 1.68883930 1.24674906 1.38944944
+##  [43] 0.73770144 5.15896575 0.40600516 1.25718322 0.96222258 1.19273117
+##  [49] 0.19682803 2.15196183 1.71899545 0.64568925 0.09951563 0.05663378
+##  [55] 1.08839527 0.23988890 2.22585613 0.53890823 5.14233232 0.45542013
+##  [61] 0.97931685 0.21384188 0.35937707 0.46946552 0.23953897 0.04467987
+##  [67] 0.13495019 1.01170347 0.02537720 0.16804653 1.29860689 2.88580745
+##  [73] 1.77961603 1.04246695 1.30759609 0.05878963 0.28820662 0.56149425
+##  [79] 0.41692410 0.63627615 0.31920801 0.02496692 1.85954905 1.22393890
+##  [85] 0.18913366 1.81064396 1.72420511 0.31439340 1.84710030 0.36206980
+##  [91] 1.22499400 0.77495239 0.76224388 0.61179945 0.70052194 0.09316013
+##  [97] 2.83237056 0.16747173 2.30094145 3.36050455</code></pre>
 <div class="sourceCode" id="cb264"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb264-1"><a href="functions.html#cb264-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(vec)</span></code></pre></div>
-<pre><code>## [1] 1.019725</code></pre>
+<pre><code>## [1] 1.146426</code></pre>
 <div class="sourceCode" id="cb266"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb266-1"><a href="functions.html#cb266-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean_function</span>(vec)</span></code></pre></div>
-<pre><code>## [1] 1.019725</code></pre>
+<pre><code>## [1] 1.146426</code></pre>
 <p>As you can see from this simply example, it is even possible to use functions inside functions, e.g. we have used the <code>sum()</code> and <code>length()</code> functions inside our newly created function.</p>
 <div class="exercise">
 <p><span id="exr:unlabeled-div-13" class="exercise"><strong>Exercise 4.1  </strong></span>Can you create a function called sum_function which sums up all of the values in a vector without using the predefined sum() function?</p>
@@ -438,7 +446,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ##  [9] 338635.5 381339.2 429187.1</code></pre>
 <p>In this case, the function works element-by-element wise in the usual way to create a vector of outputs. To see this implemented inside another function, let us consider the following example of plotting the various accumulated values calculated above using the <code>plot()</code> function:</p>
 <div class="sourceCode" id="cb299"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb299-1"><a href="functions.html#cb299-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(x, <span class="fu">Acc_value</span>(<span class="dv">100</span>,x, <span class="dv">10</span>), <span class="at">ylab =</span> <span class="st">&quot;Accumulated Value (100)&quot;</span>, <span class="at">xlab =</span> <span class="st">&quot;Interest Rate&quot;</span>)</span></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-88-1.png" width="672" /></p>
+<p><img src="_main_files/figure-html/unnamed-chunk-87-1.png" width="672" /></p>
 <p>This particular use of the function within the <code>plot()</code> function will prove to be very useful for future assessments, where you are typically asked to compare certain quantities under varying conditions (interest rates, terms etc.)</p>
 <p>As another example, we recall that there are actually two different types of interest (Simple and Compound). Of course, we could create two separate functions for each of these. However, since these are related it would be nice to have a single function that could deal with both. This can easily by adding a new variable:</p>
 <div class="sourceCode" id="cb300"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb300-1"><a href="functions.html#cb300-1" aria-hidden="true" tabindex="-1"></a>Acc_value <span class="ot">&lt;-</span> <span class="cf">function</span>(initial, interest, years, type){</span>
@@ -521,14 +529,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div class="sourceCode" id="cb314"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb314-1"><a href="functions.html#cb314-1" aria-hidden="true" tabindex="-1"></a><span class="fu">Acc_value</span>(<span class="dv">100</span>, <span class="fl">0.05</span>, <span class="dv">10</span>, <span class="at">compound =</span> <span class="cn">FALSE</span>)</span></code></pre></div>
 <pre><code>## [1] 150</code></pre>
 <div class="sourceCode" id="cb316"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb316-1"><a href="functions.html#cb316-1" aria-hidden="true" tabindex="-1"></a><span class="fu">Acc_value</span>(<span class="dv">100</span>,<span class="fl">0.05</span>, <span class="dv">10</span>, <span class="at">compare =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-92-1.png" width="672" /></p>
+<p><img src="_main_files/figure-html/unnamed-chunk-91-1.png" width="672" /></p>
 <div class="sourceCode" id="cb317"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb317-1"><a href="functions.html#cb317-1" aria-hidden="true" tabindex="-1"></a><span class="fu">Acc_value</span>(<span class="dv">10000</span>, <span class="fl">0.04</span>, <span class="dv">50</span>, <span class="at">compare =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-92-2.png" width="672" /></p>
+<p><img src="_main_files/figure-html/unnamed-chunk-91-2.png" width="672" /></p>
 <p>Now that you understand the basics of how functions work, try having a go at the following exercises.</p>
 </div>
 </div>
-<div id="exercies" class="section level2 hasAnchor" number="4.4">
-<h2><span class="header-section-number">4.4</span> Exercies<a href="functions.html#exercies" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="exercises-5" class="section level2 hasAnchor" number="4.4">
+<h2><span class="header-section-number">4.4</span> Exercises<a href="functions.html#exercises-5" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <ol style="list-style-type: decimal">
 <li>Recall that in the session, we discussed how to re-create the <code>sum()</code> and <code>mean()</code> function from programming basics. In a similar way, create a function called <code>variance</code> that calculates the variance of a vector of values. You are allowed to use the pre-defined <code>sum()</code> and <code>mean()</code> functions inside your variance function. Try doing this in two different ways:</li>
 </ol>
