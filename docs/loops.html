@@ -51,14 +51,6 @@
 <link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
 <link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
 <script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
-<script src="libs/htmlwidgets-1.5.4/htmlwidgets.js"></script>
-<link href="libs/datatables-css-0.0.0/datatables-crosstalk.css" rel="stylesheet" />
-<script src="libs/datatables-binding-0.26/datatables.js"></script>
-<link href="libs/dt-core-1.12.1/css/jquery.dataTables.min.css" rel="stylesheet" />
-<link href="libs/dt-core-1.12.1/css/jquery.dataTables.extra.css" rel="stylesheet" />
-<script src="libs/dt-core-1.12.1/js/jquery.dataTables.min.js"></script>
-<link href="libs/crosstalk-1.2.0/css/crosstalk.min.css" rel="stylesheet" />
-<script src="libs/crosstalk-1.2.0/js/crosstalk.min.js"></script>
 
 
 <style type="text/css">
@@ -263,23 +255,23 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <code>command in terms of i</code> <br>
 <code>}</code> <br></p>
 <p>That is, i will take the first value of the object x, perform the command in the brackets with this given value of i, then i will loop to the second value of x and so on. For example:</p>
-<div class="sourceCode" id="cb203"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb203-1"><a href="loops.html#cb203-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>,<span class="dv">5</span>)) {</span>
-<span id="cb203-2"><a href="loops.html#cb203-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(i<span class="sc">^</span><span class="dv">2</span>)</span>
-<span id="cb203-3"><a href="loops.html#cb203-3" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="loops.html#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>,<span class="dv">5</span>)) {</span>
+<span id="cb1-2"><a href="loops.html#cb1-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(i<span class="sc">^</span><span class="dv">2</span>)</span>
+<span id="cb1-3"><a href="loops.html#cb1-3" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
 <pre><code>## [1] 1
 ## [1] 4
 ## [1] 9
 ## [1] 16
 ## [1] 25</code></pre>
 <p>This works perfectly but notice that we could also do this using what we called ‘vectorised calculation’, which takes advantage of how R deals with vectors on an element-by-element basis:</p>
-<div class="sourceCode" id="cb205"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb205-1"><a href="loops.html#cb205-1" aria-hidden="true" tabindex="-1"></a>(<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>)<span class="sc">^</span><span class="dv">2</span></span></code></pre></div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="loops.html#cb3-1" aria-hidden="true" tabindex="-1"></a>(<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>)<span class="sc">^</span><span class="dv">2</span></span></code></pre></div>
 <pre><code>## [1]  1  4  9 16 25</code></pre>
 <p>As another example, consider the following:</p>
-<div class="sourceCode" id="cb207"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb207-1"><a href="loops.html#cb207-1" aria-hidden="true" tabindex="-1"></a>(x <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="at">from =</span> <span class="dv">10</span>, <span class="at">to =</span> <span class="dv">100</span>, <span class="at">by =</span> <span class="dv">5</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="loops.html#cb5-1" aria-hidden="true" tabindex="-1"></a>(x <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="at">from =</span> <span class="dv">10</span>, <span class="at">to =</span> <span class="dv">100</span>, <span class="at">by =</span> <span class="dv">5</span>))</span></code></pre></div>
 <pre><code>##  [1]  10  15  20  25  30  35  40  45  50  55  60  65  70  75  80  85  90  95 100</code></pre>
-<div class="sourceCode" id="cb209"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb209-1"><a href="loops.html#cb209-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> x){</span>
-<span id="cb209-2"><a href="loops.html#cb209-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(i <span class="sc">%%</span> <span class="dv">2</span> <span class="sc">==</span> <span class="dv">0</span>)</span>
-<span id="cb209-3"><a href="loops.html#cb209-3" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="loops.html#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> x){</span>
+<span id="cb7-2"><a href="loops.html#cb7-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(i <span class="sc">%%</span> <span class="dv">2</span> <span class="sc">==</span> <span class="dv">0</span>)</span>
+<span id="cb7-3"><a href="loops.html#cb7-3" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
 <pre><code>## [1] TRUE
 ## [1] FALSE
 ## [1] TRUE
@@ -301,61 +293,61 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## [1] TRUE</code></pre>
 <p>Again, was this necessary or could we have used vectorised calculations again? If possible, you should always use the vectorised calculation version of a command as this saves times and processing power. That being said,there are many situations where ‘for loops’ are necessary, not just useful.</p>
 <p>Let us return to our mtcars data set seenin the previous chapter and consider a problem regarding plotting histograms of the data:</p>
-<div class="sourceCode" id="cb211"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb211-1"><a href="loops.html#cb211-1" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(mtcars<span class="sc">$</span>hp)</span></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-57-1.png" width="672" /></p>
-<div class="sourceCode" id="cb212"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb212-1"><a href="loops.html#cb212-1" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(mtcars[,<span class="dv">4</span>])</span></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-57-2.png" width="672" /></p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="loops.html#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(mtcars<span class="sc">$</span>hp)</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-4-1.png" width="672" /></p>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="loops.html#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(mtcars[,<span class="dv">4</span>])</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-4-2.png" width="672" /></p>
 <p>Now, imagine you wanted a histogram for every variable. Executing the code <code>hist(mtcars)</code> wouldn’t work as the input necessary for this function should be in the form of a single vector of values. However, to overcome this hurdle, we could make use of ‘for loops’:</p>
-<div class="sourceCode" id="cb213"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb213-1"><a href="loops.html#cb213-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">ncol</span>(mtcars)){</span>
-<span id="cb213-2"><a href="loops.html#cb213-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">hist</span>(mtcars[,i], <span class="at">main =</span> <span class="fu">paste</span>(<span class="st">&quot;Histogram of&quot;</span>, <span class="fu">colnames</span>(mtcars)[i]))</span>
-<span id="cb213-3"><a href="loops.html#cb213-3" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-58-1.png" width="672" /><img src="_main_files/figure-html/unnamed-chunk-58-2.png" width="672" /><img src="_main_files/figure-html/unnamed-chunk-58-3.png" width="672" /><img src="_main_files/figure-html/unnamed-chunk-58-4.png" width="672" /><img src="_main_files/figure-html/unnamed-chunk-58-5.png" width="672" /><img src="_main_files/figure-html/unnamed-chunk-58-6.png" width="672" /><img src="_main_files/figure-html/unnamed-chunk-58-7.png" width="672" /><img src="_main_files/figure-html/unnamed-chunk-58-8.png" width="672" /><img src="_main_files/figure-html/unnamed-chunk-58-9.png" width="672" /><img src="_main_files/figure-html/unnamed-chunk-58-10.png" width="672" /><img src="_main_files/figure-html/unnamed-chunk-58-11.png" width="672" /></p>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="loops.html#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">ncol</span>(mtcars)){</span>
+<span id="cb11-2"><a href="loops.html#cb11-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">hist</span>(mtcars[,i], <span class="at">main =</span> <span class="fu">paste</span>(<span class="st">&quot;Histogram of&quot;</span>, <span class="fu">colnames</span>(mtcars)[i]))</span>
+<span id="cb11-3"><a href="loops.html#cb11-3" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-5-1.png" width="672" /><img src="_main_files/figure-html/unnamed-chunk-5-2.png" width="672" /><img src="_main_files/figure-html/unnamed-chunk-5-3.png" width="672" /><img src="_main_files/figure-html/unnamed-chunk-5-4.png" width="672" /><img src="_main_files/figure-html/unnamed-chunk-5-5.png" width="672" /><img src="_main_files/figure-html/unnamed-chunk-5-6.png" width="672" /><img src="_main_files/figure-html/unnamed-chunk-5-7.png" width="672" /><img src="_main_files/figure-html/unnamed-chunk-5-8.png" width="672" /><img src="_main_files/figure-html/unnamed-chunk-5-9.png" width="672" /><img src="_main_files/figure-html/unnamed-chunk-5-10.png" width="672" /><img src="_main_files/figure-html/unnamed-chunk-5-11.png" width="672" /></p>
 <p>The above is great, but it would be nice to have them all on one screen together. <strong>Note that the code below is not really linked to for loops but is still worth mentioning here.</strong></p>
-<div class="sourceCode" id="cb214"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb214-1"><a href="loops.html#cb214-1" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow =</span> <span class="fu">c</span>(<span class="dv">3</span>,<span class="dv">4</span>)) <span class="co"># Changes the plot frame to fit 3 rows and 4 columns of separate plots.</span></span>
-<span id="cb214-2"><a href="loops.html#cb214-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">ncol</span>(mtcars)){</span>
-<span id="cb214-3"><a href="loops.html#cb214-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">hist</span>(mtcars[,i])</span>
-<span id="cb214-4"><a href="loops.html#cb214-4" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-59-1.png" width="672" /></p>
+<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="loops.html#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow =</span> <span class="fu">c</span>(<span class="dv">3</span>,<span class="dv">4</span>)) <span class="co"># Changes the plot frame to fit 3 rows and 4 columns of separate plots.</span></span>
+<span id="cb12-2"><a href="loops.html#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">ncol</span>(mtcars)){</span>
+<span id="cb12-3"><a href="loops.html#cb12-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">hist</span>(mtcars[,i])</span>
+<span id="cb12-4"><a href="loops.html#cb12-4" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-6-1.png" width="672" /></p>
 <p>This is much better but I would like the individual titles and axis labels to reflect the variable name:</p>
-<div class="sourceCode" id="cb215"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb215-1"><a href="loops.html#cb215-1" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow =</span> <span class="fu">c</span>(<span class="dv">3</span>,<span class="dv">4</span>))</span>
-<span id="cb215-2"><a href="loops.html#cb215-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">ncol</span>(mtcars)){</span>
-<span id="cb215-3"><a href="loops.html#cb215-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">hist</span>(mtcars[,i], <span class="at">main =</span> <span class="fu">paste</span>(<span class="st">&quot;Histogram of&quot;</span>, <span class="fu">colnames</span>(mtcars)[i]), <span class="at">xlab =</span> <span class="fu">paste</span>(<span class="fu">colnames</span>(mtcars)[i]))</span>
-<span id="cb215-4"><a href="loops.html#cb215-4" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-60-1.png" width="672" /></p>
+<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="loops.html#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow =</span> <span class="fu">c</span>(<span class="dv">3</span>,<span class="dv">4</span>))</span>
+<span id="cb13-2"><a href="loops.html#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">ncol</span>(mtcars)){</span>
+<span id="cb13-3"><a href="loops.html#cb13-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">hist</span>(mtcars[,i], <span class="at">main =</span> <span class="fu">paste</span>(<span class="st">&quot;Histogram of&quot;</span>, <span class="fu">colnames</span>(mtcars)[i]), <span class="at">xlab =</span> <span class="fu">paste</span>(<span class="fu">colnames</span>(mtcars)[i]))</span>
+<span id="cb13-4"><a href="loops.html#cb13-4" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-7-1.png" width="672" /></p>
 <p>Even this very simply example starts to show you the value and versatility of for loops.</p>
 <p>Now, as mentioned above, it is also possible to combine ‘for loops’ with IF statements. For example, the code below counts the number of even numbers in a vector of values:</p>
-<div class="sourceCode" id="cb216"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb216-1"><a href="loops.html#cb216-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">5</span>,<span class="dv">3</span>,<span class="dv">9</span>,<span class="dv">8</span>,<span class="dv">11</span>,<span class="dv">6</span>)</span>
-<span id="cb216-2"><a href="loops.html#cb216-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb216-3"><a href="loops.html#cb216-3" aria-hidden="true" tabindex="-1"></a>count <span class="ot">&lt;-</span> <span class="dv">0</span></span>
-<span id="cb216-4"><a href="loops.html#cb216-4" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> x) {</span>
-<span id="cb216-5"><a href="loops.html#cb216-5" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span>(i <span class="sc">%%</span> <span class="dv">2</span> <span class="sc">==</span> <span class="dv">0</span>){</span>
-<span id="cb216-6"><a href="loops.html#cb216-6" aria-hidden="true" tabindex="-1"></a>    count <span class="ot">&lt;-</span> count<span class="sc">+</span><span class="dv">1</span></span>
-<span id="cb216-7"><a href="loops.html#cb216-7" aria-hidden="true" tabindex="-1"></a>  }</span>
-<span id="cb216-8"><a href="loops.html#cb216-8" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb216-9"><a href="loops.html#cb216-9" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(count)</span></code></pre></div>
+<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="loops.html#cb14-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">5</span>,<span class="dv">3</span>,<span class="dv">9</span>,<span class="dv">8</span>,<span class="dv">11</span>,<span class="dv">6</span>)</span>
+<span id="cb14-2"><a href="loops.html#cb14-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-3"><a href="loops.html#cb14-3" aria-hidden="true" tabindex="-1"></a>count <span class="ot">&lt;-</span> <span class="dv">0</span></span>
+<span id="cb14-4"><a href="loops.html#cb14-4" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> x) {</span>
+<span id="cb14-5"><a href="loops.html#cb14-5" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span>(i <span class="sc">%%</span> <span class="dv">2</span> <span class="sc">==</span> <span class="dv">0</span>){</span>
+<span id="cb14-6"><a href="loops.html#cb14-6" aria-hidden="true" tabindex="-1"></a>    count <span class="ot">&lt;-</span> count<span class="sc">+</span><span class="dv">1</span></span>
+<span id="cb14-7"><a href="loops.html#cb14-7" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb14-8"><a href="loops.html#cb14-8" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb14-9"><a href="loops.html#cb14-9" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(count)</span></code></pre></div>
 <pre><code>## [1] 3</code></pre>
 <div class="exercise">
-<p><span id="exr:unlabeled-div-9" class="exercise"><strong>Exercise 3.1  </strong></span>Is there a quicker and easier way to achieve what has been done above without ‘for loops’?</p>
+<p><span id="exr:unlabeled-div-1" class="exercise"><strong>Exercise 3.1  </strong></span>Is there a quicker and easier way to achieve what has been done above without ‘for loops’?</p>
 </div>
 <details>
 <summary>
 <strong>Solution</strong>
 </summary>
-<div class="sourceCode" id="cb218"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb218-1"><a href="loops.html#cb218-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(x <span class="sc">%%</span> <span class="dv">2</span> <span class="sc">==</span> <span class="dv">0</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="loops.html#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(x <span class="sc">%%</span> <span class="dv">2</span> <span class="sc">==</span> <span class="dv">0</span>)</span></code></pre></div>
 <pre><code>## [1] 3</code></pre>
 </details>
 <div class="exercise">
-<p><span id="exr:unlabeled-div-10" class="exercise"><strong>Exercise 3.2  </strong></span>Can you write a ‘for loop’ that prints out the names of the cars in the <code>mtcars</code> data set which have 8 cylinders? Note, the car names can be found using the <code>rownames(mtcars)</code> command.</p>
+<p><span id="exr:unlabeled-div-2" class="exercise"><strong>Exercise 3.2  </strong></span>Can you write a ‘for loop’ that prints out the names of the cars in the <code>mtcars</code> data set which have 8 cylinders? Note, the car names can be found using the <code>rownames(mtcars)</code> command.</p>
 </div>
 <details>
 <summary>
 <strong>Solution</strong>
 </summary>
-<div class="sourceCode" id="cb220"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb220-1"><a href="loops.html#cb220-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">nrow</span>(mtcars)){</span>
-<span id="cb220-2"><a href="loops.html#cb220-2" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span>(mtcars<span class="sc">$</span>cyl[i]<span class="sc">==</span><span class="dv">8</span>){</span>
-<span id="cb220-3"><a href="loops.html#cb220-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">print</span>(<span class="fu">rownames</span>(mtcars)[i])</span>
-<span id="cb220-4"><a href="loops.html#cb220-4" aria-hidden="true" tabindex="-1"></a>  } <span class="cf">else</span> {}</span>
-<span id="cb220-5"><a href="loops.html#cb220-5" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb18-1"><a href="loops.html#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">nrow</span>(mtcars)){</span>
+<span id="cb18-2"><a href="loops.html#cb18-2" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span>(mtcars<span class="sc">$</span>cyl[i]<span class="sc">==</span><span class="dv">8</span>){</span>
+<span id="cb18-3"><a href="loops.html#cb18-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">print</span>(<span class="fu">rownames</span>(mtcars)[i])</span>
+<span id="cb18-4"><a href="loops.html#cb18-4" aria-hidden="true" tabindex="-1"></a>  } <span class="cf">else</span> {}</span>
+<span id="cb18-5"><a href="loops.html#cb18-5" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
 <pre><code>## [1] &quot;Hornet Sportabout&quot;
 ## [1] &quot;Duster 360&quot;
 ## [1] &quot;Merc 450SE&quot;
@@ -373,47 +365,47 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </details>
 <p>In fact, there is actually another way this can be done using conditional extraction which we will talk more about next week.</p>
 <div class="exercise">
-<p><span id="exr:unlabeled-div-11" class="exercise"><strong>Exercise 3.3  </strong></span>Remember our IF statement from last week that didn’t work correctly because we used a vector in the conditional statement? i.e.</p>
-<div class="sourceCode" id="cb222"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb222-1"><a href="loops.html#cb222-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>)</span>
-<span id="cb222-2"><a href="loops.html#cb222-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb222-3"><a href="loops.html#cb222-3" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (x <span class="sc">&lt;</span> <span class="dv">0</span>) {</span>
-<span id="cb222-4"><a href="loops.html#cb222-4" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (x <span class="sc">%%</span> <span class="dv">2</span> <span class="sc">==</span> <span class="dv">0</span>){</span>
-<span id="cb222-5"><a href="loops.html#cb222-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">print</span>(<span class="fu">paste</span>(x, <span class="st">&quot;is a negative even number&quot;</span>))</span>
-<span id="cb222-6"><a href="loops.html#cb222-6" aria-hidden="true" tabindex="-1"></a>  } <span class="cf">else</span> { </span>
-<span id="cb222-7"><a href="loops.html#cb222-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">print</span>(<span class="fu">paste</span>(x,<span class="st">&quot;is a negative odd number&quot;</span>))}</span>
-<span id="cb222-8"><a href="loops.html#cb222-8" aria-hidden="true" tabindex="-1"></a>} <span class="cf">else</span> <span class="cf">if</span> (x <span class="sc">&gt;</span> <span class="dv">0</span>) {</span>
-<span id="cb222-9"><a href="loops.html#cb222-9" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (x <span class="sc">%%</span> <span class="dv">2</span> <span class="sc">==</span> <span class="dv">0</span>){</span>
-<span id="cb222-10"><a href="loops.html#cb222-10" aria-hidden="true" tabindex="-1"></a>    <span class="fu">print</span>(<span class="fu">paste</span>(x, <span class="st">&quot;is a positive even number&quot;</span>))</span>
-<span id="cb222-11"><a href="loops.html#cb222-11" aria-hidden="true" tabindex="-1"></a>  } <span class="cf">else</span> {</span>
-<span id="cb222-12"><a href="loops.html#cb222-12" aria-hidden="true" tabindex="-1"></a>    <span class="fu">print</span>(<span class="fu">paste</span>(x, <span class="st">&quot;is a positive odd number&quot;</span>))</span>
-<span id="cb222-13"><a href="loops.html#cb222-13" aria-hidden="true" tabindex="-1"></a>  }</span>
-<span id="cb222-14"><a href="loops.html#cb222-14" aria-hidden="true" tabindex="-1"></a>} <span class="cf">else</span> {</span>
-<span id="cb222-15"><a href="loops.html#cb222-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(<span class="fu">paste</span>(x, <span class="st">&quot;is Zero&quot;</span>))</span>
-<span id="cb222-16"><a href="loops.html#cb222-16" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<p><span id="exr:unlabeled-div-3" class="exercise"><strong>Exercise 3.3  </strong></span>Remember our IF statement from last week that didn’t work correctly because we used a vector in the conditional statement? i.e.</p>
+<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb20-1"><a href="loops.html#cb20-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>)</span>
+<span id="cb20-2"><a href="loops.html#cb20-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-3"><a href="loops.html#cb20-3" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (x <span class="sc">&lt;</span> <span class="dv">0</span>) {</span>
+<span id="cb20-4"><a href="loops.html#cb20-4" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (x <span class="sc">%%</span> <span class="dv">2</span> <span class="sc">==</span> <span class="dv">0</span>){</span>
+<span id="cb20-5"><a href="loops.html#cb20-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">print</span>(<span class="fu">paste</span>(x, <span class="st">&quot;is a negative even number&quot;</span>))</span>
+<span id="cb20-6"><a href="loops.html#cb20-6" aria-hidden="true" tabindex="-1"></a>  } <span class="cf">else</span> { </span>
+<span id="cb20-7"><a href="loops.html#cb20-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">print</span>(<span class="fu">paste</span>(x,<span class="st">&quot;is a negative odd number&quot;</span>))}</span>
+<span id="cb20-8"><a href="loops.html#cb20-8" aria-hidden="true" tabindex="-1"></a>} <span class="cf">else</span> <span class="cf">if</span> (x <span class="sc">&gt;</span> <span class="dv">0</span>) {</span>
+<span id="cb20-9"><a href="loops.html#cb20-9" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (x <span class="sc">%%</span> <span class="dv">2</span> <span class="sc">==</span> <span class="dv">0</span>){</span>
+<span id="cb20-10"><a href="loops.html#cb20-10" aria-hidden="true" tabindex="-1"></a>    <span class="fu">print</span>(<span class="fu">paste</span>(x, <span class="st">&quot;is a positive even number&quot;</span>))</span>
+<span id="cb20-11"><a href="loops.html#cb20-11" aria-hidden="true" tabindex="-1"></a>  } <span class="cf">else</span> {</span>
+<span id="cb20-12"><a href="loops.html#cb20-12" aria-hidden="true" tabindex="-1"></a>    <span class="fu">print</span>(<span class="fu">paste</span>(x, <span class="st">&quot;is a positive odd number&quot;</span>))</span>
+<span id="cb20-13"><a href="loops.html#cb20-13" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb20-14"><a href="loops.html#cb20-14" aria-hidden="true" tabindex="-1"></a>} <span class="cf">else</span> {</span>
+<span id="cb20-15"><a href="loops.html#cb20-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(<span class="fu">paste</span>(x, <span class="st">&quot;is Zero&quot;</span>))</span>
+<span id="cb20-16"><a href="loops.html#cb20-16" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
 <p>Can you now apply the idea of a ‘for loop’ to get this to work correctly?</p>
 </div>
 <details>
 <summary>
 <strong>Solution</strong>
 </summary>
-<div class="sourceCode" id="cb223"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb223-1"><a href="loops.html#cb223-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>)</span>
-<span id="cb223-2"><a href="loops.html#cb223-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb223-3"><a href="loops.html#cb223-3" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span>(i <span class="cf">in</span> x){</span>
-<span id="cb223-4"><a href="loops.html#cb223-4" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (i <span class="sc">&lt;</span> <span class="dv">0</span>) {</span>
-<span id="cb223-5"><a href="loops.html#cb223-5" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (i <span class="sc">%%</span> <span class="dv">2</span> <span class="sc">==</span> <span class="dv">0</span>){</span>
-<span id="cb223-6"><a href="loops.html#cb223-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">print</span>(<span class="fu">paste</span>(i, <span class="st">&quot;is a negative even number&quot;</span>))</span>
-<span id="cb223-7"><a href="loops.html#cb223-7" aria-hidden="true" tabindex="-1"></a>  } <span class="cf">else</span> { </span>
-<span id="cb223-8"><a href="loops.html#cb223-8" aria-hidden="true" tabindex="-1"></a>    <span class="fu">print</span>(<span class="fu">paste</span>(i,<span class="st">&quot;is a negative odd number&quot;</span>))}</span>
-<span id="cb223-9"><a href="loops.html#cb223-9" aria-hidden="true" tabindex="-1"></a>} <span class="cf">else</span> <span class="cf">if</span> (i <span class="sc">&gt;</span> <span class="dv">0</span>) {</span>
-<span id="cb223-10"><a href="loops.html#cb223-10" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (i <span class="sc">%%</span> <span class="dv">2</span> <span class="sc">==</span> <span class="dv">0</span>){</span>
-<span id="cb223-11"><a href="loops.html#cb223-11" aria-hidden="true" tabindex="-1"></a>    <span class="fu">print</span>(<span class="fu">paste</span>(i, <span class="st">&quot;is a positive even number&quot;</span>))</span>
-<span id="cb223-12"><a href="loops.html#cb223-12" aria-hidden="true" tabindex="-1"></a>  } <span class="cf">else</span> {</span>
-<span id="cb223-13"><a href="loops.html#cb223-13" aria-hidden="true" tabindex="-1"></a>    <span class="fu">print</span>(<span class="fu">paste</span>(i, <span class="st">&quot;is a positive odd number&quot;</span>))</span>
-<span id="cb223-14"><a href="loops.html#cb223-14" aria-hidden="true" tabindex="-1"></a>  }</span>
-<span id="cb223-15"><a href="loops.html#cb223-15" aria-hidden="true" tabindex="-1"></a>} <span class="cf">else</span> {</span>
-<span id="cb223-16"><a href="loops.html#cb223-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(<span class="fu">paste</span>(i, <span class="st">&quot;is Zero&quot;</span>))</span>
-<span id="cb223-17"><a href="loops.html#cb223-17" aria-hidden="true" tabindex="-1"></a>  }</span>
-<span id="cb223-18"><a href="loops.html#cb223-18" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb21-1"><a href="loops.html#cb21-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>)</span>
+<span id="cb21-2"><a href="loops.html#cb21-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-3"><a href="loops.html#cb21-3" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span>(i <span class="cf">in</span> x){</span>
+<span id="cb21-4"><a href="loops.html#cb21-4" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (i <span class="sc">&lt;</span> <span class="dv">0</span>) {</span>
+<span id="cb21-5"><a href="loops.html#cb21-5" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (i <span class="sc">%%</span> <span class="dv">2</span> <span class="sc">==</span> <span class="dv">0</span>){</span>
+<span id="cb21-6"><a href="loops.html#cb21-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">print</span>(<span class="fu">paste</span>(i, <span class="st">&quot;is a negative even number&quot;</span>))</span>
+<span id="cb21-7"><a href="loops.html#cb21-7" aria-hidden="true" tabindex="-1"></a>  } <span class="cf">else</span> { </span>
+<span id="cb21-8"><a href="loops.html#cb21-8" aria-hidden="true" tabindex="-1"></a>    <span class="fu">print</span>(<span class="fu">paste</span>(i,<span class="st">&quot;is a negative odd number&quot;</span>))}</span>
+<span id="cb21-9"><a href="loops.html#cb21-9" aria-hidden="true" tabindex="-1"></a>} <span class="cf">else</span> <span class="cf">if</span> (i <span class="sc">&gt;</span> <span class="dv">0</span>) {</span>
+<span id="cb21-10"><a href="loops.html#cb21-10" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (i <span class="sc">%%</span> <span class="dv">2</span> <span class="sc">==</span> <span class="dv">0</span>){</span>
+<span id="cb21-11"><a href="loops.html#cb21-11" aria-hidden="true" tabindex="-1"></a>    <span class="fu">print</span>(<span class="fu">paste</span>(i, <span class="st">&quot;is a positive even number&quot;</span>))</span>
+<span id="cb21-12"><a href="loops.html#cb21-12" aria-hidden="true" tabindex="-1"></a>  } <span class="cf">else</span> {</span>
+<span id="cb21-13"><a href="loops.html#cb21-13" aria-hidden="true" tabindex="-1"></a>    <span class="fu">print</span>(<span class="fu">paste</span>(i, <span class="st">&quot;is a positive odd number&quot;</span>))</span>
+<span id="cb21-14"><a href="loops.html#cb21-14" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb21-15"><a href="loops.html#cb21-15" aria-hidden="true" tabindex="-1"></a>} <span class="cf">else</span> {</span>
+<span id="cb21-16"><a href="loops.html#cb21-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(<span class="fu">paste</span>(i, <span class="st">&quot;is Zero&quot;</span>))</span>
+<span id="cb21-17"><a href="loops.html#cb21-17" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb21-18"><a href="loops.html#cb21-18" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
 <pre><code>## [1] &quot;1 is a positive odd number&quot;
 ## [1] &quot;2 is a positive even number&quot;
 ## [1] &quot;3 is a positive odd number&quot;</code></pre>
@@ -421,134 +413,133 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="matrices-1" class="section level3 hasAnchor" number="3.1.1">
 <h3><span class="header-section-number">3.1.1</span> Matrices<a href="loops.html#matrices-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>So far, we have seen how we can Loop through a vector of values to perform certain tasks, but it is also possible to do this over a matrix of values. The only difference is that this requires two loops (one for each index - row and column). For example:</p>
-<div class="sourceCode" id="cb225"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb225-1"><a href="loops.html#cb225-1" aria-hidden="true" tabindex="-1"></a>(M <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="fu">round</span>(<span class="fu">runif</span>(<span class="dv">9</span>,<span class="at">min =</span> <span class="dv">0</span>, <span class="at">max =</span> <span class="dv">100</span>)), <span class="at">nrow =</span> <span class="dv">3</span>, <span class="at">ncol =</span> <span class="dv">3</span>)) <span class="co"># This creates a 3x3 matrix of rounded uniform random values. </span></span></code></pre></div>
+<div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb23-1"><a href="loops.html#cb23-1" aria-hidden="true" tabindex="-1"></a>(M <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="fu">round</span>(<span class="fu">runif</span>(<span class="dv">9</span>,<span class="at">min =</span> <span class="dv">0</span>, <span class="at">max =</span> <span class="dv">100</span>)), <span class="at">nrow =</span> <span class="dv">3</span>, <span class="at">ncol =</span> <span class="dv">3</span>)) <span class="co"># This creates a 3x3 matrix of rounded uniform random values. </span></span></code></pre></div>
 <pre><code>##      [,1] [,2] [,3]
-## [1,]   24   52   41
-## [2,]   17   74   40
-## [3,]   54   39   10</code></pre>
-<div class="sourceCode" id="cb227"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb227-1"><a href="loops.html#cb227-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">nrow</span>(M)){</span>
-<span id="cb227-2"><a href="loops.html#cb227-2" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span>(j <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">ncol</span>(M)){</span>
-<span id="cb227-3"><a href="loops.html#cb227-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">print</span>(<span class="fu">paste</span>(<span class="st">&quot;Element [&quot;</span>, i,<span class="st">&quot;,&quot;</span>,j,<span class="st">&quot;] of M is equal to&quot;</span>,M[i,j]))</span>
-<span id="cb227-4"><a href="loops.html#cb227-4" aria-hidden="true" tabindex="-1"></a>    }</span>
-<span id="cb227-5"><a href="loops.html#cb227-5" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
-<pre><code>## [1] &quot;Element [ 1 , 1 ] of M is equal to 24&quot;
-## [1] &quot;Element [ 1 , 2 ] of M is equal to 52&quot;
-## [1] &quot;Element [ 1 , 3 ] of M is equal to 41&quot;
-## [1] &quot;Element [ 2 , 1 ] of M is equal to 17&quot;
-## [1] &quot;Element [ 2 , 2 ] of M is equal to 74&quot;
-## [1] &quot;Element [ 2 , 3 ] of M is equal to 40&quot;
-## [1] &quot;Element [ 3 , 1 ] of M is equal to 54&quot;
-## [1] &quot;Element [ 3 , 2 ] of M is equal to 39&quot;
-## [1] &quot;Element [ 3 , 3 ] of M is equal to 10&quot;</code></pre>
+## [1,]   41   89    2
+## [2,]   75   49   90
+## [3,]   63   57   15</code></pre>
+<div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb25-1"><a href="loops.html#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">nrow</span>(M)){</span>
+<span id="cb25-2"><a href="loops.html#cb25-2" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span>(j <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">ncol</span>(M)){</span>
+<span id="cb25-3"><a href="loops.html#cb25-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">print</span>(<span class="fu">paste</span>(<span class="st">&quot;Element [&quot;</span>, i,<span class="st">&quot;,&quot;</span>,j,<span class="st">&quot;] of M is equal to&quot;</span>,M[i,j]))</span>
+<span id="cb25-4"><a href="loops.html#cb25-4" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb25-5"><a href="loops.html#cb25-5" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<pre><code>## [1] &quot;Element [ 1 , 1 ] of M is equal to 41&quot;
+## [1] &quot;Element [ 1 , 2 ] of M is equal to 89&quot;
+## [1] &quot;Element [ 1 , 3 ] of M is equal to 2&quot;
+## [1] &quot;Element [ 2 , 1 ] of M is equal to 75&quot;
+## [1] &quot;Element [ 2 , 2 ] of M is equal to 49&quot;
+## [1] &quot;Element [ 2 , 3 ] of M is equal to 90&quot;
+## [1] &quot;Element [ 3 , 1 ] of M is equal to 63&quot;
+## [1] &quot;Element [ 3 , 2 ] of M is equal to 57&quot;
+## [1] &quot;Element [ 3 , 3 ] of M is equal to 15&quot;</code></pre>
 <p>Another very important technique that you will need when working with ‘for loops’ is how to store values in a new vector (matrix) as you finish each loop. This is something that you will use a lot when working through your R based assessments in your Actuarial modules, since you will be working with larger data sets and need to make calculations which then need to be saved for use later on.</p>
 <p>As a simple example let us see how we could use a ‘for loop’ to generate some random values and save them in a vector if they satisfy some condition.</p>
 <p>Before we start, let us note how you can add a value to an already existing vector</p>
-<div class="sourceCode" id="cb229"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb229-1"><a href="loops.html#cb229-1" aria-hidden="true" tabindex="-1"></a>(x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">3</span>, <span class="dv">5</span>, <span class="dv">7</span>, <span class="dv">9</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb27-1"><a href="loops.html#cb27-1" aria-hidden="true" tabindex="-1"></a>(x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">3</span>, <span class="dv">5</span>, <span class="dv">7</span>, <span class="dv">9</span>))</span></code></pre></div>
 <pre><code>## [1] 1 3 5 7 9</code></pre>
-<div class="sourceCode" id="cb231"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb231-1"><a href="loops.html#cb231-1" aria-hidden="true" tabindex="-1"></a>(x <span class="ot">&lt;-</span> <span class="fu">c</span>(x, <span class="dv">11</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb29-1"><a href="loops.html#cb29-1" aria-hidden="true" tabindex="-1"></a>(x <span class="ot">&lt;-</span> <span class="fu">c</span>(x, <span class="dv">11</span>))</span></code></pre></div>
 <pre><code>## [1]  1  3  5  7  9 11</code></pre>
 <p>In the above line of code, x has been over-written as the vector which contain all the values of the original vector x but then also includes 11 as well. This type of idea of over-writing a given value using itself has been seen already (count variable at the start of this session) and is a very common technique.</p>
-<div class="sourceCode" id="cb233"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb233-1"><a href="loops.html#cb233-1" aria-hidden="true" tabindex="-1"></a>vec <span class="ot">&lt;-</span> <span class="fu">c</span>()</span>
-<span id="cb233-2"><a href="loops.html#cb233-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">20</span>){</span>
-<span id="cb233-3"><a href="loops.html#cb233-3" aria-hidden="true" tabindex="-1"></a>  rand <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="dv">1</span>, <span class="at">mean =</span> <span class="dv">0</span>, <span class="at">sd =</span> <span class="dv">1</span>) <span class="co"># This generates a standard normal random variable </span></span>
-<span id="cb233-4"><a href="loops.html#cb233-4" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span>(rand <span class="sc">&gt;</span> <span class="dv">0</span>){</span>
-<span id="cb233-5"><a href="loops.html#cb233-5" aria-hidden="true" tabindex="-1"></a>    vec <span class="ot">&lt;-</span> <span class="fu">c</span>(vec,rand)</span>
-<span id="cb233-6"><a href="loops.html#cb233-6" aria-hidden="true" tabindex="-1"></a>  }</span>
-<span id="cb233-7"><a href="loops.html#cb233-7" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb233-8"><a href="loops.html#cb233-8" aria-hidden="true" tabindex="-1"></a>vec</span></code></pre></div>
-<pre><code>##  [1] 0.93505182 1.53612766 0.80788000 1.40852752 0.36597906 2.26844863
-##  [7] 0.42939332 0.05044444 1.25408853 1.06836777 1.90643230 0.22374169
-## [13] 1.51204795</code></pre>
+<div class="sourceCode" id="cb31"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb31-1"><a href="loops.html#cb31-1" aria-hidden="true" tabindex="-1"></a>vec <span class="ot">&lt;-</span> <span class="fu">c</span>()</span>
+<span id="cb31-2"><a href="loops.html#cb31-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">20</span>){</span>
+<span id="cb31-3"><a href="loops.html#cb31-3" aria-hidden="true" tabindex="-1"></a>  rand <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="dv">1</span>, <span class="at">mean =</span> <span class="dv">0</span>, <span class="at">sd =</span> <span class="dv">1</span>) <span class="co"># This generates a standard normal random variable </span></span>
+<span id="cb31-4"><a href="loops.html#cb31-4" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span>(rand <span class="sc">&gt;</span> <span class="dv">0</span>){</span>
+<span id="cb31-5"><a href="loops.html#cb31-5" aria-hidden="true" tabindex="-1"></a>    vec <span class="ot">&lt;-</span> <span class="fu">c</span>(vec,rand)</span>
+<span id="cb31-6"><a href="loops.html#cb31-6" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb31-7"><a href="loops.html#cb31-7" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb31-8"><a href="loops.html#cb31-8" aria-hidden="true" tabindex="-1"></a>vec</span></code></pre></div>
+<pre><code>## [1] 2.39053125 0.62272954 0.47376964 0.01316833 0.76351689 1.06178682 0.54884862
+## [8] 0.90144258 1.45587847</code></pre>
 <p>Alternatively, you could actually save each value in the vector as a particular element, e.g.</p>
-<div class="sourceCode" id="cb235"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb235-1"><a href="loops.html#cb235-1" aria-hidden="true" tabindex="-1"></a>vec <span class="ot">&lt;-</span> <span class="fu">c</span>()</span>
-<span id="cb235-2"><a href="loops.html#cb235-2" aria-hidden="true" tabindex="-1"></a>vec</span></code></pre></div>
+<div class="sourceCode" id="cb33"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb33-1"><a href="loops.html#cb33-1" aria-hidden="true" tabindex="-1"></a>vec <span class="ot">&lt;-</span> <span class="fu">c</span>()</span>
+<span id="cb33-2"><a href="loops.html#cb33-2" aria-hidden="true" tabindex="-1"></a>vec</span></code></pre></div>
 <pre><code>## NULL</code></pre>
-<div class="sourceCode" id="cb237"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb237-1"><a href="loops.html#cb237-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">20</span>){</span>
-<span id="cb237-2"><a href="loops.html#cb237-2" aria-hidden="true" tabindex="-1"></a>  rand <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="dv">1</span>, <span class="at">mean =</span> <span class="dv">0</span>, <span class="at">sd =</span> <span class="dv">1</span>)</span>
-<span id="cb237-3"><a href="loops.html#cb237-3" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span>(rand <span class="sc">&gt;</span> <span class="dv">0</span>){</span>
-<span id="cb237-4"><a href="loops.html#cb237-4" aria-hidden="true" tabindex="-1"></a>    vec[i] <span class="ot">&lt;-</span> rand</span>
-<span id="cb237-5"><a href="loops.html#cb237-5" aria-hidden="true" tabindex="-1"></a>  }</span>
-<span id="cb237-6"><a href="loops.html#cb237-6" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb237-7"><a href="loops.html#cb237-7" aria-hidden="true" tabindex="-1"></a>vec</span></code></pre></div>
-<pre><code>##  [1]         NA 1.92417286 0.07901618         NA         NA 0.14102705
-##  [7]         NA         NA         NA 0.35852669         NA         NA
-## [13] 1.14752542         NA 0.46000705 0.52306129         NA 0.41671921
-## [19]         NA 1.78722306</code></pre>
+<div class="sourceCode" id="cb35"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb35-1"><a href="loops.html#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">20</span>){</span>
+<span id="cb35-2"><a href="loops.html#cb35-2" aria-hidden="true" tabindex="-1"></a>  rand <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="dv">1</span>, <span class="at">mean =</span> <span class="dv">0</span>, <span class="at">sd =</span> <span class="dv">1</span>)</span>
+<span id="cb35-3"><a href="loops.html#cb35-3" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span>(rand <span class="sc">&gt;</span> <span class="dv">0</span>){</span>
+<span id="cb35-4"><a href="loops.html#cb35-4" aria-hidden="true" tabindex="-1"></a>    vec[i] <span class="ot">&lt;-</span> rand</span>
+<span id="cb35-5"><a href="loops.html#cb35-5" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb35-6"><a href="loops.html#cb35-6" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb35-7"><a href="loops.html#cb35-7" aria-hidden="true" tabindex="-1"></a>vec</span></code></pre></div>
+<pre><code>##  [1] 1.4488545 0.1128840        NA 0.3559266        NA 1.4528468        NA
+##  [8] 1.0543204 0.1238070        NA 0.2617647 2.3181923        NA 1.3337197
+## [15]        NA        NA        NA 0.4410850 0.2135817 0.2533685</code></pre>
 <p>In fact, you could have easily set this up to store all the values in a Matrix rather than a vector</p>
-<div class="sourceCode" id="cb239"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb239-1"><a href="loops.html#cb239-1" aria-hidden="true" tabindex="-1"></a>(mat <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="fu">c</span>(<span class="fu">rep</span>(<span class="cn">NA</span>, <span class="dv">16</span>)), <span class="at">nrow =</span> <span class="dv">4</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb37"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb37-1"><a href="loops.html#cb37-1" aria-hidden="true" tabindex="-1"></a>(mat <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="fu">c</span>(<span class="fu">rep</span>(<span class="cn">NA</span>, <span class="dv">16</span>)), <span class="at">nrow =</span> <span class="dv">4</span>))</span></code></pre></div>
 <pre><code>##      [,1] [,2] [,3] [,4]
 ## [1,]   NA   NA   NA   NA
 ## [2,]   NA   NA   NA   NA
 ## [3,]   NA   NA   NA   NA
 ## [4,]   NA   NA   NA   NA</code></pre>
-<div class="sourceCode" id="cb241"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb241-1"><a href="loops.html#cb241-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>){</span>
-<span id="cb241-2"><a href="loops.html#cb241-2" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span> (j <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>){</span>
-<span id="cb241-3"><a href="loops.html#cb241-3" aria-hidden="true" tabindex="-1"></a>  rand <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="dv">1</span>, <span class="at">mean =</span> <span class="dv">0</span>, <span class="at">sd =</span> <span class="dv">1</span>)</span>
-<span id="cb241-4"><a href="loops.html#cb241-4" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span>(rand <span class="sc">&gt;</span> <span class="dv">0</span>){</span>
-<span id="cb241-5"><a href="loops.html#cb241-5" aria-hidden="true" tabindex="-1"></a>    mat[i,j] <span class="ot">&lt;-</span> rand</span>
-<span id="cb241-6"><a href="loops.html#cb241-6" aria-hidden="true" tabindex="-1"></a>  }</span>
-<span id="cb241-7"><a href="loops.html#cb241-7" aria-hidden="true" tabindex="-1"></a>  }</span>
-<span id="cb241-8"><a href="loops.html#cb241-8" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb241-9"><a href="loops.html#cb241-9" aria-hidden="true" tabindex="-1"></a>mat</span></code></pre></div>
-<pre><code>##          [,1]      [,2]       [,3]      [,4]
-## [1,]       NA 1.8170268         NA        NA
-## [2,] 0.239130        NA 0.09351214 0.7762393
-## [3,] 1.981084 0.0998883         NA        NA
-## [4,]       NA 1.2804327         NA        NA</code></pre>
+<div class="sourceCode" id="cb39"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb39-1"><a href="loops.html#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>){</span>
+<span id="cb39-2"><a href="loops.html#cb39-2" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span> (j <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>){</span>
+<span id="cb39-3"><a href="loops.html#cb39-3" aria-hidden="true" tabindex="-1"></a>  rand <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="dv">1</span>, <span class="at">mean =</span> <span class="dv">0</span>, <span class="at">sd =</span> <span class="dv">1</span>)</span>
+<span id="cb39-4"><a href="loops.html#cb39-4" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span>(rand <span class="sc">&gt;</span> <span class="dv">0</span>){</span>
+<span id="cb39-5"><a href="loops.html#cb39-5" aria-hidden="true" tabindex="-1"></a>    mat[i,j] <span class="ot">&lt;-</span> rand</span>
+<span id="cb39-6"><a href="loops.html#cb39-6" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb39-7"><a href="loops.html#cb39-7" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb39-8"><a href="loops.html#cb39-8" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb39-9"><a href="loops.html#cb39-9" aria-hidden="true" tabindex="-1"></a>mat</span></code></pre></div>
+<pre><code>##           [,1]      [,2]      [,3]      [,4]
+## [1,]        NA        NA        NA        NA
+## [2,] 1.5659966        NA 0.2645027 0.1269934
+## [3,] 0.8177830        NA        NA 0.8611058
+## [4,] 0.3644677 0.5945585        NA 0.2869833</code></pre>
 </div>
 </div>
 <div id="while-loops" class="section level2 hasAnchor" number="3.2">
 <h2><span class="header-section-number">3.2</span> While loops<a href="loops.html#while-loops" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>The final tool we will consider in the area of loops, is the so-called ‘WHILE loop’. A While loop is similar to a for loop but instead of simply looping through different values of a specified vector (i in 1:10) it will continue to loop whilst a certain condition holds and will only stop when this condition is no longer satisfied. For example:</p>
-<div class="sourceCode" id="cb243"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb243-1"><a href="loops.html#cb243-1" aria-hidden="true" tabindex="-1"></a>i <span class="ot">&lt;-</span> <span class="dv">1</span></span>
-<span id="cb243-2"><a href="loops.html#cb243-2" aria-hidden="true" tabindex="-1"></a><span class="cf">while</span> (i <span class="sc">&lt;</span> <span class="dv">6</span>) {</span>
-<span id="cb243-3"><a href="loops.html#cb243-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(i)</span>
-<span id="cb243-4"><a href="loops.html#cb243-4" aria-hidden="true" tabindex="-1"></a>  i <span class="ot">&lt;-</span> i<span class="sc">+</span><span class="dv">1</span></span>
-<span id="cb243-5"><a href="loops.html#cb243-5" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb41"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb41-1"><a href="loops.html#cb41-1" aria-hidden="true" tabindex="-1"></a>i <span class="ot">&lt;-</span> <span class="dv">1</span></span>
+<span id="cb41-2"><a href="loops.html#cb41-2" aria-hidden="true" tabindex="-1"></a><span class="cf">while</span> (i <span class="sc">&lt;</span> <span class="dv">6</span>) {</span>
+<span id="cb41-3"><a href="loops.html#cb41-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(i)</span>
+<span id="cb41-4"><a href="loops.html#cb41-4" aria-hidden="true" tabindex="-1"></a>  i <span class="ot">&lt;-</span> i<span class="sc">+</span><span class="dv">1</span></span>
+<span id="cb41-5"><a href="loops.html#cb41-5" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
 <pre><code>## [1] 1
 ## [1] 2
 ## [1] 3
 ## [1] 4
 ## [1] 5</code></pre>
 <p><strong>WARNING - Be very careful when using while loops. If you do not write them correctly they can result in your code running infinitely. As an example, try seeing what happens if you forget to increment i to add one each time.</strong></p>
-<div class="sourceCode" id="cb245"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb245-1"><a href="loops.html#cb245-1" aria-hidden="true" tabindex="-1"></a>i <span class="ot">&lt;-</span> <span class="dv">1</span></span>
-<span id="cb245-2"><a href="loops.html#cb245-2" aria-hidden="true" tabindex="-1"></a><span class="cf">while</span> (i <span class="sc">&lt;</span> <span class="dv">6</span>) {</span>
-<span id="cb245-3"><a href="loops.html#cb245-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(i)</span>
-<span id="cb245-4"><a href="loops.html#cb245-4" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb43"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb43-1"><a href="loops.html#cb43-1" aria-hidden="true" tabindex="-1"></a>i <span class="ot">&lt;-</span> <span class="dv">1</span></span>
+<span id="cb43-2"><a href="loops.html#cb43-2" aria-hidden="true" tabindex="-1"></a><span class="cf">while</span> (i <span class="sc">&lt;</span> <span class="dv">6</span>) {</span>
+<span id="cb43-3"><a href="loops.html#cb43-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(i)</span>
+<span id="cb43-4"><a href="loops.html#cb43-4" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
 <p>While loops are very helpful when the number of loops required is unknown. For example, imagine we wanted to find the smallest integer for which the sum of all positive integers up to this value was greater than 1000. This can easily be done using a while loop.</p>
-<div class="sourceCode" id="cb246"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb246-1"><a href="loops.html#cb246-1" aria-hidden="true" tabindex="-1"></a>i <span class="ot">&lt;-</span> <span class="dv">1</span></span>
-<span id="cb246-2"><a href="loops.html#cb246-2" aria-hidden="true" tabindex="-1"></a>sum <span class="ot">&lt;-</span> <span class="dv">0</span></span>
-<span id="cb246-3"><a href="loops.html#cb246-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb246-4"><a href="loops.html#cb246-4" aria-hidden="true" tabindex="-1"></a><span class="cf">while</span>(sum <span class="sc">&lt;</span> <span class="dv">1000</span>){</span>
-<span id="cb246-5"><a href="loops.html#cb246-5" aria-hidden="true" tabindex="-1"></a>  sum <span class="ot">&lt;-</span> sum <span class="sc">+</span> i</span>
-<span id="cb246-6"><a href="loops.html#cb246-6" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (sum <span class="sc">&lt;</span> <span class="dv">1000</span>){</span>
-<span id="cb246-7"><a href="loops.html#cb246-7" aria-hidden="true" tabindex="-1"></a>  i <span class="ot">&lt;-</span> i <span class="sc">+</span> <span class="dv">1</span></span>
-<span id="cb246-8"><a href="loops.html#cb246-8" aria-hidden="true" tabindex="-1"></a>  } <span class="cf">else</span> {</span>
-<span id="cb246-9"><a href="loops.html#cb246-9" aria-hidden="true" tabindex="-1"></a>    <span class="fu">print</span>(i)</span>
-<span id="cb246-10"><a href="loops.html#cb246-10" aria-hidden="true" tabindex="-1"></a>  }</span>
-<span id="cb246-11"><a href="loops.html#cb246-11" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb44"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb44-1"><a href="loops.html#cb44-1" aria-hidden="true" tabindex="-1"></a>i <span class="ot">&lt;-</span> <span class="dv">1</span></span>
+<span id="cb44-2"><a href="loops.html#cb44-2" aria-hidden="true" tabindex="-1"></a>sum <span class="ot">&lt;-</span> <span class="dv">0</span></span>
+<span id="cb44-3"><a href="loops.html#cb44-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb44-4"><a href="loops.html#cb44-4" aria-hidden="true" tabindex="-1"></a><span class="cf">while</span>(sum <span class="sc">&lt;</span> <span class="dv">1000</span>){</span>
+<span id="cb44-5"><a href="loops.html#cb44-5" aria-hidden="true" tabindex="-1"></a>  sum <span class="ot">&lt;-</span> sum <span class="sc">+</span> i</span>
+<span id="cb44-6"><a href="loops.html#cb44-6" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (sum <span class="sc">&lt;</span> <span class="dv">1000</span>){</span>
+<span id="cb44-7"><a href="loops.html#cb44-7" aria-hidden="true" tabindex="-1"></a>  i <span class="ot">&lt;-</span> i <span class="sc">+</span> <span class="dv">1</span></span>
+<span id="cb44-8"><a href="loops.html#cb44-8" aria-hidden="true" tabindex="-1"></a>  } <span class="cf">else</span> {</span>
+<span id="cb44-9"><a href="loops.html#cb44-9" aria-hidden="true" tabindex="-1"></a>    <span class="fu">print</span>(i)</span>
+<span id="cb44-10"><a href="loops.html#cb44-10" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb44-11"><a href="loops.html#cb44-11" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
 <pre><code>## [1] 45</code></pre>
-<div class="sourceCode" id="cb248"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb248-1"><a href="loops.html#cb248-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">44</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb46"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb46-1"><a href="loops.html#cb46-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">44</span>)</span></code></pre></div>
 <pre><code>## [1] 990</code></pre>
-<div class="sourceCode" id="cb250"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb250-1"><a href="loops.html#cb250-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">45</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb48"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb48-1"><a href="loops.html#cb48-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">45</span>)</span></code></pre></div>
 <pre><code>## [1] 1035</code></pre>
 <div class="exercise">
-<p><span id="exr:unlabeled-div-12" class="exercise"><strong>Exercise 3.4  </strong></span>Create a variable called <code>speed</code> and assign this a rounded random uniform distributed value between 50 - 60, i.e. <code>round(runif(1, 50, 60))</code>. Using a while loop, create a code that prints “Your speed is ?? - Slow Down” if speed is greater than 30 then takes 7 off the speed variable. If speed is less than or equal to 30 it should print out “Your speed is ?? - Thank you for not speeding”.</p>
+<p><span id="exr:unlabeled-div-4" class="exercise"><strong>Exercise 3.4  </strong></span>Create a variable called <code>speed</code> and assign this a rounded random uniform distributed value between 50 - 60, i.e. <code>round(runif(1, 50, 60))</code>. Using a while loop, create a code that prints “Your speed is ?? - Slow Down” if speed is greater than 30 then takes 7 off the speed variable. If speed is less than or equal to 30 it should print out “Your speed is ?? - Thank you for not speeding”.</p>
 </div>
 <details>
 <summary>
 <strong>Solutions</strong>
 </summary>
-<div class="sourceCode" id="cb252"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb252-1"><a href="loops.html#cb252-1" aria-hidden="true" tabindex="-1"></a>speed <span class="ot">&lt;-</span> <span class="fu">round</span>(<span class="fu">runif</span>(<span class="dv">1</span>, <span class="dv">50</span>, <span class="dv">60</span>))</span>
-<span id="cb252-2"><a href="loops.html#cb252-2" aria-hidden="true" tabindex="-1"></a><span class="cf">while</span>(speed <span class="sc">&gt;</span> <span class="dv">30</span>){</span>
-<span id="cb252-3"><a href="loops.html#cb252-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(<span class="fu">paste</span>(<span class="st">&quot;Your speed is&quot;</span>, speed, <span class="st">&quot;- Slow Down!&quot;</span>))</span>
-<span id="cb252-4"><a href="loops.html#cb252-4" aria-hidden="true" tabindex="-1"></a>  speed <span class="ot">&lt;-</span> speed <span class="sc">-</span> <span class="dv">7</span></span>
-<span id="cb252-5"><a href="loops.html#cb252-5" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
-<pre><code>## [1] &quot;Your speed is 50 - Slow Down!&quot;
-## [1] &quot;Your speed is 43 - Slow Down!&quot;
-## [1] &quot;Your speed is 36 - Slow Down!&quot;</code></pre>
-<div class="sourceCode" id="cb254"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb254-1"><a href="loops.html#cb254-1" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(<span class="fu">paste</span>(<span class="st">&quot;Your speed is&quot;</span>, speed, <span class="st">&quot;- Thank you for not speeding.&quot;</span>))</span></code></pre></div>
-<pre><code>## [1] &quot;Your speed is 29 - Thank you for not speeding.&quot;</code></pre>
+<div class="sourceCode" id="cb50"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb50-1"><a href="loops.html#cb50-1" aria-hidden="true" tabindex="-1"></a>speed <span class="ot">&lt;-</span> <span class="fu">round</span>(<span class="fu">runif</span>(<span class="dv">1</span>, <span class="dv">50</span>, <span class="dv">60</span>))</span>
+<span id="cb50-2"><a href="loops.html#cb50-2" aria-hidden="true" tabindex="-1"></a><span class="cf">while</span>(speed <span class="sc">&gt;</span> <span class="dv">30</span>){</span>
+<span id="cb50-3"><a href="loops.html#cb50-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(<span class="fu">paste</span>(<span class="st">&quot;Your speed is&quot;</span>, speed, <span class="st">&quot;- Slow Down!&quot;</span>))</span>
+<span id="cb50-4"><a href="loops.html#cb50-4" aria-hidden="true" tabindex="-1"></a>  speed <span class="ot">&lt;-</span> speed <span class="sc">-</span> <span class="dv">7</span></span>
+<span id="cb50-5"><a href="loops.html#cb50-5" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<pre><code>## [1] &quot;Your speed is 53 - Slow Down!&quot;
+## [1] &quot;Your speed is 46 - Slow Down!&quot;
+## [1] &quot;Your speed is 39 - Slow Down!&quot;
+## [1] &quot;Your speed is 32 - Slow Down!&quot;</code></pre>
+<div class="sourceCode" id="cb52"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb52-1"><a href="loops.html#cb52-1" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(<span class="fu">paste</span>(<span class="st">&quot;Your speed is&quot;</span>, speed, <span class="st">&quot;- Thank you for not speeding.&quot;</span>))</span></code></pre></div>
+<pre><code>## [1] &quot;Your speed is 25 - Thank you for not speeding.&quot;</code></pre>
 </details>
 <p>I appreciate this is a lot to take in for those who are not familiar with programming but I assure these ideas become second nature with a little practice. We will use them in a larger exercise in the last session so you can see how and when these things would all be used in a practical example. However, for now, I highly recommend that you complete the exercises in DataCamp on conditional statements and loops (Intermediate R) for extra practice.</p>
 <p>There are other versions and common commands used in loops, namely <code>break</code>, <code>next</code> and <code>repeats</code>, but I will leave these for you to explore in your own time (ideally via DataCamp). You will need these for the exercises below.</p>
@@ -556,27 +547,201 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="exercises-4" class="section level2 hasAnchor" number="3.3">
 <h2><span class="header-section-number">3.3</span> Exercises<a href="loops.html#exercises-4" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <ol style="list-style-type: decimal">
-<li><p>Use the command <code>x &lt;- rexp(20, rate = 0.5)</code> to create a vector containing 20 simulations of an Exponential random variable with mean <span class="math inline">\(2\)</span>. Using a loop, return the number of values that are larger than the sample mean of the vector x. You are allowed to use the <code>mean()</code> function.</p></li>
-<li><p>Complete Problem 1 again without the use of loops, only ‘vectorised calculations’.</p></li>
-<li><p>Write a <code>while()</code> loop which prints out the odd numbers from 1 through 7.</p></li>
-<li><p>Using <code>for()</code> loops, generate and print the first 20 values of the famous Fibonacci sequence (starting with <span class="math inline">\(0, 1\)</span>). Recall, the Fibonacci sequence is obtained by evaluating the next number in the sequence as the sum of the previous two numbers in the sequence.</p></li>
-<li><p>By altering your code in the previous question, use a <code>while()</code> loop to determine how many values the Fibonacci sequence contains before its value exceeds 100,000.</p></li>
-<li><p>Use a <code>while()</code> loop to determine the smallest value of <span class="math inline">\(x\)</span> such that
+<li>Use the command <code>x &lt;- rexp(20, rate = 0.5)</code> to create a vector containing 20 simulations of an Exponential random variable with mean <span class="math inline">\(2\)</span>. Using a loop, return the number of values that are larger than the sample mean of the vector x. You are allowed to use the <code>mean()</code> function.</li>
+</ol>
+<details>
+<summary>
+<strong>Solution</strong>
+</summary>
+<div class="sourceCode" id="cb54"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb54-1"><a href="loops.html#cb54-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">rexp</span>(<span class="dv">20</span>, <span class="at">rate =</span> <span class="fl">0.5</span>)</span>
+<span id="cb54-2"><a href="loops.html#cb54-2" aria-hidden="true" tabindex="-1"></a>num <span class="ot">&lt;-</span> <span class="dv">0</span></span>
+<span id="cb54-3"><a href="loops.html#cb54-3" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">length</span>(x)){</span>
+<span id="cb54-4"><a href="loops.html#cb54-4" aria-hidden="true" tabindex="-1"></a> <span class="cf">if</span>(x[i] <span class="sc">&gt;</span> <span class="fu">mean</span>(x)){</span>
+<span id="cb54-5"><a href="loops.html#cb54-5" aria-hidden="true" tabindex="-1"></a>   num <span class="ot">&lt;-</span> num <span class="sc">+</span> <span class="dv">1</span></span>
+<span id="cb54-6"><a href="loops.html#cb54-6" aria-hidden="true" tabindex="-1"></a> }</span>
+<span id="cb54-7"><a href="loops.html#cb54-7" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb54-8"><a href="loops.html#cb54-8" aria-hidden="true" tabindex="-1"></a>x</span></code></pre></div>
+<pre><code>##  [1] 0.2105701 0.5631455 2.4691439 0.3893508 1.3241921 2.0412175 2.2328251
+##  [8] 1.5692421 2.1175625 2.6847501 1.2744118 5.5850919 1.6064558 6.0794511
+## [15] 2.9932425 6.5784659 1.1297020 0.2249739 2.2415012 4.4123337</code></pre>
+</details>
+<ol start="2" style="list-style-type: decimal">
+<li>Write a <code>while()</code> loop which prints out the odd numbers from 1 through 7.</li>
+</ol>
+<details>
+<summary>
+<strong>Solution</strong>
+</summary>
+<div class="sourceCode" id="cb56"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb56-1"><a href="loops.html#cb56-1" aria-hidden="true" tabindex="-1"></a>i <span class="ot">&lt;-</span> <span class="dv">1</span></span>
+<span id="cb56-2"><a href="loops.html#cb56-2" aria-hidden="true" tabindex="-1"></a><span class="cf">while</span>(i <span class="sc">&lt;=</span> <span class="dv">7</span>){</span>
+<span id="cb56-3"><a href="loops.html#cb56-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ifelse</span>(i <span class="sc">%%</span> <span class="dv">2</span> <span class="sc">==</span> <span class="dv">1</span>, <span class="fu">print</span>(i), <span class="cn">NA</span>)</span>
+<span id="cb56-4"><a href="loops.html#cb56-4" aria-hidden="true" tabindex="-1"></a>  i <span class="ot">&lt;-</span> i <span class="sc">+</span> <span class="dv">1</span></span>
+<span id="cb56-5"><a href="loops.html#cb56-5" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<pre><code>## [1] 1
+## [1] 3
+## [1] 5
+## [1] 7</code></pre>
+</details>
+<ol start="3" style="list-style-type: decimal">
+<li>Using <code>for()</code> loops, generate and print the first 20 values of the famous Fibonacci sequence (starting with <span class="math inline">\(0, 1\)</span>). Recall, the Fibonacci sequence is obtained by evaluating the next number in the sequence as the sum of the previous two numbers in the sequence.</li>
+</ol>
+<details>
+<summary>
+<strong>Solution</strong>
+</summary>
+<div class="sourceCode" id="cb58"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb58-1"><a href="loops.html#cb58-1" aria-hidden="true" tabindex="-1"></a>Fib <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">1</span>)</span>
+<span id="cb58-2"><a href="loops.html#cb58-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">3</span><span class="sc">:</span><span class="dv">20</span>){</span>
+<span id="cb58-3"><a href="loops.html#cb58-3" aria-hidden="true" tabindex="-1"></a>  Fib[i] <span class="ot">&lt;-</span> Fib[i<span class="dv">-1</span>] <span class="sc">+</span> Fib[i<span class="dv">-2</span>]</span>
+<span id="cb58-4"><a href="loops.html#cb58-4" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb58-5"><a href="loops.html#cb58-5" aria-hidden="true" tabindex="-1"></a>Fib</span></code></pre></div>
+<pre><code>##  [1]    0    1    1    2    3    5    8   13   21   34   55   89  144  233  377
+## [16]  610  987 1597 2584 4181</code></pre>
+</details>
+<ol start="4" style="list-style-type: decimal">
+<li>By altering your code in the previous question, use a <code>while()</code> loop to determine how many values the Fibonacci sequence contains before its value exceeds 100,000.</li>
+</ol>
+<details>
+<summary>
+<strong>Solution</strong>
+</summary>
+<div class="sourceCode" id="cb60"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb60-1"><a href="loops.html#cb60-1" aria-hidden="true" tabindex="-1"></a>Fib1 <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">1</span>)</span>
+<span id="cb60-2"><a href="loops.html#cb60-2" aria-hidden="true" tabindex="-1"></a>i <span class="ot">&lt;-</span> <span class="dv">2</span></span>
+<span id="cb60-3"><a href="loops.html#cb60-3" aria-hidden="true" tabindex="-1"></a><span class="cf">while</span>(Fib1[i] <span class="sc">&lt;</span> <span class="dv">100000</span>){</span>
+<span id="cb60-4"><a href="loops.html#cb60-4" aria-hidden="true" tabindex="-1"></a>  Fib1[i<span class="sc">+</span><span class="dv">1</span>] <span class="ot">&lt;-</span> Fib1[i] <span class="sc">+</span> Fib1[i<span class="dv">-1</span>]</span>
+<span id="cb60-5"><a href="loops.html#cb60-5" aria-hidden="true" tabindex="-1"></a>  i <span class="ot">&lt;-</span> i <span class="sc">+</span> <span class="dv">1</span></span>
+<span id="cb60-6"><a href="loops.html#cb60-6" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb60-7"><a href="loops.html#cb60-7" aria-hidden="true" tabindex="-1"></a><span class="fu">length</span>(Fib1)</span></code></pre></div>
+<pre><code>## [1] 27</code></pre>
+</details>
+<ol start="5" style="list-style-type: decimal">
+<li>Use a <code>while()</code> loop to determine the smallest value of <span class="math inline">\(x\)</span> such that
 <span class="math display">\[\begin{equation*}
 \prod_{n=1}^x n &gt; 10^{6}.
-\end{equation*}\]</span></p></li>
-<li><p>Using a <code>for()</code> loop, simulate the flip of a fair coin twenty times, keeping track of the individual outcomes (1 = Heads, 0 = Tails) in a vector.</p></li>
+\end{equation*}\]</span></li>
+</ol>
+<details>
+<summary>
+<strong>Solution</strong>
+</summary>
+<div class="sourceCode" id="cb62"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb62-1"><a href="loops.html#cb62-1" aria-hidden="true" tabindex="-1"></a>prod <span class="ot">&lt;-</span> <span class="dv">1</span></span>
+<span id="cb62-2"><a href="loops.html#cb62-2" aria-hidden="true" tabindex="-1"></a>n <span class="ot">&lt;-</span> <span class="dv">1</span></span>
+<span id="cb62-3"><a href="loops.html#cb62-3" aria-hidden="true" tabindex="-1"></a><span class="cf">while</span>(prod <span class="sc">&lt;=</span> <span class="dv">1000000</span>){</span>
+<span id="cb62-4"><a href="loops.html#cb62-4" aria-hidden="true" tabindex="-1"></a>  n <span class="ot">&lt;-</span> n <span class="sc">+</span> <span class="dv">1</span></span>
+<span id="cb62-5"><a href="loops.html#cb62-5" aria-hidden="true" tabindex="-1"></a>  prod <span class="ot">&lt;-</span> prod<span class="sc">*</span>n</span>
+<span id="cb62-6"><a href="loops.html#cb62-6" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb62-7"><a href="loops.html#cb62-7" aria-hidden="true" tabindex="-1"></a>n</span></code></pre></div>
+<pre><code>## [1] 10</code></pre>
+</details>
+<ol start="6" style="list-style-type: decimal">
+<li>Using a <code>for()</code> loop, simulate the flip of a fair coin twenty times, keeping track of the individual outcomes (1 = Heads, 0 = Tails) in a vector.</li>
 </ol>
 <p><strong>[Hint: You can simulate random numbers that follow given distributions. For example, normal random numbers using rnorm(), exponential using rexp() as seen in Problem 1 or binomial random values using rbinom(). Moreover, the Bernoulli distribution with success parameter <span class="math inline">\(p \in [0,1]\)</span>, which gives a value of 0 or 1, is nothing but a binomial distribution with parameters <span class="math inline">\(n =1\)</span> and <span class="math inline">\(p\)</span>.]</strong></p>
-<ol start="8" style="list-style-type: decimal">
-<li><p>Can you solve the previous problem again without the use of <code>for()</code> loops?</p></li>
-<li><p>Using <code>for()</code> loops, fill a <span class="math inline">\(5 \times 5\)</span> matrix with simulated values from the Poisson distribution having parameter <span class="math inline">\(\lambda = 5\)</span> (<code>rpois(n, lambda = 5)</code>). Do this again but without using loops, only ‘vectorised calculations’.</p></li>
+<details>
+<summary>
+<strong>Solution</strong>
+</summary>
+<div class="sourceCode" id="cb64"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb64-1"><a href="loops.html#cb64-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">rbinom</span>(<span class="dv">20</span>, <span class="dv">1</span>, <span class="fl">0.5</span>)</span>
+<span id="cb64-2"><a href="loops.html#cb64-2" aria-hidden="true" tabindex="-1"></a>Flips <span class="ot">&lt;-</span> <span class="fu">c</span>()</span>
+<span id="cb64-3"><a href="loops.html#cb64-3" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">length</span>(x)){</span>
+<span id="cb64-4"><a href="loops.html#cb64-4" aria-hidden="true" tabindex="-1"></a>  Flips[i] <span class="ot">&lt;-</span> <span class="fu">ifelse</span>(x[i] <span class="sc">==</span> <span class="dv">1</span>, <span class="st">&quot;Heads&quot;</span>, <span class="st">&quot;Tails&quot;</span>)</span>
+<span id="cb64-5"><a href="loops.html#cb64-5" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb64-6"><a href="loops.html#cb64-6" aria-hidden="true" tabindex="-1"></a>Flips</span></code></pre></div>
+<pre><code>##  [1] &quot;Heads&quot; &quot;Tails&quot; &quot;Tails&quot; &quot;Heads&quot; &quot;Tails&quot; &quot;Heads&quot; &quot;Heads&quot; &quot;Tails&quot; &quot;Tails&quot;
+## [10] &quot;Tails&quot; &quot;Tails&quot; &quot;Tails&quot; &quot;Tails&quot; &quot;Heads&quot; &quot;Heads&quot; &quot;Tails&quot; &quot;Tails&quot; &quot;Heads&quot;
+## [19] &quot;Tails&quot; &quot;Tails&quot;</code></pre>
+</details>
+<ol start="7" style="list-style-type: decimal">
+<li>Can you solve the previous problem again without the use of <code>for()</code> loops?</li>
 </ol>
+<details>
+<summary>
+<strong>Solution</strong>
+</summary>
+<div class="sourceCode" id="cb66"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb66-1"><a href="loops.html#cb66-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">rbinom</span>(<span class="dv">20</span>, <span class="dv">1</span>, <span class="fl">0.5</span>)</span>
+<span id="cb66-2"><a href="loops.html#cb66-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ifelse</span>(x <span class="sc">==</span> <span class="dv">1</span>, <span class="st">&quot;Heads&quot;</span>, <span class="st">&quot;Tails&quot;</span>)</span></code></pre></div>
+<pre><code>##  [1] &quot;Tails&quot; &quot;Heads&quot; &quot;Heads&quot; &quot;Heads&quot; &quot;Tails&quot; &quot;Tails&quot; &quot;Heads&quot; &quot;Heads&quot; &quot;Tails&quot;
+## [10] &quot;Tails&quot; &quot;Heads&quot; &quot;Tails&quot; &quot;Tails&quot; &quot;Tails&quot; &quot;Tails&quot; &quot;Heads&quot; &quot;Tails&quot; &quot;Tails&quot;
+## [19] &quot;Tails&quot; &quot;Heads&quot;</code></pre>
+</details>
+<ol start="8" style="list-style-type: decimal">
+<li>Using <code>for()</code> loops, fill a <span class="math inline">\(5 \times 5\)</span> matrix with simulated values from the Poisson distribution having parameter <span class="math inline">\(\lambda = 5\)</span> (<code>rpois(n, lambda = 5)</code>). Do this again but without using loops, only ‘vectorised calculations’.</li>
+</ol>
+<details>
+<summary>
+<strong>Solution</strong>
+</summary>
+<div class="sourceCode" id="cb68"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb68-1"><a href="loops.html#cb68-1" aria-hidden="true" tabindex="-1"></a><span class="co"># With Loops:</span></span>
+<span id="cb68-2"><a href="loops.html#cb68-2" aria-hidden="true" tabindex="-1"></a>M <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="cn">NA</span>, <span class="at">nrow =</span> <span class="dv">5</span>, <span class="at">ncol =</span> <span class="dv">5</span>)</span>
+<span id="cb68-3"><a href="loops.html#cb68-3" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>){</span>
+<span id="cb68-4"><a href="loops.html#cb68-4" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span>(j <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>){</span>
+<span id="cb68-5"><a href="loops.html#cb68-5" aria-hidden="true" tabindex="-1"></a>    x <span class="ot">&lt;-</span> <span class="fu">rpois</span>(<span class="dv">1</span>, <span class="at">lambda =</span> <span class="dv">5</span>)</span>
+<span id="cb68-6"><a href="loops.html#cb68-6" aria-hidden="true" tabindex="-1"></a>    M[i,j] <span class="ot">&lt;-</span> x</span>
+<span id="cb68-7"><a href="loops.html#cb68-7" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb68-8"><a href="loops.html#cb68-8" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb68-9"><a href="loops.html#cb68-9" aria-hidden="true" tabindex="-1"></a>M</span></code></pre></div>
+<pre><code>##      [,1] [,2] [,3] [,4] [,5]
+## [1,]    3    6    2    2    2
+## [2,]    7    5    7    6    4
+## [3,]    5    9    4    7    5
+## [4,]    7    5    2    4    4
+## [5,]    4    2    7    8    8</code></pre>
+<div class="sourceCode" id="cb70"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb70-1"><a href="loops.html#cb70-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Vectorised calculation:</span></span>
+<span id="cb70-2"><a href="loops.html#cb70-2" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">rpois</span>(<span class="dv">25</span>, <span class="at">lambda =</span> <span class="dv">5</span>)</span>
+<span id="cb70-3"><a href="loops.html#cb70-3" aria-hidden="true" tabindex="-1"></a>(M1 <span class="ot">&lt;-</span> <span class="fu">matrix</span>(x, <span class="at">nrow =</span> <span class="dv">5</span>, <span class="at">ncol =</span> <span class="dv">5</span>))</span></code></pre></div>
+<pre><code>##      [,1] [,2] [,3] [,4] [,5]
+## [1,]   10    2    4    4    7
+## [2,]    7    9    4    5    3
+## [3,]    7    0    5    2    7
+## [4,]    8    6    6    2    2
+## [5,]   10    6    5    6    8</code></pre>
+</details>
 <p><strong>Advanced Extension:</strong> Can you modify the above to only fill the matrix with simulated values between 1 and 8? Hint: You will have to use the <code>repeat</code> and <code>break</code> commands.</p>
-<ol start="10" style="list-style-type: decimal">
+<details>
+<summary>
+<strong>Solution</strong>
+</summary>
+<div class="sourceCode" id="cb72"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb72-1"><a href="loops.html#cb72-1" aria-hidden="true" tabindex="-1"></a>sim <span class="ot">&lt;-</span> <span class="fu">c</span>()</span>
+<span id="cb72-2"><a href="loops.html#cb72-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">25</span>){</span>
+<span id="cb72-3"><a href="loops.html#cb72-3" aria-hidden="true" tabindex="-1"></a>  <span class="cf">repeat</span>{</span>
+<span id="cb72-4"><a href="loops.html#cb72-4" aria-hidden="true" tabindex="-1"></a>    x <span class="ot">&lt;-</span> <span class="fu">rpois</span>(<span class="dv">1</span>, <span class="at">lambda =</span> <span class="dv">5</span>)</span>
+<span id="cb72-5"><a href="loops.html#cb72-5" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span>(x <span class="sc">&gt;=</span> <span class="dv">1</span> <span class="sc">&amp;&amp;</span> x <span class="sc">&lt;=</span> <span class="dv">8</span>){</span>
+<span id="cb72-6"><a href="loops.html#cb72-6" aria-hidden="true" tabindex="-1"></a>      sim[i] <span class="ot">&lt;-</span> x</span>
+<span id="cb72-7"><a href="loops.html#cb72-7" aria-hidden="true" tabindex="-1"></a>      <span class="cf">break</span></span>
+<span id="cb72-8"><a href="loops.html#cb72-8" aria-hidden="true" tabindex="-1"></a>    } <span class="cf">else</span> {}</span>
+<span id="cb72-9"><a href="loops.html#cb72-9" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb72-10"><a href="loops.html#cb72-10" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb72-11"><a href="loops.html#cb72-11" aria-hidden="true" tabindex="-1"></a><span class="fu">matrix</span>(sim, <span class="at">nrow =</span> <span class="dv">5</span>, <span class="at">ncol =</span> <span class="dv">5</span>)</span></code></pre></div>
+<pre><code>##      [,1] [,2] [,3] [,4] [,5]
+## [1,]    4    5    3    4    4
+## [2,]    2    5    3    7    6
+## [3,]    6    2    3    3    4
+## [4,]    3    4    4    5    5
+## [5,]    6    3    7    2    7</code></pre>
+</details>
+<ol start="9" style="list-style-type: decimal">
 <li>Use a <code>while()</code> loop to simulate a stock price path starting at 100 with random normally distributed percentage jumps having mean 0 and standard deviation of 0.01, each day. How many days does it take for the stock price to exceed 150 or drop below 50? Plot the path of the stock price over time using the <code>plot()</code> function.</li>
 </ol>
 <p><strong>[Recall: You can simulate a normal random value using the following command <code>rnorm(n, mean = , sd = )</code> where <span class="math inline">\(n\)</span> is the number of values you want to simulate]</strong></p>
+<details>
+<summary>
+<strong>Solution</strong>
+</summary>
+<div class="sourceCode" id="cb74"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb74-1"><a href="loops.html#cb74-1" aria-hidden="true" tabindex="-1"></a>stock <span class="ot">&lt;-</span> <span class="dv">100</span></span>
+<span id="cb74-2"><a href="loops.html#cb74-2" aria-hidden="true" tabindex="-1"></a>stock.prices <span class="ot">&lt;-</span> <span class="fu">c</span>(stock)</span>
+<span id="cb74-3"><a href="loops.html#cb74-3" aria-hidden="true" tabindex="-1"></a>i <span class="ot">&lt;-</span> <span class="dv">1</span></span>
+<span id="cb74-4"><a href="loops.html#cb74-4" aria-hidden="true" tabindex="-1"></a><span class="cf">while</span>(stock <span class="sc">&gt;=</span> <span class="dv">50</span> <span class="sc">&amp;&amp;</span> stock <span class="sc">&lt;=</span> <span class="dv">150</span>){</span>
+<span id="cb74-5"><a href="loops.html#cb74-5" aria-hidden="true" tabindex="-1"></a>  i <span class="ot">&lt;-</span> i <span class="sc">+</span> <span class="dv">1</span></span>
+<span id="cb74-6"><a href="loops.html#cb74-6" aria-hidden="true" tabindex="-1"></a>  percent.change <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="dv">1</span>, <span class="dv">0</span>, <span class="fl">0.01</span>)</span>
+<span id="cb74-7"><a href="loops.html#cb74-7" aria-hidden="true" tabindex="-1"></a>  stock <span class="ot">&lt;-</span> stock<span class="sc">*</span>(<span class="dv">1</span> <span class="sc">+</span> percent.change)</span>
+<span id="cb74-8"><a href="loops.html#cb74-8" aria-hidden="true" tabindex="-1"></a>  stock.prices <span class="ot">&lt;-</span> <span class="fu">c</span>(stock.prices, stock)  </span>
+<span id="cb74-9"><a href="loops.html#cb74-9" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb74-10"><a href="loops.html#cb74-10" aria-hidden="true" tabindex="-1"></a>i</span></code></pre></div>
+<pre><code>## [1] 1255</code></pre>
+<div class="sourceCode" id="cb76"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb76-1"><a href="loops.html#cb76-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="dv">1</span><span class="sc">:</span>i, stock.prices, <span class="at">type =</span> <span class="st">&quot;l&quot;</span>, <span class="at">main =</span> <span class="st">&quot;Stock Price Over Time&quot;</span>, <span class="at">xlab =</span> <span class="st">&quot;Time (Days)&quot;</span>, <span class="at">ylab =</span> <span class="st">&quot;Stock Price (£)&quot;</span>, <span class="at">ylim =</span> <span class="fu">c</span>(<span class="dv">40</span>, <span class="dv">160</span>))</span>
+<span id="cb76-2"><a href="loops.html#cb76-2" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">h =</span> <span class="dv">50</span>, <span class="at">lty =</span> <span class="dv">2</span>, <span class="at">col =</span> <span class="st">&quot;red&quot;</span>)</span>
+<span id="cb76-3"><a href="loops.html#cb76-3" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">h =</span> <span class="dv">150</span>, <span class="at">lty =</span> <span class="dv">2</span>, <span class="at">col =</span> <span class="st">&quot;red&quot;</span>)</span></code></pre></div>
+<img src="_main_files/figure-html/unnamed-chunk-31-1.png" width="672" />
+</details>
 </div>
 <div id="datacamp-courses-2" class="section level2 hasAnchor" number="3.4">
 <h2><span class="header-section-number">3.4</span> DataCamp course(s)<a href="loops.html#datacamp-courses-2" class="anchor-section" aria-label="Anchor link to header"></a></h2>
