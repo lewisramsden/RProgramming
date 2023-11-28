@@ -17,6 +17,8 @@ exr:unlabeled-div-9
 exr:unlabeled-div-10
 exr:unlabeled-div-11
 exr:unlabeled-div-12
+exr:unlabeled-div-13
+exr:unlabeled-div-14
 fig:comment1
 fig:comment2
 fig:help
@@ -59,5 +61,12 @@ while-loops
 exercises-4
 applied-exercises-2
 datacamp-courses-2
+functions
+creating-functions
+prime-number-calculator---example
+multiple-input-variables
+default-options
+exercises-5
+datacamp-courses-3
 additional-tips
 cheat-sheets
