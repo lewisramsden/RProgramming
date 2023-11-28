@@ -1,0 +1,41 @@
+--- 
+title: "Introduction to R Programming - University of York"
+author: "Dr. Lewis Ramsden"
+documentclass: book
+site: bookdown::bookdown_site
+description: |
+  These lecture notes contain all the material for the 'Introduction to R Programming' workshops, which is a supplimentary course of the `BSc Actuarial Science' programme at the University of York.
+link-citations: yes
+---
+
+# Preface {-}
+
+These lecture notes have been created as supplementary material for this course and are mostly built up from the R scripts seen in the workshops, as well as a few additional comments. At the end of each chapter, you will also find the exercise problems discussed in the workshop sessions; the solutions will be added as we progress through the course. 
+
+These notes are a work in progress and as such, will be updated throughout the duration of the course, so please make sure to revisit them on a regular basis. If there is anything missing from these notes that you believe would be beneficial or if you notice any mistakes, please let me know so I can improve them as best I can. Remember, they are here for your benefit so it would be great to have your input too.
+
+## About This Course {-}
+
+This course is by no means exhaustive and is designed to introduce you to the basics of programming in R, improving your confidence with coding and signposting you to additional resources for you to further enhance your skills. 
+
+The course is non-credit bearing and thus, there are no formal assessments for you to submit. However, at the end of each week/chapter there are a number of exercises for you to complete, which I strongly recommend you attempt. The best way to learn and improve you coding skills is by doing it yourself and learning how to overcome the obstacles/errors that you will inevitably encounter. Remember, do not be afraid to search the web for hints and ideas when programming, it is usually the most effective way to solve your problems, I have to do it on a daily basis!
+
+## Schedule {-}
+
+As this is a non-credit bearing course, the syllabus and schedule are flexible and can be delivered as we see fit. However, a rough schedule over the 5-week course is as follows:
+
+1. RStudio and R basics (Revision)
+2. Conditional statements and IF statements
+3. FOR/WHILE loops
+4. Functions
+5. Creating, importing and analysing data 
+
+## DataCamp {-}
+
+In order to assist you in your journey to learning all about R and RStudio, this course is supplemented via an online interactive tutorial website known as DataCamp.
+
+In DataCamp, you will have access to hundreds of interactive courses for R (and other languages such as Python and SQL), each tailored to a different aspect of the fundamentals of R programming or an area of application. In general, only a few of these courses are free to use, with the remaining requiring a paid subscription for access. However, for those of you sitting the short course on 'R programming' you will have free access to the full library of courses for 6 months from the start of the course. Registration for this free access will be discussed in the lecture itself and is only available to those invited by the lecturer via an email link. To learn more about DataCamp and what it has to offer visit \url{https://www.datacamp.com}. 
+
+As mentioned above, DataCamp will be used as a supplementary resource for this course and we strongly encourage you to use it. At the end of each chapter of these lecture notes, we will include links directing you to appropriate courses within DataCamp that we believe complement the material given. 
+
+

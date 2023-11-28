@@ -1,0 +1,1513 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Week3 Loops | Introduction to R Programming - University of York</title>
+  <meta name="description" content="These lecture notes contain all the material for the ‘Introduction to R Programming’ workshops, which is a supplimentary course of the `BSc Actuarial Science’ programme at the University of York." />
+  <meta name="generator" content="bookdown 0.29 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Week3 Loops | Introduction to R Programming - University of York" />
+  <meta property="og:type" content="book" />
+  
+  <meta property="og:description" content="These lecture notes contain all the material for the ‘Introduction to R Programming’ workshops, which is a supplimentary course of the `BSc Actuarial Science’ programme at the University of York." />
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Week3 Loops | Introduction to R Programming - University of York" />
+  
+  <meta name="twitter:description" content="These lecture notes contain all the material for the ‘Introduction to R Programming’ workshops, which is a supplimentary course of the `BSc Actuarial Science’ programme at the University of York." />
+  
+
+<meta name="author" content="Dr. Lewis Ramsden" />
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="conditionals-and-if-statements.html"/>
+<link rel="next" href="additional-tips.html"/>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Introduction to R Programming</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Preface</a>
+<ul>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#about-this-course"><i class="fa fa-check"></i>About This Course</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#schedule"><i class="fa fa-check"></i>Schedule</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#datacamp"><i class="fa fa-check"></i>DataCamp</a></li>
+</ul></li>
+<li class="chapter" data-level="1" data-path="rstudio-and-r-basics-revision.html"><a href="rstudio-and-r-basics-revision.html"><i class="fa fa-check"></i><b>1</b> RStudio and R Basics (Revision)</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="rstudio-and-r-basics-revision.html"><a href="rstudio-and-r-basics-revision.html#how-to-install-r-and-rstudio"><i class="fa fa-check"></i><b>1.1</b> How to install R and RStudio</a></li>
+<li class="chapter" data-level="1.2" data-path="rstudio-and-r-basics-revision.html"><a href="rstudio-and-r-basics-revision.html#rstudio-interface-explained"><i class="fa fa-check"></i><b>1.2</b> RStudio interface explained</a></li>
+<li class="chapter" data-level="1.3" data-path="rstudio-and-r-basics-revision.html"><a href="rstudio-and-r-basics-revision.html#mathematical-calculations"><i class="fa fa-check"></i><b>1.3</b> Mathematical calculations</a>
+<ul>
+<li class="chapter" data-level="1.3.1" data-path="rstudio-and-r-basics-revision.html"><a href="rstudio-and-r-basics-revision.html#basic-numerical-calculations"><i class="fa fa-check"></i><b>1.3.1</b> Basic numerical calculations</a></li>
+<li class="chapter" data-level="1.3.2" data-path="rstudio-and-r-basics-revision.html"><a href="rstudio-and-r-basics-revision.html#more-complicated-calculations"><i class="fa fa-check"></i><b>1.3.2</b> More complicated calculations</a></li>
+</ul></li>
+<li class="chapter" data-level="1.4" data-path="rstudio-and-r-basics-revision.html"><a href="rstudio-and-r-basics-revision.html#r-script"><i class="fa fa-check"></i><b>1.4</b> R script</a></li>
+<li class="chapter" data-level="1.5" data-path="rstudio-and-r-basics-revision.html"><a href="rstudio-and-r-basics-revision.html#assigning-variables"><i class="fa fa-check"></i><b>1.5</b> Assigning variables</a></li>
+<li class="chapter" data-level="1.6" data-path="rstudio-and-r-basics-revision.html"><a href="rstudio-and-r-basics-revision.html#vectors-and-matrices"><i class="fa fa-check"></i><b>1.6</b> Vectors and matrices</a>
+<ul>
+<li class="chapter" data-level="1.6.1" data-path="rstudio-and-r-basics-revision.html"><a href="rstudio-and-r-basics-revision.html#vectors"><i class="fa fa-check"></i><b>1.6.1</b> Vectors</a></li>
+<li class="chapter" data-level="1.6.2" data-path="rstudio-and-r-basics-revision.html"><a href="rstudio-and-r-basics-revision.html#vector-calculations"><i class="fa fa-check"></i><b>1.6.2</b> Vector calculations</a></li>
+<li class="chapter" data-level="1.6.3" data-path="rstudio-and-r-basics-revision.html"><a href="rstudio-and-r-basics-revision.html#vector-strings"><i class="fa fa-check"></i><b>1.6.3</b> Vector strings</a></li>
+<li class="chapter" data-level="1.6.4" data-path="rstudio-and-r-basics-revision.html"><a href="rstudio-and-r-basics-revision.html#vector-extraction"><i class="fa fa-check"></i><b>1.6.4</b> Vector extraction</a></li>
+<li class="chapter" data-level="1.6.5" data-path="rstudio-and-r-basics-revision.html"><a href="rstudio-and-r-basics-revision.html#exercises"><i class="fa fa-check"></i><b>1.6.5</b> Exercises</a></li>
+<li class="chapter" data-level="1.6.6" data-path="rstudio-and-r-basics-revision.html"><a href="rstudio-and-r-basics-revision.html#matrices"><i class="fa fa-check"></i><b>1.6.6</b> Matrices</a></li>
+<li class="chapter" data-level="1.6.7" data-path="rstudio-and-r-basics-revision.html"><a href="rstudio-and-r-basics-revision.html#matrix-calculations"><i class="fa fa-check"></i><b>1.6.7</b> Matrix calculations</a></li>
+<li class="chapter" data-level="1.6.8" data-path="rstudio-and-r-basics-revision.html"><a href="rstudio-and-r-basics-revision.html#matrix-operations"><i class="fa fa-check"></i><b>1.6.8</b> Matrix operations</a></li>
+<li class="chapter" data-level="1.6.9" data-path="rstudio-and-r-basics-revision.html"><a href="rstudio-and-r-basics-revision.html#matrix-extraction"><i class="fa fa-check"></i><b>1.6.9</b> Matrix extraction</a></li>
+<li class="chapter" data-level="1.6.10" data-path="rstudio-and-r-basics-revision.html"><a href="rstudio-and-r-basics-revision.html#exercises-1"><i class="fa fa-check"></i><b>1.6.10</b> Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="1.7" data-path="rstudio-and-r-basics-revision.html"><a href="rstudio-and-r-basics-revision.html#plotting-graphs"><i class="fa fa-check"></i><b>1.7</b> Plotting graphs</a>
+<ul>
+<li class="chapter" data-level="1.7.1" data-path="rstudio-and-r-basics-revision.html"><a href="rstudio-and-r-basics-revision.html#adding-to-plots-lines-points-etc."><i class="fa fa-check"></i><b>1.7.1</b> Adding to plots (lines, points etc.)</a></li>
+<li class="chapter" data-level="1.7.2" data-path="rstudio-and-r-basics-revision.html"><a href="rstudio-and-r-basics-revision.html#exercises-2"><i class="fa fa-check"></i><b>1.7.2</b> Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="1.8" data-path="rstudio-and-r-basics-revision.html"><a href="rstudio-and-r-basics-revision.html#applied-exercises"><i class="fa fa-check"></i><b>1.8</b> Applied exercises</a></li>
+<li class="chapter" data-level="1.9" data-path="rstudio-and-r-basics-revision.html"><a href="rstudio-and-r-basics-revision.html#datacamp-courses"><i class="fa fa-check"></i><b>1.9</b> DataCamp course(s)</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="conditionals-and-if-statements.html"><a href="conditionals-and-if-statements.html"><i class="fa fa-check"></i><b>2</b> Conditionals and IF Statements</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="conditionals-and-if-statements.html"><a href="conditionals-and-if-statements.html#relational-operators"><i class="fa fa-check"></i><b>2.1</b> Relational operators</a></li>
+<li class="chapter" data-level="2.2" data-path="conditionals-and-if-statements.html"><a href="conditionals-and-if-statements.html#logical-operators"><i class="fa fa-check"></i><b>2.2</b> Logical operators</a></li>
+<li class="chapter" data-level="2.3" data-path="conditionals-and-if-statements.html"><a href="conditionals-and-if-statements.html#if-statements"><i class="fa fa-check"></i><b>2.3</b> IF statements</a></li>
+<li class="chapter" data-level="2.4" data-path="conditionals-and-if-statements.html"><a href="conditionals-and-if-statements.html#exercises-3"><i class="fa fa-check"></i><b>2.4</b> Exercises</a></li>
+<li class="chapter" data-level="2.5" data-path="conditionals-and-if-statements.html"><a href="conditionals-and-if-statements.html#applied-exercises-1"><i class="fa fa-check"></i><b>2.5</b> Applied exercises</a></li>
+<li class="chapter" data-level="2.6" data-path="conditionals-and-if-statements.html"><a href="conditionals-and-if-statements.html#datacamp-courses-1"><i class="fa fa-check"></i><b>2.6</b> DataCamp course(s)</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="loops.html"><a href="loops.html"><i class="fa fa-check"></i><b>3</b> Loops</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="loops.html"><a href="loops.html#for-loops"><i class="fa fa-check"></i><b>3.1</b> For loops</a>
+<ul>
+<li class="chapter" data-level="3.1.1" data-path="loops.html"><a href="loops.html#matrices-1"><i class="fa fa-check"></i><b>3.1.1</b> Matrices</a></li>
+</ul></li>
+<li class="chapter" data-level="3.2" data-path="loops.html"><a href="loops.html#while-loops"><i class="fa fa-check"></i><b>3.2</b> While loops</a></li>
+<li class="chapter" data-level="3.3" data-path="loops.html"><a href="loops.html#exercises-4"><i class="fa fa-check"></i><b>3.3</b> Exercises</a></li>
+<li class="chapter" data-level="3.4" data-path="loops.html"><a href="loops.html#applied-exercises-2"><i class="fa fa-check"></i><b>3.4</b> Applied Exercises</a></li>
+<li class="chapter" data-level="3.5" data-path="loops.html"><a href="loops.html#datacamp-courses-2"><i class="fa fa-check"></i><b>3.5</b> DataCamp course(s)</a></li>
+</ul></li>
+<li class="appendix"><span><b>Appendix</b></span></li>
+<li class="chapter" data-level="A" data-path="additional-tips.html"><a href="additional-tips.html"><i class="fa fa-check"></i><b>A</b> Additional Tips</a>
+<ul>
+<li class="chapter" data-level="" data-path="additional-tips.html"><a href="additional-tips.html#commenting"><i class="fa fa-check"></i>Commenting</a></li>
+<li class="chapter" data-level="" data-path="additional-tips.html"><a href="additional-tips.html#help"><i class="fa fa-check"></i>Help</a></li>
+</ul></li>
+<li class="chapter" data-level="B" data-path="cheat-sheets.html"><a href="cheat-sheets.html"><i class="fa fa-check"></i><b>B</b> Cheat Sheets</a>
+<ul>
+<li class="chapter" data-level="" data-path="cheat-sheets.html"><a href="cheat-sheets.html#r-cheat-sheets"><i class="fa fa-check"></i>R Cheat Sheets</a></li>
+<li class="chapter" data-level="" data-path="cheat-sheets.html"><a href="cheat-sheets.html#rmarkdown-cheat-sheets"><i class="fa fa-check"></i>RMarkdown Cheat Sheets</a></li>
+<li class="chapter" data-level="" data-path="cheat-sheets.html"><a href="cheat-sheets.html#rmarkdown-guides"><i class="fa fa-check"></i>RMarkdown Guides</a></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="https://www.york.ac.uk/business-society/people/lewis-ramsden/" target="blank">Dr. Lewis Ramsden</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Introduction to R Programming - University of York</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="loops" class="section level1 hasAnchor" number="3">
+<h1><span class="header-section-number">Week3</span> Loops<a href="loops.html#loops" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<div id="for-loops" class="section level2 hasAnchor" number="3.1">
+<h2><span class="header-section-number">3.1</span> For loops<a href="loops.html#for-loops" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>‘For loops’, sometimes just known as ‘Loops’ are one of the most useful tools in programming and you will find, once you understand how to implement them, that they become your best friends. That being said, it is very common that people like them so much that they are used when they are not necessary, as we will see later.</p>
+<p>Simply put, a ‘for loop’ allows us to ‘loop’ through all the elements of a given object (usually a vector or matrix) and perform a command or operation for each element. When combined with ‘IF statements’, ‘for loops’ become very powerful and flexible and allow you to perform almost any task.</p>
+<p>Let us start by understanding how a basic ‘for loop’ is constructed, then we will consider some simple examples. The general form of a for loop is as follows:</p>
+<p><code>for (i in x) {</code> <br>
+<code>command in terms of i</code> <br>
+<code>}</code> <br></p>
+<p>That is, i will take the first value of the object x, perform the command in the brackets with this given value of i, then i will loop to the second value of x and so on. For example:</p>
+<div class="sourceCode" id="cb201"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb201-1"><a href="loops.html#cb201-1" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>,<span class="dv">5</span>)) {</span>
+<span id="cb201-2"><a href="loops.html#cb201-2" tabindex="-1"></a>  <span class="fu">print</span>(i<span class="sc">^</span><span class="dv">2</span>)</span>
+<span id="cb201-3"><a href="loops.html#cb201-3" tabindex="-1"></a>}</span></code></pre></div>
+<pre><code>## [1] 1
+## [1] 4
+## [1] 9
+## [1] 16
+## [1] 25</code></pre>
+<p>This works perfectly but notice that we could also do this using what we called ‘vectorised calculation’, which takes advantage of how R deals with vectors on an element-by-element basis:</p>
+<div class="sourceCode" id="cb203"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb203-1"><a href="loops.html#cb203-1" tabindex="-1"></a>(<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>)<span class="sc">^</span><span class="dv">2</span></span></code></pre></div>
+<pre><code>## [1]  1  4  9 16 25</code></pre>
+<p>As another example, consider the following:</p>
+<div class="sourceCode" id="cb205"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb205-1"><a href="loops.html#cb205-1" tabindex="-1"></a>(x <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="at">from =</span> <span class="dv">10</span>, <span class="at">to =</span> <span class="dv">100</span>, <span class="at">by =</span> <span class="dv">5</span>))</span></code></pre></div>
+<pre><code>##  [1]  10  15  20  25  30  35  40  45  50  55  60  65  70  75  80  85  90  95 100</code></pre>
+<div class="sourceCode" id="cb207"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb207-1"><a href="loops.html#cb207-1" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> x){</span>
+<span id="cb207-2"><a href="loops.html#cb207-2" tabindex="-1"></a>  <span class="fu">print</span>(i <span class="sc">%%</span> <span class="dv">2</span> <span class="sc">==</span> <span class="dv">0</span>)</span>
+<span id="cb207-3"><a href="loops.html#cb207-3" tabindex="-1"></a>}</span></code></pre></div>
+<pre><code>## [1] TRUE
+## [1] FALSE
+## [1] TRUE
+## [1] FALSE
+## [1] TRUE
+## [1] FALSE
+## [1] TRUE
+## [1] FALSE
+## [1] TRUE
+## [1] FALSE
+## [1] TRUE
+## [1] FALSE
+## [1] TRUE
+## [1] FALSE
+## [1] TRUE
+## [1] FALSE
+## [1] TRUE
+## [1] FALSE
+## [1] TRUE</code></pre>
+<p>Again, was this necessary or could we have used vectorised calculations again? If possible, you should always use the vectorised calculation version of a command as this saves times and processing power. That being said,there are many situations where ‘for loops’ are necessary, not just useful.</p>
+<p>Let us return to our mtcars data set seenin the previous chapter and consider a problem regarding plotting histograms of the data:</p>
+<div class="sourceCode" id="cb209"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb209-1"><a href="loops.html#cb209-1" tabindex="-1"></a><span class="fu">hist</span>(mtcars<span class="sc">$</span>hp)</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-84-1.png" width="672" /></p>
+<div class="sourceCode" id="cb210"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb210-1"><a href="loops.html#cb210-1" tabindex="-1"></a><span class="fu">hist</span>(mtcars[,<span class="dv">4</span>])</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-84-2.png" width="672" /></p>
+<p>Now, imagine you wanted a histogram for every variable. Executing the code <code>hist(mtcars)</code> wouldn’t work as the input necessary for this function should be in the form of a single vector of values. However, to overcome this hurdle, we could make use of ‘for loops’:</p>
+<div class="sourceCode" id="cb211"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb211-1"><a href="loops.html#cb211-1" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">ncol</span>(mtcars)){</span>
+<span id="cb211-2"><a href="loops.html#cb211-2" tabindex="-1"></a>  <span class="fu">hist</span>(mtcars[,i], <span class="at">main =</span> <span class="fu">paste</span>(<span class="st">&quot;Histogram of&quot;</span>, <span class="fu">colnames</span>(mtcars)[i]))</span>
+<span id="cb211-3"><a href="loops.html#cb211-3" tabindex="-1"></a>}</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-85-1.png" width="672" /><img src="_main_files/figure-html/unnamed-chunk-85-2.png" width="672" /><img src="_main_files/figure-html/unnamed-chunk-85-3.png" width="672" /><img src="_main_files/figure-html/unnamed-chunk-85-4.png" width="672" /><img src="_main_files/figure-html/unnamed-chunk-85-5.png" width="672" /><img src="_main_files/figure-html/unnamed-chunk-85-6.png" width="672" /><img src="_main_files/figure-html/unnamed-chunk-85-7.png" width="672" /><img src="_main_files/figure-html/unnamed-chunk-85-8.png" width="672" /><img src="_main_files/figure-html/unnamed-chunk-85-9.png" width="672" /><img src="_main_files/figure-html/unnamed-chunk-85-10.png" width="672" /><img src="_main_files/figure-html/unnamed-chunk-85-11.png" width="672" /></p>
+<p>The above is great, but it would be nice to have them all on one screen together. <strong>Note that the code below is not really linked to for loops but is still worth mentioning here.</strong></p>
+<div class="sourceCode" id="cb212"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb212-1"><a href="loops.html#cb212-1" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow =</span> <span class="fu">c</span>(<span class="dv">3</span>,<span class="dv">4</span>)) <span class="co"># Changes the plot frame to fit 3 rows and 4 columns of separate plots.</span></span>
+<span id="cb212-2"><a href="loops.html#cb212-2" tabindex="-1"></a><span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">ncol</span>(mtcars)){</span>
+<span id="cb212-3"><a href="loops.html#cb212-3" tabindex="-1"></a>  <span class="fu">hist</span>(mtcars[,i])</span>
+<span id="cb212-4"><a href="loops.html#cb212-4" tabindex="-1"></a>}</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-86-1.png" width="672" /></p>
+<p>This is much better but I would like the individual titles and axis labels to reflect the variable name:</p>
+<div class="sourceCode" id="cb213"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb213-1"><a href="loops.html#cb213-1" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow =</span> <span class="fu">c</span>(<span class="dv">3</span>,<span class="dv">4</span>))</span>
+<span id="cb213-2"><a href="loops.html#cb213-2" tabindex="-1"></a><span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">ncol</span>(mtcars)){</span>
+<span id="cb213-3"><a href="loops.html#cb213-3" tabindex="-1"></a>  <span class="fu">hist</span>(mtcars[,i], <span class="at">main =</span> <span class="fu">paste</span>(<span class="st">&quot;Histogram of&quot;</span>, <span class="fu">colnames</span>(mtcars)[i]), <span class="at">xlab =</span> <span class="fu">paste</span>(<span class="fu">colnames</span>(mtcars)[i]))</span>
+<span id="cb213-4"><a href="loops.html#cb213-4" tabindex="-1"></a>}</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-87-1.png" width="672" /></p>
+<p>Even this very simply example starts to show you the value and versatility of for loops.</p>
+<p>Now, as mentioned above, it is also possible to combine ‘for loops’ with IF statements. For example, the code below counts the number of even numbers in a vector of values:</p>
+<div class="sourceCode" id="cb214"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb214-1"><a href="loops.html#cb214-1" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">5</span>,<span class="dv">3</span>,<span class="dv">9</span>,<span class="dv">8</span>,<span class="dv">11</span>,<span class="dv">6</span>)</span>
+<span id="cb214-2"><a href="loops.html#cb214-2" tabindex="-1"></a></span>
+<span id="cb214-3"><a href="loops.html#cb214-3" tabindex="-1"></a>count <span class="ot">&lt;-</span> <span class="dv">0</span></span>
+<span id="cb214-4"><a href="loops.html#cb214-4" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> x) {</span>
+<span id="cb214-5"><a href="loops.html#cb214-5" tabindex="-1"></a>  <span class="cf">if</span>(i <span class="sc">%%</span> <span class="dv">2</span> <span class="sc">==</span> <span class="dv">0</span>){</span>
+<span id="cb214-6"><a href="loops.html#cb214-6" tabindex="-1"></a>    count <span class="ot">&lt;-</span> count<span class="sc">+</span><span class="dv">1</span></span>
+<span id="cb214-7"><a href="loops.html#cb214-7" tabindex="-1"></a>  }</span>
+<span id="cb214-8"><a href="loops.html#cb214-8" tabindex="-1"></a>}</span>
+<span id="cb214-9"><a href="loops.html#cb214-9" tabindex="-1"></a><span class="fu">print</span>(count)</span></code></pre></div>
+<pre><code>## [1] 3</code></pre>
+<div class="exercise">
+<p><span id="exr:unlabeled-div-9" class="exercise"><strong>Exercise 3.1  </strong></span>Is there a quicker and easier way to achieve what has been done above without ‘for loops’?</p>
+</div>
+<!-- <details> -->
+<!-- <summary>**Solution**</summary> -->
+<!-- ```{r} -->
+<!-- sum(x %% 2 == 0) -->
+<!-- ``` -->
+<!-- </details> -->
+<div class="exercise">
+<p><span id="exr:unlabeled-div-10" class="exercise"><strong>Exercise 3.2  </strong></span>Can you write a ‘for loop’ that prints out the names of the cars in the <code>mtcars</code> data set which have 8 cylinders? Note, the car names can be found using the <code>rownames(mtcars)</code> command.</p>
+</div>
+<!-- <details> -->
+<!-- <summary>**Solution**</summary> -->
+<!-- ```{r} -->
+<!-- for(i in 1:nrow(mtcars)){ -->
+<!--   if(mtcars$cyl[i]==8){ -->
+<!--     print(rownames(mtcars)[i]) -->
+<!--   } else {} -->
+<!-- } -->
+<!-- ``` -->
+<!-- </details> -->
+<p>In fact, there is actually another way this can be done using conditional extraction which we will talk more about next week.</p>
+<div class="exercise">
+<p><span id="exr:unlabeled-div-11" class="exercise"><strong>Exercise 3.3  </strong></span>Remember our IF statement from last week that didn’t work correctly because we used a vector in the conditional statement? i.e.</p>
+<div class="sourceCode" id="cb216"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb216-1"><a href="loops.html#cb216-1" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>)</span>
+<span id="cb216-2"><a href="loops.html#cb216-2" tabindex="-1"></a></span>
+<span id="cb216-3"><a href="loops.html#cb216-3" tabindex="-1"></a><span class="cf">if</span> (x <span class="sc">&lt;</span> <span class="dv">0</span>) {</span>
+<span id="cb216-4"><a href="loops.html#cb216-4" tabindex="-1"></a>  <span class="cf">if</span> (x <span class="sc">%%</span> <span class="dv">2</span> <span class="sc">==</span> <span class="dv">0</span>){</span>
+<span id="cb216-5"><a href="loops.html#cb216-5" tabindex="-1"></a>    <span class="fu">print</span>(<span class="fu">paste</span>(x, <span class="st">&quot;is a negative even number&quot;</span>))</span>
+<span id="cb216-6"><a href="loops.html#cb216-6" tabindex="-1"></a>  } <span class="cf">else</span> {</span>
+<span id="cb216-7"><a href="loops.html#cb216-7" tabindex="-1"></a>    <span class="fu">print</span>(<span class="fu">paste</span>(x,<span class="st">&quot;is a negative odd number&quot;</span>))}</span>
+<span id="cb216-8"><a href="loops.html#cb216-8" tabindex="-1"></a>} <span class="cf">else</span> <span class="cf">if</span> (x <span class="sc">&gt;</span> <span class="dv">0</span>) {</span>
+<span id="cb216-9"><a href="loops.html#cb216-9" tabindex="-1"></a>  <span class="cf">if</span> (x <span class="sc">%%</span> <span class="dv">2</span> <span class="sc">==</span> <span class="dv">0</span>){</span>
+<span id="cb216-10"><a href="loops.html#cb216-10" tabindex="-1"></a>    <span class="fu">print</span>(<span class="fu">paste</span>(x, <span class="st">&quot;is a positive even number&quot;</span>))</span>
+<span id="cb216-11"><a href="loops.html#cb216-11" tabindex="-1"></a>  } <span class="cf">else</span> {</span>
+<span id="cb216-12"><a href="loops.html#cb216-12" tabindex="-1"></a>    <span class="fu">print</span>(<span class="fu">paste</span>(x, <span class="st">&quot;is a positive odd number&quot;</span>))</span>
+<span id="cb216-13"><a href="loops.html#cb216-13" tabindex="-1"></a>  }</span>
+<span id="cb216-14"><a href="loops.html#cb216-14" tabindex="-1"></a>} <span class="cf">else</span> {</span>
+<span id="cb216-15"><a href="loops.html#cb216-15" tabindex="-1"></a>  <span class="fu">print</span>(<span class="fu">paste</span>(x, <span class="st">&quot;is Zero&quot;</span>))</span>
+<span id="cb216-16"><a href="loops.html#cb216-16" tabindex="-1"></a>}</span></code></pre></div>
+<p>Can you now apply the idea of a ‘for loop’ to get this to work correctly?</p>
+</div>
+<!-- <details> -->
+<!-- <summary>**Solution**</summary> -->
+<!-- ```{r} -->
+<!-- x <- c(1, 2, 3) -->
+<!-- for(i in x){ -->
+<!-- if (i < 0) { -->
+<!--   if (i %% 2 == 0){ -->
+<!--     print(paste(i, "is a negative even number")) -->
+<!--   } else { -->
+<!--     print(paste(i,"is a negative odd number"))} -->
+<!-- } else if (i > 0) { -->
+<!--   if (i %% 2 == 0){ -->
+<!--     print(paste(i, "is a positive even number")) -->
+<!--   } else { -->
+<!--     print(paste(i, "is a positive odd number")) -->
+<!--   } -->
+<!-- } else { -->
+<!--   print(paste(i, "is Zero")) -->
+<!--   } -->
+<!-- } -->
+<!-- ``` -->
+<!-- </details> -->
+<div id="matrices-1" class="section level3 hasAnchor" number="3.1.1">
+<h3><span class="header-section-number">3.1.1</span> Matrices<a href="loops.html#matrices-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>So far, we have seen how we can Loop through a vector of values to perform certain tasks, but it is also possible to do this over a matrix of values. The only difference is that this requires two loops (one for each index - row and column). For example:</p>
+<div class="sourceCode" id="cb217"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb217-1"><a href="loops.html#cb217-1" tabindex="-1"></a>(M <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="fu">round</span>(<span class="fu">runif</span>(<span class="dv">9</span>,<span class="at">min =</span> <span class="dv">0</span>, <span class="at">max =</span> <span class="dv">100</span>)), <span class="at">nrow =</span> <span class="dv">3</span>, <span class="at">ncol =</span> <span class="dv">3</span>)) <span class="co"># This creates a 3x3 matrix of rounded uniform random values.</span></span></code></pre></div>
+<pre><code>##      [,1] [,2] [,3]
+## [1,]   44   86   46
+## [2,]   20   98   35
+## [3,]   56   34   26</code></pre>
+<div class="sourceCode" id="cb219"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb219-1"><a href="loops.html#cb219-1" tabindex="-1"></a><span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">nrow</span>(M)){</span>
+<span id="cb219-2"><a href="loops.html#cb219-2" tabindex="-1"></a>  <span class="cf">for</span>(j <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">ncol</span>(M)){</span>
+<span id="cb219-3"><a href="loops.html#cb219-3" tabindex="-1"></a>    <span class="fu">print</span>(<span class="fu">paste</span>(<span class="st">&quot;Element [&quot;</span>, i,<span class="st">&quot;,&quot;</span>,j,<span class="st">&quot;] of M is equal to&quot;</span>,M[i,j]))</span>
+<span id="cb219-4"><a href="loops.html#cb219-4" tabindex="-1"></a>    }</span>
+<span id="cb219-5"><a href="loops.html#cb219-5" tabindex="-1"></a>}</span></code></pre></div>
+<pre><code>## [1] &quot;Element [ 1 , 1 ] of M is equal to 44&quot;
+## [1] &quot;Element [ 1 , 2 ] of M is equal to 86&quot;
+## [1] &quot;Element [ 1 , 3 ] of M is equal to 46&quot;
+## [1] &quot;Element [ 2 , 1 ] of M is equal to 20&quot;
+## [1] &quot;Element [ 2 , 2 ] of M is equal to 98&quot;
+## [1] &quot;Element [ 2 , 3 ] of M is equal to 35&quot;
+## [1] &quot;Element [ 3 , 1 ] of M is equal to 56&quot;
+## [1] &quot;Element [ 3 , 2 ] of M is equal to 34&quot;
+## [1] &quot;Element [ 3 , 3 ] of M is equal to 26&quot;</code></pre>
+<p>Another very important technique that you will need when working with ‘for loops’ is how to store values in a new vector (matrix) as you finish each loop. This is something that you will use a lot when working through your R based assessments in your Actuarial modules, since you will be working with larger data sets and need to make calculations which then need to be saved for use later on.</p>
+<p>As a simple example let us see how we could use a ‘for loop’ to generate some random values and save them in a vector if they satisfy some condition.</p>
+<p>Before we start, let us note how you can add a value to an already existing vector</p>
+<div class="sourceCode" id="cb221"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb221-1"><a href="loops.html#cb221-1" tabindex="-1"></a>(x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">3</span>, <span class="dv">5</span>, <span class="dv">7</span>, <span class="dv">9</span>))</span></code></pre></div>
+<pre><code>## [1] 1 3 5 7 9</code></pre>
+<div class="sourceCode" id="cb223"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb223-1"><a href="loops.html#cb223-1" tabindex="-1"></a>(x <span class="ot">&lt;-</span> <span class="fu">c</span>(x, <span class="dv">11</span>))</span></code></pre></div>
+<pre><code>## [1]  1  3  5  7  9 11</code></pre>
+<p>In the above line of code, x has been over-written as the vector which contain all the values of the original vector x but then also includes 11 as well. This type of idea of over-writing a given value using itself has been seen already (count variable at the start of this session) and is a very common technique.</p>
+<div class="sourceCode" id="cb225"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb225-1"><a href="loops.html#cb225-1" tabindex="-1"></a>vec <span class="ot">&lt;-</span> <span class="fu">c</span>()</span>
+<span id="cb225-2"><a href="loops.html#cb225-2" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">20</span>){</span>
+<span id="cb225-3"><a href="loops.html#cb225-3" tabindex="-1"></a>  rand <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="dv">1</span>, <span class="at">mean =</span> <span class="dv">0</span>, <span class="at">sd =</span> <span class="dv">1</span>) <span class="co"># This generates a standard normal random variable</span></span>
+<span id="cb225-4"><a href="loops.html#cb225-4" tabindex="-1"></a>  <span class="cf">if</span>(rand <span class="sc">&gt;</span> <span class="dv">0</span>){</span>
+<span id="cb225-5"><a href="loops.html#cb225-5" tabindex="-1"></a>    vec <span class="ot">&lt;-</span> <span class="fu">c</span>(vec,rand)</span>
+<span id="cb225-6"><a href="loops.html#cb225-6" tabindex="-1"></a>  }</span>
+<span id="cb225-7"><a href="loops.html#cb225-7" tabindex="-1"></a>}</span>
+<span id="cb225-8"><a href="loops.html#cb225-8" tabindex="-1"></a>vec</span></code></pre></div>
+<pre><code>##  [1] 0.005512954 1.498507015 0.293155615 0.276509132 2.039636613 1.849125749
+##  [7] 0.807890904 0.080278717 0.099427783 1.078409010 2.023306983 0.207384631
+## [13] 0.515240159</code></pre>
+<p>Alternatively, you could actually save each value in the vector as a particular element, e.g.</p>
+<div class="sourceCode" id="cb227"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb227-1"><a href="loops.html#cb227-1" tabindex="-1"></a>vec <span class="ot">&lt;-</span> <span class="fu">c</span>()</span>
+<span id="cb227-2"><a href="loops.html#cb227-2" tabindex="-1"></a>vec</span></code></pre></div>
+<pre><code>## NULL</code></pre>
+<div class="sourceCode" id="cb229"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb229-1"><a href="loops.html#cb229-1" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">20</span>){</span>
+<span id="cb229-2"><a href="loops.html#cb229-2" tabindex="-1"></a>  rand <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="dv">1</span>, <span class="at">mean =</span> <span class="dv">0</span>, <span class="at">sd =</span> <span class="dv">1</span>)</span>
+<span id="cb229-3"><a href="loops.html#cb229-3" tabindex="-1"></a>  <span class="cf">if</span>(rand <span class="sc">&gt;</span> <span class="dv">0</span>){</span>
+<span id="cb229-4"><a href="loops.html#cb229-4" tabindex="-1"></a>    vec[i] <span class="ot">&lt;-</span> rand</span>
+<span id="cb229-5"><a href="loops.html#cb229-5" tabindex="-1"></a>  }</span>
+<span id="cb229-6"><a href="loops.html#cb229-6" tabindex="-1"></a>}</span>
+<span id="cb229-7"><a href="loops.html#cb229-7" tabindex="-1"></a>vec</span></code></pre></div>
+<pre><code>##  [1]        NA        NA        NA 0.1392454 1.2637265        NA 0.7050683
+##  [8]        NA 0.9163221 0.2384281 1.0067351        NA        NA 0.4972835
+## [15] 0.3291732 2.0054633        NA        NA        NA 0.3183235</code></pre>
+<p>In fact, you could have easily set this up to store all the values in a Matrix rather than a vector</p>
+<div class="sourceCode" id="cb231"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb231-1"><a href="loops.html#cb231-1" tabindex="-1"></a>(mat <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="fu">c</span>(<span class="fu">rep</span>(<span class="cn">NA</span>, <span class="dv">16</span>)), <span class="at">nrow =</span> <span class="dv">4</span>))</span></code></pre></div>
+<pre><code>##      [,1] [,2] [,3] [,4]
+## [1,]   NA   NA   NA   NA
+## [2,]   NA   NA   NA   NA
+## [3,]   NA   NA   NA   NA
+## [4,]   NA   NA   NA   NA</code></pre>
+<div class="sourceCode" id="cb233"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb233-1"><a href="loops.html#cb233-1" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>){</span>
+<span id="cb233-2"><a href="loops.html#cb233-2" tabindex="-1"></a>  <span class="cf">for</span> (j <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>){</span>
+<span id="cb233-3"><a href="loops.html#cb233-3" tabindex="-1"></a>  rand <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="dv">1</span>, <span class="at">mean =</span> <span class="dv">0</span>, <span class="at">sd =</span> <span class="dv">1</span>)</span>
+<span id="cb233-4"><a href="loops.html#cb233-4" tabindex="-1"></a>  <span class="cf">if</span>(rand <span class="sc">&gt;</span> <span class="dv">0</span>){</span>
+<span id="cb233-5"><a href="loops.html#cb233-5" tabindex="-1"></a>    mat[i,j] <span class="ot">&lt;-</span> rand</span>
+<span id="cb233-6"><a href="loops.html#cb233-6" tabindex="-1"></a>  }</span>
+<span id="cb233-7"><a href="loops.html#cb233-7" tabindex="-1"></a>  }</span>
+<span id="cb233-8"><a href="loops.html#cb233-8" tabindex="-1"></a>}</span>
+<span id="cb233-9"><a href="loops.html#cb233-9" tabindex="-1"></a>mat</span></code></pre></div>
+<pre><code>##           [,1]      [,2]     [,3]     [,4]
+## [1,] 0.6653966        NA       NA 1.369854
+## [2,] 0.5747815 0.2128382       NA       NA
+## [3,]        NA        NA       NA       NA
+## [4,]        NA 0.5684018 1.056248       NA</code></pre>
+</div>
+</div>
+<div id="while-loops" class="section level2 hasAnchor" number="3.2">
+<h2><span class="header-section-number">3.2</span> While loops<a href="loops.html#while-loops" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>The final tool we will consider in the area of loops, is the so-called ‘WHILE loop’. A While loop is similar to a for loop but instead of simply looping through different values of a specified vector (i in 1:10) it will continue to loop whilst a certain condition holds and will only stop when this condition is no longer satisfied. For example:</p>
+<div class="sourceCode" id="cb235"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb235-1"><a href="loops.html#cb235-1" tabindex="-1"></a>i <span class="ot">&lt;-</span> <span class="dv">1</span></span>
+<span id="cb235-2"><a href="loops.html#cb235-2" tabindex="-1"></a><span class="cf">while</span> (i <span class="sc">&lt;</span> <span class="dv">6</span>) {</span>
+<span id="cb235-3"><a href="loops.html#cb235-3" tabindex="-1"></a>  <span class="fu">print</span>(i)</span>
+<span id="cb235-4"><a href="loops.html#cb235-4" tabindex="-1"></a>  i <span class="ot">&lt;-</span> i<span class="sc">+</span><span class="dv">1</span></span>
+<span id="cb235-5"><a href="loops.html#cb235-5" tabindex="-1"></a>}</span></code></pre></div>
+<pre><code>## [1] 1
+## [1] 2
+## [1] 3
+## [1] 4
+## [1] 5</code></pre>
+<p><strong>WARNING - Be very careful when using while loops. If you do not write them correctly they can result in your code running infinitely. As an example, try seeing what happens if you forget to increment i to add one each time.</strong></p>
+<div class="sourceCode" id="cb237"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb237-1"><a href="loops.html#cb237-1" tabindex="-1"></a>i <span class="ot">&lt;-</span> <span class="dv">1</span></span>
+<span id="cb237-2"><a href="loops.html#cb237-2" tabindex="-1"></a><span class="cf">while</span> (i <span class="sc">&lt;</span> <span class="dv">6</span>) {</span>
+<span id="cb237-3"><a href="loops.html#cb237-3" tabindex="-1"></a>  <span class="fu">print</span>(i)</span>
+<span id="cb237-4"><a href="loops.html#cb237-4" tabindex="-1"></a>}</span></code></pre></div>
+<p>While loops are very helpful when the number of loops required is unknown. For example, imagine we wanted to find the smallest integer for which the sum of all positive integers up to this value was greater than 1000. This can easily be done using a while loop.</p>
+<div class="sourceCode" id="cb238"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb238-1"><a href="loops.html#cb238-1" tabindex="-1"></a>i <span class="ot">&lt;-</span> <span class="dv">1</span></span>
+<span id="cb238-2"><a href="loops.html#cb238-2" tabindex="-1"></a>sum <span class="ot">&lt;-</span> <span class="dv">0</span></span>
+<span id="cb238-3"><a href="loops.html#cb238-3" tabindex="-1"></a></span>
+<span id="cb238-4"><a href="loops.html#cb238-4" tabindex="-1"></a><span class="cf">while</span>(sum <span class="sc">&lt;</span> <span class="dv">1000</span>){</span>
+<span id="cb238-5"><a href="loops.html#cb238-5" tabindex="-1"></a>  sum <span class="ot">&lt;-</span> sum <span class="sc">+</span> i</span>
+<span id="cb238-6"><a href="loops.html#cb238-6" tabindex="-1"></a>  <span class="cf">if</span> (sum <span class="sc">&lt;</span> <span class="dv">1000</span>){</span>
+<span id="cb238-7"><a href="loops.html#cb238-7" tabindex="-1"></a>  i <span class="ot">&lt;-</span> i <span class="sc">+</span> <span class="dv">1</span></span>
+<span id="cb238-8"><a href="loops.html#cb238-8" tabindex="-1"></a>  } <span class="cf">else</span> {</span>
+<span id="cb238-9"><a href="loops.html#cb238-9" tabindex="-1"></a>    <span class="fu">print</span>(i)</span>
+<span id="cb238-10"><a href="loops.html#cb238-10" tabindex="-1"></a>  }</span>
+<span id="cb238-11"><a href="loops.html#cb238-11" tabindex="-1"></a>}</span></code></pre></div>
+<pre><code>## [1] 45</code></pre>
+<div class="sourceCode" id="cb240"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb240-1"><a href="loops.html#cb240-1" tabindex="-1"></a><span class="fu">sum</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">44</span>)</span></code></pre></div>
+<pre><code>## [1] 990</code></pre>
+<div class="sourceCode" id="cb242"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb242-1"><a href="loops.html#cb242-1" tabindex="-1"></a><span class="fu">sum</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">45</span>)</span></code></pre></div>
+<pre><code>## [1] 1035</code></pre>
+<div class="exercise">
+<p><span id="exr:unlabeled-div-12" class="exercise"><strong>Exercise 3.4  </strong></span>Create a variable called <code>speed</code> and assign this a rounded random uniform distributed value between 50 - 60, i.e. <code>round(runif(1, 50, 60))</code>. Using a while loop, create a code that prints “Your speed is ?? - Slow Down” if speed is greater than 30 then takes 7 off the speed variable. If speed is less than or equal to 30 it should print out “Your speed is ?? - Thank you for not speeding”.</p>
+</div>
+<!-- <details> -->
+<!-- <summary>**Solutions**</summary> -->
+<!-- ```{r} -->
+<!-- speed <- round(runif(1, 50, 60)) -->
+<!-- while(speed > 30){ -->
+<!--   print(paste("Your speed is", speed, "- Slow Down!")) -->
+<!--   speed <- speed - 7 -->
+<!-- } -->
+<!-- print(paste("Your speed is", speed, "- Thank you for not speeding.")) -->
+<!-- ``` -->
+<!-- </details> -->
+<p>I appreciate this is a lot to take in for those who are not familiar with programming but I assure these ideas become second nature with a little practice. We will use them in a larger exercise in the last session so you can see how and when these things would all be used in a practical example. However, for now, I highly recommend that you complete the exercises in DataCamp on conditional statements and loops (Intermediate R) for extra practice.</p>
+<p>There are other versions and common commands used in loops, namely <code>break</code>, <code>next</code> and <code>repeats</code>, but I will leave these for you to explore in your own time (ideally via DataCamp). You will need these for the exercises below.</p>
+</div>
+<div id="exercises-4" class="section level2 hasAnchor" number="3.3">
+<h2><span class="header-section-number">3.3</span> Exercises<a href="loops.html#exercises-4" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<ol style="list-style-type: decimal">
+<li>Use the command <code>x &lt;- rexp(20, rate = 0.5)</code> to create a vector containing 20 simulations of an Exponential random variable with mean <span class="math inline">\(2\)</span>. Using a loop, return the number of values that are larger than the sample mean of the vector x. You are allowed to use the <code>mean()</code> function.</li>
+</ol>
+<!-- <details> -->
+<!-- <summary>**Solution**</summary> -->
+<!-- ```{r} -->
+<!-- x <- rexp(20, rate = 0.5) -->
+<!-- num <- 0 -->
+<!-- for(i in 1:length(x)){ -->
+<!--  if(x[i] > mean(x)){ -->
+<!--    num <- num + 1 -->
+<!--  } -->
+<!-- } -->
+<!-- x -->
+<!-- ``` -->
+<!-- </details> -->
+<ol start="2" style="list-style-type: decimal">
+<li>Write a <code>while()</code> loop which prints out the odd numbers from 1 through 7.</li>
+</ol>
+<!-- <details> -->
+<!-- <summary>**Solution**</summary> -->
+<!-- ```{r} -->
+<!-- i <- 1 -->
+<!-- while(i <= 7){ -->
+<!--   ifelse(i %% 2 == 1, print(i), NA) -->
+<!--   i <- i + 1 -->
+<!-- } -->
+<!-- ``` -->
+<!-- </details> -->
+<ol start="3" style="list-style-type: decimal">
+<li>Using <code>for()</code> loops, generate and print the first 20 values of the famous Fibonacci sequence (starting with <span class="math inline">\(0, 1\)</span>). Recall, the Fibonacci sequence is obtained by evaluating the next number in the sequence as the sum of the previous two numbers in the sequence.</li>
+</ol>
+<!-- <details> -->
+<!-- <summary>**Solution**</summary> -->
+<!-- ```{r} -->
+<!-- Fib <- c(0,1) -->
+<!-- for (i in 3:20){ -->
+<!--   Fib[i] <- Fib[i-1] + Fib[i-2] -->
+<!-- } -->
+<!-- Fib -->
+<!-- ``` -->
+<!-- </details> -->
+<ol start="4" style="list-style-type: decimal">
+<li>By altering your code in the previous question, use a <code>while()</code> loop to determine how many values the Fibonacci sequence contains before its value exceeds 100,000.</li>
+</ol>
+<!-- <details> -->
+<!-- <summary>**Solution**</summary> -->
+<!-- ```{r} -->
+<!-- Fib1 <- c(0,1) -->
+<!-- i <- 2 -->
+<!-- while(Fib1[i] < 100000){ -->
+<!--   Fib1[i+1] <- Fib1[i] + Fib1[i-1] -->
+<!--   i <- i + 1 -->
+<!-- } -->
+<!-- length(Fib1) -->
+<!-- ``` -->
+<!-- </details> -->
+<ol start="5" style="list-style-type: decimal">
+<li>Use a <code>while()</code> loop to determine the smallest value of <span class="math inline">\(x\)</span> such that
+<span class="math display">\[\begin{equation*}
+\prod_{n=1}^x n &gt; 10^{6}.
+\end{equation*}\]</span></li>
+</ol>
+<!-- <details> -->
+<!-- <summary>**Solution**</summary> -->
+<!-- ```{r} -->
+<!-- prod <- 1 -->
+<!-- n <- 1 -->
+<!-- while(prod <= 1000000){ -->
+<!--   n <- n + 1 -->
+<!--   prod <- prod*n -->
+<!-- } -->
+<!-- n -->
+<!-- ``` -->
+<!-- </details> -->
+<ol start="6" style="list-style-type: decimal">
+<li>Using a <code>for()</code> loop, simulate the flip of a fair coin twenty times, keeping track of the individual outcomes (1 = Heads, 0 = Tails) in a vector.</li>
+</ol>
+<p><strong>[Hint: You can simulate random numbers that follow given distributions. For example, normal random numbers using rnorm(), exponential using rexp() as seen in Problem 1 or binomial random values using rbinom(). Moreover, the Bernoulli distribution with success parameter <span class="math inline">\(p \in [0,1]\)</span>, which gives a value of 0 or 1, is nothing but a binomial distribution with parameters <span class="math inline">\(n =1\)</span> and <span class="math inline">\(p\)</span>.]</strong></p>
+<!-- <details> -->
+<!-- <summary>**Solution**</summary> -->
+<!-- ```{r} -->
+<!-- x <- rbinom(20, 1, 0.5) -->
+<!-- Flips <- c() -->
+<!-- for(i in 1:length(x)){ -->
+<!--   Flips[i] <- ifelse(x[i] == 1, "Heads", "Tails") -->
+<!-- } -->
+<!-- Flips -->
+<!-- ``` -->
+<!-- </details> -->
+<ol start="7" style="list-style-type: decimal">
+<li>Can you solve the previous problem again without the use of <code>for()</code> loops?</li>
+</ol>
+<!-- <details> -->
+<!-- <summary>**Solution**</summary> -->
+<!-- ```{r} -->
+<!-- x <- rbinom(20, 1, 0.5) -->
+<!-- ifelse(x == 1, "Heads", "Tails") -->
+<!-- ``` -->
+<!-- </details> -->
+<ol start="8" style="list-style-type: decimal">
+<li>Using <code>for()</code> loops, fill a <span class="math inline">\(5 \times 5\)</span> matrix with simulated values from the Poisson distribution having parameter <span class="math inline">\(\lambda = 5\)</span> (<code>rpois(n, lambda = 5)</code>). Do this again but without using loops, only ‘vectorised calculations’.</li>
+</ol>
+<!-- <details> -->
+<!-- <summary>**Solution**</summary> -->
+<!-- ```{r} -->
+<!-- # With Loops: -->
+<!-- M <- matrix(NA, nrow = 5, ncol = 5) -->
+<!-- for(i in 1:5){ -->
+<!--   for(j in 1:5){ -->
+<!--     x <- rpois(1, lambda = 5) -->
+<!--     M[i,j] <- x -->
+<!--   } -->
+<!-- } -->
+<!-- M -->
+<!-- # Vectorised calculation: -->
+<!-- x <- rpois(25, lambda = 5) -->
+<!-- (M1 <- matrix(x, nrow = 5, ncol = 5)) -->
+<!-- ``` -->
+<!-- </details> -->
+<p><strong>Advanced Extension:</strong> Can you modify the above to only fill the matrix with simulated values between 1 and 8? Hint: You will have to use the <code>repeat</code> and <code>break</code> commands.</p>
+<!-- <details> -->
+<!-- <summary>**Solution**</summary> -->
+<!-- ```{r} -->
+<!-- sim <- c() -->
+<!-- for(i in 1:25){ -->
+<!--   repeat{ -->
+<!--     x <- rpois(1, lambda = 5) -->
+<!--     if(x >= 1 && x <= 8){ -->
+<!--       sim[i] <- x -->
+<!--       break -->
+<!--     } else {} -->
+<!--   } -->
+<!-- } -->
+<!-- matrix(sim, nrow = 5, ncol = 5) -->
+<!-- ``` -->
+<!-- </details> -->
+</div>
+<div id="applied-exercises-2" class="section level2 hasAnchor" number="3.4">
+<h2><span class="header-section-number">3.4</span> Applied Exercises<a href="loops.html#applied-exercises-2" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p><strong>The problems below are a little more involved and may take some time. Please have a go at these but do not worry if you find this difficult, we will actually see something similar to this again next semester.</strong></p>
+<ol style="list-style-type: decimal">
+<li>Assume that the daily returns on an asset are normally distributed with mean 0 and standard deviation of 0.01. Assuming that the starting price is £100, write a <code>while()</code> loop to simulate the daily stock price of this asset until the moment it exceeds £150 or falls below £50.</li>
+</ol>
+<p><strong>[Recall: You can simulate a normal random value using the following command <code>rnorm(n, mean = , sd = )</code> where <span class="math inline">\(n\)</span> is the number of values you want to simulate]</strong></p>
+<ol start="2" style="list-style-type: decimal">
+<li><p>How many days does it take for the stock price to exceed £150 or drop below £50?</p></li>
+<li><p>Plot the path of the stock price over time using the <code>plot()</code> function.</p></li>
+<li><p>Using a <code>for()</code> loop, repeat the first step 100 times and provide an estimate for the number of days it will take to exceed £150 or drop below £50.</p></li>
+<li><p>Simulate the stock price for exactly 365 days. If the price exceeds £150 or falls below £50, stop the simulation and ask R to print out the value of the stock at this point.</p></li>
+<li><p>By repeating a similar idea to the previous step 100 times, can you estimate the probability that the stock price will either exceed £150 or drop below £50.</p></li>
+</ol>
+<!-- <details> -->
+<!-- <summary>**Solution**</summary> -->
+<!-- ```{r} -->
+<!-- stock <- 100 -->
+<!-- stock.prices <- c(stock) -->
+<!-- i <- 1 -->
+<!-- while(stock >= 50 && stock <= 150){ -->
+<!--   i <- i + 1 -->
+<!--   return <- rnorm(1, 0, 0.01) -->
+<!--   stock <- stock*(1 + return) -->
+<!--   stock.prices <- c(stock.prices, stock) -->
+<!-- } -->
+<!-- i -->
+<!-- plot(1:i, stock.prices, type = "l", main = "Stock Price Over Time", xlab = "Time (Days)", ylab = "Stock Price (£)", ylim = c(40, 160)) -->
+<!-- abline(h = 50, lty = 2, col = "red") -->
+<!-- abline(h = 150, lty = 2, col = "red") -->
+<!-- ``` -->
+<!-- </details> -->
+</div>
+<div id="datacamp-courses-2" class="section level2 hasAnchor" number="3.5">
+<h2><span class="header-section-number">3.5</span> DataCamp course(s)<a href="loops.html#datacamp-courses-2" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<ul>
+<li><a href="https://www.datacamp.com/courses/intermediate-r" class="uri">https://www.datacamp.com/courses/intermediate-r</a> (Intermediate R Course)</li>
+<li><a href="https://app.datacamp.com/learn/courses/intermediate-r-for-finance" class="uri">https://app.datacamp.com/learn/courses/intermediate-r-for-finance</a> (Intermidiate R for Finance Course)</li>
+</ul>
+
+<!-- # Functions -->
+<!-- In the previous weeks, we have already encountered and worked with some of R's pre-defined functions that you can use on your data/objects to produce certain results. For example, the `mean()` function, `var()` function or even `plot()` function. Each of these 'functions' require one (or more) input variables, then provide some output. Although these functions are readily available for you to use in the base packages, the functions themselves have actually been created from scratch and primarily consist solely of basic programming techniques we have already discussed, e.g. loops, conditional statements etc.  -->
+<!-- ## Creating functions  -->
+<!-- In this section, we are going to discuss how to create our own functions. There are two main reasons for wanting to create your own functions:  -->
+<!-- 1. To reuse a series of code over and over again without having to re-write the same code (especially if the code is complex and long) -->
+<!-- 2. For other people to use in their programming (similar to how we have already used some of the functions other people have created) -->
+<!-- To create a function in R, we need to following steps: -->
+<!-- 1. Choose of a name for the function  -->
+<!-- 2. Consider the input variables that will be required for the function -->
+<!-- 3. Use the following lines of code: -->
+<!-- `functionname <- function(input1, input2, ...){` <br> -->
+<!--  `Commands to execute for function using input variables listed` <br>  -->
+<!-- `}` <br> -->
+<!-- As a basic example, let us re-create the `mean()` function ourselves from scratch: -->
+<!-- ```{r} -->
+<!-- mean(1:100) # Remind ourselves how the mean() function works -->
+<!-- ``` -->
+<!-- ```{r} -->
+<!-- mean_function <- function(x){ -->
+<!--   sum(x)/length(x) -->
+<!-- } -->
+<!-- mean_function(1:100) -->
+<!-- mean_function(5:5000) -->
+<!-- ``` -->
+<!-- As you can see in the above, once the function has been created and given a name, in this case `mean_function()` it can now be called and used like any other pre-defined function. -->
+<!-- ```{r} -->
+<!-- (vec <- rexp(100, rate = 1)) -->
+<!-- mean(vec) -->
+<!-- mean_function(vec) -->
+<!-- ``` -->
+<!-- As you can see from this simply example, it is even possible to use functions inside functions, e.g. we have used the `sum()` and `length()` functions inside our newly created function.  -->
+<!-- :::{.exercise} -->
+<!-- Can you create a function called sum_function which sums up all of the values in a vector without using the predefined sum() function? -->
+<!-- ::: -->
+<!-- **Solution** -->
+<!-- ```{r} -->
+<!-- sum_function <- function(y){ -->
+<!--   sum <- 0 -->
+<!--   for (i in 1:length(y)){ -->
+<!--     sum <- sum + y[i] -->
+<!--   } -->
+<!--   return(sum) # Why this and not print(sum)? -->
+<!-- } -->
+<!-- sum_function(1:500) -->
+<!-- ``` -->
+<!-- Notice that in the above construction of the function we have used `return(sum)`. Why do we do this rather than ask R to `print(sum)`? -->
+<!-- ```{r} -->
+<!-- sum_function_print <- function(x){ -->
+<!--   sum <- 0 -->
+<!--   for (i in 1:length(x)){ -->
+<!--     sum <- sum + x[i] -->
+<!--   } -->
+<!--   print(sum) -->
+<!-- } -->
+<!-- sum_function(1:10) -->
+<!-- sum_function_print(1:10) -->
+<!-- ``` -->
+<!-- In the above, it does not seem to make any difference if we have used `return(sum)` or `print(sum)` but what if we want to use the function as part of another calculation? -->
+<!-- ```{r} -->
+<!-- sum_function(1:10) + 10 -->
+<!-- sum_function_print(1:10) + 10 -->
+<!-- ``` -->
+<!-- You can see that in the above example, when we have used the version with `print()` in another calculation, we end up with two outputs. This is because we have instructed R that every time the function is executed, it should print the initial result of the function. Then, R also automatically saves the final value for the function and uses it in the remainder of the calculation, resulting in the second output. Unless you specifically want this, you should always use return(), to ensure R only saves the final value to the function. **NOTE: If you only use `return()` R will still display the final output of the function (see the example above).** -->
+<!-- :::{.exercise} -->
+<!-- Using IF statements, can you create a function that rounds a number to its nearest integer (.5 rounds up)? You **cannot** use the already pre-defined round() function. -->
+<!-- ::: -->
+<!-- <details> -->
+<!-- <summary>**Solution**</summary> -->
+<!-- ```{r} -->
+<!-- round_function <- function(x){ -->
+<!--   if(x %% 1 < 0.5){ -->
+<!--     return(x-(x%%1)) -->
+<!--   } else { -->
+<!--     return(x+1-(x%%1)) -->
+<!--   } -->
+<!-- } -->
+<!-- round_function(9.3) -->
+<!-- round_function(9.5) -->
+<!-- ``` -->
+<!-- </details> -->
+<!-- Of course, some functions are much more complicated underneath the surface. For example, the `lm()` function executes a full 'linear regression' fitting to a set of data and returns a variety of information about the fitted model: -->
+<!-- ```{r} -->
+<!-- fit <- lm(mtcars$mpg ~ mtcars$hp) -->
+<!-- summary(fit) -->
+<!-- ``` -->
+<!-- **Note: Do not worry about understanding all of this output here, it is included purely for the sake of an example.** -->
+<!-- Although such functions may look much more complicated, they are still ultimately only made up of combinations of basic commands (albeit many lines of them), the concept is much the same and only requires more thought. As an example of a slightly more complicated function, let us create a prime number calculator: -->
+<!-- ## Prime number calculator - example  -->
+<!-- ```{r} -->
+<!-- prime <- function(number){ -->
+<!--   flag <- 0 -->
+<!--   if(number == 2){ -->
+<!--     flag <- 1 -->
+<!--   } else if (number > 2) { -->
+<!--     # check for factors -->
+<!--     flag <- 1 -->
+<!--     for(i in 2:(number-1)) { -->
+<!--       if ((number %% i) == 0) { -->
+<!--         flag <- 0 -->
+<!--         break -->
+<!--       } -->
+<!--     } -->
+<!--   }  -->
+<!--   if(flag == 1) { -->
+<!--     print(paste(number,"is a prime number")) -->
+<!--   } else { -->
+<!--     print(paste(number,"is not a prime number")) -->
+<!--   } -->
+<!-- } -->
+<!-- prime(7) -->
+<!-- prime(986376383) -->
+<!-- ``` -->
+<!-- ## Multiple Input Variables -->
+<!-- In the functions we have created so far, we have only considered one input variable. However, it is possible to create functions with multiple inputs. For example, imagine we wanted to find the accumulated value of an investment over some time period under compound interest. In such a problem, you have three different possible inputs:  -->
+<!-- 1. Initial investment -->
+<!-- 2. annual interest rate -->
+<!-- 3. Time (years): -->
+<!-- ```{r} -->
+<!-- Acc_value <- function(initial, interest, years){ -->
+<!--   value <- initial*(1+interest)^years -->
+<!--   return(value) -->
+<!-- } -->
+<!-- Acc_value(100000, 0.05, 25)  -->
+<!-- Acc_value(100,0.05,10) -->
+<!-- ``` -->
+<!-- Notice how much easier this is now that we have created a function. Before functions, we would have had to define each variable as a set value, then run the calculation and every time we wanted to calculate it for a new set of values, we would have to change them individually and run it all again, i.e., -->
+<!-- ```{r} -->
+<!-- initial <- 100000 -->
+<!-- interest <- 0.05 -->
+<!-- years <- 25 -->
+<!-- initial*(1+interest)^years -->
+<!-- ``` -->
+<!-- Creating functions avoids this tedious problem but also allows us to use them inside other calculations or even other functions (see later). -->
+<!-- Before we look at some examples of functions working inside of functions, we note that functions also work with vectors: -->
+<!-- ```{r} -->
+<!-- (x <- seq(0.01, 0.06, by = 0.005)) -->
+<!-- Acc_value(100000, x, 25) -->
+<!-- ``` -->
+<!-- In this case, the function works element-by-element wise in the usual way to create a vector of outputs. To see this implemented inside another function, let us consider the following example of plotting the various accumulated values calculated above using the `plot()` function: -->
+<!-- ```{r} -->
+<!-- plot(x, Acc_value(100,x, 10), ylab = "Accumulated Value (100)", xlab = "Interest Rate") -->
+<!-- ``` -->
+<!-- This particular use of the function within the `plot()` function will prove to be very useful for future assessments, where you are typically asked to compare certain quantities under varying conditions (interest rates, terms etc.) -->
+<!-- As another example, we recall that there are actually two different types of interest (Simple and Compound). Of course, we could create two separate functions for each of these. However, since these are related it would be nice to have a single function that could deal with both. This can easily by adding a new variable: -->
+<!-- ```{r} -->
+<!-- Acc_value <- function(initial, interest, years, type){ -->
+<!--   if (type == "compound"){ -->
+<!--   value <- initial*(1+interest)^years -->
+<!--   return (value) -->
+<!--   } else if (type == "simple"){ -->
+<!--     value <- initial*(1+(interest*years)) -->
+<!--     return (value) -->
+<!--   } else { -->
+<!--     print("Invalid Interest Type. Must either be 'compound' or 'simple'") -->
+<!--   } -->
+<!-- } -->
+<!-- Acc_value(100, 0.05, 10, "simple") -->
+<!-- Acc_value(100,0.05,10, "compound") -->
+<!-- Acc_value(11, 0.05, 10, "comp") -->
+<!-- ``` -->
+<!-- An alternative way to do this to let the type variable by a Boolean value as we have seen in other functions: -->
+<!-- ```{r} -->
+<!-- Acc_value <- function(initial, interest, years, compound){ -->
+<!--   if (compound == TRUE){ -->
+<!--     value <- initial*(1+interest)^years -->
+<!--   } else if (compound == FALSE){ -->
+<!--     value <- initial*(1+(interest*years)) -->
+<!--   } -->
+<!--   return(value) -->
+<!-- } -->
+<!-- Acc_value(100, 0.05, 10, compound = FALSE) -->
+<!-- ``` -->
+<!-- ### Default options -->
+<!-- In some cases, you can have variables within a function that can be changed but more often than not will take a certain value. In this case, you can set a default value for this variable which it will take if not explicitly defined in the function command: -->
+<!-- ```{r} -->
+<!-- Acc_value <- function(initial, interest, years, compound = TRUE){ -->
+<!--   if (compound == TRUE){ -->
+<!--     value <- initial*(1+interest)^years -->
+<!--   } else if (compound == FALSE){ -->
+<!--     value <- initial*(1+(interest*years)) -->
+<!--   } -->
+<!--   return(value) -->
+<!-- } -->
+<!-- Acc_value(100, 0.05, 10) -->
+<!-- Acc_value(100, 0.05, 10, compound = FALSE) -->
+<!-- ``` -->
+<!-- Finally, just as a nice example of the above application, we could further develop the interest function above: -->
+<!-- ```{r} -->
+<!-- Acc_value <- function(initial, interest, years, compound = TRUE, compare = FALSE){ -->
+<!--     comp_values <- c(initial) -->
+<!--     for (i in 1:years){ -->
+<!--     comp_values <- c(comp_values,initial*(1+interest)^i) -->
+<!--     } -->
+<!--     simp_values <- c(initial) -->
+<!--     for (i in 1:years){ -->
+<!--       simp_values <- c(simp_values, initial*(1+(interest*i))) -->
+<!--     } -->
+<!--     if (compare == FALSE){ -->
+<!--       if (compound == TRUE){ -->
+<!--         return(comp_values[length(comp_values)]) -->
+<!--       } else { -->
+<!--         return(simp_values[length(simp_values)]) -->
+<!--       } -->
+<!--     } -->
+<!--     if(compare == TRUE){ -->
+<!--       x <- 0:years -->
+<!--       plot(x, comp_values, ylab = "Accumulated Value", xlab = "Year", main = "Comparison of Interests", type = "l", col = "red") -->
+<!--       lines(x, simp_values, type = "l", col = "blue") -->
+<!--       legend("bottomright", legend = c("Compound", "Simple"), col = c("red", "blue"), lty = 1) -->
+<!--     } -->
+<!-- } -->
+<!-- Acc_value(100, 0.05, 10) -->
+<!-- Acc_value(100, 0.05, 10, compound = FALSE) -->
+<!-- Acc_value(100,0.05, 10, compare = TRUE) -->
+<!-- Acc_value(10000, 0.04, 50, compare = TRUE) -->
+<!-- ``` -->
+<!-- Now that you understand the basics of how functions work, try having a go at the following exercises. -->
+<!-- ## Exercises -->
+<!-- 1. In the above, we discussed how to re-create the `sum()` and `mean()` function from programming basics. In a similar way, create a function called `variance` that calculates the variance of a vector of values. You are allowed to use the pre-defined `sum()` and `mean()` functions inside your variance function. Try doing this in two different ways: -->
+<!-- i. Using For loops -->
+<!-- ii. Using vectorised calculations.  -->
+<!-- <details> -->
+<!-- <summary>**Solution**</summary> -->
+<!-- ```{r} -->
+<!-- # i) -->
+<!-- variance.loop <- function(x){ -->
+<!--   var <- 0 -->
+<!--   for(i in 1:length(x)){ -->
+<!--     var <- var + (x[i] - mean(x))^2 -->
+<!--   } -->
+<!--   return(var/length(x)) -->
+<!-- } -->
+<!-- variance.loop(1:100) -->
+<!-- # ii) -->
+<!-- variance.vect <- function(x){ -->
+<!--   sum((x - mean(x))^2)/length(x) -->
+<!-- } -->
+<!-- variance.vect(1:100) -->
+<!-- ``` -->
+<!-- </details> -->
+<!-- 2. Create a function that, given an integer, will calculate how many divisors it has (other than 1 and itself). Make the divisors appear on the screen. -->
+<!-- <details> -->
+<!-- <summary>**Solution**</summary> -->
+<!-- ```{r} -->
+<!-- divisors <- function(x){ -->
+<!--   num <- 0 -->
+<!--   div <- c() -->
+<!--   for(i in 2:(x-1)){ -->
+<!--     if(x %% i == 0){ -->
+<!--       div <- c(div, i) -->
+<!--     } -->
+<!--   } -->
+<!--   return(div) -->
+<!-- } -->
+<!-- divisors(36) -->
+<!-- ``` -->
+<!-- </details> -->
+<!-- 3. From your 'Introduction to Actuarial Science' module, you should have come across the concept of 'discounting' and the 'present value' of money. Create a function in R called `PV` that takes 3 input variables: 1) Final value (F), 2) Annual interest rate and 3) Number of years, which calculates the present value of F. -->
+<!-- <details> -->
+<!-- <summary>**Solution**</summary> -->
+<!-- ```{r} -->
+<!-- PV <- function(FinalValue, Int, Years){ -->
+<!--   return(FinalValue*(1+Int)^(-Years)) -->
+<!-- } -->
+<!-- PV(10000, 0.05, 10) -->
+<!-- ``` -->
+<!-- </details> -->
+<!-- 4. Recall that for geometric summation, we have  -->
+<!-- \begin{equation*} -->
+<!-- \sum_{k = 0}^{n-1} x^k = \frac{1-x^n}{1-x}. -->
+<!-- \end{equation*} -->
+<!-- Moreover, if $|x| < 1$, the above summation converges as $n \rightarrow \infty$, such that  -->
+<!-- \begin{equation*} -->
+<!-- \sum_{k = 0}^{\infty} x^k = \frac{1}{1-x}. -->
+<!-- \end{equation*} -->
+<!-- Create a function in R called `GeomSum` that takes two input variables (x and n) and calculates the geometric sum of x from 0 up to n. It should also be possible to include the option that $n = \infty$. -->
+<!-- **Hint: You may have to include a Boolean value for this but remember, the above limit only exists under a given condition. If this condition is not satisfied, make the function print out a warning message.** -->
+<!-- <details> -->
+<!-- <summary>**Solution**</summary> -->
+<!-- ```{r} -->
+<!-- GeomSum <- function(x, n, infinity = F){ -->
+<!--   if(infinity == F){ -->
+<!--     sum <- (1-x^(n+1))/(1-x) -->
+<!--     return(sum) -->
+<!--   } else if (abs(x) < 1) { -->
+<!--     sum <- 1/(1-x) -->
+<!--     return(sum) -->
+<!--   } else { -->
+<!--     print("Warning: |x| must be less than 1 for infinite sum to converge!") -->
+<!--   } -->
+<!-- } -->
+<!-- GeomSum(0.5, 10)   -->
+<!-- GeomSum(0.5, infinity = T) -->
+<!-- GeomSum(1.3, 20) -->
+<!-- GeomSum(1.3, infinity = T) -->
+<!-- ``` -->
+<!-- </details> -->
+<!-- 5. Recall from your 'Introduction to Actuarial Science' module that the 'Accumulated Value' of an annuity-due with unit payments is defined by  -->
+<!-- \begin{equation*} -->
+<!-- \ddot{s}_{n\rceil} = \sum_{k=1}^n (1+i)^k = \frac{(1+i)^n -1}{i}\times(1+i) -->
+<!-- \end{equation*} -->
+<!-- Create a function that takes three input variables representing 1) The value of repeated payments, 2) The annual interest rate and 3) The number of years. The function should create a vector with the accumulated value of the investment after each year and plot it on a basic plot against time (see the R Script for a similar example).  -->
+<!-- <details> -->
+<!-- <summary>**Solution**</summary> -->
+<!-- ```{r} -->
+<!-- AVannuity <- function(Payments, Int, Years){ -->
+<!--   Time <- 1:Years -->
+<!--   Accum <- (((1+Int)^Time)-1)*(1+Int)/Int -->
+<!--   values<- Payments*c(1, Accum) -->
+<!--   plot(0:Years, values, xlab = "Time (Years)", ylab = "Accumulated Value (£)", type = "l", cex = 2) -->
+<!--   print(values) -->
+<!-- } -->
+<!-- AVannuity(100, 0.05, 25) -->
+<!-- ``` -->
+<!-- </details> -->
+<!-- 6. Recall the Stock price example from the previous chapter (Exercise 9). Create a function called `Stock` that allows the user to input a starting amount, the standard deviation of percentage change (assume the change is normally distributed $N(0, \sigma^2)$) and the values of an upper and lower barrier. The function should then plot the movement of the stock and print out the number of days it takes to reach either the upper or lower barrier.  -->
+<!-- <details> -->
+<!-- <summary>**Solution**</summary> -->
+<!-- ```{r} -->
+<!-- Stocks <- function(InitialPrice, sd, Lower, Upper){ -->
+<!--   stock <- InitialPrice -->
+<!--   stock.prices <- c(stock) -->
+<!--   i <- 1 -->
+<!--   while(stock >= Lower && stock <= Upper){ -->
+<!--     i <- i + 1 -->
+<!--     percent.change <- rnorm(1, 0, sd) -->
+<!--     stock <- stock*(1 + percent.change) -->
+<!--     stock.prices <- c(stock.prices, stock)   -->
+<!--   } -->
+<!--   print(i) -->
+<!--   plot(1:i, stock.prices, type = "l", main = "Stock Price Over Time", xlab = "Time (Days)", ylab = "Stock Price (£)", ylim = c(Lower - 10, Upper + 10)) -->
+<!--   abline(h = Lower, lty = 2, col = "red") -->
+<!--   abline(h = Upper, lty = 2, col = "red") -->
+<!-- } -->
+<!-- Stocks(250, 0.03, 100, 500) -->
+<!-- ``` -->
+<!-- </details> -->
+<!-- ## DataCamp course(s) -->
+<!-- - https://www.datacamp.com/courses/intermediate-r (Intermediate R Course) -->
+
+<!-- # Data Analysis -->
+<!-- In this session we will discuss how to create data frames (objects similar to matrices which are typically used to store data) manually (explaining how this differs from a matrix), methods of extracting and manipulating data effectively and, finally, use of the `apply()` function(s).  -->
+<!-- ## Creating a data frame   -->
+<!-- We have already been introduced to the idea of a data frame in the previous sessions through the `mtcars' data set: -->
+<!-- ```{r} -->
+<!-- str(mtcars) -->
+<!-- ``` -->
+<!-- However, in general, a data frame is simply an array of data, where each row denotes a separate data point or observation and each column a different variable. Why are these different from matrices in R? -->
+<!-- The main difference between a 'matrix' and a 'dataframe' in R is what can be stored within them. We have already stated that a matrix (like a vector) can consist of numerical values OR Boolean values OR character strings. However, what I have not yet mentioned is they cannot be a mixture of these things: -->
+<!-- ```{r} -->
+<!-- V1 <- c(1, 2, 3) -->
+<!-- str(V1) -->
+<!-- V2 <- c("Hello", "Red", "UK") -->
+<!-- str(V2) -->
+<!-- V3 <- c(T, T, F) -->
+<!-- str(V3) -->
+<!-- (V <- c(V1, V2, V3))  -->
+<!-- str(V) -->
+<!-- (M <- matrix(c(V1, V2, V3), nrow = 3, ncol = 3, byrow = FALSE)) -->
+<!-- str(M) -->
+<!-- ``` -->
+<!-- As you can see in the above, since a matrix can only consists of objects of the same type, R has automatically re-assigned the objects to match with one of the object types. Again, this is a perfect example of why you need to be so careful when programming as your code may appear to work but the reality is quite different.   -->
+<!-- Data frames on the other hand, allow us to create a matrix like structure but each column may take on a different variable format. This is ideal when working and storing data. Let us look at how to create a data frame using the above vectors V1, V2 and V3: -->
+<!-- ```{r} -->
+<!-- data <- data.frame(Numeric = V1, Characters = V2, Boolean = V3) -->
+<!-- knitr::kable(data, align = "ccc") -->
+<!-- str(data)  -->
+<!-- ``` -->
+<!-- What do you notice about the character strings in this data frame? It is important to decide if any 'words' or 'character strings' in your data set are simply words or if they resemble different factors of a given group. In the latter case, you need to tell R this! This is very important when applying a variety of statistical functions to your data. -->
+<!-- ```{r} -->
+<!-- data1 <- data.frame(Numeric = V1, Characters = V2, Boolean = V3, stringsAsFactors = F) -->
+<!-- str(data1) -->
+<!-- ``` -->
+<!-- ```{r} -->
+<!-- data2 <- data.frame(Numeric = V1, Characters = V2, Boolean = V3, stringsAsFactors = T) -->
+<!-- str(data2) -->
+<!-- rownames(data1) <- c("Observation 1", "Observation 2", "Observation 3") -->
+<!-- knitr::kable(data1, align = "ccc") -->
+<!-- ``` -->
+<!-- Now that we have created our data frame, we can begin to analyse the data in any way we choose! We will discuss a little later on more complex ways in which we may want to do this. For now, let us look at one more example to make sure we understand how data frames are created: -->
+<!-- ```{r} -->
+<!-- Height <- rgamma(20, shape = 70, rate = 0.4) # Simulates/generates Gamma Distributed variables -->
+<!-- head(Height) -->
+<!-- Weight <- rnorm(20, mean = 75, sd = 10)  -->
+<!-- head(Weight) -->
+<!-- Age <- rpois(20, lambda = 20) # Simulates/generates Poisson Distributed variables -->
+<!-- Age -->
+<!-- Sex<- ifelse(rbinom(20,1,prob=0.5) == 1, "Male", "Female") # How has this worked? -->
+<!-- Data <- data.frame(Height_cm = Height, Weight_Kg = Weight, Age_Years = Age, Sex = Sex, stringsAsFactors = T) -->
+<!-- knitr::kable(Data, align = "cccc") -->
+<!-- str(Data) -->
+<!-- mean(Data$Height_cm) -->
+<!-- mean(Data$Height_cm > 170) -->
+<!-- ``` -->
+<!-- Another helpful tool worth mentioning here when analysing data in a data frame is the `table()` function, which counts the frequency of different observations and displays them in a table format: -->
+<!-- ```{r} -->
+<!-- table(Data$Age_Years) -->
+<!-- table(Data$Age_Years,Data$Sex)  -->
+<!-- ``` -->
+<!-- ## Importing data - Excel -->
+<!-- In most cases when working with data, the observations will have been collected and stored in another programme which is better built for data collection, e.g. Excel. Fortunately, R can import such data easily and will save the imported values into a data frame type object (known as a tibble) automatically. It is also possible to save it directly as a data frame explicitly if preferred. At this stage, the differences between tibble and a data frame are not important.  -->
+<!-- To do this, use the following steps: -->
+<!-- 1. Click the `Import Dataset` option within the Environment window (Top right) -->
+<!-- 2. Click 'From Excel...' (You may be asked to install some packages here, if so press 'Yes' or 'Okay') -->
+<!-- 3. Click `Browse' to enter your files -->
+<!-- 4. Choose the Excel file containing the Data  -->
+<!-- 5. Edit the Dataset name (if necessary) -->
+<!-- 6. Choose which sheet you want to import from the Excel file (if necessary) -->
+<!-- 7. Decide if you need to skip any rows due to format -->
+<!-- 8. Tick first row as names if appropriate -->
+<!-- 9. Press import -->
+<!-- 10. Re-save as a data frame (if necessary) -->
+<!-- In this example I will import four different data sets (Male and Female Deaths and Population in UK) from the 'UK(Pop&Death).xls' data set and name them 1) `Male_UK_Death`, 2) `Female_UK_Death`, 3) `Male_UK_Pop` and 4) `Female_UK_Pop`, respectively.  -->
+<!-- Clearly I cannot show you the above steps explicitly in these notes, but they are the steps that have been used to load the data here. Below is an example of what the corresponding code that is executed looks like when following these steps (you may find that your directory path where you have saved the data is different but that should be it): -->
+<!-- ```{r} -->
+<!-- library(readxl) -->
+<!-- Male_UK_Death <- read_excel("UK(Pop&Death).xls", sheet = "UK male deaths") -->
+<!-- Female_UK_Death <- read_excel("UK(Pop&Death).xls", sheet = "UK female deaths") -->
+<!-- Male_UK_Pop <- read_excel("UK(Pop&Death).xls", sheet = "UK male pop") -->
+<!-- Female_UK_Pop <- read_excel("UK(Pop&Death).xls", sheet = "UK female pop") -->
+<!-- ``` -->
+<!-- **Note: It is also possible to import data from a number of other sources (SPSS, Stata, SAS, .csv files etc.)** -->
+<!-- ## Manipulating and analysing data -->
+<!-- In many cases, the data set that we have imported may not be exactly how we want it for our analysis. There are a huge number of things that you may want/need to do to your data to tidy it up or 'clean' the data as it is commonly known. For example, deal with missing data, extract unimportant rows/columns, delete outliers, combine data sets etc.  -->
+<!-- As an example, let us have a little look at the data sets we created: -->
+<!-- ```{r, echo=F} -->
+<!-- library(DT) -->
+<!-- datatable(Male_UK_Death, options = list(scrollX = TRUE)) -->
+<!-- ``` -->
+<!-- We would like to remove the last two rows of this data set as they don't contain 'raw' data. -->
+<!-- ```{r} -->
+<!-- Male_UK_Death_New <- Male_UK_Death[-c(107, 108),] -->
+<!-- datatable(Male_UK_Death_New, options=list(scrollX = TRUE)) -->
+<!-- ``` -->
+<!-- Then, in a similar way, we can do the same with the rest of the data sets as they have same problem  -->
+<!-- ```{r} -->
+<!-- Female_UK_Death_New <- Female_UK_Death[-c(107, 108),]  -->
+<!-- Male_UK_Pop_New <- Male_UK_Death[-c(107, 108),] -->
+<!-- Female_UK_Pop_New <- Female_UK_Pop[-c(107, 108),] -->
+<!-- ``` -->
+<!-- We have now tidied up our data to be in a format more beneficial to us and we could start to analyse these individually, i.e. Create plots, calculate statistics, fit statistical models etc. For example: -->
+<!-- ```{r} -->
+<!-- Aux <- Male_UK_Death_New[-106,] -->
+<!-- summary(lm(Aux$Age ~ Aux$`1961`)) -->
+<!-- ``` -->
+<!-- However, what if we were not interested in the individual data sets separated by sex and only cared about the overall deaths and population. That is, we want to combine the data sets. In this case, we need to create a new data frame with the relevant data.  -->
+<!-- ```{r} -->
+<!-- Overall_Deaths <- data.frame(Male_UK_Death_New$Age, Male_UK_Death_New[,-1] + Female_UK_Death_New[,-1]) -->
+<!-- colnames(Overall_Deaths) <- colnames(Male_UK_Death_New) -->
+<!-- datatable(Overall_Deaths, options=list(scrollX=TRUE)) -->
+<!-- Overall_Pop <- data.frame(Male_UK_Pop_New$Age, Male_UK_Pop_New[,-1]+Female_UK_Pop_New[,-1]) -->
+<!-- colnames(Overall_Pop) <- colnames(Male_UK_Pop_New) -->
+<!-- datatable(Overall_Pop, options=list(scrollX=TRUE)) -->
+<!-- ``` -->
+<!-- :::{.exercise} -->
+<!-- Use these two data sets to create a data frame consisting of the mortality rates for the UK population over each year. That is, the probability of dying in a given year based on your age? -->
+<!-- ::: -->
+<!-- <details> -->
+<!-- <summary>**Solution**</summary> -->
+<!-- ```{r} -->
+<!-- Mortality <- data.frame(Male_UK_Death_New$Age, round(Overall_Deaths[,-1]/Overall_Pop[,-1], digits = 5)) -->
+<!-- colnames(Mortality) <- colnames(Male_UK_Pop_New) -->
+<!-- head(Mortality) -->
+<!-- ``` -->
+<!-- **Note - We could have done this for the individual sex data sets to obtain a more accurate estimate of mortality based on sex.** -->
+<!-- </details> -->
+<!-- Before we carry on, let us actually have a look at this data visually now that we have created it: -->
+<!-- ```{r} -->
+<!-- plot(0:105, Overall_Pop$`1961`, type = "l", main = "UK Population by Age 1961", xlab = "Age", ylab = "Population") -->
+<!-- ``` -->
+<!-- :::{.exercise} -->
+<!-- As actuaries, you need to be able to critically analyse data, not just use it. What do you think is the reason for these spikes and falls in the data? -->
+<!-- ```{r} -->
+<!-- plot(0:105, Overall_Pop$`1961`, type = "l", main = "UK Population by Age 1961", xlab = "Age", ylab = "Population") -->
+<!-- abline(v = 14, col = "red", lty = 2) -->
+<!-- abline(v = 40, col = "red", lty = 2) -->
+<!-- abline(v = 43, col = "blue", lty = 2) -->
+<!-- ``` -->
+<!-- ::: -->
+<!-- <details> -->
+<!-- <summary>**Solution**</summary> -->
+<!-- The simple answer is most likely World War 2. The initial spike in the population at around the age of 14/15 due to the baby boom immediately after the end of the war in 1947, this would result in a surge of 14/15 year olds in 1961. The same thing ocurred after World War 1, which is the likely cause of the second spike at around age 41/42. The sudden drop or fall just after this at around the 43/44 year mark is most likely due to the fact that individuals aged roughly 43/44 in 1961 would have been aged roughly 23/24 at the start of World War 2 in 1942, the prime age for fighting soldiers.  -->
+<!-- </details> -->
+<!-- :::{.exercise} -->
+<!-- Why would these spikes be of such importance to us as actuaries? -->
+<!-- ::: -->
+<!-- <details> -->
+<!-- <summary>**Solution**</summary> -->
+<!-- ```{r} -->
+<!-- plot(0:105, Overall_Pop$`1961`, type = "l", main = "UK Population by Age 1961", xlab = "Age", ylab = "Population") -->
+<!-- lines(0:105, Overall_Pop$`1987`, type = "l", col = "red") -->
+<!-- lines(0:105, Overall_Pop$`2013`, type = "l", col= "blue") -->
+<!-- lines(0:105, Mortality$`2017`, type = "l", col = "green") -->
+<!-- ``` -->
+<!-- These spikes in the different ages will drift with time and eventually cause spikes in the population at retirement age. This is extremely important for pension actuaries when modelling and predicting pension plans and beneift payments.  -->
+<!-- </details> -->
+<!-- :::{.exercise} -->
+<!-- Can you plot the mortality rates for every single year on one plot? -->
+<!-- **Hint: Note that the line colours can also be represented by numbers, e.g., col = 1.** -->
+<!-- ::: -->
+<!-- <details> -->
+<!-- <summary>**Solution**</summary> -->
+<!-- ```{r} -->
+<!-- plot(0:105, Mortality[,2], type = "l", xlab = "Age", ylab = "Mortality Rate", main = "UK Mortality by Age") -->
+<!-- for(i in 3:(ncol(Mortality)-2)){ -->
+<!--   lines(0:105, Mortality[,i], type = "l", col = i) -->
+<!-- } -->
+<!-- ``` -->
+<!-- </details> -->
+<!-- ## Conditional extraction -->
+<!-- There may be circumstances where you want to consider some analysis of a data set, but you may only be interested in particular observations that satisfy certain conditions. For example, assume we wanted to price a pension annuity (regular payments until death), then we would only be interested in the Mortality rates of pensioners (65+). We can extract this information using the conditional arguments we have seen in previous sessions. However, before we can do this, we have to amend the Age values in the Mortality data set to be numerical/integer values rather than characters: -->
+<!-- ```{r} -->
+<!-- class(Mortality$Age) -->
+<!-- Mortality$Age <- 0:105 -->
+<!-- class(Mortality$Age) -->
+<!-- Mort_pension <- Mortality[Mortality$Age >= 65, ]  -->
+<!-- datatable(Mort_pension, options=list(scrollX=TRUE)) -->
+<!-- ``` -->
+<!-- How does this work? This is a combination of conditional statements and extraction. In short, the conditional statement creates a vector of `TRUE`/`FALSE` values which are then used in the matrix type extraction technique we discussed in previous weeks. The result is that R will only extract the row(column) numbers corresponding to `TRUE` values. This is known as 'conditional extraction'. -->
+<!-- Moreover, due to changes in technology and the NHS, we may decide that mortality rates pre-2000 are not valid enough to be used in our calculations, so we might only want to consider post-2000 values. Can we do this in a similar way? In general you will not be able to  extract certain columns using conditional arguments since they represent different variables. However, you can do this by inspection, using matrix extraction and the `which()` function: -->
+<!-- ```{r} -->
+<!-- which(colnames(Mortality) == "2000") -->
+<!-- Mort_pension_2000 <- Mort_pension[,c(1,41:ncol(Mort_pension))] -->
+<!-- datatable(Mort_pension_2000, options=list(scrollX=TRUE)) -->
+<!-- ``` -->
+<!-- In general, it is possible to use the conditional argument format to extract rows from data sets, as long as you are conditioning on elements/variables within the data rather than column names. To see this, let us briefly revisit the mtcars data set from the previous sessions -->
+<!-- ```{r} -->
+<!-- datatable(mtcars, options=list(scrollX=TRUE)) -->
+<!-- ``` -->
+<!-- Assume that you only want to deal with cars that have 6 or 8 cylinders: -->
+<!-- ```{r} -->
+<!-- data <- mtcars[mtcars$cyl >= 6, ] -->
+<!-- datatable(data, options=list(scrollX=TRUE)) -->
+<!-- data1 <- mtcars[mtcars$cyl >= 6 & mtcars$hp > 100, ] -->
+<!-- datatable(data1, options=list(scrollX=TRUE)) -->
+<!-- ``` -->
+<!-- ## Adding data  -->
+<!-- As well as extracting data from data frame, it is also possible to add new data to an existing data frame. That is, add a new observation (row) or even add a new variable (column) which is possibly even calculated using the rest of the data. There are a number of ways to add a new row to a dataframe but I find the easiest is to use something similar to row extraction but for an undefined row (non-existent row). Let us first create a data frame: -->
+<!-- ```{r} -->
+<!-- new_data <- data.frame(A = c(1,2,3), B = c("Pass", "Fail", "Pass"), C = c("M", "M", "F")) -->
+<!-- knitr::kable(new_data, align="ccc") -->
+<!-- ``` -->
+<!-- Now, we can add a new row/observation to this existing data frame: -->
+<!-- ```{r} -->
+<!-- new_data[nrow(new_data)+1,] <- c(4, "Fail", "M") -->
+<!-- knitr::kable(new_data, align="ccc") -->
+<!-- ``` -->
+<!-- However, this only really works when adding a single row. If you wanted to add another data frame, you can use the rowbind function `rbind()`: -->
+<!-- ```{r} -->
+<!-- add_data <- data.frame(A = c(5,6,7), B = c("Pass", "Pass", "Pass"), C = c("F", "M", "F")) -->
+<!-- knitr::kable(add_data, align = "ccc") -->
+<!-- new_data <- rbind(new_data, add_data) -->
+<!-- knitr::kable(new_data, align = "ccc") -->
+<!-- ``` -->
+<!-- With this in mind, let us revisit the Mortality data set for pensioners post 2000: -->
+<!-- ```{r} -->
+<!-- datatable(Mort_pension_2000, options=list(scrollX=TRUE)) -->
+<!-- ``` -->
+<!-- If we want to add a new column/variable, you can do this in a very similar way as for rows. As an example, let us assume we want to add the mean of the mortality rates across years for the different ages. -->
+<!-- :::{.exercise}  -->
+<!-- Can you create a vector of the mean mortality rates for each age using loops? -->
+<!-- ::: -->
+<!-- <details> -->
+<!-- <summary>**Solution**</summary> -->
+<!-- ```{r} -->
+<!-- mean_mort <- c() -->
+<!-- for(i in 1:nrow(Mort_pension_2000)){ -->
+<!--   mean <- round(mean(as.numeric(Mort_pension_2000[i,-1])), digits = 5) -->
+<!--   mean_mort <- c(mean_mort, mean) -->
+<!-- } -->
+<!-- mean_mort -->
+<!-- ``` -->
+<!-- </details> -->
+<!-- Now that we have calculated the value, let us add it to the data. This can be done using any of the following methods: -->
+<!-- **Method 1** -->
+<!-- ```{r} -->
+<!-- Mort_pension_2000[,ncol(Mort_pension_2000)+1] <- mean_mort -->
+<!-- colnames(Mort_pension_2000)[ncol(Mort_pension_2000)] <- c("Mean") -->
+<!-- datatable(Mort_pension_2000, options=list(scrollX=TRUE)) -->
+<!-- ``` -->
+<!-- **Method 2** -->
+<!-- ```{r} -->
+<!-- Mort_pension_2000 <- Mort_pension_2000[,-ncol(Mort_pension_2000)] # This just removes the last column we added -->
+<!-- Mort1 <- cbind(Mort_pension_2000, mean_mort) -->
+<!-- colnames(Mort1)[ncol(Mort1)] <- c("Mean") -->
+<!-- datatable(Mort1, options=list(scrollX=TRUE)) -->
+<!-- ``` -->
+<!-- **Method 3** -->
+<!-- ```{r} -->
+<!-- Mort2 <- data.frame(Mort_pension_2000, mean_mort) -->
+<!-- colnames(Mort2) <- c(colnames(Mort_pension_2000), "Mean") -->
+<!-- datatable(Mort2, options=list(scrollX=TRUE)) -->
+<!-- ``` -->
+<!-- ## The `apply` family -->
+<!-- The final tool I want to talk about in this R module is the family of functions known as the `apply()` functions. Put simply, the `apply()` function, along with the its counterparts `lapply()`, `sapply()` and `vapply()` allow us to 'apply' a particular function on each row and/or column of a data frame (and other objects) without using loops.  -->
+<!-- The `apply()` function is basically a quicker and more convenient version of a `for()` loop and should always be considered first before loops as they are easier to write, read and are a lot quicker to execute which makes a huge difference when working with larger data sets.  -->
+<!-- The `apply()` function takes 3 main inputs (it can take more and we will discuss this soon). The first is the object you want to 'apply' the function to, in our case today a data frame. The second is either of the following: `1`, `2`, or `c(1,2)` where `1` indicates you want the function to be applied to the rows of the object,`2` for the columns of the object and `c(1,2)` to individual elements. Finally, the third input is the name of the function we want to apply.  -->
+<!-- As an example, let us look at finding the means for each row of the `Mort_pension_2000` data frame as we did before using `for()` loops.  -->
+<!-- ```{r} -->
+<!-- apply(Mort_pension_2000[,-1], 1, mean) -->
+<!-- ``` -->
+<!-- Does the output seem a little strange? You should notice that the row names are not the actual ages but the row number the ages were on! Again, be careful. Although, this can be easily rectified: -->
+<!-- ```{r} -->
+<!-- rownames(Mort_pension_2000) <- 65:105 -->
+<!-- apply(Mort_pension_2000[,-1], 1, mean) -->
+<!-- ``` -->
+<!-- Using this simple execution, we could add the mean column to our original data set using the following lines of code: -->
+<!-- ```{r} -->
+<!-- Mort3 <- cbind(Mort_pension_2000, round(apply(Mort_pension_2000[,-1], 1, mean),digits = 5)) -->
+<!-- colnames(Mort3)[ncol(Mort3)] <- "Mean" -->
+<!-- datatable(Mort3, options=list(scrollX=TRUE)) -->
+<!-- ``` -->
+<!-- :::{.exercise}  -->
+<!-- With this in mind, can you now add the standard deviation for each age to the end of Mort3, using the `apply()` function? -->
+<!-- ::: -->
+<!-- <details> -->
+<!-- <summary>**Solution**</summary> -->
+<!-- ```{r} -->
+<!-- Mort3 <- cbind(Mort3, apply(Mort_pension_2000[,-1], 1, sd)) -->
+<!-- colnames(Mort3)[ncol(Mort3)] <- "Std. Dev." -->
+<!-- head(Mort3) -->
+<!-- ``` -->
+<!-- </details> -->
+<!-- Just so you can see how this works let's look at the same function applied to columns: -->
+<!-- ```{r} -->
+<!-- apply(Mort_pension_2000[,-1], 2, mean) -->
+<!-- ``` -->
+<!-- Finally, let us try on the individual elements (obviously we will have to use something other than mean here): -->
+<!-- ```{r} -->
+<!-- apply(Mort_pension_2000, c(1,2), class) -->
+<!-- ``` -->
+<!-- You can use ANY function in the `apply()` command, including those which have multiple inputs - in this case, the additional inputs are just input as additional inputs into the `apply()` function itself - and custom created functions like those we created in the previous week. As a final example, let us create a function and use it within `apply()` on the Mortality data: -->
+<!-- ```{r} -->
+<!-- min_max <- function(x, type){ -->
+<!--   ordered <- sort(x) -->
+<!--   if(type == "min"){ -->
+<!--     return (ordered[1]) -->
+<!--   } else if (type == "max"){ -->
+<!--     return(ordered[length(ordered)]) -->
+<!--   } -->
+<!-- } -->
+<!-- apply(Mort_pension_2000[,-1], 1, min_max, type = "min") -->
+<!-- apply(Mort_pension_2000[,-1], 1, min_max, type = "max") -->
+<!-- ``` -->
+<!-- There are some very subtle differences between `lapply()`, `sapply()` and `vapply()` that I will not go into here but please make sure to work through the DataCamp courses to understand these. For the sake of this course, the apply() function allows us to do what we want sufficiently! Feel free to now have a go at the final set of exercises below: -->
+<!-- I hope you enjoyed this small workshop on R Programming and feel more confident with the basics of what you can do in R. I strongly suggest you continuously test yourself in R and even make up your own problems/challenges, as physically programming is really the  only way to remember and improve your programming skills. Also, please do not be afraid to search the web for tips and advice, I personally find this the simplest and quickest way to learn.   -->
+<!-- I am always more than happy to help with any questions you may have, so do please not hesitate to contact me! -->
+<!-- ## Exercises -->
+<!-- 1. A traffic engineer is investigating the consistency and use of public buses in York. Based on previous data, she finds that the number of buses arriving each day fluctuates due to poor timetabling and assumes that the number of buses (arriving each day) is Poisson distributed with parameter $\lambda = 10$. Create a vector containing 30 simulated values from this distribution to represent a simulation of a months worth of observations.  -->
+<!-- <details> -->
+<!-- <summary>**Solution**</summary> -->
+<!-- ```{r} -->
+<!-- buses <- rpois(30, lambda = 10) -->
+<!-- ``` -->
+<!-- </details> -->
+<!-- 2. Based on the same data, it is assumed that the average number of people on each bus follows a binomial distribution with parameters $n = 60$ and $p = 0.4$. Create a second vector containing 30 simulated values which represents the average number of people on each bus per day.  -->
+<!-- <details> -->
+<!-- <summary>**Solution**</summary> -->
+<!-- ```{r} -->
+<!-- people <- rbinom(30, size = 60, prob = 0.4) -->
+<!-- ``` -->
+<!-- </details> -->
+<!-- 3. Finally, the average age of the passengers riding the buses on any given day is thought to be rounded gamma distributed with parameters $\alpha = 250$ and $\beta = 5$. Create a vector containing 30 simulated values to represent the average age of passengers on a given day. -->
+<!-- <details> -->
+<!-- <summary>**Solution**</summary> -->
+<!-- ```{r} -->
+<!-- age <- round(rgamma(30, shape = 250, rate = 5)) -->
+<!-- ``` -->
+<!-- </details> -->
+<!-- 4.  Using the vectors created above, create a data frame with 4 columns representing the days of the week (starting from Monday), the number of buses arriving per day, the average number of passengers per bus and the average age of passengers on that given day.  -->
+<!-- <details> -->
+<!-- <summary>**Solution**</summary> -->
+<!-- ```{r} -->
+<!-- days <- c("Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday") -->
+<!-- day_col <- rep(days, length.out = 30) # This command repeats the days of the week from above to fill 30 element vector -->
+<!-- data <- data.frame(Day = day_col, Buses = buses, People = people, Age = age) -->
+<!-- ``` -->
+<!-- </details> -->
+<!-- 5. Add a new column to the data which shows the average number of passengers each day. -->
+<!-- <details> -->
+<!-- <summary>**Solution**</summary> -->
+<!-- ```{r} -->
+<!-- data1 <- cbind(data, buses*people) -->
+<!-- colnames(data1) <- c(colnames(data), "Avg.Total.People") -->
+<!-- data1 -->
+<!-- ``` -->
+<!-- </details> -->
+<!-- 6. Using conditional row/column extraction and the `apply()` function, determine the mean and standard deviation for each of the variables within the week and at the weekend separately. Compare the results of weekday vs. weekend using a bar chart.  -->
+<!-- **[Hint: We have not spoken explicitly about how to use bar charts, so you will have to read up on these yourselves.]** -->
+<!-- <details> -->
+<!-- <summary>**Solution**</summary> -->
+<!-- ```{r} -->
+<!-- weekend_data <- data1[data1$Day == "Saturday" | data1$Day == "Sunday", ] -->
+<!-- weekday_data <- data1[data1$Day != "Saturday" & data1$Day != "Sunday", ] -->
+<!-- weekend_means <- apply(weekend_data[,-1], 2, mean) -->
+<!-- weekday_means <- apply(weekday_data[,-1], 2, mean) -->
+<!-- weekend_sd <- apply(weekend_data[,-1], 2, sd) -->
+<!-- weekday_sd <- apply(weekday_data[,-1], 2, sd) -->
+<!-- par(mfrow = c(1,1)) -->
+<!-- barplot(rbind(weekday_means, weekend_means), beside = T, main = "Weekday vs. Weekend Means", col = c("blue", "red")) -->
+<!-- legend("topleft", legend = c("Weekday", "Weekend"), fill = c("blue", "red")) -->
+<!-- barplot(rbind(weekday_sd, weekend_sd), beside = T, main = "Weekday vs. Weekend SD", col = c("blue", "red")) -->
+<!-- legend("topleft", legend = c("Weekday", "Weekend"), fill = c("blue", "red")) -->
+<!-- ``` -->
+<!-- </details> -->
+<!-- 7. Import the 'Stock Price' data from the Excel file on the VLE and save it as a data frame. By creating a function and using `apply()`, add new columns to this data frame containing the relative returns of each stock and label the new columns appropriately.  -->
+<!-- <details> -->
+<!-- <summary>**Solution**</summary> -->
+<!-- ```{r} -->
+<!-- # Import Data: -->
+<!-- library(readxl) -->
+<!-- StockPrices <- as.data.frame(read_excel("StockPrices.xlsx")) -->
+<!-- # Relative returns: -->
+<!-- relativereturns <- function(x){ -->
+<!--   diff(x)/x[-length(x)] -->
+<!-- } -->
+<!-- returns <- apply(StockPrices[,-1], 2, relativereturns) -->
+<!-- colnames(returns) <- c("BT Ret", "HSBS Ret", "Prud Ret", "TSCO Ret", "VOD Ret") -->
+<!-- StockPriceNew <- cbind(StockPrices, rbind(rep(NA, 5), round(returns, digits = 3))) -->
+<!-- knitr::kable(head(StockPriceNew)) -->
+<!-- ``` -->
+<!-- </details> -->
+<!-- 8. Using the relative returns calculated in Exercise 7., create a plot which compares the mean relative returns per year for each of the stocks. -->
+<!-- **[Hint: You can extract the year from the date column of the data frame using the following code - `format(date, format = "\%Y")`.]** -->
+<!-- <details> -->
+<!-- <summary>**Solution**</summary> -->
+<!-- ```{r} -->
+<!-- head(format(StockPriceNew$Date, format = "%Y")) # You can see this extracts the Year within the date column (see output). We can use this now within our conditional extraction below -->
+<!-- meanreturns <- c() -->
+<!-- for(i in 1994:2015){ -->
+<!--   mean <- apply(StockPriceNew[format(StockPriceNew$Date, format = "%Y") == i, 7:11], 2, mean) -->
+<!--   meanreturns <- rbind(meanreturns, mean) -->
+<!-- } -->
+<!-- rownames(meanreturns) <- 1994:2015 -->
+<!-- plot(1994:2015, meanreturns[,1], type = "l", main = "Mean Stock Returns by Year", ylim = c(-0.005, 0.005), lwd = 2, ylab = "Relative returns", xlab = "Year", col = 1) -->
+<!-- for(i in 2:5){ -->
+<!--   lines(1994:2015, meanreturns[,i], type = "l", col = i, lwd = 2) -->
+<!-- } -->
+<!-- legend("topright", legend = colnames(StockPrices[,-1]), col = 1:5, lty  = 1) -->
+<!-- ``` -->
+<!-- </details> -->
+<!-- 9. Using the `apply()` function, calculate the standard deviations of the returns for the different stocks within each year.  -->
+<!-- <details> -->
+<!-- <summary>**Solution**</summary> -->
+<!-- ```{r} -->
+<!-- sdreturns <- c() -->
+<!-- for(i in 1994:2015){ -->
+<!--   sd <- apply(StockPriceNew[format(StockPriceNew$Date, format = "%Y") == i, 7:11], 2, sd) -->
+<!--   sdreturns <- rbind(sdreturns, sd) -->
+<!-- } -->
+<!-- rownames(sdreturns) <- 1994:2015 -->
+<!-- sdreturns -->
+<!-- ``` -->
+<!-- </details> -->
+<!-- ## DataCamp course(s) -->
+<!-- - https://www.datacamp.com/courses/intermediate-r (Intermediate R Course) -->
+
+</div>
+</div>
+
+
+
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="conditionals-and-if-statements.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="additional-tips.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": null,
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/USERNAME/REPO/edit/BRANCH/03-Loops.Rmd",
+"text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["_main.pdf"],
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

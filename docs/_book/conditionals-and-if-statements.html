@@ -1,0 +1,1182 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Week2 Conditionals and IF Statements | Introduction to R Programming - University of York</title>
+  <meta name="description" content="These lecture notes contain all the material for the ‘Introduction to R Programming’ workshops, which is a supplimentary course of the `BSc Actuarial Science’ programme at the University of York." />
+  <meta name="generator" content="bookdown 0.29 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Week2 Conditionals and IF Statements | Introduction to R Programming - University of York" />
+  <meta property="og:type" content="book" />
+  
+  <meta property="og:description" content="These lecture notes contain all the material for the ‘Introduction to R Programming’ workshops, which is a supplimentary course of the `BSc Actuarial Science’ programme at the University of York." />
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Week2 Conditionals and IF Statements | Introduction to R Programming - University of York" />
+  
+  <meta name="twitter:description" content="These lecture notes contain all the material for the ‘Introduction to R Programming’ workshops, which is a supplimentary course of the `BSc Actuarial Science’ programme at the University of York." />
+  
+
+<meta name="author" content="Dr. Lewis Ramsden" />
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="rstudio-and-r-basics-revision.html"/>
+<link rel="next" href="loops.html"/>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Introduction to R Programming</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Preface</a>
+<ul>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#about-this-course"><i class="fa fa-check"></i>About This Course</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#schedule"><i class="fa fa-check"></i>Schedule</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#datacamp"><i class="fa fa-check"></i>DataCamp</a></li>
+</ul></li>
+<li class="chapter" data-level="1" data-path="rstudio-and-r-basics-revision.html"><a href="rstudio-and-r-basics-revision.html"><i class="fa fa-check"></i><b>1</b> RStudio and R Basics (Revision)</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="rstudio-and-r-basics-revision.html"><a href="rstudio-and-r-basics-revision.html#how-to-install-r-and-rstudio"><i class="fa fa-check"></i><b>1.1</b> How to install R and RStudio</a></li>
+<li class="chapter" data-level="1.2" data-path="rstudio-and-r-basics-revision.html"><a href="rstudio-and-r-basics-revision.html#rstudio-interface-explained"><i class="fa fa-check"></i><b>1.2</b> RStudio interface explained</a></li>
+<li class="chapter" data-level="1.3" data-path="rstudio-and-r-basics-revision.html"><a href="rstudio-and-r-basics-revision.html#mathematical-calculations"><i class="fa fa-check"></i><b>1.3</b> Mathematical calculations</a>
+<ul>
+<li class="chapter" data-level="1.3.1" data-path="rstudio-and-r-basics-revision.html"><a href="rstudio-and-r-basics-revision.html#basic-numerical-calculations"><i class="fa fa-check"></i><b>1.3.1</b> Basic numerical calculations</a></li>
+<li class="chapter" data-level="1.3.2" data-path="rstudio-and-r-basics-revision.html"><a href="rstudio-and-r-basics-revision.html#more-complicated-calculations"><i class="fa fa-check"></i><b>1.3.2</b> More complicated calculations</a></li>
+</ul></li>
+<li class="chapter" data-level="1.4" data-path="rstudio-and-r-basics-revision.html"><a href="rstudio-and-r-basics-revision.html#r-script"><i class="fa fa-check"></i><b>1.4</b> R script</a></li>
+<li class="chapter" data-level="1.5" data-path="rstudio-and-r-basics-revision.html"><a href="rstudio-and-r-basics-revision.html#assigning-variables"><i class="fa fa-check"></i><b>1.5</b> Assigning variables</a></li>
+<li class="chapter" data-level="1.6" data-path="rstudio-and-r-basics-revision.html"><a href="rstudio-and-r-basics-revision.html#vectors-and-matrices"><i class="fa fa-check"></i><b>1.6</b> Vectors and matrices</a>
+<ul>
+<li class="chapter" data-level="1.6.1" data-path="rstudio-and-r-basics-revision.html"><a href="rstudio-and-r-basics-revision.html#vectors"><i class="fa fa-check"></i><b>1.6.1</b> Vectors</a></li>
+<li class="chapter" data-level="1.6.2" data-path="rstudio-and-r-basics-revision.html"><a href="rstudio-and-r-basics-revision.html#vector-calculations"><i class="fa fa-check"></i><b>1.6.2</b> Vector calculations</a></li>
+<li class="chapter" data-level="1.6.3" data-path="rstudio-and-r-basics-revision.html"><a href="rstudio-and-r-basics-revision.html#vector-strings"><i class="fa fa-check"></i><b>1.6.3</b> Vector strings</a></li>
+<li class="chapter" data-level="1.6.4" data-path="rstudio-and-r-basics-revision.html"><a href="rstudio-and-r-basics-revision.html#vector-extraction"><i class="fa fa-check"></i><b>1.6.4</b> Vector extraction</a></li>
+<li class="chapter" data-level="1.6.5" data-path="rstudio-and-r-basics-revision.html"><a href="rstudio-and-r-basics-revision.html#exercises"><i class="fa fa-check"></i><b>1.6.5</b> Exercises</a></li>
+<li class="chapter" data-level="1.6.6" data-path="rstudio-and-r-basics-revision.html"><a href="rstudio-and-r-basics-revision.html#matrices"><i class="fa fa-check"></i><b>1.6.6</b> Matrices</a></li>
+<li class="chapter" data-level="1.6.7" data-path="rstudio-and-r-basics-revision.html"><a href="rstudio-and-r-basics-revision.html#matrix-calculations"><i class="fa fa-check"></i><b>1.6.7</b> Matrix calculations</a></li>
+<li class="chapter" data-level="1.6.8" data-path="rstudio-and-r-basics-revision.html"><a href="rstudio-and-r-basics-revision.html#matrix-operations"><i class="fa fa-check"></i><b>1.6.8</b> Matrix operations</a></li>
+<li class="chapter" data-level="1.6.9" data-path="rstudio-and-r-basics-revision.html"><a href="rstudio-and-r-basics-revision.html#matrix-extraction"><i class="fa fa-check"></i><b>1.6.9</b> Matrix extraction</a></li>
+<li class="chapter" data-level="1.6.10" data-path="rstudio-and-r-basics-revision.html"><a href="rstudio-and-r-basics-revision.html#exercises-1"><i class="fa fa-check"></i><b>1.6.10</b> Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="1.7" data-path="rstudio-and-r-basics-revision.html"><a href="rstudio-and-r-basics-revision.html#plotting-graphs"><i class="fa fa-check"></i><b>1.7</b> Plotting graphs</a>
+<ul>
+<li class="chapter" data-level="1.7.1" data-path="rstudio-and-r-basics-revision.html"><a href="rstudio-and-r-basics-revision.html#adding-to-plots-lines-points-etc."><i class="fa fa-check"></i><b>1.7.1</b> Adding to plots (lines, points etc.)</a></li>
+<li class="chapter" data-level="1.7.2" data-path="rstudio-and-r-basics-revision.html"><a href="rstudio-and-r-basics-revision.html#exercises-2"><i class="fa fa-check"></i><b>1.7.2</b> Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="1.8" data-path="rstudio-and-r-basics-revision.html"><a href="rstudio-and-r-basics-revision.html#applied-exercises"><i class="fa fa-check"></i><b>1.8</b> Applied exercises</a></li>
+<li class="chapter" data-level="1.9" data-path="rstudio-and-r-basics-revision.html"><a href="rstudio-and-r-basics-revision.html#datacamp-courses"><i class="fa fa-check"></i><b>1.9</b> DataCamp course(s)</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="conditionals-and-if-statements.html"><a href="conditionals-and-if-statements.html"><i class="fa fa-check"></i><b>2</b> Conditionals and IF Statements</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="conditionals-and-if-statements.html"><a href="conditionals-and-if-statements.html#relational-operators"><i class="fa fa-check"></i><b>2.1</b> Relational operators</a></li>
+<li class="chapter" data-level="2.2" data-path="conditionals-and-if-statements.html"><a href="conditionals-and-if-statements.html#logical-operators"><i class="fa fa-check"></i><b>2.2</b> Logical operators</a></li>
+<li class="chapter" data-level="2.3" data-path="conditionals-and-if-statements.html"><a href="conditionals-and-if-statements.html#if-statements"><i class="fa fa-check"></i><b>2.3</b> IF statements</a></li>
+<li class="chapter" data-level="2.4" data-path="conditionals-and-if-statements.html"><a href="conditionals-and-if-statements.html#exercises-3"><i class="fa fa-check"></i><b>2.4</b> Exercises</a></li>
+<li class="chapter" data-level="2.5" data-path="conditionals-and-if-statements.html"><a href="conditionals-and-if-statements.html#applied-exercises-1"><i class="fa fa-check"></i><b>2.5</b> Applied exercises</a></li>
+<li class="chapter" data-level="2.6" data-path="conditionals-and-if-statements.html"><a href="conditionals-and-if-statements.html#datacamp-courses-1"><i class="fa fa-check"></i><b>2.6</b> DataCamp course(s)</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="loops.html"><a href="loops.html"><i class="fa fa-check"></i><b>3</b> Loops</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="loops.html"><a href="loops.html#for-loops"><i class="fa fa-check"></i><b>3.1</b> For loops</a>
+<ul>
+<li class="chapter" data-level="3.1.1" data-path="loops.html"><a href="loops.html#matrices-1"><i class="fa fa-check"></i><b>3.1.1</b> Matrices</a></li>
+</ul></li>
+<li class="chapter" data-level="3.2" data-path="loops.html"><a href="loops.html#while-loops"><i class="fa fa-check"></i><b>3.2</b> While loops</a></li>
+<li class="chapter" data-level="3.3" data-path="loops.html"><a href="loops.html#exercises-4"><i class="fa fa-check"></i><b>3.3</b> Exercises</a></li>
+<li class="chapter" data-level="3.4" data-path="loops.html"><a href="loops.html#applied-exercises-2"><i class="fa fa-check"></i><b>3.4</b> Applied Exercises</a></li>
+<li class="chapter" data-level="3.5" data-path="loops.html"><a href="loops.html#datacamp-courses-2"><i class="fa fa-check"></i><b>3.5</b> DataCamp course(s)</a></li>
+</ul></li>
+<li class="appendix"><span><b>Appendix</b></span></li>
+<li class="chapter" data-level="A" data-path="additional-tips.html"><a href="additional-tips.html"><i class="fa fa-check"></i><b>A</b> Additional Tips</a>
+<ul>
+<li class="chapter" data-level="" data-path="additional-tips.html"><a href="additional-tips.html#commenting"><i class="fa fa-check"></i>Commenting</a></li>
+<li class="chapter" data-level="" data-path="additional-tips.html"><a href="additional-tips.html#help"><i class="fa fa-check"></i>Help</a></li>
+</ul></li>
+<li class="chapter" data-level="B" data-path="cheat-sheets.html"><a href="cheat-sheets.html"><i class="fa fa-check"></i><b>B</b> Cheat Sheets</a>
+<ul>
+<li class="chapter" data-level="" data-path="cheat-sheets.html"><a href="cheat-sheets.html#r-cheat-sheets"><i class="fa fa-check"></i>R Cheat Sheets</a></li>
+<li class="chapter" data-level="" data-path="cheat-sheets.html"><a href="cheat-sheets.html#rmarkdown-cheat-sheets"><i class="fa fa-check"></i>RMarkdown Cheat Sheets</a></li>
+<li class="chapter" data-level="" data-path="cheat-sheets.html"><a href="cheat-sheets.html#rmarkdown-guides"><i class="fa fa-check"></i>RMarkdown Guides</a></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="https://www.york.ac.uk/business-society/people/lewis-ramsden/" target="blank">Dr. Lewis Ramsden</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Introduction to R Programming - University of York</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="conditionals-and-if-statements" class="section level1 hasAnchor" number="2">
+<h1><span class="header-section-number">Week2</span> Conditionals and IF Statements<a href="conditionals-and-if-statements.html#conditionals-and-if-statements" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<p>In R, conditional statements or arguments are used to compare or analyse values/data based on certain conditions. In general, this is done with the use of ‘relational operators’ (<code>=</code>, <code>&gt;</code>, <code>&lt;</code>, <code>&gt;=</code>, <code>&lt;=</code>, <code>!=</code>) and ‘logical operators’ (OR, AND, AND/OR).</p>
+<div id="relational-operators" class="section level2 hasAnchor" number="2.1">
+<h2><span class="header-section-number">2.1</span> Relational operators<a href="conditionals-and-if-statements.html#relational-operators" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>The most basic of the ‘relational operators’ is the equality operator (<code>==</code>), which can be used to check if two objects (values, vectors, matrices etc.) are equal:</p>
+<div class="sourceCode" id="cb108"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb108-1"><a href="conditionals-and-if-statements.html#cb108-1" tabindex="-1"></a><span class="dv">4</span> <span class="sc">==</span> <span class="dv">3</span><span class="sc">+</span><span class="dv">1</span></span></code></pre></div>
+<pre><code>## [1] TRUE</code></pre>
+<div class="sourceCode" id="cb110"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb110-1"><a href="conditionals-and-if-statements.html#cb110-1" tabindex="-1"></a><span class="dv">5</span><span class="sc">^</span><span class="dv">2</span> <span class="sc">==</span> <span class="dv">25</span></span></code></pre></div>
+<pre><code>## [1] TRUE</code></pre>
+<div class="sourceCode" id="cb112"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb112-1"><a href="conditionals-and-if-statements.html#cb112-1" tabindex="-1"></a><span class="dv">8</span> <span class="sc">%%</span> <span class="dv">5</span> <span class="sc">==</span> <span class="dv">3</span>  <span class="co"># The double percentage sign here resembles modulo arithmetic, i.e. 8 mod 5</span></span></code></pre></div>
+<pre><code>## [1] TRUE</code></pre>
+<p>This can also be performed on vectors on an element by element basis (as usual):</p>
+<div class="sourceCode" id="cb114"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb114-1"><a href="conditionals-and-if-statements.html#cb114-1" tabindex="-1"></a><span class="dv">1</span><span class="sc">:</span><span class="dv">10</span> <span class="sc">==</span> <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>,<span class="dv">5</span>,<span class="dv">6</span>,<span class="dv">7</span>,<span class="dv">8</span>,<span class="dv">9</span>,<span class="dv">10</span>)</span></code></pre></div>
+<pre><code>##  [1] TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE</code></pre>
+<div class="sourceCode" id="cb116"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb116-1"><a href="conditionals-and-if-statements.html#cb116-1" tabindex="-1"></a><span class="dv">1</span><span class="sc">:</span><span class="dv">10</span> <span class="sc">==</span> <span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>,<span class="dv">5</span>,<span class="dv">6</span>,<span class="dv">7</span>,<span class="dv">8</span>,<span class="dv">9</span>,<span class="dv">10</span>)</span></code></pre></div>
+<pre><code>##  [1] FALSE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE</code></pre>
+<p>Unsurprisingly, it also works on matrices on an element by element basis as well:</p>
+<div class="sourceCode" id="cb118"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb118-1"><a href="conditionals-and-if-statements.html#cb118-1" tabindex="-1"></a><span class="fu">matrix</span>(<span class="dv">5</span>, <span class="at">nrow =</span> <span class="dv">3</span>, <span class="at">ncol =</span> <span class="dv">3</span>)</span></code></pre></div>
+<pre><code>##      [,1] [,2] [,3]
+## [1,]    5    5    5
+## [2,]    5    5    5
+## [3,]    5    5    5</code></pre>
+<div class="sourceCode" id="cb120"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb120-1"><a href="conditionals-and-if-statements.html#cb120-1" tabindex="-1"></a><span class="fu">matrix</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">9</span>, <span class="at">nrow =</span> <span class="dv">3</span>) <span class="sc">==</span> <span class="fu">matrix</span>(<span class="dv">5</span>, <span class="at">nrow =</span> <span class="dv">3</span>, <span class="at">ncol =</span> <span class="dv">3</span>)</span></code></pre></div>
+<pre><code>##       [,1]  [,2]  [,3]
+## [1,] FALSE FALSE FALSE
+## [2,] FALSE  TRUE FALSE
+## [3,] FALSE FALSE FALSE</code></pre>
+<div class="sourceCode" id="cb122"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb122-1"><a href="conditionals-and-if-statements.html#cb122-1" tabindex="-1"></a><span class="fu">diag</span>(<span class="dv">5</span>, <span class="at">nrow =</span> <span class="dv">3</span>, <span class="at">ncol =</span> <span class="dv">3</span>)</span></code></pre></div>
+<pre><code>##      [,1] [,2] [,3]
+## [1,]    5    0    0
+## [2,]    0    5    0
+## [3,]    0    0    5</code></pre>
+<div class="sourceCode" id="cb124"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb124-1"><a href="conditionals-and-if-statements.html#cb124-1" tabindex="-1"></a><span class="fu">diag</span>(<span class="dv">5</span>, <span class="at">nrow =</span> <span class="dv">3</span>, <span class="at">ncol =</span> <span class="dv">3</span>) <span class="sc">==</span> <span class="dv">5</span> <span class="sc">*</span> <span class="fu">diag</span>(<span class="dv">1</span>, <span class="at">nrow =</span><span class="dv">3</span>)</span></code></pre></div>
+<pre><code>##      [,1] [,2] [,3]
+## [1,] TRUE TRUE TRUE
+## [2,] TRUE TRUE TRUE
+## [3,] TRUE TRUE TRUE</code></pre>
+<p>Notice that this equality operator uses a double equal sign (<code>==</code>) rather than a single <code>=</code>. This is due to the fact the single equality sign is already used for assignments (similar to <code>&lt;-</code>). This can be confusing, can easily cause errors and is the main reason I always suggest using <code>&lt;-</code> for variable assignment.</p>
+<p>Conversely, you can use the not equal operator (<code>!=</code>) in a similar way</p>
+<div class="sourceCode" id="cb126"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb126-1"><a href="conditionals-and-if-statements.html#cb126-1" tabindex="-1"></a><span class="dv">3</span> <span class="sc">!=</span> <span class="dv">5</span></span></code></pre></div>
+<pre><code>## [1] TRUE</code></pre>
+<div class="sourceCode" id="cb128"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb128-1"><a href="conditionals-and-if-statements.html#cb128-1" tabindex="-1"></a><span class="fu">seq</span>(<span class="dv">1</span>, <span class="dv">10</span>, <span class="at">by =</span> <span class="dv">1</span>) <span class="sc">!=</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">10</span></span></code></pre></div>
+<pre><code>##  [1] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE</code></pre>
+<p><strong>Note - In general, the (<code>!</code>) symbol negates any type of relational operator or Boolean value in R, e.g.</strong></p>
+<div class="sourceCode" id="cb130"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb130-1"><a href="conditionals-and-if-statements.html#cb130-1" tabindex="-1"></a><span class="sc">!</span><span class="cn">TRUE</span></span></code></pre></div>
+<pre><code>## [1] FALSE</code></pre>
+<div class="sourceCode" id="cb132"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb132-1"><a href="conditionals-and-if-statements.html#cb132-1" tabindex="-1"></a><span class="sc">!</span><span class="cn">FALSE</span></span></code></pre></div>
+<pre><code>## [1] TRUE</code></pre>
+<p>In a similar way, you should easily be able to understand how the rest of the relational operators work, i.e. (<code>&lt;</code>, <code>&gt;</code>, <code>&lt;=</code>, <code>&gt;=</code>). In the following example(s), I will introduce you to one of the many pre-programmed data sets that form part of the base package data sets, i.e, mtcars; we will discuss data sets in more details in the next few weeks.</p>
+<div class="sourceCode" id="cb134"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb134-1"><a href="conditionals-and-if-statements.html#cb134-1" tabindex="-1"></a>mtcars</span></code></pre></div>
+<table style="width:100%;">
+<colgroup>
+<col width="27%" />
+<col width="6%" />
+<col width="5%" />
+<col width="8%" />
+<col width="5%" />
+<col width="6%" />
+<col width="8%" />
+<col width="8%" />
+<col width="4%" />
+<col width="4%" />
+<col width="6%" />
+<col width="6%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="left"></th>
+<th align="right">mpg</th>
+<th align="right">cyl</th>
+<th align="right">disp</th>
+<th align="right">hp</th>
+<th align="right">drat</th>
+<th align="right">wt</th>
+<th align="right">qsec</th>
+<th align="right">vs</th>
+<th align="right">am</th>
+<th align="right">gear</th>
+<th align="right">carb</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">Mazda RX4</td>
+<td align="right">21.0</td>
+<td align="right">6</td>
+<td align="right">160.0</td>
+<td align="right">110</td>
+<td align="right">3.90</td>
+<td align="right">2.620</td>
+<td align="right">16.46</td>
+<td align="right">0</td>
+<td align="right">1</td>
+<td align="right">4</td>
+<td align="right">4</td>
+</tr>
+<tr class="even">
+<td align="left">Mazda RX4 Wag</td>
+<td align="right">21.0</td>
+<td align="right">6</td>
+<td align="right">160.0</td>
+<td align="right">110</td>
+<td align="right">3.90</td>
+<td align="right">2.875</td>
+<td align="right">17.02</td>
+<td align="right">0</td>
+<td align="right">1</td>
+<td align="right">4</td>
+<td align="right">4</td>
+</tr>
+<tr class="odd">
+<td align="left">Datsun 710</td>
+<td align="right">22.8</td>
+<td align="right">4</td>
+<td align="right">108.0</td>
+<td align="right">93</td>
+<td align="right">3.85</td>
+<td align="right">2.320</td>
+<td align="right">18.61</td>
+<td align="right">1</td>
+<td align="right">1</td>
+<td align="right">4</td>
+<td align="right">1</td>
+</tr>
+<tr class="even">
+<td align="left">Hornet 4 Drive</td>
+<td align="right">21.4</td>
+<td align="right">6</td>
+<td align="right">258.0</td>
+<td align="right">110</td>
+<td align="right">3.08</td>
+<td align="right">3.215</td>
+<td align="right">19.44</td>
+<td align="right">1</td>
+<td align="right">0</td>
+<td align="right">3</td>
+<td align="right">1</td>
+</tr>
+<tr class="odd">
+<td align="left">Hornet Sportabout</td>
+<td align="right">18.7</td>
+<td align="right">8</td>
+<td align="right">360.0</td>
+<td align="right">175</td>
+<td align="right">3.15</td>
+<td align="right">3.440</td>
+<td align="right">17.02</td>
+<td align="right">0</td>
+<td align="right">0</td>
+<td align="right">3</td>
+<td align="right">2</td>
+</tr>
+<tr class="even">
+<td align="left">Valiant</td>
+<td align="right">18.1</td>
+<td align="right">6</td>
+<td align="right">225.0</td>
+<td align="right">105</td>
+<td align="right">2.76</td>
+<td align="right">3.460</td>
+<td align="right">20.22</td>
+<td align="right">1</td>
+<td align="right">0</td>
+<td align="right">3</td>
+<td align="right">1</td>
+</tr>
+<tr class="odd">
+<td align="left">Duster 360</td>
+<td align="right">14.3</td>
+<td align="right">8</td>
+<td align="right">360.0</td>
+<td align="right">245</td>
+<td align="right">3.21</td>
+<td align="right">3.570</td>
+<td align="right">15.84</td>
+<td align="right">0</td>
+<td align="right">0</td>
+<td align="right">3</td>
+<td align="right">4</td>
+</tr>
+<tr class="even">
+<td align="left">Merc 240D</td>
+<td align="right">24.4</td>
+<td align="right">4</td>
+<td align="right">146.7</td>
+<td align="right">62</td>
+<td align="right">3.69</td>
+<td align="right">3.190</td>
+<td align="right">20.00</td>
+<td align="right">1</td>
+<td align="right">0</td>
+<td align="right">4</td>
+<td align="right">2</td>
+</tr>
+<tr class="odd">
+<td align="left">Merc 230</td>
+<td align="right">22.8</td>
+<td align="right">4</td>
+<td align="right">140.8</td>
+<td align="right">95</td>
+<td align="right">3.92</td>
+<td align="right">3.150</td>
+<td align="right">22.90</td>
+<td align="right">1</td>
+<td align="right">0</td>
+<td align="right">4</td>
+<td align="right">2</td>
+</tr>
+<tr class="even">
+<td align="left">Merc 280</td>
+<td align="right">19.2</td>
+<td align="right">6</td>
+<td align="right">167.6</td>
+<td align="right">123</td>
+<td align="right">3.92</td>
+<td align="right">3.440</td>
+<td align="right">18.30</td>
+<td align="right">1</td>
+<td align="right">0</td>
+<td align="right">4</td>
+<td align="right">4</td>
+</tr>
+<tr class="odd">
+<td align="left">Merc 280C</td>
+<td align="right">17.8</td>
+<td align="right">6</td>
+<td align="right">167.6</td>
+<td align="right">123</td>
+<td align="right">3.92</td>
+<td align="right">3.440</td>
+<td align="right">18.90</td>
+<td align="right">1</td>
+<td align="right">0</td>
+<td align="right">4</td>
+<td align="right">4</td>
+</tr>
+<tr class="even">
+<td align="left">Merc 450SE</td>
+<td align="right">16.4</td>
+<td align="right">8</td>
+<td align="right">275.8</td>
+<td align="right">180</td>
+<td align="right">3.07</td>
+<td align="right">4.070</td>
+<td align="right">17.40</td>
+<td align="right">0</td>
+<td align="right">0</td>
+<td align="right">3</td>
+<td align="right">3</td>
+</tr>
+<tr class="odd">
+<td align="left">Merc 450SL</td>
+<td align="right">17.3</td>
+<td align="right">8</td>
+<td align="right">275.8</td>
+<td align="right">180</td>
+<td align="right">3.07</td>
+<td align="right">3.730</td>
+<td align="right">17.60</td>
+<td align="right">0</td>
+<td align="right">0</td>
+<td align="right">3</td>
+<td align="right">3</td>
+</tr>
+<tr class="even">
+<td align="left">Merc 450SLC</td>
+<td align="right">15.2</td>
+<td align="right">8</td>
+<td align="right">275.8</td>
+<td align="right">180</td>
+<td align="right">3.07</td>
+<td align="right">3.780</td>
+<td align="right">18.00</td>
+<td align="right">0</td>
+<td align="right">0</td>
+<td align="right">3</td>
+<td align="right">3</td>
+</tr>
+<tr class="odd">
+<td align="left">Cadillac Fleetwood</td>
+<td align="right">10.4</td>
+<td align="right">8</td>
+<td align="right">472.0</td>
+<td align="right">205</td>
+<td align="right">2.93</td>
+<td align="right">5.250</td>
+<td align="right">17.98</td>
+<td align="right">0</td>
+<td align="right">0</td>
+<td align="right">3</td>
+<td align="right">4</td>
+</tr>
+<tr class="even">
+<td align="left">Lincoln Continental</td>
+<td align="right">10.4</td>
+<td align="right">8</td>
+<td align="right">460.0</td>
+<td align="right">215</td>
+<td align="right">3.00</td>
+<td align="right">5.424</td>
+<td align="right">17.82</td>
+<td align="right">0</td>
+<td align="right">0</td>
+<td align="right">3</td>
+<td align="right">4</td>
+</tr>
+<tr class="odd">
+<td align="left">Chrysler Imperial</td>
+<td align="right">14.7</td>
+<td align="right">8</td>
+<td align="right">440.0</td>
+<td align="right">230</td>
+<td align="right">3.23</td>
+<td align="right">5.345</td>
+<td align="right">17.42</td>
+<td align="right">0</td>
+<td align="right">0</td>
+<td align="right">3</td>
+<td align="right">4</td>
+</tr>
+<tr class="even">
+<td align="left">Fiat 128</td>
+<td align="right">32.4</td>
+<td align="right">4</td>
+<td align="right">78.7</td>
+<td align="right">66</td>
+<td align="right">4.08</td>
+<td align="right">2.200</td>
+<td align="right">19.47</td>
+<td align="right">1</td>
+<td align="right">1</td>
+<td align="right">4</td>
+<td align="right">1</td>
+</tr>
+<tr class="odd">
+<td align="left">Honda Civic</td>
+<td align="right">30.4</td>
+<td align="right">4</td>
+<td align="right">75.7</td>
+<td align="right">52</td>
+<td align="right">4.93</td>
+<td align="right">1.615</td>
+<td align="right">18.52</td>
+<td align="right">1</td>
+<td align="right">1</td>
+<td align="right">4</td>
+<td align="right">2</td>
+</tr>
+<tr class="even">
+<td align="left">Toyota Corolla</td>
+<td align="right">33.9</td>
+<td align="right">4</td>
+<td align="right">71.1</td>
+<td align="right">65</td>
+<td align="right">4.22</td>
+<td align="right">1.835</td>
+<td align="right">19.90</td>
+<td align="right">1</td>
+<td align="right">1</td>
+<td align="right">4</td>
+<td align="right">1</td>
+</tr>
+<tr class="odd">
+<td align="left">Toyota Corona</td>
+<td align="right">21.5</td>
+<td align="right">4</td>
+<td align="right">120.1</td>
+<td align="right">97</td>
+<td align="right">3.70</td>
+<td align="right">2.465</td>
+<td align="right">20.01</td>
+<td align="right">1</td>
+<td align="right">0</td>
+<td align="right">3</td>
+<td align="right">1</td>
+</tr>
+<tr class="even">
+<td align="left">Dodge Challenger</td>
+<td align="right">15.5</td>
+<td align="right">8</td>
+<td align="right">318.0</td>
+<td align="right">150</td>
+<td align="right">2.76</td>
+<td align="right">3.520</td>
+<td align="right">16.87</td>
+<td align="right">0</td>
+<td align="right">0</td>
+<td align="right">3</td>
+<td align="right">2</td>
+</tr>
+<tr class="odd">
+<td align="left">AMC Javelin</td>
+<td align="right">15.2</td>
+<td align="right">8</td>
+<td align="right">304.0</td>
+<td align="right">150</td>
+<td align="right">3.15</td>
+<td align="right">3.435</td>
+<td align="right">17.30</td>
+<td align="right">0</td>
+<td align="right">0</td>
+<td align="right">3</td>
+<td align="right">2</td>
+</tr>
+<tr class="even">
+<td align="left">Camaro Z28</td>
+<td align="right">13.3</td>
+<td align="right">8</td>
+<td align="right">350.0</td>
+<td align="right">245</td>
+<td align="right">3.73</td>
+<td align="right">3.840</td>
+<td align="right">15.41</td>
+<td align="right">0</td>
+<td align="right">0</td>
+<td align="right">3</td>
+<td align="right">4</td>
+</tr>
+<tr class="odd">
+<td align="left">Pontiac Firebird</td>
+<td align="right">19.2</td>
+<td align="right">8</td>
+<td align="right">400.0</td>
+<td align="right">175</td>
+<td align="right">3.08</td>
+<td align="right">3.845</td>
+<td align="right">17.05</td>
+<td align="right">0</td>
+<td align="right">0</td>
+<td align="right">3</td>
+<td align="right">2</td>
+</tr>
+<tr class="even">
+<td align="left">Fiat X1-9</td>
+<td align="right">27.3</td>
+<td align="right">4</td>
+<td align="right">79.0</td>
+<td align="right">66</td>
+<td align="right">4.08</td>
+<td align="right">1.935</td>
+<td align="right">18.90</td>
+<td align="right">1</td>
+<td align="right">1</td>
+<td align="right">4</td>
+<td align="right">1</td>
+</tr>
+<tr class="odd">
+<td align="left">Porsche 914-2</td>
+<td align="right">26.0</td>
+<td align="right">4</td>
+<td align="right">120.3</td>
+<td align="right">91</td>
+<td align="right">4.43</td>
+<td align="right">2.140</td>
+<td align="right">16.70</td>
+<td align="right">0</td>
+<td align="right">1</td>
+<td align="right">5</td>
+<td align="right">2</td>
+</tr>
+<tr class="even">
+<td align="left">Lotus Europa</td>
+<td align="right">30.4</td>
+<td align="right">4</td>
+<td align="right">95.1</td>
+<td align="right">113</td>
+<td align="right">3.77</td>
+<td align="right">1.513</td>
+<td align="right">16.90</td>
+<td align="right">1</td>
+<td align="right">1</td>
+<td align="right">5</td>
+<td align="right">2</td>
+</tr>
+<tr class="odd">
+<td align="left">Ford Pantera L</td>
+<td align="right">15.8</td>
+<td align="right">8</td>
+<td align="right">351.0</td>
+<td align="right">264</td>
+<td align="right">4.22</td>
+<td align="right">3.170</td>
+<td align="right">14.50</td>
+<td align="right">0</td>
+<td align="right">1</td>
+<td align="right">5</td>
+<td align="right">4</td>
+</tr>
+<tr class="even">
+<td align="left">Ferrari Dino</td>
+<td align="right">19.7</td>
+<td align="right">6</td>
+<td align="right">145.0</td>
+<td align="right">175</td>
+<td align="right">3.62</td>
+<td align="right">2.770</td>
+<td align="right">15.50</td>
+<td align="right">0</td>
+<td align="right">1</td>
+<td align="right">5</td>
+<td align="right">6</td>
+</tr>
+<tr class="odd">
+<td align="left">Maserati Bora</td>
+<td align="right">15.0</td>
+<td align="right">8</td>
+<td align="right">301.0</td>
+<td align="right">335</td>
+<td align="right">3.54</td>
+<td align="right">3.570</td>
+<td align="right">14.60</td>
+<td align="right">0</td>
+<td align="right">1</td>
+<td align="right">5</td>
+<td align="right">8</td>
+</tr>
+<tr class="even">
+<td align="left">Volvo 142E</td>
+<td align="right">21.4</td>
+<td align="right">4</td>
+<td align="right">121.0</td>
+<td align="right">109</td>
+<td align="right">4.11</td>
+<td align="right">2.780</td>
+<td align="right">18.60</td>
+<td align="right">1</td>
+<td align="right">1</td>
+<td align="right">4</td>
+<td align="right">2</td>
+</tr>
+</tbody>
+</table>
+<div class="exercise">
+<p><span id="exr:unlabeled-div-4" class="exercise"><strong>Exercise 2.1  </strong></span>Assume we want to analyse the <code>hp</code> (horsepower) variable (column) only. Based on what we discussed last week regarding vector/matrix extraction, how can we extract the <code>hp</code> data only?</p>
+</div>
+<!-- <details> -->
+<!-- <summary>**Solution**</summary> -->
+<!-- ```{r} -->
+<!-- mtcars[,4] -->
+<!-- ``` -->
+<!-- </details> -->
+<p>An alternative method of extraction for data sets (data frames) is to use the <code>$</code> extraction command based on the column/variable name. Note that this only works on data frames and not general matrices, whereas the square bracket extraction works for both:</p>
+<div class="sourceCode" id="cb135"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb135-1"><a href="conditionals-and-if-statements.html#cb135-1" tabindex="-1"></a>(HP <span class="ot">&lt;-</span> mtcars<span class="sc">$</span>hp)</span></code></pre></div>
+<pre><code>##  [1] 110 110  93 110 175 105 245  62  95 123 123 180 180 180 205 215 230  66  52
+## [20]  65  97 150 150 245 175  66  91 113 264 175 335 109</code></pre>
+<div class="sourceCode" id="cb137"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb137-1"><a href="conditionals-and-if-statements.html#cb137-1" tabindex="-1"></a>HP <span class="sc">&gt;</span> <span class="dv">200</span></span></code></pre></div>
+<pre><code>##  [1] FALSE FALSE FALSE FALSE FALSE FALSE  TRUE FALSE FALSE FALSE FALSE FALSE
+## [13] FALSE FALSE  TRUE  TRUE  TRUE FALSE FALSE FALSE FALSE FALSE FALSE  TRUE
+## [25] FALSE FALSE FALSE FALSE  TRUE FALSE  TRUE FALSE</code></pre>
+<p>What do you think will happen if we execute the code <code>sum(HP&gt;200)</code> and <code>mean(HP&gt;200)</code>? Have a think about this then check out the solution when you’re ready.</p>
+<details>
+<summary>
+<strong>Solution</strong>
+</summary>
+<div class="sourceCode" id="cb139"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb139-1"><a href="conditionals-and-if-statements.html#cb139-1" tabindex="-1"></a><span class="fu">sum</span>(HP <span class="sc">&gt;</span> <span class="dv">200</span>)</span></code></pre></div>
+<pre><code>## [1] 7</code></pre>
+<div class="sourceCode" id="cb141"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb141-1"><a href="conditionals-and-if-statements.html#cb141-1" tabindex="-1"></a><span class="fu">mean</span>(HP <span class="sc">&gt;</span> <span class="dv">200</span>)</span></code></pre></div>
+<pre><code>## [1] 0.21875</code></pre>
+<strong>In both of these case, the conditional statement(s) have produced a vector of <code>TRUE</code> and <code>FALSE</code> Boolean values. In R, these are understood as being values of 1 and 0 respectively. Hence, it is then possible to take the <code>sum()</code> or the <code>mean()</code> over the Boolean values themselves.</strong> <br>
+</details>
+<p>The above gives an examples of how R understands the Boolean values (<code>TRUE</code>/<code>FALSE</code>) as 1 and 0, respectively and also give you an idea of how powerful such simple lines of conditional code can be when used in the right way.</p>
+<div class="exercise">
+<p><span id="exr:unlabeled-div-5" class="exercise"><strong>Exercise 2.2  </strong></span>Can you create a vector of all square numbers from 1 to 100 and count how many of these values are divisible by 3? Moreover, can you determine what percentage of them are NOT divisible by 5?</p>
+</div>
+<!-- <details> -->
+<!-- <summary>**Solution**</summary> -->
+<!-- ```{r} -->
+<!-- square.num <- (1:10)^2 -->
+<!-- sum(square.num%%3) -->
+<!-- mean(!square.num%%3) -->
+<!-- ``` -->
+<!-- </details> -->
+<p>In the next few weeks, we will look in more details at how we can use these relational operators (along with the logical operators discussed below) to conditionally extract data/values from a data.frame. This is a very helpful skill to learn for data handling and manipulation.</p>
+</div>
+<div id="logical-operators" class="section level2 hasAnchor" number="2.2">
+<h2><span class="header-section-number">2.2</span> Logical operators<a href="conditionals-and-if-statements.html#logical-operators" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>‘Logical operators’ are used to check whether multiple conditions have been satisfied at the same time (AND) or at least one of them (OR). The key to understanding how these work in R, is understanding how logical operators work in theory.</p>
+<p>Let us begin with the logical operator ‘AND’ which, in R, is denoted via <code>&amp;</code> or <code>&amp;&amp;</code> (I will explain the difference later). For an AND statement/condition to evaluate to <code>TRUE</code>, both conditions in the statement must be <code>TRUE</code>. That is, the condition on the left is <code>TRUE</code> ‘AND’ the condition on the right is <code>TRUE</code></p>
+<div class="sourceCode" id="cb143"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb143-1"><a href="conditionals-and-if-statements.html#cb143-1" tabindex="-1"></a><span class="cn">TRUE</span> <span class="sc">&amp;</span> <span class="cn">TRUE</span></span></code></pre></div>
+<pre><code>## [1] TRUE</code></pre>
+<div class="sourceCode" id="cb145"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb145-1"><a href="conditionals-and-if-statements.html#cb145-1" tabindex="-1"></a><span class="cn">TRUE</span> <span class="sc">&amp;</span> <span class="cn">FALSE</span></span></code></pre></div>
+<pre><code>## [1] FALSE</code></pre>
+<div class="sourceCode" id="cb147"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb147-1"><a href="conditionals-and-if-statements.html#cb147-1" tabindex="-1"></a><span class="cn">FALSE</span> <span class="sc">&amp;</span> <span class="cn">FALSE</span></span></code></pre></div>
+<pre><code>## [1] FALSE</code></pre>
+<div class="sourceCode" id="cb149"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb149-1"><a href="conditionals-and-if-statements.html#cb149-1" tabindex="-1"></a>pi</span></code></pre></div>
+<pre><code>## [1] 3.141593</code></pre>
+<div class="sourceCode" id="cb151"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb151-1"><a href="conditionals-and-if-statements.html#cb151-1" tabindex="-1"></a>pi <span class="sc">&gt;</span> <span class="dv">3</span></span></code></pre></div>
+<pre><code>## [1] TRUE</code></pre>
+<div class="sourceCode" id="cb153"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb153-1"><a href="conditionals-and-if-statements.html#cb153-1" tabindex="-1"></a>pi <span class="sc">&lt;</span> <span class="dv">4</span></span></code></pre></div>
+<pre><code>## [1] TRUE</code></pre>
+<div class="sourceCode" id="cb155"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb155-1"><a href="conditionals-and-if-statements.html#cb155-1" tabindex="-1"></a>pi <span class="sc">&gt;</span> <span class="dv">3</span> <span class="sc">&amp;</span> pi <span class="sc">&lt;</span> <span class="dv">4</span></span></code></pre></div>
+<pre><code>## [1] TRUE</code></pre>
+<div class="sourceCode" id="cb157"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb157-1"><a href="conditionals-and-if-statements.html#cb157-1" tabindex="-1"></a><span class="dv">5</span> <span class="sc">&lt;</span> <span class="dv">10</span> <span class="sc">&amp;</span> <span class="dv">5</span> <span class="sc">&lt;</span> <span class="dv">3</span></span></code></pre></div>
+<pre><code>## [1] FALSE</code></pre>
+<p>It is actually possible to have more than two arguments and include different relational operators as well.What do we think the following expression will evaluate to, <code>TRUE</code> or <code>FALSE</code>?</p>
+<div class="sourceCode" id="cb159"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb159-1"><a href="conditionals-and-if-statements.html#cb159-1" tabindex="-1"></a>pi <span class="sc">&gt;</span> <span class="dv">0</span> <span class="sc">&amp;</span> pi <span class="sc">&lt;</span> <span class="dv">5</span> <span class="sc">&amp;</span> <span class="sc">!</span>(pi <span class="sc">%%</span> <span class="dv">2</span> <span class="sc">==</span> <span class="dv">0</span>)</span></code></pre></div>
+<pre><code>## [1] TRUE</code></pre>
+<p>As with relational operators, logical operators can also be used in vector form, where the &amp; operator evaluates on a term by term basis, e.g.</p>
+<div class="sourceCode" id="cb161"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb161-1"><a href="conditionals-and-if-statements.html#cb161-1" tabindex="-1"></a><span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>) <span class="sc">&lt;</span> <span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>) <span class="sc">&amp;</span> <span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>) <span class="sc">&lt;</span> <span class="fu">c</span>(<span class="dv">3</span>,<span class="dv">4</span>,<span class="dv">5</span>) <span class="co"># Think about this one a little!</span></span></code></pre></div>
+<pre><code>## [1] TRUE TRUE TRUE</code></pre>
+<p>In fact, this sort of logical/relational operation can also be computed on other objects than just numerical values, i.e. ‘character strings’:</p>
+<div class="sourceCode" id="cb163"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb163-1"><a href="conditionals-and-if-statements.html#cb163-1" tabindex="-1"></a><span class="st">&quot;Red&quot;</span> <span class="sc">==</span> <span class="st">&quot;Red&quot;</span></span></code></pre></div>
+<pre><code>## [1] TRUE</code></pre>
+<div class="sourceCode" id="cb165"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb165-1"><a href="conditionals-and-if-statements.html#cb165-1" tabindex="-1"></a><span class="st">&quot;Red&quot;</span> <span class="sc">==</span> <span class="st">&quot;Blue&quot;</span></span></code></pre></div>
+<pre><code>## [1] FALSE</code></pre>
+<div class="sourceCode" id="cb167"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb167-1"><a href="conditionals-and-if-statements.html#cb167-1" tabindex="-1"></a><span class="st">&quot;Red&quot;</span> <span class="sc">==</span> <span class="st">&quot;red&quot;</span></span></code></pre></div>
+<pre><code>## [1] FALSE</code></pre>
+<div class="sourceCode" id="cb169"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb169-1"><a href="conditionals-and-if-statements.html#cb169-1" tabindex="-1"></a><span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>) <span class="sc">&lt;</span> <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>) <span class="sc">&amp;</span> <span class="st">&quot;Red&quot;</span> <span class="sc">==</span> <span class="st">&quot;Blue&quot;</span> <span class="co"># How has this worked? The left hand side is a 3 element vector but the right is a single logical element?</span></span></code></pre></div>
+<pre><code>## [1] FALSE FALSE FALSE</code></pre>
+<div class="sourceCode" id="cb171"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb171-1"><a href="conditionals-and-if-statements.html#cb171-1" tabindex="-1"></a><span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>) <span class="sc">&lt;</span> <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">1</span>, <span class="dv">4</span>) <span class="sc">&amp;</span> <span class="st">&quot;Red&quot;</span> <span class="sc">==</span> <span class="st">&quot;Red&quot;</span></span></code></pre></div>
+<pre><code>## [1]  TRUE FALSE  TRUE</code></pre>
+<p>In contrast to <code>&amp;</code> which evaluates on a term by term basis, the double <code>&amp;&amp;</code> reads from left to right and only evaluates the first values of each vector</p>
+<div class="sourceCode" id="cb173"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb173-1"><a href="conditionals-and-if-statements.html#cb173-1" tabindex="-1"></a><span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>) <span class="sc">&lt;</span> <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">1</span>, <span class="dv">4</span>) <span class="sc">&amp;&amp;</span> <span class="st">&quot;Red&quot;</span> <span class="sc">==</span> <span class="st">&quot;Red&quot;</span></span></code></pre></div>
+<pre><code>## Warning in c(1, 2, 3) &lt; c(2, 1, 4) &amp;&amp; &quot;Red&quot; == &quot;Red&quot;: &#39;length(x) = 3 &gt; 1&#39; in
+## coercion to &#39;logical(1)&#39;</code></pre>
+<pre><code>## [1] TRUE</code></pre>
+<div class="sourceCode" id="cb176"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb176-1"><a href="conditionals-and-if-statements.html#cb176-1" tabindex="-1"></a><span class="fu">c</span>(<span class="dv">5</span>, <span class="dv">2</span>, <span class="dv">3</span>) <span class="sc">&lt;</span> <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">1</span>, <span class="dv">4</span>) <span class="sc">&amp;&amp;</span> <span class="st">&quot;Red&quot;</span> <span class="sc">==</span> <span class="st">&quot;Red&quot;</span></span></code></pre></div>
+<pre><code>## Warning in c(5, 2, 3) &lt; c(2, 1, 4) &amp;&amp; &quot;Red&quot; == &quot;Red&quot;: &#39;length(x) = 3 &gt; 1&#39; in
+## coercion to &#39;logical(1)&#39;</code></pre>
+<pre><code>## [1] FALSE</code></pre>
+<p>The second logical operator is the so called OR operator, denoted by <code>|</code> and <code>||</code>, which evaluates to <code>TRUE</code> as long as ‘at least one statement is <code>TRUE</code>’, e.g.</p>
+<div class="sourceCode" id="cb179"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb179-1"><a href="conditionals-and-if-statements.html#cb179-1" tabindex="-1"></a><span class="cn">TRUE</span> <span class="sc">|</span> <span class="cn">TRUE</span></span></code></pre></div>
+<pre><code>## [1] TRUE</code></pre>
+<div class="sourceCode" id="cb181"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb181-1"><a href="conditionals-and-if-statements.html#cb181-1" tabindex="-1"></a><span class="cn">TRUE</span> <span class="sc">|</span> <span class="cn">FALSE</span></span></code></pre></div>
+<pre><code>## [1] TRUE</code></pre>
+<div class="sourceCode" id="cb183"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb183-1"><a href="conditionals-and-if-statements.html#cb183-1" tabindex="-1"></a><span class="cn">FALSE</span> <span class="sc">|</span> <span class="cn">TRUE</span></span></code></pre></div>
+<pre><code>## [1] TRUE</code></pre>
+<div class="sourceCode" id="cb185"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb185-1"><a href="conditionals-and-if-statements.html#cb185-1" tabindex="-1"></a><span class="cn">FALSE</span> <span class="sc">|</span> <span class="cn">FALSE</span></span></code></pre></div>
+<pre><code>## [1] FALSE</code></pre>
+<div class="sourceCode" id="cb187"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb187-1"><a href="conditionals-and-if-statements.html#cb187-1" tabindex="-1"></a>F <span class="sc">|</span> F <span class="sc">|</span> T <span class="sc">|</span> F <span class="co">#etc.</span></span></code></pre></div>
+<pre><code>## [1] TRUE</code></pre>
+<p>The same ideas as were discussed above for <code>&amp;</code> work also for <code>|</code>, i.e. <code>|</code> evaluates element-wise, whilst <code>||</code> only evaluates the first element of a vector.</p>
+<div class="exercise">
+<p><span id="exr:unlabeled-div-6" class="exercise"><strong>Exercise 2.3  </strong></span>With all this in mind, how can we calculate the number of cars in the mtcars data set that have horsepower greater than 200, mpg at most 30, are automatic but do not have 6 cylinders?</p>
+</div>
+<!-- <details> -->
+<!-- <summary>**Solution**</summary> -->
+<!-- ```{r} -->
+<!-- sum(mtcars$hp > 200 & mtcars$mpg <= 30 & mtcars$am == 0 & mtcars$cyl != 6) -->
+<!-- ``` -->
+<!-- </details> -->
+<div class="exercise">
+<p><span id="exr:unlabeled-div-7" class="exercise"><strong>Exercise 2.4  </strong></span>The set of data VADeaths contains the death rates (measured per 1000 population per year), in Virginia, USA, in 1940. The structure of this data set is a matrix (not a data frame) with the rows denoting age ranges and the columns sex/area.</p>
+<ol style="list-style-type: lower-roman">
+<li>How can we find out this information (and possibly more) about the data set?</li>
+<li>Extract the two columns containing the female data, either together or separately.</li>
+<li>Using conditional arguments, determine how many age groups have a death rate larger than 20 for rural females and a death rate less than 30 from Urban females.</li>
+</ol>
+</div>
+<!-- <details> -->
+<!-- <summary>**Solution**</summary> -->
+<!-- ```{r} -->
+<!-- ?VADeaths -->
+<!-- Female.data <- VADeaths[,c(2,4)] -->
+<!-- Female.data[,1] > 20 & Female.data[,2] < 30 -->
+<!-- sum(Female.data[,1] > 20 & Female.data[,2] < 30) -->
+<!-- ``` -->
+<!-- </details> -->
+</div>
+<div id="if-statements" class="section level2 hasAnchor" number="2.3">
+<h2><span class="header-section-number">2.3</span> IF statements<a href="conditionals-and-if-statements.html#if-statements" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>‘IF’ Statements are extremely popular and powerful tools in programming that are used to execute certain commands, based on given conditions. In most cases, the conditions used within IF statements are built up from combinations of the relational and logical operators seen above.</p>
+<p>In general, an IF statement has the following form:</p>
+<p><code>if ( condition ){</code> <br>
+<code>command</code> <br>
+<code>} else {</code> <br>
+<code>command</code> <br>
+<code>}</code></p>
+<p>To see how an IF statement works in practice, let us look at a simple example to check if a number is odd or even</p>
+<div class="sourceCode" id="cb189"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb189-1"><a href="conditionals-and-if-statements.html#cb189-1" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="dv">8</span></span>
+<span id="cb189-2"><a href="conditionals-and-if-statements.html#cb189-2" tabindex="-1"></a></span>
+<span id="cb189-3"><a href="conditionals-and-if-statements.html#cb189-3" tabindex="-1"></a><span class="cf">if</span> (x <span class="sc">%%</span> <span class="dv">2</span> <span class="sc">==</span> <span class="dv">0</span>){</span>
+<span id="cb189-4"><a href="conditionals-and-if-statements.html#cb189-4" tabindex="-1"></a>  <span class="fu">print</span>(<span class="st">&quot;This number is even&quot;</span>)</span>
+<span id="cb189-5"><a href="conditionals-and-if-statements.html#cb189-5" tabindex="-1"></a>} <span class="cf">else</span> {</span>
+<span id="cb189-6"><a href="conditionals-and-if-statements.html#cb189-6" tabindex="-1"></a>  <span class="fu">print</span>(<span class="st">&quot;This number is odd&quot;</span>)</span>
+<span id="cb189-7"><a href="conditionals-and-if-statements.html#cb189-7" tabindex="-1"></a>}</span></code></pre></div>
+<pre><code>## [1] &quot;This number is even&quot;</code></pre>
+<p>You can actually make the output even better in this example by asking it to print out the value of <span class="math inline">\(x\)</span> that has been given by using the paste function <code>paste()</code>. Notice the variable <span class="math inline">\(x\)</span> is not in quotation marks but the ‘words’ are.</p>
+<div class="sourceCode" id="cb191"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb191-1"><a href="conditionals-and-if-statements.html#cb191-1" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="dv">14</span></span>
+<span id="cb191-2"><a href="conditionals-and-if-statements.html#cb191-2" tabindex="-1"></a></span>
+<span id="cb191-3"><a href="conditionals-and-if-statements.html#cb191-3" tabindex="-1"></a><span class="cf">if</span> (x <span class="sc">%%</span> <span class="dv">2</span> <span class="sc">==</span> <span class="dv">0</span>){</span>
+<span id="cb191-4"><a href="conditionals-and-if-statements.html#cb191-4" tabindex="-1"></a>  <span class="fu">print</span>(<span class="fu">paste</span>(x, <span class="st">&quot;is an even number&quot;</span>))</span>
+<span id="cb191-5"><a href="conditionals-and-if-statements.html#cb191-5" tabindex="-1"></a>} <span class="cf">else</span> {</span>
+<span id="cb191-6"><a href="conditionals-and-if-statements.html#cb191-6" tabindex="-1"></a>  <span class="fu">print</span>(<span class="fu">paste</span>(x,<span class="st">&quot;is an odd number&quot;</span>))</span>
+<span id="cb191-7"><a href="conditionals-and-if-statements.html#cb191-7" tabindex="-1"></a>}</span></code></pre></div>
+<pre><code>## [1] &quot;14 is an even number&quot;</code></pre>
+<p>This is quite a simple example but it is very possible to have more complicated and longer IF statements that contain more conditional possibilities. If this is the case, you can simply extend the IF statement by adding <code>elseif</code> instead of just else. Finally, once you have finished with all conditions, you finish with else. For example</p>
+<div class="sourceCode" id="cb193"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb193-1"><a href="conditionals-and-if-statements.html#cb193-1" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="dv">7</span></span>
+<span id="cb193-2"><a href="conditionals-and-if-statements.html#cb193-2" tabindex="-1"></a></span>
+<span id="cb193-3"><a href="conditionals-and-if-statements.html#cb193-3" tabindex="-1"></a><span class="cf">if</span> (x <span class="sc">&lt;</span> <span class="dv">0</span>) {</span>
+<span id="cb193-4"><a href="conditionals-and-if-statements.html#cb193-4" tabindex="-1"></a>  <span class="fu">print</span>(<span class="fu">paste</span>(x, <span class="st">&quot;is a negative number&quot;</span>))</span>
+<span id="cb193-5"><a href="conditionals-and-if-statements.html#cb193-5" tabindex="-1"></a>} <span class="cf">else</span> <span class="cf">if</span> (x <span class="sc">&gt;</span> <span class="dv">0</span>) {</span>
+<span id="cb193-6"><a href="conditionals-and-if-statements.html#cb193-6" tabindex="-1"></a>  <span class="fu">print</span>(<span class="fu">paste</span>(x, <span class="st">&quot;is a positive number&quot;</span>))</span>
+<span id="cb193-7"><a href="conditionals-and-if-statements.html#cb193-7" tabindex="-1"></a>} <span class="cf">else</span> {</span>
+<span id="cb193-8"><a href="conditionals-and-if-statements.html#cb193-8" tabindex="-1"></a>  <span class="fu">print</span>(<span class="fu">paste</span>(x, <span class="st">&quot;is Zero&quot;</span>))</span>
+<span id="cb193-9"><a href="conditionals-and-if-statements.html#cb193-9" tabindex="-1"></a>}</span></code></pre></div>
+<pre><code>## [1] &quot;7 is a positive number&quot;</code></pre>
+<div class="exercise">
+<p><span id="exr:unlabeled-div-8" class="exercise"><strong>Exercise 2.5  </strong></span>Can you create an IF statement which tells you whether a number (x) is divisible by another number (y), where both x and y can be changed (not fixed)? Hint: Use the modulus operator <code>%%</code>.</p>
+</div>
+<!-- <details> -->
+<!-- <summary>**Solution**</summary> -->
+<!-- ```{r} -->
+<!-- x <- 6 -->
+<!-- y <- 4 -->
+<!-- if(x%%y==0){ -->
+<!--   print(paste(x, "is divisible by", y)) -->
+<!-- } else { -->
+<!--   print(paste(x, "is NOT divisible by", y, "and has remainder", x%%y)) -->
+<!-- } -->
+<!-- ``` -->
+<!-- </details> -->
+<p>Looking back at the previous two examples regarding even/odd and positive/negative numbers, we can actually combine these two statements by using logical operators within the IF conditions:</p>
+<div class="sourceCode" id="cb195"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb195-1"><a href="conditionals-and-if-statements.html#cb195-1" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="dv">4</span></span>
+<span id="cb195-2"><a href="conditionals-and-if-statements.html#cb195-2" tabindex="-1"></a></span>
+<span id="cb195-3"><a href="conditionals-and-if-statements.html#cb195-3" tabindex="-1"></a><span class="cf">if</span> (x <span class="sc">&lt;</span> <span class="dv">0</span> <span class="sc">&amp;</span> x <span class="sc">%%</span> <span class="dv">2</span><span class="sc">==</span> <span class="dv">0</span>) {</span>
+<span id="cb195-4"><a href="conditionals-and-if-statements.html#cb195-4" tabindex="-1"></a>    <span class="fu">print</span>(<span class="fu">paste</span>(x, <span class="st">&quot;is a negative even number&quot;</span>))</span>
+<span id="cb195-5"><a href="conditionals-and-if-statements.html#cb195-5" tabindex="-1"></a>  } <span class="cf">else</span> <span class="cf">if</span> (x <span class="sc">&lt;</span> <span class="dv">0</span>) {</span>
+<span id="cb195-6"><a href="conditionals-and-if-statements.html#cb195-6" tabindex="-1"></a>    <span class="fu">print</span>(<span class="fu">paste</span>(x,<span class="st">&quot;is a negative odd number&quot;</span>))</span>
+<span id="cb195-7"><a href="conditionals-and-if-statements.html#cb195-7" tabindex="-1"></a>} <span class="cf">else</span> <span class="cf">if</span> (x <span class="sc">&gt;</span> <span class="dv">0</span> <span class="sc">&amp;</span> x <span class="sc">%%</span> <span class="dv">2</span> <span class="sc">==</span> <span class="dv">0</span>) {</span>
+<span id="cb195-8"><a href="conditionals-and-if-statements.html#cb195-8" tabindex="-1"></a>    <span class="fu">print</span>(<span class="fu">paste</span>(x, <span class="st">&quot;is a positive even number&quot;</span>))</span>
+<span id="cb195-9"><a href="conditionals-and-if-statements.html#cb195-9" tabindex="-1"></a>  } <span class="cf">else</span> <span class="cf">if</span> (x <span class="sc">&gt;</span> <span class="dv">0</span>){</span>
+<span id="cb195-10"><a href="conditionals-and-if-statements.html#cb195-10" tabindex="-1"></a>    <span class="fu">print</span>(<span class="fu">paste</span>(x, <span class="st">&quot;is a positive odd number&quot;</span>))</span>
+<span id="cb195-11"><a href="conditionals-and-if-statements.html#cb195-11" tabindex="-1"></a>} <span class="cf">else</span> {</span>
+<span id="cb195-12"><a href="conditionals-and-if-statements.html#cb195-12" tabindex="-1"></a>  <span class="fu">print</span>(<span class="fu">paste</span>(x, <span class="st">&quot;is Zero&quot;</span>))</span>
+<span id="cb195-13"><a href="conditionals-and-if-statements.html#cb195-13" tabindex="-1"></a>}</span></code></pre></div>
+<pre><code>## [1] &quot;4 is a positive even number&quot;</code></pre>
+<p>In fact, you could do this an alternative way by ‘nesting’ IF statements inside one another to make several ‘layers’. There is no right or wrong way to do these but through experience you will see either can be used depending on the situation.</p>
+<div class="sourceCode" id="cb197"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb197-1"><a href="conditionals-and-if-statements.html#cb197-1" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="dv">3</span></span>
+<span id="cb197-2"><a href="conditionals-and-if-statements.html#cb197-2" tabindex="-1"></a></span>
+<span id="cb197-3"><a href="conditionals-and-if-statements.html#cb197-3" tabindex="-1"></a><span class="cf">if</span> (x <span class="sc">&lt;</span> <span class="dv">0</span>) {</span>
+<span id="cb197-4"><a href="conditionals-and-if-statements.html#cb197-4" tabindex="-1"></a>  <span class="cf">if</span> (x <span class="sc">%%</span> <span class="dv">2</span> <span class="sc">==</span> <span class="dv">0</span>){</span>
+<span id="cb197-5"><a href="conditionals-and-if-statements.html#cb197-5" tabindex="-1"></a>  <span class="fu">print</span>(<span class="fu">paste</span>(x, <span class="st">&quot;is a negative even number&quot;</span>))</span>
+<span id="cb197-6"><a href="conditionals-and-if-statements.html#cb197-6" tabindex="-1"></a>  } <span class="cf">else</span> {</span>
+<span id="cb197-7"><a href="conditionals-and-if-statements.html#cb197-7" tabindex="-1"></a>    <span class="fu">print</span>(<span class="fu">paste</span>(x,<span class="st">&quot;is a negative odd number&quot;</span>))}</span>
+<span id="cb197-8"><a href="conditionals-and-if-statements.html#cb197-8" tabindex="-1"></a>} <span class="cf">else</span> <span class="cf">if</span> (x <span class="sc">&gt;</span> <span class="dv">0</span>) {</span>
+<span id="cb197-9"><a href="conditionals-and-if-statements.html#cb197-9" tabindex="-1"></a>  <span class="cf">if</span> (x <span class="sc">%%</span> <span class="dv">2</span> <span class="sc">==</span> <span class="dv">0</span>){</span>
+<span id="cb197-10"><a href="conditionals-and-if-statements.html#cb197-10" tabindex="-1"></a>  <span class="fu">print</span>(<span class="fu">paste</span>(x, <span class="st">&quot;is a positive even number&quot;</span>))</span>
+<span id="cb197-11"><a href="conditionals-and-if-statements.html#cb197-11" tabindex="-1"></a>  } <span class="cf">else</span> {</span>
+<span id="cb197-12"><a href="conditionals-and-if-statements.html#cb197-12" tabindex="-1"></a>    <span class="fu">print</span>(<span class="fu">paste</span>(x, <span class="st">&quot;is a positive odd number&quot;</span>))</span>
+<span id="cb197-13"><a href="conditionals-and-if-statements.html#cb197-13" tabindex="-1"></a>  }</span>
+<span id="cb197-14"><a href="conditionals-and-if-statements.html#cb197-14" tabindex="-1"></a>} <span class="cf">else</span> {</span>
+<span id="cb197-15"><a href="conditionals-and-if-statements.html#cb197-15" tabindex="-1"></a>  <span class="fu">print</span>(<span class="fu">paste</span>(x, <span class="st">&quot;is Zero&quot;</span>))</span>
+<span id="cb197-16"><a href="conditionals-and-if-statements.html#cb197-16" tabindex="-1"></a>}</span></code></pre></div>
+<pre><code>## [1] &quot;3 is a positive odd number&quot;</code></pre>
+<p>What happens if we let <span class="math inline">\(x\)</span> be a vector?</p>
+<p><strong>Note - The IF statement will technically work in the sense it will print something out, but it will not do quite what we expect. This is because in an IF statement, the conditions or ‘test statements’ can only be single elements and thus, R will only consider the first element of the vector. With this in mind, it is important to note that if you use a logical operator in an IF statement, it is always best to use the double version, i.e. <code>&amp;&amp;</code> or <code>||</code>.</strong></p>
+<p>That being said, it is possible to bypass such a problem using the <code>ifelse()</code> function. The <code>ifelse()</code> function allows us to create an IF statement which only has one condition but can be applied to a vector element-wise.</p>
+<div class="sourceCode" id="cb199"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb199-1"><a href="conditionals-and-if-statements.html#cb199-1" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>)</span>
+<span id="cb199-2"><a href="conditionals-and-if-statements.html#cb199-2" tabindex="-1"></a><span class="fu">ifelse</span>(x <span class="sc">%%</span> <span class="dv">2</span> <span class="sc">==</span> <span class="dv">0</span>, <span class="st">&quot;Even&quot;</span>, <span class="st">&quot;Odd&quot;</span>)</span></code></pre></div>
+<pre><code>## [1] &quot;Odd&quot;  &quot;Even&quot; &quot;Odd&quot;</code></pre>
+<p><strong>Note - This only works for quite simple statements.</strong></p>
+<p>It is possible to use a more complicated IF statement on a vector as we tried above but to do so we have to introduce the idea of FOR loops, which we will discuss next week!</p>
+</div>
+<div id="exercises-3" class="section level2 hasAnchor" number="2.4">
+<h2><span class="header-section-number">2.4</span> Exercises<a href="conditionals-and-if-statements.html#exercises-3" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<ol style="list-style-type: decimal">
+<li>Create an R script that calculates the square root of a value, x. If the value contained in x is negative it should return <code>NA</code> as output.</li>
+</ol>
+<!-- <details> -->
+<!-- <summary>**Solution**</summary> -->
+<!-- ```{r} -->
+<!-- x <- 4 # You can change this to any number you like. -->
+<!-- if(x >= 0){ -->
+<!--   sqrt(x) -->
+<!-- } else { -->
+<!--   NA -->
+<!-- } -->
+<!-- ``` -->
+<!-- </details> -->
+<ol start="2" style="list-style-type: decimal">
+<li>Create an R script that returns the maximum value out of the elements of a numeric vector of length 2 (two elements), without using the min, max or sort functions.</li>
+</ol>
+<!-- <details> -->
+<!-- <summary>**Solution**</summary> -->
+<!-- ```{r} -->
+<!-- x <- c(3,5) # You can change these to any numbers you like. -->
+<!-- if(x[2] >= x[1]){ -->
+<!--   x[2] -->
+<!-- } else { -->
+<!--   x[1] -->
+<!-- } -->
+<!-- ``` -->
+<!-- </details> -->
+<ol start="3" style="list-style-type: decimal">
+<li>Use the command <code>x &lt;- rexp(20, rate = 0.5)</code> to create a vector containing 20 simulations of an exponential random variable with mean 2. Return the number of values that are larger than the mean of the vector x. You are allowed to use the <code>mean()</code> function.</li>
+</ol>
+<!-- <details> -->
+<!-- <summary>**Solution**</summary> -->
+<!-- ```{r} -->
+<!-- x <- rexp(20, rate = 0.5) -->
+<!-- sum(x > mean(x)) -->
+<!-- ``` -->
+<!-- </details> -->
+</div>
+<div id="applied-exercises-1" class="section level2 hasAnchor" number="2.5">
+<h2><span class="header-section-number">2.5</span> Applied exercises<a href="conditionals-and-if-statements.html#applied-exercises-1" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p><strong>Before proceeding with this exercise, you need to first generate 1,000 random values which will represent your data in throughout the questions. To do this, use the code <code>yearly.returns &lt;- rbeta(1000, 5, 2) - 0.7</code>.</strong></p>
+<p>The values you have generated represent 1000 yearly returns from an asset. Using this data:</p>
+<ol style="list-style-type: decimal">
+<li>Plot a histogram of the yearly returns for this asset.</li>
+</ol>
+<!-- <details> -->
+<!-- <summary>**Solution**</summary> -->
+<!-- ```{r} -->
+<!-- yearly.returns <- rbeta(1000, 5, 2) - 0.7 -->
+<!-- hist(yearly.returns, breaks = 20) -->
+<!-- ``` -->
+<!-- </details> -->
+<ol start="2" style="list-style-type: decimal">
+<li>Calculate the sample mean and sample standard deviation (s.d.) for the yearly returns.</li>
+</ol>
+<!-- <details> -->
+<!-- <summary>**Solution**</summary> -->
+<!-- ```{r} -->
+<!-- mean.return <- mean(yearly.returns) -->
+<!-- total.dev <- sd(yearly.returns) -->
+<!-- ``` -->
+<!-- </details> -->
+<p>The Sharp Ratio is a measure of risk for a given asset calculated by comparing the mean returns to the risk-free rate of interest. That is, if we denote the mean return from an asset by <span class="math inline">\(r_A\)</span>, the standard deviation by <span class="math inline">\(\sigma_A\)</span> and the risk-free rate of interest is denoted <span class="math inline">\(r_f\)</span>, then the Sharpe ratio is given by <span class="math display">\[SR = \frac{r_A-r_f}{\sigma_A}.\]</span></p>
+<ol start="3" style="list-style-type: decimal">
+<li>Given that the risk-free rate of interest is <span class="math inline">\(r_f=4\%\)</span>, calculate the Sharpe Ratio for this asset. Comment on your result.</li>
+</ol>
+<!-- <details> -->
+<!-- <summary>**Solution**</summary> -->
+<!-- ```{r} -->
+<!-- risk.free <- 0.04 -->
+<!-- Sharpe <- (mean.return-risk.free)/total.dev -->
+<!-- ``` -->
+<!-- </details> -->
+<ol start="4" style="list-style-type: decimal">
+<li>Calculate the proportion of positive (gains) and negative (losses) yearly returns, respectively.</li>
+</ol>
+<!-- <details> -->
+<!-- <summary>**Solution**</summary> -->
+<!-- ```{r} -->
+<!-- gains.prop <- mean(yearly.returns > 0) -->
+<!-- losses.prop <- mean(yearly.returns < 0) -->
+<!-- ``` -->
+<!-- </details> -->
+<ol start="5" style="list-style-type: decimal">
+<li>Calculate the proportion of yearly returns that are larger than 2 s.d. away from the mean.</li>
+</ol>
+<!-- <details> -->
+<!-- <summary>**Solution**</summary> -->
+<!-- ```{r} -->
+<!-- prop.2.sd <- mean(yearly.returns < (mean.return-2*total.dev) | yearly.returns > (mean.return+2*total.dev)) -->
+<!-- ``` -->
+<!-- </details> -->
+<ol start="6" style="list-style-type: decimal">
+<li>Calculate the mean yearly losses. <strong>HINT: You can extract elements from vectors/matrices using boolean values, e.g. if <code>x</code> is a 2 element vector, then <code>x[c(TRUE, FALSE)]</code> will extract the first element but not the second.</strong></li>
+</ol>
+<!-- <details> -->
+<!-- <summary>**Solution**</summary> -->
+<!-- ```{r} -->
+<!-- mean.loss <- mean(yearly.returns[yearly.returns < 0]) -->
+<!-- ``` -->
+<!-- </details> -->
+<ol start="7" style="list-style-type: decimal">
+<li>Calculate the s.d. of the losses (downside risk) of the daily returns. Given your answer in part 2., comment on this result.</li>
+</ol>
+<!-- <details> -->
+<!-- <summary>**Solution**</summary> -->
+<!-- ```{r} -->
+<!-- sd.loss <- sd(yearly.returns[yearly.returns < 0]) -->
+<!-- ``` -->
+<!-- </details> -->
+<p>The Sortino Ratio is another measure of risk for an asset but only takes into account the downside risk of an investment. That is, if we denote the downside risk (deviation) by <span class="math inline">\(\sigma_A^-\)</span>, then the Sortino ratio is given by <span class="math display">\[SorR = \frac{r_A-r_f}{\sigma_A^-}.\]</span></p>
+<ol start="8" style="list-style-type: decimal">
+<li>Given that the risk-free rate of interest <span class="math inline">\(r_f=4\%\)</span>, calculate the Sortino Ratio for this asset. Comment on the difference between this measure and the Sharpe Ratio.</li>
+</ol>
+<!-- <details> -->
+<!-- <summary>**Solution**</summary> -->
+<!-- ```{r} -->
+<!-- Sortino <- (mean.return-risk.free)/sd.loss -->
+<!-- ``` -->
+<!-- </details> -->
+</div>
+<div id="datacamp-courses-1" class="section level2 hasAnchor" number="2.6">
+<h2><span class="header-section-number">2.6</span> DataCamp course(s)<a href="conditionals-and-if-statements.html#datacamp-courses-1" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<ul>
+<li><a href="https://www.datacamp.com/courses/intermediate-r" class="uri">https://www.datacamp.com/courses/intermediate-r</a> (Intermediate R Course)</li>
+<li><a href="https://app.datacamp.com/learn/courses/intermediate-r-for-finance" class="uri">https://app.datacamp.com/learn/courses/intermediate-r-for-finance</a> (Intermediate R for Finance Course)</li>
+</ul>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="rstudio-and-r-basics-revision.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="loops.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": null,
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/USERNAME/REPO/edit/BRANCH/02-Conditionals.Rmd",
+"text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["_main.pdf"],
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

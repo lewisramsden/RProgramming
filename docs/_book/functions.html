@@ -1,0 +1,755 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Week4 Functions | Introduction to R Programming - University of York</title>
+  <meta name="description" content="These lecture notes contain all the material for the ‘Introduction to R Programming’ workshops, which is a supplimentary course of the `BSc Actuarial Science’ programme at the University of York." />
+  <meta name="generator" content="bookdown 0.29 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Week4 Functions | Introduction to R Programming - University of York" />
+  <meta property="og:type" content="book" />
+  
+  <meta property="og:description" content="These lecture notes contain all the material for the ‘Introduction to R Programming’ workshops, which is a supplimentary course of the `BSc Actuarial Science’ programme at the University of York." />
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Week4 Functions | Introduction to R Programming - University of York" />
+  
+  <meta name="twitter:description" content="These lecture notes contain all the material for the ‘Introduction to R Programming’ workshops, which is a supplimentary course of the `BSc Actuarial Science’ programme at the University of York." />
+  
+
+<meta name="author" content="Dr. Lewis Ramsden" />
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="loops.html"/>
+<link rel="next" href="data-analysis.html"/>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Introduction to R Programming</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Preface</a>
+<ul>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#about-this-course"><i class="fa fa-check"></i>About This Course</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#schedule"><i class="fa fa-check"></i>Schedule</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#datacamp"><i class="fa fa-check"></i>DataCamp</a></li>
+</ul></li>
+<li class="chapter" data-level="1" data-path="rstudio-and-r-basics-revision.html"><a href="rstudio-and-r-basics-revision.html"><i class="fa fa-check"></i><b>1</b> RStudio and R Basics (Revision)</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="rstudio-and-r-basics-revision.html"><a href="rstudio-and-r-basics-revision.html#how-to-install-r-and-rstudio"><i class="fa fa-check"></i><b>1.1</b> How to install R and RStudio</a></li>
+<li class="chapter" data-level="1.2" data-path="rstudio-and-r-basics-revision.html"><a href="rstudio-and-r-basics-revision.html#rstudio-interface-explained"><i class="fa fa-check"></i><b>1.2</b> RStudio interface explained</a></li>
+<li class="chapter" data-level="1.3" data-path="rstudio-and-r-basics-revision.html"><a href="rstudio-and-r-basics-revision.html#mathematical-calculations"><i class="fa fa-check"></i><b>1.3</b> Mathematical calculations</a>
+<ul>
+<li class="chapter" data-level="1.3.1" data-path="rstudio-and-r-basics-revision.html"><a href="rstudio-and-r-basics-revision.html#basic-numerical-calculations"><i class="fa fa-check"></i><b>1.3.1</b> Basic numerical calculations</a></li>
+<li class="chapter" data-level="1.3.2" data-path="rstudio-and-r-basics-revision.html"><a href="rstudio-and-r-basics-revision.html#more-complicated-calculations"><i class="fa fa-check"></i><b>1.3.2</b> More complicated calculations</a></li>
+</ul></li>
+<li class="chapter" data-level="1.4" data-path="rstudio-and-r-basics-revision.html"><a href="rstudio-and-r-basics-revision.html#r-script"><i class="fa fa-check"></i><b>1.4</b> R script</a></li>
+<li class="chapter" data-level="1.5" data-path="rstudio-and-r-basics-revision.html"><a href="rstudio-and-r-basics-revision.html#assigning-variables"><i class="fa fa-check"></i><b>1.5</b> Assigning variables</a></li>
+<li class="chapter" data-level="1.6" data-path="rstudio-and-r-basics-revision.html"><a href="rstudio-and-r-basics-revision.html#vectors-and-matrices"><i class="fa fa-check"></i><b>1.6</b> Vectors and matrices</a>
+<ul>
+<li class="chapter" data-level="1.6.1" data-path="rstudio-and-r-basics-revision.html"><a href="rstudio-and-r-basics-revision.html#vectors"><i class="fa fa-check"></i><b>1.6.1</b> Vectors</a></li>
+<li class="chapter" data-level="1.6.2" data-path="rstudio-and-r-basics-revision.html"><a href="rstudio-and-r-basics-revision.html#vector-calculations"><i class="fa fa-check"></i><b>1.6.2</b> Vector calculations</a></li>
+<li class="chapter" data-level="1.6.3" data-path="rstudio-and-r-basics-revision.html"><a href="rstudio-and-r-basics-revision.html#vector-strings"><i class="fa fa-check"></i><b>1.6.3</b> Vector strings</a></li>
+<li class="chapter" data-level="1.6.4" data-path="rstudio-and-r-basics-revision.html"><a href="rstudio-and-r-basics-revision.html#vector-extraction"><i class="fa fa-check"></i><b>1.6.4</b> Vector extraction</a></li>
+<li class="chapter" data-level="1.6.5" data-path="rstudio-and-r-basics-revision.html"><a href="rstudio-and-r-basics-revision.html#exercises"><i class="fa fa-check"></i><b>1.6.5</b> Exercises</a></li>
+<li class="chapter" data-level="1.6.6" data-path="rstudio-and-r-basics-revision.html"><a href="rstudio-and-r-basics-revision.html#matrices"><i class="fa fa-check"></i><b>1.6.6</b> Matrices</a></li>
+<li class="chapter" data-level="1.6.7" data-path="rstudio-and-r-basics-revision.html"><a href="rstudio-and-r-basics-revision.html#matrix-calculations"><i class="fa fa-check"></i><b>1.6.7</b> Matrix calculations</a></li>
+<li class="chapter" data-level="1.6.8" data-path="rstudio-and-r-basics-revision.html"><a href="rstudio-and-r-basics-revision.html#matrix-operations"><i class="fa fa-check"></i><b>1.6.8</b> Matrix operations</a></li>
+<li class="chapter" data-level="1.6.9" data-path="rstudio-and-r-basics-revision.html"><a href="rstudio-and-r-basics-revision.html#matrix-extraction"><i class="fa fa-check"></i><b>1.6.9</b> Matrix extraction</a></li>
+<li class="chapter" data-level="1.6.10" data-path="rstudio-and-r-basics-revision.html"><a href="rstudio-and-r-basics-revision.html#exercises-1"><i class="fa fa-check"></i><b>1.6.10</b> Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="1.7" data-path="rstudio-and-r-basics-revision.html"><a href="rstudio-and-r-basics-revision.html#plotting-graphs"><i class="fa fa-check"></i><b>1.7</b> Plotting graphs</a>
+<ul>
+<li class="chapter" data-level="1.7.1" data-path="rstudio-and-r-basics-revision.html"><a href="rstudio-and-r-basics-revision.html#adding-to-plots-lines-points-etc."><i class="fa fa-check"></i><b>1.7.1</b> Adding to plots (lines, points etc.)</a></li>
+<li class="chapter" data-level="1.7.2" data-path="rstudio-and-r-basics-revision.html"><a href="rstudio-and-r-basics-revision.html#exercises-2"><i class="fa fa-check"></i><b>1.7.2</b> Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="1.8" data-path="rstudio-and-r-basics-revision.html"><a href="rstudio-and-r-basics-revision.html#datacamp-courses"><i class="fa fa-check"></i><b>1.8</b> DataCamp course(s)</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="conditionals-and-if-statements.html"><a href="conditionals-and-if-statements.html"><i class="fa fa-check"></i><b>2</b> Conditionals and IF Statements</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="conditionals-and-if-statements.html"><a href="conditionals-and-if-statements.html#relational-operators"><i class="fa fa-check"></i><b>2.1</b> Relational operators</a></li>
+<li class="chapter" data-level="2.2" data-path="conditionals-and-if-statements.html"><a href="conditionals-and-if-statements.html#logical-operators"><i class="fa fa-check"></i><b>2.2</b> Logical operators</a></li>
+<li class="chapter" data-level="2.3" data-path="conditionals-and-if-statements.html"><a href="conditionals-and-if-statements.html#if-statements"><i class="fa fa-check"></i><b>2.3</b> IF statements</a></li>
+<li class="chapter" data-level="2.4" data-path="conditionals-and-if-statements.html"><a href="conditionals-and-if-statements.html#exercises-3"><i class="fa fa-check"></i><b>2.4</b> Exercises</a></li>
+<li class="chapter" data-level="2.5" data-path="conditionals-and-if-statements.html"><a href="conditionals-and-if-statements.html#datacamp-courses-1"><i class="fa fa-check"></i><b>2.5</b> DataCamp course(s)</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="loops.html"><a href="loops.html"><i class="fa fa-check"></i><b>3</b> Loops</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="loops.html"><a href="loops.html#for-loops"><i class="fa fa-check"></i><b>3.1</b> For loops</a>
+<ul>
+<li class="chapter" data-level="3.1.1" data-path="loops.html"><a href="loops.html#matrices-1"><i class="fa fa-check"></i><b>3.1.1</b> Matrices</a></li>
+</ul></li>
+<li class="chapter" data-level="3.2" data-path="loops.html"><a href="loops.html#while-loops"><i class="fa fa-check"></i><b>3.2</b> While loops</a></li>
+<li class="chapter" data-level="3.3" data-path="loops.html"><a href="loops.html#exercises-4"><i class="fa fa-check"></i><b>3.3</b> Exercises</a></li>
+<li class="chapter" data-level="3.4" data-path="loops.html"><a href="loops.html#datacamp-courses-2"><i class="fa fa-check"></i><b>3.4</b> DataCamp course(s)</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="functions.html"><a href="functions.html"><i class="fa fa-check"></i><b>4</b> Functions</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="functions.html"><a href="functions.html#creating-functions"><i class="fa fa-check"></i><b>4.1</b> Creating functions</a></li>
+<li class="chapter" data-level="4.2" data-path="functions.html"><a href="functions.html#prime-number-calculator---example"><i class="fa fa-check"></i><b>4.2</b> Prime number calculator - example</a></li>
+<li class="chapter" data-level="4.3" data-path="functions.html"><a href="functions.html#multiple-input-variables"><i class="fa fa-check"></i><b>4.3</b> Multiple Input Variables</a>
+<ul>
+<li class="chapter" data-level="4.3.1" data-path="functions.html"><a href="functions.html#default-options"><i class="fa fa-check"></i><b>4.3.1</b> Default options</a></li>
+</ul></li>
+<li class="chapter" data-level="4.4" data-path="functions.html"><a href="functions.html#exercises-5"><i class="fa fa-check"></i><b>4.4</b> Exercises</a></li>
+<li class="chapter" data-level="4.5" data-path="functions.html"><a href="functions.html#datacamp-courses-3"><i class="fa fa-check"></i><b>4.5</b> DataCamp course(s)</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="data-analysis.html"><a href="data-analysis.html"><i class="fa fa-check"></i><b>5</b> Data Analysis</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="data-analysis.html"><a href="data-analysis.html#creating-a-data-frame"><i class="fa fa-check"></i><b>5.1</b> Creating a data frame</a></li>
+<li class="chapter" data-level="5.2" data-path="data-analysis.html"><a href="data-analysis.html#importing-data---excel"><i class="fa fa-check"></i><b>5.2</b> Importing data - Excel</a></li>
+<li class="chapter" data-level="5.3" data-path="data-analysis.html"><a href="data-analysis.html#manipulating-and-analysing-data"><i class="fa fa-check"></i><b>5.3</b> Manipulating and analysing data</a></li>
+<li class="chapter" data-level="5.4" data-path="data-analysis.html"><a href="data-analysis.html#conditional-extraction"><i class="fa fa-check"></i><b>5.4</b> Conditional extraction</a></li>
+<li class="chapter" data-level="5.5" data-path="data-analysis.html"><a href="data-analysis.html#adding-data"><i class="fa fa-check"></i><b>5.5</b> Adding data</a></li>
+<li class="chapter" data-level="5.6" data-path="data-analysis.html"><a href="data-analysis.html#the-apply-family"><i class="fa fa-check"></i><b>5.6</b> The <code>apply</code> family</a></li>
+<li class="chapter" data-level="5.7" data-path="data-analysis.html"><a href="data-analysis.html#exercises-6"><i class="fa fa-check"></i><b>5.7</b> Exercises</a></li>
+<li class="chapter" data-level="5.8" data-path="data-analysis.html"><a href="data-analysis.html#datacamp-courses-4"><i class="fa fa-check"></i><b>5.8</b> DataCamp course(s)</a></li>
+</ul></li>
+<li class="appendix"><span><b>Appendix</b></span></li>
+<li class="chapter" data-level="A" data-path="additional-tips.html"><a href="additional-tips.html"><i class="fa fa-check"></i><b>A</b> Additional Tips</a>
+<ul>
+<li class="chapter" data-level="" data-path="additional-tips.html"><a href="additional-tips.html#commenting"><i class="fa fa-check"></i>Commenting</a></li>
+<li class="chapter" data-level="" data-path="additional-tips.html"><a href="additional-tips.html#help"><i class="fa fa-check"></i>Help</a></li>
+</ul></li>
+<li class="chapter" data-level="B" data-path="cheat-sheets.html"><a href="cheat-sheets.html"><i class="fa fa-check"></i><b>B</b> Cheat Sheets</a>
+<ul>
+<li class="chapter" data-level="" data-path="cheat-sheets.html"><a href="cheat-sheets.html#r-cheat-sheets"><i class="fa fa-check"></i>R Cheat Sheets</a></li>
+<li class="chapter" data-level="" data-path="cheat-sheets.html"><a href="cheat-sheets.html#rmarkdown-cheat-sheets"><i class="fa fa-check"></i>RMarkdown Cheat Sheets</a></li>
+<li class="chapter" data-level="" data-path="cheat-sheets.html"><a href="cheat-sheets.html#rmarkdown-guides"><i class="fa fa-check"></i>RMarkdown Guides</a></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="https://www.york.ac.uk/business-society/people/lewis-ramsden/" target="blank">Dr. Lewis Ramsden</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Introduction to R Programming - University of York</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="functions" class="section level1 hasAnchor" number="4">
+<h1><span class="header-section-number">Week4</span> Functions<a href="functions.html#functions" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<p>In the previous weeks, we have already encountered and worked with some of R’s pre-defined functions that you can use on your data/objects to produce certain results. For example, the <code>mean()</code> function, <code>var()</code> function or even <code>plot()</code> function. Each of these ‘functions’ require one (or more) input variables, then provide some output. Although these functions are readily available for you to use in the base packages, the functions themselves have actually been created from scratch and primarily consist solely of basic programming techniques we have already discussed, e.g. loops, conditional statements etc.</p>
+<div id="creating-functions" class="section level2 hasAnchor" number="4.1">
+<h2><span class="header-section-number">4.1</span> Creating functions<a href="functions.html#creating-functions" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>In this section, we are going to discuss how to create our own functions. There are two main reasons for wanting to create your own functions:</p>
+<ol style="list-style-type: decimal">
+<li><p>To reuse a series of code over and over again without having to re-write the same code (especially if the code is complex and long)</p></li>
+<li><p>For other people to use in their programming (similar to how we have already used some of the functions other people have created)</p></li>
+</ol>
+<p>To create a function in R, we need to following steps:</p>
+<ol style="list-style-type: decimal">
+<li>Choose of a name for the function</li>
+<li>Consider the input variables that will be required for the function</li>
+<li>Use the following lines of code:</li>
+</ol>
+<p><code>functionname &lt;- function(input1, input2, ...){</code> <br>
+<code>Commands to execute for function using input variables listed</code> <br>
+<code>}</code> <br></p>
+<p>As a basic example, let us re-create the <code>mean()</code> function ourselves from scratch:</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="functions.html#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">100</span>) <span class="co"># Remind ourselves how the mean() function works</span></span></code></pre></div>
+<pre><code>## [1] 50.5</code></pre>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="functions.html#cb3-1" aria-hidden="true" tabindex="-1"></a>mean_function <span class="ot">&lt;-</span> <span class="cf">function</span>(x){</span>
+<span id="cb3-2"><a href="functions.html#cb3-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">sum</span>(x)<span class="sc">/</span><span class="fu">length</span>(x)</span>
+<span id="cb3-3"><a href="functions.html#cb3-3" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb3-4"><a href="functions.html#cb3-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-5"><a href="functions.html#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="fu">mean_function</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">100</span>)</span></code></pre></div>
+<pre><code>## [1] 50.5</code></pre>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="functions.html#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean_function</span>(<span class="dv">5</span><span class="sc">:</span><span class="dv">5000</span>)</span></code></pre></div>
+<pre><code>## [1] 2502.5</code></pre>
+<p>As you can see in the above, once the function has been created and given a name, in this case <code>mean_function()</code> it can now be called and used like any other pre-defined function.</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="functions.html#cb7-1" aria-hidden="true" tabindex="-1"></a>(vec <span class="ot">&lt;-</span> <span class="fu">rexp</span>(<span class="dv">100</span>, <span class="at">rate =</span> <span class="dv">1</span>))</span></code></pre></div>
+<pre><code>##   [1] 0.70599356 0.83992506 1.07001458 0.21182446 2.30052518 0.56618644
+##   [7] 0.62471794 0.25992864 0.85897079 2.24721091 2.08003323 0.23712974
+##  [13] 0.39523294 0.63856562 1.64947349 0.01754143 2.19815689 1.87035170
+##  [19] 1.54505037 0.66944437 2.67066294 1.22678668 0.41558595 1.22048089
+##  [25] 1.19508132 2.27723736 0.53976011 0.04770016 4.06348820 0.76379978
+##  [31] 0.51565021 0.49403979 0.01418225 3.68609660 0.82207011 0.59218559
+##  [37] 0.12764143 1.30274484 0.25241810 0.54163652 0.07998696 0.06324364
+##  [43] 0.73997288 0.34624586 1.90934131 0.19697351 1.89212334 0.70842456
+##  [49] 0.38293575 0.54345292 1.39152817 1.51064357 2.75965744 2.19169541
+##  [55] 1.36041142 1.89494153 0.47199143 1.24412763 0.73588196 0.51126411
+##  [61] 0.18227696 1.61565143 1.81028361 1.75095145 3.15734638 1.85442489
+##  [67] 0.07540654 5.14423154 0.08187955 0.01635307 0.31863893 0.89676509
+##  [73] 0.58049184 1.76467483 1.04460260 3.93388591 2.28783017 0.09351563
+##  [79] 2.63739275 0.28614984 1.14874455 1.32336613 1.07165626 0.02316315
+##  [85] 0.36731016 0.23311861 0.81558432 0.31025908 0.69037910 0.46078089
+##  [91] 1.45938428 0.04942301 0.01825894 0.33095027 0.37766489 1.85014675
+##  [97] 0.23909140 0.51052158 1.72818740 0.81824711</code></pre>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="functions.html#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(vec)</span></code></pre></div>
+<pre><code>## [1] 1.080494</code></pre>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="functions.html#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean_function</span>(vec)</span></code></pre></div>
+<pre><code>## [1] 1.080494</code></pre>
+<p>As you can see from this simply example, it is even possible to use functions inside functions, e.g. we have used the <code>sum()</code> and <code>length()</code> functions inside our newly created function.</p>
+<div class="exercise">
+<p><span id="exr:unlabeled-div-1" class="exercise"><strong>Exercise 4.1  </strong></span>Can you create a function called sum_function which sums up all of the values in a vector without using the predefined sum() function?</p>
+</div>
+<p><strong>Solution</strong></p>
+<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="functions.html#cb13-1" aria-hidden="true" tabindex="-1"></a>sum_function <span class="ot">&lt;-</span> <span class="cf">function</span>(y){</span>
+<span id="cb13-2"><a href="functions.html#cb13-2" aria-hidden="true" tabindex="-1"></a>  sum <span class="ot">&lt;-</span> <span class="dv">0</span></span>
+<span id="cb13-3"><a href="functions.html#cb13-3" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">length</span>(y)){</span>
+<span id="cb13-4"><a href="functions.html#cb13-4" aria-hidden="true" tabindex="-1"></a>    sum <span class="ot">&lt;-</span> sum <span class="sc">+</span> y[i]</span>
+<span id="cb13-5"><a href="functions.html#cb13-5" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb13-6"><a href="functions.html#cb13-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(sum) <span class="co"># Why this and not print(sum)?</span></span>
+<span id="cb13-7"><a href="functions.html#cb13-7" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb13-8"><a href="functions.html#cb13-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-9"><a href="functions.html#cb13-9" aria-hidden="true" tabindex="-1"></a><span class="fu">sum_function</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">500</span>)</span></code></pre></div>
+<pre><code>## [1] 125250</code></pre>
+<p>Notice that in the above construction of the function we have used <code>return(sum)</code>. Why do we do this rather than ask R to <code>print(sum)</code>?</p>
+<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="functions.html#cb15-1" aria-hidden="true" tabindex="-1"></a>sum_function_print <span class="ot">&lt;-</span> <span class="cf">function</span>(x){</span>
+<span id="cb15-2"><a href="functions.html#cb15-2" aria-hidden="true" tabindex="-1"></a>  sum <span class="ot">&lt;-</span> <span class="dv">0</span></span>
+<span id="cb15-3"><a href="functions.html#cb15-3" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">length</span>(x)){</span>
+<span id="cb15-4"><a href="functions.html#cb15-4" aria-hidden="true" tabindex="-1"></a>    sum <span class="ot">&lt;-</span> sum <span class="sc">+</span> x[i]</span>
+<span id="cb15-5"><a href="functions.html#cb15-5" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb15-6"><a href="functions.html#cb15-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(sum)</span>
+<span id="cb15-7"><a href="functions.html#cb15-7" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb15-8"><a href="functions.html#cb15-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-9"><a href="functions.html#cb15-9" aria-hidden="true" tabindex="-1"></a><span class="fu">sum_function</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>)</span></code></pre></div>
+<pre><code>## [1] 55</code></pre>
+<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="functions.html#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sum_function_print</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>)</span></code></pre></div>
+<pre><code>## [1] 55</code></pre>
+<p>In the above, it does not seem to make any difference if we have used <code>return(sum)</code> or <code>print(sum)</code> but what if we want to use the function as part of another calculation?</p>
+<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb19-1"><a href="functions.html#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sum_function</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>) <span class="sc">+</span> <span class="dv">10</span></span></code></pre></div>
+<pre><code>## [1] 65</code></pre>
+<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb21-1"><a href="functions.html#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sum_function_print</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>) <span class="sc">+</span> <span class="dv">10</span></span></code></pre></div>
+<pre><code>## [1] 55</code></pre>
+<pre><code>## [1] 65</code></pre>
+<p>You can see that in the above example, when we have used the version with <code>print()</code> in another calculation, we end up with two outputs. This is because we have instructed R that every time the function is executed, it should print the initial result of the function. Then, R also automatically saves the final value for the function and uses it in the remainder of the calculation, resulting in the second output. Unless you specifically want this, you should always use return(), to ensure R only saves the final value to the function. <strong>NOTE: If you only use <code>return()</code> R will still display the final output of the function (see the example above).</strong></p>
+<div class="exercise">
+<p><span id="exr:unlabeled-div-2" class="exercise"><strong>Exercise 4.2  </strong></span>Using IF statements, can you create a function that rounds a number to its nearest integer (.5 rounds up)? You <strong>cannot</strong> use the already pre-defined round() function.</p>
+</div>
+<details>
+<summary>
+<strong>Solution</strong>
+</summary>
+<div class="sourceCode" id="cb24"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb24-1"><a href="functions.html#cb24-1" aria-hidden="true" tabindex="-1"></a>round_function <span class="ot">&lt;-</span> <span class="cf">function</span>(x){</span>
+<span id="cb24-2"><a href="functions.html#cb24-2" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span>(x <span class="sc">%%</span> <span class="dv">1</span> <span class="sc">&lt;</span> <span class="fl">0.5</span>){</span>
+<span id="cb24-3"><a href="functions.html#cb24-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">return</span>(x<span class="sc">-</span>(x<span class="sc">%%</span><span class="dv">1</span>))</span>
+<span id="cb24-4"><a href="functions.html#cb24-4" aria-hidden="true" tabindex="-1"></a>  } <span class="cf">else</span> {</span>
+<span id="cb24-5"><a href="functions.html#cb24-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">return</span>(x<span class="sc">+</span><span class="dv">1</span><span class="sc">-</span>(x<span class="sc">%%</span><span class="dv">1</span>))</span>
+<span id="cb24-6"><a href="functions.html#cb24-6" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb24-7"><a href="functions.html#cb24-7" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb24-8"><a href="functions.html#cb24-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-9"><a href="functions.html#cb24-9" aria-hidden="true" tabindex="-1"></a><span class="fu">round_function</span>(<span class="fl">9.3</span>)</span></code></pre></div>
+<pre><code>## [1] 9</code></pre>
+<div class="sourceCode" id="cb26"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb26-1"><a href="functions.html#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="fu">round_function</span>(<span class="fl">9.5</span>)</span></code></pre></div>
+<pre><code>## [1] 10</code></pre>
+</details>
+<p>Of course, some functions are much more complicated underneath the surface. For example, the <code>lm()</code> function executes a full ‘linear regression’ fitting to a set of data and returns a variety of information about the fitted model:</p>
+<div class="sourceCode" id="cb28"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb28-1"><a href="functions.html#cb28-1" aria-hidden="true" tabindex="-1"></a>fit <span class="ot">&lt;-</span> <span class="fu">lm</span>(mtcars<span class="sc">$</span>mpg <span class="sc">~</span> mtcars<span class="sc">$</span>hp)</span>
+<span id="cb28-2"><a href="functions.html#cb28-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(fit)</span></code></pre></div>
+<pre><code>## 
+## Call:
+## lm(formula = mtcars$mpg ~ mtcars$hp)
+## 
+## Residuals:
+##     Min      1Q  Median      3Q     Max 
+## -5.7121 -2.1122 -0.8854  1.5819  8.2360 
+## 
+## Coefficients:
+##             Estimate Std. Error t value Pr(&gt;|t|)    
+## (Intercept) 30.09886    1.63392  18.421  &lt; 2e-16 ***
+## mtcars$hp   -0.06823    0.01012  -6.742 1.79e-07 ***
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+## 
+## Residual standard error: 3.863 on 30 degrees of freedom
+## Multiple R-squared:  0.6024, Adjusted R-squared:  0.5892 
+## F-statistic: 45.46 on 1 and 30 DF,  p-value: 1.788e-07</code></pre>
+<p><strong>Note: Do not worry about understanding all of this output here, it is included purely for the sake of an example.</strong></p>
+<p>Although such functions may look much more complicated, they are still ultimately only made up of combinations of basic commands (albeit many lines of them), the concept is much the same and only requires more thought. As an example of a slightly more complicated function, let us create a prime number calculator:</p>
+</div>
+<div id="prime-number-calculator---example" class="section level2 hasAnchor" number="4.2">
+<h2><span class="header-section-number">4.2</span> Prime number calculator - example<a href="functions.html#prime-number-calculator---example" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div class="sourceCode" id="cb30"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb30-1"><a href="functions.html#cb30-1" aria-hidden="true" tabindex="-1"></a>prime <span class="ot">&lt;-</span> <span class="cf">function</span>(number){</span>
+<span id="cb30-2"><a href="functions.html#cb30-2" aria-hidden="true" tabindex="-1"></a>  flag <span class="ot">&lt;-</span> <span class="dv">0</span></span>
+<span id="cb30-3"><a href="functions.html#cb30-3" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb30-4"><a href="functions.html#cb30-4" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span>(number <span class="sc">==</span> <span class="dv">2</span>){</span>
+<span id="cb30-5"><a href="functions.html#cb30-5" aria-hidden="true" tabindex="-1"></a>    flag <span class="ot">&lt;-</span> <span class="dv">1</span></span>
+<span id="cb30-6"><a href="functions.html#cb30-6" aria-hidden="true" tabindex="-1"></a>  } <span class="cf">else</span> <span class="cf">if</span> (number <span class="sc">&gt;</span> <span class="dv">2</span>) {</span>
+<span id="cb30-7"><a href="functions.html#cb30-7" aria-hidden="true" tabindex="-1"></a>    <span class="co"># check for factors</span></span>
+<span id="cb30-8"><a href="functions.html#cb30-8" aria-hidden="true" tabindex="-1"></a>    flag <span class="ot">&lt;-</span> <span class="dv">1</span></span>
+<span id="cb30-9"><a href="functions.html#cb30-9" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">2</span><span class="sc">:</span>(number<span class="dv">-1</span>)) {</span>
+<span id="cb30-10"><a href="functions.html#cb30-10" aria-hidden="true" tabindex="-1"></a>      <span class="cf">if</span> ((number <span class="sc">%%</span> i) <span class="sc">==</span> <span class="dv">0</span>) {</span>
+<span id="cb30-11"><a href="functions.html#cb30-11" aria-hidden="true" tabindex="-1"></a>        flag <span class="ot">&lt;-</span> <span class="dv">0</span></span>
+<span id="cb30-12"><a href="functions.html#cb30-12" aria-hidden="true" tabindex="-1"></a>        <span class="cf">break</span></span>
+<span id="cb30-13"><a href="functions.html#cb30-13" aria-hidden="true" tabindex="-1"></a>      }</span>
+<span id="cb30-14"><a href="functions.html#cb30-14" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb30-15"><a href="functions.html#cb30-15" aria-hidden="true" tabindex="-1"></a>  } </span>
+<span id="cb30-16"><a href="functions.html#cb30-16" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb30-17"><a href="functions.html#cb30-17" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span>(flag <span class="sc">==</span> <span class="dv">1</span>) {</span>
+<span id="cb30-18"><a href="functions.html#cb30-18" aria-hidden="true" tabindex="-1"></a>    <span class="fu">print</span>(<span class="fu">paste</span>(number,<span class="st">&quot;is a prime number&quot;</span>))</span>
+<span id="cb30-19"><a href="functions.html#cb30-19" aria-hidden="true" tabindex="-1"></a>  } <span class="cf">else</span> {</span>
+<span id="cb30-20"><a href="functions.html#cb30-20" aria-hidden="true" tabindex="-1"></a>    <span class="fu">print</span>(<span class="fu">paste</span>(number,<span class="st">&quot;is not a prime number&quot;</span>))</span>
+<span id="cb30-21"><a href="functions.html#cb30-21" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb30-22"><a href="functions.html#cb30-22" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb30-23"><a href="functions.html#cb30-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb30-24"><a href="functions.html#cb30-24" aria-hidden="true" tabindex="-1"></a><span class="fu">prime</span>(<span class="dv">7</span>)</span></code></pre></div>
+<pre><code>## [1] &quot;7 is a prime number&quot;</code></pre>
+<div class="sourceCode" id="cb32"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb32-1"><a href="functions.html#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="fu">prime</span>(<span class="dv">986376383</span>)</span></code></pre></div>
+<pre><code>## [1] &quot;986376383 is not a prime number&quot;</code></pre>
+</div>
+<div id="multiple-input-variables" class="section level2 hasAnchor" number="4.3">
+<h2><span class="header-section-number">4.3</span> Multiple Input Variables<a href="functions.html#multiple-input-variables" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>In the functions we have created so far, we have only considered one input variable. However, it is possible to create functions with multiple inputs. For example, imagine we wanted to find the accumulated value of an investment over some time period under compound interest. In such a problem, you have three different possible inputs:</p>
+<ol style="list-style-type: decimal">
+<li>Initial investment</li>
+<li>annual interest rate</li>
+<li>Time (years):</li>
+</ol>
+<div class="sourceCode" id="cb34"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb34-1"><a href="functions.html#cb34-1" aria-hidden="true" tabindex="-1"></a>Acc_value <span class="ot">&lt;-</span> <span class="cf">function</span>(initial, interest, years){</span>
+<span id="cb34-2"><a href="functions.html#cb34-2" aria-hidden="true" tabindex="-1"></a>  value <span class="ot">&lt;-</span> initial<span class="sc">*</span>(<span class="dv">1</span><span class="sc">+</span>interest)<span class="sc">^</span>years</span>
+<span id="cb34-3"><a href="functions.html#cb34-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(value)</span>
+<span id="cb34-4"><a href="functions.html#cb34-4" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb34-5"><a href="functions.html#cb34-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-6"><a href="functions.html#cb34-6" aria-hidden="true" tabindex="-1"></a><span class="fu">Acc_value</span>(<span class="dv">100000</span>, <span class="fl">0.05</span>, <span class="dv">25</span>) </span></code></pre></div>
+<pre><code>## [1] 338635.5</code></pre>
+<div class="sourceCode" id="cb36"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb36-1"><a href="functions.html#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="fu">Acc_value</span>(<span class="dv">100</span>,<span class="fl">0.05</span>,<span class="dv">10</span>)</span></code></pre></div>
+<pre><code>## [1] 162.8895</code></pre>
+<p>Notice how much easier this is now that we have created a function. Before functions, we would have had to define each variable as a set value, then run the calculation and every time we wanted to calculate it for a new set of values, we would have to change them individually and run it all again, i.e.,</p>
+<div class="sourceCode" id="cb38"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb38-1"><a href="functions.html#cb38-1" aria-hidden="true" tabindex="-1"></a>initial <span class="ot">&lt;-</span> <span class="dv">100000</span></span>
+<span id="cb38-2"><a href="functions.html#cb38-2" aria-hidden="true" tabindex="-1"></a>interest <span class="ot">&lt;-</span> <span class="fl">0.05</span></span>
+<span id="cb38-3"><a href="functions.html#cb38-3" aria-hidden="true" tabindex="-1"></a>years <span class="ot">&lt;-</span> <span class="dv">25</span></span>
+<span id="cb38-4"><a href="functions.html#cb38-4" aria-hidden="true" tabindex="-1"></a>initial<span class="sc">*</span>(<span class="dv">1</span><span class="sc">+</span>interest)<span class="sc">^</span>years</span></code></pre></div>
+<pre><code>## [1] 338635.5</code></pre>
+<p>Creating functions avoids this tedious problem but also allows us to use them inside other calculations or even other functions (see later).</p>
+<p>Before we look at some examples of functions working inside of functions, we note that functions also work with vectors:</p>
+<div class="sourceCode" id="cb40"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb40-1"><a href="functions.html#cb40-1" aria-hidden="true" tabindex="-1"></a>(x <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="fl">0.01</span>, <span class="fl">0.06</span>, <span class="at">by =</span> <span class="fl">0.005</span>))</span></code></pre></div>
+<pre><code>##  [1] 0.010 0.015 0.020 0.025 0.030 0.035 0.040 0.045 0.050 0.055 0.060</code></pre>
+<div class="sourceCode" id="cb42"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb42-1"><a href="functions.html#cb42-1" aria-hidden="true" tabindex="-1"></a><span class="fu">Acc_value</span>(<span class="dv">100000</span>, x, <span class="dv">25</span>)</span></code></pre></div>
+<pre><code>##  [1] 128243.2 145094.5 164060.6 185394.4 209377.8 236324.5 266583.6 300543.4
+##  [9] 338635.5 381339.2 429187.1</code></pre>
+<p>In this case, the function works element-by-element wise in the usual way to create a vector of outputs. To see this implemented inside another function, let us consider the following example of plotting the various accumulated values calculated above using the <code>plot()</code> function:</p>
+<div class="sourceCode" id="cb44"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb44-1"><a href="functions.html#cb44-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(x, <span class="fu">Acc_value</span>(<span class="dv">100</span>,x, <span class="dv">10</span>), <span class="at">ylab =</span> <span class="st">&quot;Accumulated Value (100)&quot;</span>, <span class="at">xlab =</span> <span class="st">&quot;Interest Rate&quot;</span>)</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-13-1.png" width="672" /></p>
+<p>This particular use of the function within the <code>plot()</code> function will prove to be very useful for future assessments, where you are typically asked to compare certain quantities under varying conditions (interest rates, terms etc.)</p>
+<p>As another example, we recall that there are actually two different types of interest (Simple and Compound). Of course, we could create two separate functions for each of these. However, since these are related it would be nice to have a single function that could deal with both. This can easily by adding a new variable:</p>
+<div class="sourceCode" id="cb45"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb45-1"><a href="functions.html#cb45-1" aria-hidden="true" tabindex="-1"></a>Acc_value <span class="ot">&lt;-</span> <span class="cf">function</span>(initial, interest, years, type){</span>
+<span id="cb45-2"><a href="functions.html#cb45-2" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (type <span class="sc">==</span> <span class="st">&quot;compound&quot;</span>){</span>
+<span id="cb45-3"><a href="functions.html#cb45-3" aria-hidden="true" tabindex="-1"></a>  value <span class="ot">&lt;-</span> initial<span class="sc">*</span>(<span class="dv">1</span><span class="sc">+</span>interest)<span class="sc">^</span>years</span>
+<span id="cb45-4"><a href="functions.html#cb45-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span> (value)</span>
+<span id="cb45-5"><a href="functions.html#cb45-5" aria-hidden="true" tabindex="-1"></a>  } <span class="cf">else</span> <span class="cf">if</span> (type <span class="sc">==</span> <span class="st">&quot;simple&quot;</span>){</span>
+<span id="cb45-6"><a href="functions.html#cb45-6" aria-hidden="true" tabindex="-1"></a>    value <span class="ot">&lt;-</span> initial<span class="sc">*</span>(<span class="dv">1</span><span class="sc">+</span>(interest<span class="sc">*</span>years))</span>
+<span id="cb45-7"><a href="functions.html#cb45-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">return</span> (value)</span>
+<span id="cb45-8"><a href="functions.html#cb45-8" aria-hidden="true" tabindex="-1"></a>  } <span class="cf">else</span> {</span>
+<span id="cb45-9"><a href="functions.html#cb45-9" aria-hidden="true" tabindex="-1"></a>    <span class="fu">print</span>(<span class="st">&quot;Invalid Interest Type. Must either be &#39;compound&#39; or &#39;simple&#39;&quot;</span>)</span>
+<span id="cb45-10"><a href="functions.html#cb45-10" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb45-11"><a href="functions.html#cb45-11" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb45-12"><a href="functions.html#cb45-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-13"><a href="functions.html#cb45-13" aria-hidden="true" tabindex="-1"></a><span class="fu">Acc_value</span>(<span class="dv">100</span>, <span class="fl">0.05</span>, <span class="dv">10</span>, <span class="st">&quot;simple&quot;</span>)</span></code></pre></div>
+<pre><code>## [1] 150</code></pre>
+<div class="sourceCode" id="cb47"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb47-1"><a href="functions.html#cb47-1" aria-hidden="true" tabindex="-1"></a><span class="fu">Acc_value</span>(<span class="dv">100</span>,<span class="fl">0.05</span>,<span class="dv">10</span>, <span class="st">&quot;compound&quot;</span>)</span></code></pre></div>
+<pre><code>## [1] 162.8895</code></pre>
+<div class="sourceCode" id="cb49"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb49-1"><a href="functions.html#cb49-1" aria-hidden="true" tabindex="-1"></a><span class="fu">Acc_value</span>(<span class="dv">11</span>, <span class="fl">0.05</span>, <span class="dv">10</span>, <span class="st">&quot;comp&quot;</span>)</span></code></pre></div>
+<pre><code>## [1] &quot;Invalid Interest Type. Must either be &#39;compound&#39; or &#39;simple&#39;&quot;</code></pre>
+<p>An alternative way to do this to let the type variable by a Boolean value as we have seen in other functions:</p>
+<div class="sourceCode" id="cb51"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb51-1"><a href="functions.html#cb51-1" aria-hidden="true" tabindex="-1"></a>Acc_value <span class="ot">&lt;-</span> <span class="cf">function</span>(initial, interest, years, compound){</span>
+<span id="cb51-2"><a href="functions.html#cb51-2" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (compound <span class="sc">==</span> <span class="cn">TRUE</span>){</span>
+<span id="cb51-3"><a href="functions.html#cb51-3" aria-hidden="true" tabindex="-1"></a>    value <span class="ot">&lt;-</span> initial<span class="sc">*</span>(<span class="dv">1</span><span class="sc">+</span>interest)<span class="sc">^</span>years</span>
+<span id="cb51-4"><a href="functions.html#cb51-4" aria-hidden="true" tabindex="-1"></a>  } <span class="cf">else</span> <span class="cf">if</span> (compound <span class="sc">==</span> <span class="cn">FALSE</span>){</span>
+<span id="cb51-5"><a href="functions.html#cb51-5" aria-hidden="true" tabindex="-1"></a>    value <span class="ot">&lt;-</span> initial<span class="sc">*</span>(<span class="dv">1</span><span class="sc">+</span>(interest<span class="sc">*</span>years))</span>
+<span id="cb51-6"><a href="functions.html#cb51-6" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb51-7"><a href="functions.html#cb51-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(value)</span>
+<span id="cb51-8"><a href="functions.html#cb51-8" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb51-9"><a href="functions.html#cb51-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-10"><a href="functions.html#cb51-10" aria-hidden="true" tabindex="-1"></a><span class="fu">Acc_value</span>(<span class="dv">100</span>, <span class="fl">0.05</span>, <span class="dv">10</span>, <span class="at">compound =</span> <span class="cn">FALSE</span>)</span></code></pre></div>
+<pre><code>## [1] 150</code></pre>
+<div id="default-options" class="section level3 hasAnchor" number="4.3.1">
+<h3><span class="header-section-number">4.3.1</span> Default options<a href="functions.html#default-options" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>In some cases, you can have variables within a function that can be changed but more often than not will take a certain value. In this case, you can set a default value for this variable which it will take if not explicitly defined in the function command:</p>
+<div class="sourceCode" id="cb53"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb53-1"><a href="functions.html#cb53-1" aria-hidden="true" tabindex="-1"></a>Acc_value <span class="ot">&lt;-</span> <span class="cf">function</span>(initial, interest, years, <span class="at">compound =</span> <span class="cn">TRUE</span>){</span>
+<span id="cb53-2"><a href="functions.html#cb53-2" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (compound <span class="sc">==</span> <span class="cn">TRUE</span>){</span>
+<span id="cb53-3"><a href="functions.html#cb53-3" aria-hidden="true" tabindex="-1"></a>    value <span class="ot">&lt;-</span> initial<span class="sc">*</span>(<span class="dv">1</span><span class="sc">+</span>interest)<span class="sc">^</span>years</span>
+<span id="cb53-4"><a href="functions.html#cb53-4" aria-hidden="true" tabindex="-1"></a>  } <span class="cf">else</span> <span class="cf">if</span> (compound <span class="sc">==</span> <span class="cn">FALSE</span>){</span>
+<span id="cb53-5"><a href="functions.html#cb53-5" aria-hidden="true" tabindex="-1"></a>    value <span class="ot">&lt;-</span> initial<span class="sc">*</span>(<span class="dv">1</span><span class="sc">+</span>(interest<span class="sc">*</span>years))</span>
+<span id="cb53-6"><a href="functions.html#cb53-6" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb53-7"><a href="functions.html#cb53-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(value)</span>
+<span id="cb53-8"><a href="functions.html#cb53-8" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb53-9"><a href="functions.html#cb53-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb53-10"><a href="functions.html#cb53-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb53-11"><a href="functions.html#cb53-11" aria-hidden="true" tabindex="-1"></a><span class="fu">Acc_value</span>(<span class="dv">100</span>, <span class="fl">0.05</span>, <span class="dv">10</span>)</span></code></pre></div>
+<pre><code>## [1] 162.8895</code></pre>
+<div class="sourceCode" id="cb55"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb55-1"><a href="functions.html#cb55-1" aria-hidden="true" tabindex="-1"></a><span class="fu">Acc_value</span>(<span class="dv">100</span>, <span class="fl">0.05</span>, <span class="dv">10</span>, <span class="at">compound =</span> <span class="cn">FALSE</span>)</span></code></pre></div>
+<pre><code>## [1] 150</code></pre>
+<p>Finally, just as a nice example of the above application, we could further develop the interest function above:</p>
+<div class="sourceCode" id="cb57"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb57-1"><a href="functions.html#cb57-1" aria-hidden="true" tabindex="-1"></a>Acc_value <span class="ot">&lt;-</span> <span class="cf">function</span>(initial, interest, years, <span class="at">compound =</span> <span class="cn">TRUE</span>, <span class="at">compare =</span> <span class="cn">FALSE</span>){</span>
+<span id="cb57-2"><a href="functions.html#cb57-2" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb57-3"><a href="functions.html#cb57-3" aria-hidden="true" tabindex="-1"></a>    comp_values <span class="ot">&lt;-</span> <span class="fu">c</span>(initial)</span>
+<span id="cb57-4"><a href="functions.html#cb57-4" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span>years){</span>
+<span id="cb57-5"><a href="functions.html#cb57-5" aria-hidden="true" tabindex="-1"></a>    comp_values <span class="ot">&lt;-</span> <span class="fu">c</span>(comp_values,initial<span class="sc">*</span>(<span class="dv">1</span><span class="sc">+</span>interest)<span class="sc">^</span>i)</span>
+<span id="cb57-6"><a href="functions.html#cb57-6" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb57-7"><a href="functions.html#cb57-7" aria-hidden="true" tabindex="-1"></a>    simp_values <span class="ot">&lt;-</span> <span class="fu">c</span>(initial)</span>
+<span id="cb57-8"><a href="functions.html#cb57-8" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span>years){</span>
+<span id="cb57-9"><a href="functions.html#cb57-9" aria-hidden="true" tabindex="-1"></a>      simp_values <span class="ot">&lt;-</span> <span class="fu">c</span>(simp_values, initial<span class="sc">*</span>(<span class="dv">1</span><span class="sc">+</span>(interest<span class="sc">*</span>i)))</span>
+<span id="cb57-10"><a href="functions.html#cb57-10" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb57-11"><a href="functions.html#cb57-11" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb57-12"><a href="functions.html#cb57-12" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> (compare <span class="sc">==</span> <span class="cn">FALSE</span>){</span>
+<span id="cb57-13"><a href="functions.html#cb57-13" aria-hidden="true" tabindex="-1"></a>      <span class="cf">if</span> (compound <span class="sc">==</span> <span class="cn">TRUE</span>){</span>
+<span id="cb57-14"><a href="functions.html#cb57-14" aria-hidden="true" tabindex="-1"></a>        <span class="fu">return</span>(comp_values[<span class="fu">length</span>(comp_values)])</span>
+<span id="cb57-15"><a href="functions.html#cb57-15" aria-hidden="true" tabindex="-1"></a>      } <span class="cf">else</span> {</span>
+<span id="cb57-16"><a href="functions.html#cb57-16" aria-hidden="true" tabindex="-1"></a>        <span class="fu">return</span>(simp_values[<span class="fu">length</span>(simp_values)])</span>
+<span id="cb57-17"><a href="functions.html#cb57-17" aria-hidden="true" tabindex="-1"></a>      }</span>
+<span id="cb57-18"><a href="functions.html#cb57-18" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb57-19"><a href="functions.html#cb57-19" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb57-20"><a href="functions.html#cb57-20" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span>(compare <span class="sc">==</span> <span class="cn">TRUE</span>){</span>
+<span id="cb57-21"><a href="functions.html#cb57-21" aria-hidden="true" tabindex="-1"></a>      x <span class="ot">&lt;-</span> <span class="dv">0</span><span class="sc">:</span>years</span>
+<span id="cb57-22"><a href="functions.html#cb57-22" aria-hidden="true" tabindex="-1"></a>      <span class="fu">plot</span>(x, comp_values, <span class="at">ylab =</span> <span class="st">&quot;Accumulated Value&quot;</span>, <span class="at">xlab =</span> <span class="st">&quot;Year&quot;</span>, <span class="at">main =</span> <span class="st">&quot;Comparison of Interests&quot;</span>, <span class="at">type =</span> <span class="st">&quot;l&quot;</span>, <span class="at">col =</span> <span class="st">&quot;red&quot;</span>)</span>
+<span id="cb57-23"><a href="functions.html#cb57-23" aria-hidden="true" tabindex="-1"></a>      <span class="fu">lines</span>(x, simp_values, <span class="at">type =</span> <span class="st">&quot;l&quot;</span>, <span class="at">col =</span> <span class="st">&quot;blue&quot;</span>)</span>
+<span id="cb57-24"><a href="functions.html#cb57-24" aria-hidden="true" tabindex="-1"></a>      <span class="fu">legend</span>(<span class="st">&quot;bottomright&quot;</span>, <span class="at">legend =</span> <span class="fu">c</span>(<span class="st">&quot;Compound&quot;</span>, <span class="st">&quot;Simple&quot;</span>), <span class="at">col =</span> <span class="fu">c</span>(<span class="st">&quot;red&quot;</span>, <span class="st">&quot;blue&quot;</span>), <span class="at">lty =</span> <span class="dv">1</span>)</span>
+<span id="cb57-25"><a href="functions.html#cb57-25" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb57-26"><a href="functions.html#cb57-26" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb57-27"><a href="functions.html#cb57-27" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb57-28"><a href="functions.html#cb57-28" aria-hidden="true" tabindex="-1"></a><span class="fu">Acc_value</span>(<span class="dv">100</span>, <span class="fl">0.05</span>, <span class="dv">10</span>)</span></code></pre></div>
+<pre><code>## [1] 162.8895</code></pre>
+<div class="sourceCode" id="cb59"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb59-1"><a href="functions.html#cb59-1" aria-hidden="true" tabindex="-1"></a><span class="fu">Acc_value</span>(<span class="dv">100</span>, <span class="fl">0.05</span>, <span class="dv">10</span>, <span class="at">compound =</span> <span class="cn">FALSE</span>)</span></code></pre></div>
+<pre><code>## [1] 150</code></pre>
+<div class="sourceCode" id="cb61"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb61-1"><a href="functions.html#cb61-1" aria-hidden="true" tabindex="-1"></a><span class="fu">Acc_value</span>(<span class="dv">100</span>,<span class="fl">0.05</span>, <span class="dv">10</span>, <span class="at">compare =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-17-1.png" width="672" /></p>
+<div class="sourceCode" id="cb62"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb62-1"><a href="functions.html#cb62-1" aria-hidden="true" tabindex="-1"></a><span class="fu">Acc_value</span>(<span class="dv">10000</span>, <span class="fl">0.04</span>, <span class="dv">50</span>, <span class="at">compare =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-17-2.png" width="672" /></p>
+<p>Now that you understand the basics of how functions work, try having a go at the following exercises.</p>
+</div>
+</div>
+<div id="exercises-5" class="section level2 hasAnchor" number="4.4">
+<h2><span class="header-section-number">4.4</span> Exercises<a href="functions.html#exercises-5" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<ol style="list-style-type: decimal">
+<li>In the above, we discussed how to re-create the <code>sum()</code> and <code>mean()</code> function from programming basics. In a similar way, create a function called <code>variance</code> that calculates the variance of a vector of values. You are allowed to use the pre-defined <code>sum()</code> and <code>mean()</code> functions inside your variance function. Try doing this in two different ways:</li>
+</ol>
+<ol style="list-style-type: lower-roman">
+<li>Using For loops</li>
+<li>Using vectorised calculations.</li>
+</ol>
+<details>
+<summary>
+<strong>Solution</strong>
+</summary>
+<div class="sourceCode" id="cb63"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb63-1"><a href="functions.html#cb63-1" aria-hidden="true" tabindex="-1"></a><span class="co"># i)</span></span>
+<span id="cb63-2"><a href="functions.html#cb63-2" aria-hidden="true" tabindex="-1"></a>variance.loop <span class="ot">&lt;-</span> <span class="cf">function</span>(x){</span>
+<span id="cb63-3"><a href="functions.html#cb63-3" aria-hidden="true" tabindex="-1"></a>  var <span class="ot">&lt;-</span> <span class="dv">0</span></span>
+<span id="cb63-4"><a href="functions.html#cb63-4" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">length</span>(x)){</span>
+<span id="cb63-5"><a href="functions.html#cb63-5" aria-hidden="true" tabindex="-1"></a>    var <span class="ot">&lt;-</span> var <span class="sc">+</span> (x[i] <span class="sc">-</span> <span class="fu">mean</span>(x))<span class="sc">^</span><span class="dv">2</span></span>
+<span id="cb63-6"><a href="functions.html#cb63-6" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb63-7"><a href="functions.html#cb63-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(var<span class="sc">/</span><span class="fu">length</span>(x))</span>
+<span id="cb63-8"><a href="functions.html#cb63-8" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb63-9"><a href="functions.html#cb63-9" aria-hidden="true" tabindex="-1"></a><span class="fu">variance.loop</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">100</span>)</span></code></pre></div>
+<pre><code>## [1] 833.25</code></pre>
+<div class="sourceCode" id="cb65"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb65-1"><a href="functions.html#cb65-1" aria-hidden="true" tabindex="-1"></a><span class="co"># ii)</span></span>
+<span id="cb65-2"><a href="functions.html#cb65-2" aria-hidden="true" tabindex="-1"></a>variance.vect <span class="ot">&lt;-</span> <span class="cf">function</span>(x){</span>
+<span id="cb65-3"><a href="functions.html#cb65-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">sum</span>((x <span class="sc">-</span> <span class="fu">mean</span>(x))<span class="sc">^</span><span class="dv">2</span>)<span class="sc">/</span><span class="fu">length</span>(x)</span>
+<span id="cb65-4"><a href="functions.html#cb65-4" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb65-5"><a href="functions.html#cb65-5" aria-hidden="true" tabindex="-1"></a><span class="fu">variance.vect</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">100</span>)</span></code></pre></div>
+<pre><code>## [1] 833.25</code></pre>
+</details>
+<ol start="2" style="list-style-type: decimal">
+<li>Create a function that, given an integer, will calculate how many divisors it has (other than 1 and itself). Make the divisors appear on the screen.</li>
+</ol>
+<details>
+<summary>
+<strong>Solution</strong>
+</summary>
+<div class="sourceCode" id="cb67"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb67-1"><a href="functions.html#cb67-1" aria-hidden="true" tabindex="-1"></a>divisors <span class="ot">&lt;-</span> <span class="cf">function</span>(x){</span>
+<span id="cb67-2"><a href="functions.html#cb67-2" aria-hidden="true" tabindex="-1"></a>  num <span class="ot">&lt;-</span> <span class="dv">0</span></span>
+<span id="cb67-3"><a href="functions.html#cb67-3" aria-hidden="true" tabindex="-1"></a>  div <span class="ot">&lt;-</span> <span class="fu">c</span>()</span>
+<span id="cb67-4"><a href="functions.html#cb67-4" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">2</span><span class="sc">:</span>(x<span class="dv">-1</span>)){</span>
+<span id="cb67-5"><a href="functions.html#cb67-5" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span>(x <span class="sc">%%</span> i <span class="sc">==</span> <span class="dv">0</span>){</span>
+<span id="cb67-6"><a href="functions.html#cb67-6" aria-hidden="true" tabindex="-1"></a>      div <span class="ot">&lt;-</span> <span class="fu">c</span>(div, i)</span>
+<span id="cb67-7"><a href="functions.html#cb67-7" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb67-8"><a href="functions.html#cb67-8" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb67-9"><a href="functions.html#cb67-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(div)</span>
+<span id="cb67-10"><a href="functions.html#cb67-10" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb67-11"><a href="functions.html#cb67-11" aria-hidden="true" tabindex="-1"></a><span class="fu">divisors</span>(<span class="dv">36</span>)</span></code></pre></div>
+<pre><code>## [1]  2  3  4  6  9 12 18</code></pre>
+</details>
+<ol start="3" style="list-style-type: decimal">
+<li>From your ‘Introduction to Actuarial Science’ module, you should have come across the concept of ‘discounting’ and the ‘present value’ of money. Create a function in R called <code>PV</code> that takes 3 input variables: 1) Final value (F), 2) Annual interest rate and 3) Number of years, which calculates the present value of F.</li>
+</ol>
+<details>
+<summary>
+<strong>Solution</strong>
+</summary>
+<div class="sourceCode" id="cb69"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb69-1"><a href="functions.html#cb69-1" aria-hidden="true" tabindex="-1"></a>PV <span class="ot">&lt;-</span> <span class="cf">function</span>(FinalValue, Int, Years){</span>
+<span id="cb69-2"><a href="functions.html#cb69-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(FinalValue<span class="sc">*</span>(<span class="dv">1</span><span class="sc">+</span>Int)<span class="sc">^</span>(<span class="sc">-</span>Years))</span>
+<span id="cb69-3"><a href="functions.html#cb69-3" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb69-4"><a href="functions.html#cb69-4" aria-hidden="true" tabindex="-1"></a><span class="fu">PV</span>(<span class="dv">10000</span>, <span class="fl">0.05</span>, <span class="dv">10</span>)</span></code></pre></div>
+<pre><code>## [1] 6139.133</code></pre>
+</details>
+<ol start="4" style="list-style-type: decimal">
+<li>Recall that for geometric summation, we have
+<span class="math display">\[\begin{equation*}
+\sum_{k = 0}^{n-1} x^k = \frac{1-x^n}{1-x}.
+\end{equation*}\]</span>
+Moreover, if <span class="math inline">\(|x| &lt; 1\)</span>, the above summation converges as <span class="math inline">\(n \rightarrow \infty\)</span>, such that
+<span class="math display">\[\begin{equation*}
+\sum_{k = 0}^{\infty} x^k = \frac{1}{1-x}.
+\end{equation*}\]</span></li>
+</ol>
+<p>Create a function in R called <code>GeomSum</code> that takes two input variables (x and n) and calculates the geometric sum of x from 0 up to n. It should also be possible to include the option that <span class="math inline">\(n = \infty\)</span>.
+<strong>Hint: You may have to include a Boolean value for this but remember, the above limit only exists under a given condition. If this condition is not satisfied, make the function print out a warning message.</strong></p>
+<details>
+<summary>
+<strong>Solution</strong>
+</summary>
+<div class="sourceCode" id="cb71"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb71-1"><a href="functions.html#cb71-1" aria-hidden="true" tabindex="-1"></a>GeomSum <span class="ot">&lt;-</span> <span class="cf">function</span>(x, n, <span class="at">infinity =</span> F){</span>
+<span id="cb71-2"><a href="functions.html#cb71-2" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span>(infinity <span class="sc">==</span> F){</span>
+<span id="cb71-3"><a href="functions.html#cb71-3" aria-hidden="true" tabindex="-1"></a>    sum <span class="ot">&lt;-</span> (<span class="dv">1</span><span class="sc">-</span>x<span class="sc">^</span>(n<span class="sc">+</span><span class="dv">1</span>))<span class="sc">/</span>(<span class="dv">1</span><span class="sc">-</span>x)</span>
+<span id="cb71-4"><a href="functions.html#cb71-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">return</span>(sum)</span>
+<span id="cb71-5"><a href="functions.html#cb71-5" aria-hidden="true" tabindex="-1"></a>  } <span class="cf">else</span> <span class="cf">if</span> (<span class="fu">abs</span>(x) <span class="sc">&lt;</span> <span class="dv">1</span>) {</span>
+<span id="cb71-6"><a href="functions.html#cb71-6" aria-hidden="true" tabindex="-1"></a>    sum <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">/</span>(<span class="dv">1</span><span class="sc">-</span>x)</span>
+<span id="cb71-7"><a href="functions.html#cb71-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">return</span>(sum)</span>
+<span id="cb71-8"><a href="functions.html#cb71-8" aria-hidden="true" tabindex="-1"></a>  } <span class="cf">else</span> {</span>
+<span id="cb71-9"><a href="functions.html#cb71-9" aria-hidden="true" tabindex="-1"></a>    <span class="fu">print</span>(<span class="st">&quot;Warning: |x| must be less than 1 for infinite sum to converge!&quot;</span>)</span>
+<span id="cb71-10"><a href="functions.html#cb71-10" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb71-11"><a href="functions.html#cb71-11" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb71-12"><a href="functions.html#cb71-12" aria-hidden="true" tabindex="-1"></a><span class="fu">GeomSum</span>(<span class="fl">0.5</span>, <span class="dv">10</span>)  </span></code></pre></div>
+<pre><code>## [1] 1.999023</code></pre>
+<div class="sourceCode" id="cb73"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb73-1"><a href="functions.html#cb73-1" aria-hidden="true" tabindex="-1"></a><span class="fu">GeomSum</span>(<span class="fl">0.5</span>, <span class="at">infinity =</span> T)</span></code></pre></div>
+<pre><code>## [1] 2</code></pre>
+<div class="sourceCode" id="cb75"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb75-1"><a href="functions.html#cb75-1" aria-hidden="true" tabindex="-1"></a><span class="fu">GeomSum</span>(<span class="fl">1.3</span>, <span class="dv">20</span>)</span></code></pre></div>
+<pre><code>## [1] 820.2151</code></pre>
+<div class="sourceCode" id="cb77"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb77-1"><a href="functions.html#cb77-1" aria-hidden="true" tabindex="-1"></a><span class="fu">GeomSum</span>(<span class="fl">1.3</span>, <span class="at">infinity =</span> T)</span></code></pre></div>
+<pre><code>## [1] &quot;Warning: |x| must be less than 1 for infinite sum to converge!&quot;</code></pre>
+</details>
+<ol start="5" style="list-style-type: decimal">
+<li>Recall from your ‘Introduction to Actuarial Science’ module that the ‘Accumulated Value’ of an annuity-due with unit payments is defined by
+<span class="math display">\[\begin{equation*}
+\ddot{s}_{n\rceil} = \sum_{k=1}^n (1+i)^k = \frac{(1+i)^n -1}{i}\times(1+i)
+\end{equation*}\]</span>
+Create a function that takes three input variables representing 1) The value of repeated payments, 2) The annual interest rate and 3) The number of years. The function should create a vector with the accumulated value of the investment after each year and plot it on a basic plot against time (see the R Script for a similar example).</li>
+</ol>
+<details>
+<summary>
+<strong>Solution</strong>
+</summary>
+<div class="sourceCode" id="cb79"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb79-1"><a href="functions.html#cb79-1" aria-hidden="true" tabindex="-1"></a>AVannuity <span class="ot">&lt;-</span> <span class="cf">function</span>(Payments, Int, Years){</span>
+<span id="cb79-2"><a href="functions.html#cb79-2" aria-hidden="true" tabindex="-1"></a>  Time <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">:</span>Years</span>
+<span id="cb79-3"><a href="functions.html#cb79-3" aria-hidden="true" tabindex="-1"></a>  Accum <span class="ot">&lt;-</span> (((<span class="dv">1</span><span class="sc">+</span>Int)<span class="sc">^</span>Time)<span class="sc">-</span><span class="dv">1</span>)<span class="sc">*</span>(<span class="dv">1</span><span class="sc">+</span>Int)<span class="sc">/</span>Int</span>
+<span id="cb79-4"><a href="functions.html#cb79-4" aria-hidden="true" tabindex="-1"></a>  values<span class="ot">&lt;-</span> Payments<span class="sc">*</span><span class="fu">c</span>(<span class="dv">1</span>, Accum)</span>
+<span id="cb79-5"><a href="functions.html#cb79-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">plot</span>(<span class="dv">0</span><span class="sc">:</span>Years, values, <span class="at">xlab =</span> <span class="st">&quot;Time (Years)&quot;</span>, <span class="at">ylab =</span> <span class="st">&quot;Accumulated Value (£)&quot;</span>, <span class="at">type =</span> <span class="st">&quot;l&quot;</span>, <span class="at">cex =</span> <span class="dv">2</span>)</span>
+<span id="cb79-6"><a href="functions.html#cb79-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(values)</span>
+<span id="cb79-7"><a href="functions.html#cb79-7" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb79-8"><a href="functions.html#cb79-8" aria-hidden="true" tabindex="-1"></a><span class="fu">AVannuity</span>(<span class="dv">100</span>, <span class="fl">0.05</span>, <span class="dv">25</span>)</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-22-1.png" width="672" /></p>
+<pre><code>##  [1]  100.0000  105.0000  215.2500  331.0125  452.5631  580.1913  714.2008
+##  [8]  854.9109 1002.6564 1157.7893 1320.6787 1491.7127 1671.2983 1859.8632
+## [15] 2057.8564 2265.7492 2484.0366 2713.2385 2953.9004 3206.5954 3471.9252
+## [22] 3750.5214 4043.0475 4350.1999 4672.7099 5011.3454</code></pre>
+</details>
+<ol start="6" style="list-style-type: decimal">
+<li>Recall the Stock price example from the previous chapter (Exercise 9). Create a function called <code>Stock</code> that allows the user to input a starting amount, the standard deviation of percentage change (assume the change is normally distributed <span class="math inline">\(N(0, \sigma^2)\)</span>) and the values of an upper and lower barrier. The function should then plot the movement of the stock and print out the number of days it takes to reach either the upper or lower barrier.</li>
+</ol>
+<details>
+<summary>
+<strong>Solution</strong>
+</summary>
+<div class="sourceCode" id="cb81"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb81-1"><a href="functions.html#cb81-1" aria-hidden="true" tabindex="-1"></a>Stocks <span class="ot">&lt;-</span> <span class="cf">function</span>(InitialPrice, sd, Lower, Upper){</span>
+<span id="cb81-2"><a href="functions.html#cb81-2" aria-hidden="true" tabindex="-1"></a>  stock <span class="ot">&lt;-</span> InitialPrice</span>
+<span id="cb81-3"><a href="functions.html#cb81-3" aria-hidden="true" tabindex="-1"></a>  stock.prices <span class="ot">&lt;-</span> <span class="fu">c</span>(stock)</span>
+<span id="cb81-4"><a href="functions.html#cb81-4" aria-hidden="true" tabindex="-1"></a>  i <span class="ot">&lt;-</span> <span class="dv">1</span></span>
+<span id="cb81-5"><a href="functions.html#cb81-5" aria-hidden="true" tabindex="-1"></a>  <span class="cf">while</span>(stock <span class="sc">&gt;=</span> Lower <span class="sc">&amp;&amp;</span> stock <span class="sc">&lt;=</span> Upper){</span>
+<span id="cb81-6"><a href="functions.html#cb81-6" aria-hidden="true" tabindex="-1"></a>    i <span class="ot">&lt;-</span> i <span class="sc">+</span> <span class="dv">1</span></span>
+<span id="cb81-7"><a href="functions.html#cb81-7" aria-hidden="true" tabindex="-1"></a>    percent.change <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="dv">1</span>, <span class="dv">0</span>, sd)</span>
+<span id="cb81-8"><a href="functions.html#cb81-8" aria-hidden="true" tabindex="-1"></a>    stock <span class="ot">&lt;-</span> stock<span class="sc">*</span>(<span class="dv">1</span> <span class="sc">+</span> percent.change)</span>
+<span id="cb81-9"><a href="functions.html#cb81-9" aria-hidden="true" tabindex="-1"></a>    stock.prices <span class="ot">&lt;-</span> <span class="fu">c</span>(stock.prices, stock)  </span>
+<span id="cb81-10"><a href="functions.html#cb81-10" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb81-11"><a href="functions.html#cb81-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(i)</span>
+<span id="cb81-12"><a href="functions.html#cb81-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">plot</span>(<span class="dv">1</span><span class="sc">:</span>i, stock.prices, <span class="at">type =</span> <span class="st">&quot;l&quot;</span>, <span class="at">main =</span> <span class="st">&quot;Stock Price Over Time&quot;</span>, <span class="at">xlab =</span> <span class="st">&quot;Time (Days)&quot;</span>, <span class="at">ylab =</span> <span class="st">&quot;Stock Price (£)&quot;</span>, <span class="at">ylim =</span> <span class="fu">c</span>(Lower <span class="sc">-</span> <span class="dv">10</span>, Upper <span class="sc">+</span> <span class="dv">10</span>))</span>
+<span id="cb81-13"><a href="functions.html#cb81-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">abline</span>(<span class="at">h =</span> Lower, <span class="at">lty =</span> <span class="dv">2</span>, <span class="at">col =</span> <span class="st">&quot;red&quot;</span>)</span>
+<span id="cb81-14"><a href="functions.html#cb81-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">abline</span>(<span class="at">h =</span> Upper, <span class="at">lty =</span> <span class="dv">2</span>, <span class="at">col =</span> <span class="st">&quot;red&quot;</span>)</span>
+<span id="cb81-15"><a href="functions.html#cb81-15" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb81-16"><a href="functions.html#cb81-16" aria-hidden="true" tabindex="-1"></a><span class="fu">Stocks</span>(<span class="dv">250</span>, <span class="fl">0.03</span>, <span class="dv">100</span>, <span class="dv">500</span>)</span></code></pre></div>
+<pre><code>## [1] 1191</code></pre>
+<img src="_main_files/figure-html/unnamed-chunk-23-1.png" width="672" />
+</details>
+</div>
+<div id="datacamp-courses-3" class="section level2 hasAnchor" number="4.5">
+<h2><span class="header-section-number">4.5</span> DataCamp course(s)<a href="functions.html#datacamp-courses-3" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<ul>
+<li><a href="https://www.datacamp.com/courses/intermediate-r" class="uri">https://www.datacamp.com/courses/intermediate-r</a> (Intermediate R Course)</li>
+</ul>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="loops.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="data-analysis.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": null,
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/USERNAME/REPO/edit/BRANCH/04-Functions.Rmd",
+"text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["_main.pdf"],
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>
